@@ -41,3 +41,5 @@ jobs:
           only-needed: true
       - uses: gap-actions/process-coverage@v2
       - uses: codecov/codecov-action@v3
+        with:
+          codecov_yml_path: ./.github/configs/codecov.yaml
