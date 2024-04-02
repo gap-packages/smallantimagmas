@@ -3,7 +3,6 @@ InstallGlobalFunction(NrSmallAntimagmas,
     return Size(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(order)());
 end);
 
-
 InstallGlobalFunction(SmallAntimagma,
     function(order, id)
     return MagmaByMultiplicationTable(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(order)()[id]);

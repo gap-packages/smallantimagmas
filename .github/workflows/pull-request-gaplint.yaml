@@ -23,3 +23,8 @@ jobs:
         uses: py-actions/py-dependency-install@v4
         with:
           update-pip: true
+
+      - name: gaplint - lint
+        run: |
+          echo "::group:: gaplint -- *.g"
+          find . -name '*.g' -exec gaplint --verbose {} \;
