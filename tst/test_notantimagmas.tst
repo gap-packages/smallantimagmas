@@ -1,6 +1,6 @@
-gap> START_TEST("smallantimagmas: not_antimagmas.tst");
+gap> START_TEST("smallantimagmas: test_notantimagmas.tst");
 
 gap> IsAntiassociative(MagmaByMultiplicationTable([[1]]));
 false
 
-gap> STOP_TEST( "not_antimagmas.tst" );
+gap> STOP_TEST( "test_notantimagmas.tst" );
