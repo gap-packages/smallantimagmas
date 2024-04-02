@@ -2,7 +2,7 @@ InstallGlobalFunction(IsAntiassociative,
     function(M)
         local x;
         for x in IteratorOfTuples(M, 3) do
-            if ( x[1] * (x[2] * x[3]) ) = ( (x[1] * x[2] ) * x[3] ) then
+            if ( x[1] * ( x[2] * x[3] ) ) = ( ( x[1] * x[2] ) * x[3] ) then
                 return false;
             fi;
         od;
