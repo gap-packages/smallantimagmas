@@ -9,6 +9,11 @@ InstallGlobalFunction(IsAntiassociative,
         return true;
 end);
 
+InstallGlobalFunction(TransposedMagma,
+    function(M)
+        return MagmaByMultiplicationTable(TransposedMat(MultiplicationTable(M)));
+end);
+
 InstallGlobalFunction(MagmaIsomorphism,
     function(M, N)
         local psi, n, p, m, elms;

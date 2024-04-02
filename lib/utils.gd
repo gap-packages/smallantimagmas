@@ -27,6 +27,11 @@ DeclareGlobalFunction( "IsMagmaIsomorphic" );
 #!  are anti-isomorphic.
 DeclareGlobalFunction( "IsMagmaAntiisomorphic" );
 
+#! @Arguments [M]
+#! @Description
+#!  generates transposed magma <A>M</A> (a string) 
+DeclareGlobalFunction( "TransposedMagma" );
+
 
 #! @Arguments [M]
 #! @Description
