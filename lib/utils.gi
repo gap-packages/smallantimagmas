@@ -71,7 +71,7 @@ end);
 
 InstallGlobalFunction(HasPropertyA3,
     function(M)
-        local partitions, s, p, ns, rows_cartesian, bool_across_values;
+        local partitions, s, p, ns, rows_cartesian, bool_across_values, bool_across_partitions;
         ns := GeneratorsOfMagma(M);
         for s in [ 2 .. Size(M) ] do
             partitions := PartitionsSet(ns, s);
