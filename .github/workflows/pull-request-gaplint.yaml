@@ -28,3 +28,7 @@ jobs:
         run: |
           echo "::group:: gaplint -- *.g"
           find . -name '*.g' -exec gaplint --verbose {} \;
+          echo "::group:: gaplint -- *.gi"
+          find . -name '*.gi' -exec gaplint --verbose {} \;
+          echo "::group:: gaplint -- *.gd"
+          find . -name '*.gd' -exec gaplint --verbose {} \;
