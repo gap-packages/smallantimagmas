@@ -1,0 +1,9 @@
+assign(domain_size, 2).
+assign(max_models, -1).
+assign(max_seconds, -1).
+clear(lnh).
+
+
+formulas(sos).
+  all x all y all z    (x * y) * z != x * (y * z).
+end_of_list.
