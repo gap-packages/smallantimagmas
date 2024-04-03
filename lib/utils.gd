@@ -32,6 +32,16 @@ DeclareGlobalFunction( "IsMagmaAntiisomorphic" );
 #!  generates transposed magma <A>M</A> (a string) 
 DeclareGlobalFunction( "TransposedMagma" );
 
+#! @Arguments [m, k]
+#! @Description
+#!  returns a left $k$-power of element <A>m</A>.
+DeclareGlobalFunction( "LeftPower" );
+
+#! @Arguments [m, k]
+#! @Description
+#!  returns a right $k$-power of element <A>m</A>.
+DeclareGlobalFunction( "RightPower" );
+
 
 #! @Arguments [M]
 #! @Description

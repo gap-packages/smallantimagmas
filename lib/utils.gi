@@ -74,6 +74,22 @@ InstallGlobalFunction(IsMagmaAntiisomorphic,
         return false;
 end);
 
+InstallGlobalFunction(LeftPower,
+    function(m, k)
+        if k = 1 then
+            return m;
+        fi;
+        return m * LeftPower(m, k - 1);
+end);
+
+InstallGlobalFunction(RightPower,
+    function(m, k)
+        if k = 1 then
+            return m;
+        fi;
+        return RightPower(m, k - 1) * m;
+end);
+
 InstallGlobalFunction(HasPropertyA3,
     function(M)
         local partitions, s, p, ns, rows_cartesian, bool_across_values, bool_across_partitions;
