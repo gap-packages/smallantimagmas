@@ -76,18 +76,68 @@ end);
 
 InstallGlobalFunction(LeftPower,
     function(m, k)
-        if k = 1 then
-            return m;
+        local result;
+
+        if (not IsInt(k)) or (k < 1) then
+            Error("SmallAntimagmas: ", "<id> must be an integer");
         fi;
-        return m * LeftPower(m, k - 1);
+
+        result := m;
+        while k > 1 do
+            result := m * result;
+            k := k - 1;
+        od;
+        return result;
 end);
 
 InstallGlobalFunction(RightPower,
     function(m, k)
-        if k = 1 then
-            return m;
+        local result;
+
+        if (not IsInt(k)) or (k < 1) then
+            Error("SmallAntimagmas: ", "<id> must be an integer");
         fi;
-        return RightPower(m, k - 1) * m;
+
+        result := m;
+        while k > 1 do
+            result := result * m;
+            k := k - 1;
+        od;
+        return result;
+end);
+
+InstallGlobalFunction(LeftOrder,
+    function(m)
+        local temporary, next;
+        temporary := [ m ];
+
+        next := m * Last(temporary);
+        while not (next in temporary) do
+            Add(temporary, next);
+            next := m* Last(temporary);
+        od;
+
+        if m = Last(temporary) then
+            return Size(temporary);
+        fi;
+        return infinity;
+end);
+
+InstallGlobalFunction(RightOrder,
+    function(m)
+        local temporary, next;
+        temporary := [ m ];
+
+        next := Last(temporary) * m;
+        while not (next in temporary) do
+            Add(temporary, next);
+            next := Last(temporary) * m;
+        od;
+
+        if m = Last(temporary) then
+            return Size(temporary);
+        fi;
+        return infinity;
 end);
 
 InstallGlobalFunction(HasPropertyA3,
