@@ -109,7 +109,7 @@ end);
 InstallGlobalFunction(LeftOrder,
     function(m)
         local temporary, next;
-        temporary := [ m ];
+        temporary := [ m*m ];
 
         next := m * Last(temporary);
         while not (next in temporary) do
@@ -126,7 +126,7 @@ end);
 InstallGlobalFunction(RightOrder,
     function(m)
         local temporary, next;
-        temporary := [ m ];
+        temporary := [ m*m ];
 
         next := Last(temporary) * m;
         while not (next in temporary) do
