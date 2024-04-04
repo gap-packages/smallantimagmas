@@ -52,6 +52,16 @@ DeclareGlobalFunction( "LeftOrder" );
 #!  returns a right order of element <A>m</A>.
 DeclareGlobalFunction( "RightOrder" );
 
+#! @Arguments [m, k]
+#! @Description
+#!  if magma is left cyclic <A>m</A>.
+DeclareGlobalFunction( "IsLeftCyclic" );
+
+#! @Arguments [m, k]
+#! @Description
+#!  if magma is left cyclic <A>m</A>.
+DeclareGlobalFunction( "IsRightCyclic" );
+
 #! @Arguments [M]
 #! @Description
 #!  identifies whether magma <A>M</A> (a string) 

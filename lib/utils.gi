@@ -140,6 +140,16 @@ InstallGlobalFunction(RightOrder,
         return infinity;
 end);
 
+InstallGlobalFunction(IsLeftCyclic,
+    function(M)
+        return ForAny(List(M), m -> LeftOrder(m) = Size(M));
+end);
+
+InstallGlobalFunction(IsRightCyclic,
+    function(M)
+        return ForAny(List(M), m -> RightOrder(m) = Size(M));
+end);
+
 InstallGlobalFunction(HasPropertyA3,
     function(M)
         local partitions, s, p, ns, rows_cartesian, bool_across_values, bool_across_partitions;
