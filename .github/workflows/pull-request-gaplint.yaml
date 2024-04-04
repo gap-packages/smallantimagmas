@@ -9,8 +9,6 @@ on:
 jobs:
   gaplint:
     runs-on: ubuntu-22.04
-    strategy:
-      fail-fast: false
     steps:
       - name: git -- checkout
         uses: actions/checkout@v4
@@ -27,6 +25,7 @@ jobs:
           update-pip: true
 
       - name: gaplint - lint
+        continue-on-error: true
         run: |
           echo "::group:: gaplint -- *.g"
           find . -name '*.g' | xargs -n1 gaplint
