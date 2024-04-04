@@ -27,8 +27,8 @@ jobs:
       - name: gaplint - lint
         run: |
           echo "::group:: gaplint -- *.g"
-          find . -name '*.g' -exec gaplint --verbose {} \;
+          find . -name '*.g' | xargs -n1 gaplint
           echo "::group:: gaplint -- *.gi"
-          find . -name '*.gi' -exec gaplint --verbose {} \;
+          find . -name '*.gi' | xargs -n1 gaplint
           echo "::group:: gaplint -- *.gd"
-          find . -name '*.gd' -exec gaplint --verbose {} \;
+          find . -name '*.gd' | xargs -n1 gaplint
