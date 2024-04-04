@@ -109,12 +109,12 @@ end);
 InstallGlobalFunction(LeftOrder,
     function(m)
         local temporary, next;
-        temporary := [ m*m ];
+        temporary := [ m * m ];
 
         next := m * Last(temporary);
         while not (next in temporary) do
             Add(temporary, next);
-            next := m* Last(temporary);
+            next := m * Last(temporary);
         od;
 
         if m = Last(temporary) then
@@ -126,7 +126,7 @@ end);
 InstallGlobalFunction(RightOrder,
     function(m)
         local temporary, next;
-        temporary := [ m*m ];
+        temporary := [ m * m ];
 
         next := Last(temporary) * m;
         while not (next in temporary) do
@@ -161,7 +161,7 @@ InstallGlobalFunction(HasPropertyA3,
                 bool_across_partitions := ForAll(rows_cartesian, r -> IsEmpty(Intersection(r[1], r[2])));
                 bool_across_values := ForAll(Combinations(List(rows_cartesian, r -> r[2]), 2), c -> IsEmpty(Intersection(c)));
 
-                if bool_across_values and bool_across_values then
+                if bool_across_values and bool_across_partitions then
                     return true;
                 fi;
             od;

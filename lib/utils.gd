@@ -20,7 +20,6 @@ DeclareGlobalFunction( "MagmaAntiisomorphism" );
 #!  are isomorphic.
 DeclareGlobalFunction( "IsMagmaIsomorphic" );
 
-
 #! @Arguments [M, N]
 #! @Description
 #!  identifies whether magmas <A>M</A>, <A>N</A> (a string) 

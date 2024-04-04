@@ -15,5 +15,5 @@ end);
 
 InstallGlobalFunction(OneSmallAntimagma,
     function(order)
-    return SmallAntimagma(order, Random([1..NrSmallAntimagmas(order)]));
+    return SmallAntimagma(order, Random([1 .. NrSmallAntimagmas(order) ]));
 end);
