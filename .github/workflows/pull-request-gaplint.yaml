@@ -25,7 +25,6 @@ jobs:
           update-pip: true
 
       - name: gaplint - lint
-        continue-on-error: true
         run: |
           echo "::group:: gaplint -- *.g"
           find . -name '*.g' | xargs -n1 gaplint
