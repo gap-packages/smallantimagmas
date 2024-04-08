@@ -61,6 +61,21 @@ DeclareGlobalFunction( "IsLeftCyclic" );
 #!  if magma is left cyclic <A>m</A>.
 DeclareGlobalFunction( "IsRightCyclic" );
 
+#! @Arguments [m, k]
+#! @Description
+#!  if magma is right cancellative <A>m</A>.
+DeclareGlobalFunction( "IsRightCancellative" );
+
+#! @Arguments [m, k]
+#! @Description
+#!  if magma is left cancellative <A>m</A>.
+DeclareGlobalFunction( "IsLeftCancellative" );
+
+#! @Arguments [m, k]
+#! @Description
+#!  if magma is cancellative <A>m</A>.
+DeclareGlobalFunction( "IsCancellative" );
+
 #! @Arguments [M]
 #! @Description
 #!  identifies whether magma <A>M</A> (a string) 
