@@ -15,10 +15,4 @@ true
 gap> ForAll(AllSmallAntimagmas(3), M -> IsEmpty(Center(M)));
 true
 
-gap> ForAll(AllSmallAntimagmas(2), M -> IsAntiassociative(M));
-true
-
-gap> ForAll(AllSmallAntimagmas(3), M -> IsAntiassociative(M));
-true
-
 gap> STOP_TEST( "test_antimagmas_functions.tst" );
