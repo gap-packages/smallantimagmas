@@ -231,6 +231,7 @@ PackageDoc := rec(
   # fit on a single text line (appears with the '?books' command in GAP)
   # LongTitle := "Elementary Divisors of Integer Matrices",
   LongTitle := "SmallAntimagmas/An antiassociative magmas package",
+  Autoload  := true
 ),
 
 ##  Are there restrictions on the operating system for this package? Or does
