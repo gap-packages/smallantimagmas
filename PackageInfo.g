@@ -1,6 +1,6 @@
 #############################################################################
 ##
-##  PackageInfo.g for the package `SmallAntimagmas'           Kamil Zabielski
+##  PackageInfo.g for the package `smallantimagmas'           Kamil Zabielski
 ##  (created from Frank Lübeck's PackageInfo.g template file)
 ##
 #############################################################################
@@ -9,7 +9,7 @@ SetPackageInfo( rec(
 
 ##  This is case sensitive, use your preferred spelling.
 ##
-PackageName := "SmallAntimagmas",
+PackageName := "smallantimagmas",
 
 ##  This may be used by a default banner or on a Web page, should fit on
 ##  one line.
@@ -191,7 +191,7 @@ PackageInfoURL :=
 # computing the Smith normal form of integer matrices and some related \
 # utilities.",
 AbstractHTML :=
-  "The <span class=\"pkgname\">SmallAntimagmas</span> package,         \
+  "The <span class=\"pkgname\">smallantimagmas</span> package,         \
    is an example of how to create a <span class=\"pkgname\">GAP</span> \
    package. It has little functionality except for being a package.",
 
@@ -221,7 +221,7 @@ AbstractHTML :=
 ##
 # in case of several help books give a list of such records here:
 PackageDoc := rec(
-  BookName  := "SmallAntimagmas",
+  BookName  := "smallantimagmas",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0_mj.html",
   PDFFile   := "doc/manual.pdf",
@@ -230,7 +230,7 @@ PackageDoc := rec(
   # a longer title of the book, this together with the book name should
   # fit on a single text line (appears with the '?books' command in GAP)
   # LongTitle := "Elementary Divisors of Integer Matrices",
-  LongTitle := "SmallAntimagmas/An antiassociative magmas package",
+  LongTitle := "smallantimagmas/An antiassociative magmas package",
   Autoload  := true
 ),
 
