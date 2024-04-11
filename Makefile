@@ -1,4 +1,7 @@
-test: test_linting test_gap
+test: test_linting test_gap test_docs
+
+test_docs:
+	gap ./makedoc.g
 
 test_gap:
 	gap ./tst/testall.g
