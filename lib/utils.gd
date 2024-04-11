@@ -1,7 +1,6 @@
 #! @Arguments [M]
 #! @Description
-#!  identifies whether magma <A>M</A> (a string) 
-#!  is antiassociative magma.
+#!  identifies whether magma <A>M</A> (a string) is antiassociative magma.
 DeclareGlobalFunction( "IsAntiassociative" );
 
 #! @Arguments [M, N]
@@ -51,22 +50,22 @@ DeclareGlobalFunction( "LeftOrder" );
 #!  returns a right order of element <A>m</A>.
 DeclareGlobalFunction( "RightOrder" );
 
-#! @Arguments [m, k]
+#! @Arguments [M]
 #! @Description
 #!  if magma is left cyclic <A>m</A>.
 DeclareGlobalFunction( "IsLeftCyclic" );
 
-#! @Arguments [m, k]
+#! @Arguments [M]
 #! @Description
 #!  if magma is left cyclic <A>m</A>.
 DeclareGlobalFunction( "IsRightCyclic" );
 
-#! @Arguments [m, k]
+#! @Arguments [M]
 #! @Description
 #!  if magma is right cancellative <A>m</A>.
 DeclareGlobalFunction( "IsRightCancellative" );
 
-#! @Arguments [m, k]
+#! @Arguments [M]
 #! @Description
 #!  if magma is left cancellative <A>m</A>.
 DeclareGlobalFunction( "IsLeftCancellative" );
