@@ -1,6 +1,14 @@
 #! @Arguments [n]
 #! @Description
 #!  count number of antiassociative magmas of specified size <A>n</A> (a number) 
+#! @BeginExampleSession
+#! gap> NrSmallAntimagmas(2);
+#! 2
+#! gap> NrSmallAntimagmas(3);
+#! 10
+#! gap> NrSmallAntimagmas(4);
+#! 17780
+#! @EndExampleSession
 DeclareGlobalFunction( "NrSmallAntimagmas" );
 
 #! @Arguments [n]

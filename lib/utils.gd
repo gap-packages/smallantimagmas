@@ -1,6 +1,14 @@
 #! @Arguments [M]
 #! @Description
 #!  identifies whether magma <A>M</A> (a string) is antiassociative magma.
+#! @BeginExampleSession
+#! gap> IsAntiassociative(OneSmallGroup(16));
+#! false
+#! gap> IsAntiassociative(OneSmallAntimagma(2));
+#! true
+#! gap> IsAntiassociative(OneSmallAntimagma(3));
+#! true
+#! @EndExampleSession
 DeclareGlobalFunction( "IsAntiassociative" );
 
 #! @Arguments [M, N]
