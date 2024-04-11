@@ -1,4 +1,4 @@
-test: test_linting test_gap test_docs
+test: test_linting test_docs test_gap
 
 test_docs:
 	gap ./makedoc.g
