@@ -14,6 +14,14 @@ DeclareGlobalFunction( "NrSmallAntimagmas" );
 #! @Arguments [n]
 #! @Description
 #!  returns all antiassociative magmas of specified size <A>n</A> (a number) 
+#! @BeginExampleSession
+#! gap> AllSmallAntimagmas(2);
+#! [ <magma with 2 generators>, <magma with 2 generators> ]
+#! gap> AllSmallAntimagmas(3);
+#! [ <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>,
+#!   <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>,
+#!   <magma with 3 generators>, <magma with 3 generators> ]
+#! @EndExampleSession
 DeclareGlobalFunction( "AllSmallAntimagmas" );
 
 #! @Arguments [n, i]
