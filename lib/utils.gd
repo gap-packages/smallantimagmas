@@ -59,11 +59,25 @@ DeclareGlobalFunction( "IsMagmaIsomorphic" );
 #! @Arguments [M, N]
 #! @Description
 #!  identifies whether magmas <A>M</A>, <A>N</A> are anti-isomorphic.
+#! @BeginExampleSession
+#! gap> N := SmallAntimagma(2, 1);
+#! <magma with 2 generators>
+#! gap> M:= SmallAntimagma(2, 1);
+#! <magma with 2 generators>
+#! gap> N := SmallAntimagma(2, 2);
+#! <magma with 2 generators>
+#! gap> IsMagmaAntiisomorphic(M, M);
+#! false
+#! gap> IsMagmaAntiisomorphic(M, N);
+#! true
+#! gap> IsMagmaAntiisomorphic(M, TransposedMagma(M));
+#! true
+#! @EndExampleSession
 DeclareGlobalFunction( "IsMagmaAntiisomorphic" );
 
 #! @Arguments [M]
 #! @Description
-#!  generates transposed magma <A>M</A> (a string) 
+#!  generates transposed magma <A>M</A>.
 DeclareGlobalFunction( "TransposedMagma" );
 
 #! @Arguments [m, k]
