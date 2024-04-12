@@ -1,6 +1,6 @@
-#! @Arguments [M]
+#! @Arguments M
 #! @Description
-#!  identifies whether magma <A>M</A> (a string) is antiassociative magma.
+#!  identifies whether magma <A>M</A> is antiassociative magma.
 #! @BeginExampleSession
 #! gap> IsAntiassociative(OneSmallGroup(16));
 #! false
@@ -11,26 +11,54 @@
 #! @EndExampleSession
 DeclareGlobalFunction( "IsAntiassociative" );
 
-#! @Arguments [M, N]
+#! @Arguments M, N
 #! @Description
-#!  creates an isomoprhism between magmas <A>M</A>, <A>N</A> (a string) .
+#!  computes an isomoprhism between magmas <A>M</A>, <A>N</A>.
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(2, 1);
+#! <magma with 2 generators>
+#! gap> N := MagmaByMultiplicationTable([ [2, 1], [2, 1] ]);
+#! <magma with 2 generators>
+#! gap> MagmaIsomorphism(M, N);
+#! <mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >
+#! @EndExampleSession
 DeclareGlobalFunction( "MagmaIsomorphism" );
 
-#! @Arguments [M, N]
+#! @Arguments M, N
 #! @Description
-#!  creates an antiisomoprhism between magmas <A>M</A>, <A>N</A> (a string) .
+#!  creates an antiisomoprhism between magmas <A>M</A>, <A>N</A>.
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(2, 1);
+#! <magma with 2 generators>
+#! gap> N := SmallAntimagma(2, 2);
+#! <magma with 2 generators>
+#! gap> MagmaAntiisomorphism(M, N);
+#! <mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >
+#! @EndExampleSession
 DeclareGlobalFunction( "MagmaAntiisomorphism" );
 
-#! @Arguments [M, N]
+#! @Arguments M, N
 #! @Description
-#!  identifies whether magmas <A>M</A>, <A>N</A> (a string) 
-#!  are isomorphic.
+#!  identifies whether magmas <A>M</A>, <A>N</A> are isomorphic.
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(2, 1);
+#! <magma with 2 generators>
+#! gap> N := SmallAntimagma(2, 2);
+#! <magma with 2 generators>
+#! gap> T := MagmaByMultiplicationTable([ [2, 1], [2, 1] ]);
+#! <magma with 2 generators>
+#! gap> IsMagmaIsomorphic(M, M);
+#! true
+#! gap> IsMagmaIsomorphic(M, T);
+#! true
+#! gap> IsMagmaIsomorphic(M, N);
+#! false
+#! @EndExampleSession
 DeclareGlobalFunction( "IsMagmaIsomorphic" );
 
 #! @Arguments [M, N]
 #! @Description
-#!  identifies whether magmas <A>M</A>, <A>N</A> (a string) 
-#!  are anti-isomorphic.
+#!  identifies whether magmas <A>M</A>, <A>N</A> are anti-isomorphic.
 DeclareGlobalFunction( "IsMagmaAntiisomorphic" );
 
 #! @Arguments [M]
