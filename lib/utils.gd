@@ -85,6 +85,14 @@ DeclareGlobalFunction( "IsMagmaAntiisomorphic" );
 #! true
 #! gap> IsMagmaIsomorphic(M, TransposedMagma(TransposedMagma(M)));
 #! true
+#! gap> M := SmallAntimagma(2, 1);
+#! <magma with 2 generators>
+#! gap> Display(MultiplicationTable(M));
+#! [ [  2,  1 ],
+#!   [  2,  1 ] ]
+#! gap> Display(MultiplicationTable(TransposedMagma(M)));
+#! [ [  2,  2 ],
+#!   [  1,  1 ] ]
 #! @EndExampleSession
 DeclareGlobalFunction( "TransposedMagma" );
 
