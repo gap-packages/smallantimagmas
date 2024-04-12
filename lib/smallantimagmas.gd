@@ -1,4 +1,4 @@
-#! @Arguments [n]
+#! @Arguments n
 #! @Description
 #!  count number of antiassociative magmas of specified size <A>n</A> (a number) 
 #! @BeginExampleSession
@@ -11,7 +11,7 @@
 #! @EndExampleSession
 DeclareGlobalFunction( "NrSmallAntimagmas" );
 
-#! @Arguments [n]
+#! @Arguments n
 #! @Description
 #!  returns all antiassociative magmas of specified size <A>n</A> (a number) 
 #! @BeginExampleSession
@@ -24,12 +24,12 @@ DeclareGlobalFunction( "NrSmallAntimagmas" );
 #! @EndExampleSession
 DeclareGlobalFunction( "AllSmallAntimagmas" );
 
-#! @Arguments [n, i]
+#! @Arguments n, i
 #! @Description
-#!  returns antiassociative magma of id <A>[n, i]</A> (a number) 
+#!  returns antiassociative magma of id <A>[n, i]</A>.
 DeclareGlobalFunction( "SmallAntimagma" );
 
-#! @Arguments [n, i]
+#! @Arguments n
 #! @Description
-#!  returns random antiassociative magma of size <A>n</A> (a number) 
+#!  returns a random antiassociative magma of size <A>n</A>.
 DeclareGlobalFunction( "OneSmallAntimagma" );
