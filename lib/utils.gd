@@ -1,6 +1,7 @@
 #! @Arguments M
 #! @Description
-#!  identifies whether magma <A>M</A> is antiassociative magma.
+#! identifies whether magma <A>M</A> is antiassociative magma.
+#!
 #! @BeginExampleSession
 #! gap> IsAntiassociative(OneSmallGroup(16));
 #! false
@@ -9,11 +10,13 @@
 #! gap> IsAntiassociative(OneSmallAntimagma(3));
 #! true
 #! @EndExampleSession
+#!
 DeclareGlobalFunction( "IsAntiassociative" );
 
 #! @Arguments M, N
 #! @Description
-#!  computes an isomoprhism between magmas <A>M</A>, <A>N</A>.
+#! computes an isomoprhism between magmas <A>M</A>, <A>N</A>.
+#!
 #! @BeginExampleSession
 #! gap> M := SmallAntimagma(2, 1);
 #! <magma with 2 generators>
@@ -22,11 +25,13 @@ DeclareGlobalFunction( "IsAntiassociative" );
 #! gap> MagmaIsomorphism(M, N);
 #! <mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >
 #! @EndExampleSession
+#!
 DeclareGlobalFunction( "MagmaIsomorphism" );
 
 #! @Arguments M, N
 #! @Description
 #!  creates an antiisomoprhism between magmas <A>M</A>, <A>N</A>.
+#!
 #! @BeginExampleSession
 #! gap> M := SmallAntimagma(2, 1);
 #! <magma with 2 generators>
@@ -35,11 +40,13 @@ DeclareGlobalFunction( "MagmaIsomorphism" );
 #! gap> MagmaAntiisomorphism(M, N);
 #! <mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >
 #! @EndExampleSession
+#!
 DeclareGlobalFunction( "MagmaAntiisomorphism" );
 
 #! @Arguments M, N
 #! @Description
 #!  identifies whether magmas <A>M</A>, <A>N</A> are isomorphic.
+#!
 #! @BeginExampleSession
 #! gap> M := SmallAntimagma(2, 1);
 #! <magma with 2 generators>
@@ -54,11 +61,13 @@ DeclareGlobalFunction( "MagmaAntiisomorphism" );
 #! gap> IsMagmaIsomorphic(M, N);
 #! false
 #! @EndExampleSession
+#!
 DeclareGlobalFunction( "IsMagmaIsomorphic" );
 
 #! @Arguments [M, N]
 #! @Description
-#!  identifies whether magmas <A>M</A>, <A>N</A> are antiisomorphic.
+#! identifies whether magmas <A>M</A>, <A>N</A> are antiisomorphic.
+#!
 #! @BeginExampleSession
 #! gap> N := SmallAntimagma(2, 1);
 #! <magma with 2 generators>
@@ -73,11 +82,13 @@ DeclareGlobalFunction( "IsMagmaIsomorphic" );
 #! gap> IsMagmaAntiisomorphic(M, TransposedMagma(M));
 #! true
 #! @EndExampleSession
+#!
 DeclareGlobalFunction( "IsMagmaAntiisomorphic" );
 
 #! @Arguments [M]
 #! @Description
-#!  generates transposed magma <A>M</A>.
+#! generates transposed magma <A>M</A>.
+#!
 #! @BeginExampleSession
 #! gap> M := SmallAntimagma(2, 1);
 #! <magma with 2 generators>
@@ -94,11 +105,12 @@ DeclareGlobalFunction( "IsMagmaAntiisomorphic" );
 #! [ [  2,  2 ],
 #!   [  1,  1 ] ]
 #! @EndExampleSession
+#!
 DeclareGlobalFunction( "TransposedMagma" );
 
 #! @Arguments [m, k]
 #! @Description
-#!  returns a left $k$-power of element <A>m</A>.
+#! returns a left $k$-power of element <A>m</A>.
 DeclareGlobalFunction( "LeftPower" );
 
 #! @Arguments [m, k]
@@ -108,7 +120,7 @@ DeclareGlobalFunction( "RightPower" );
 
 #! @Arguments [m, k]
 #! @Description
-#!  returns a left order of element <A>m</A>.
+#! returns a left order of element <A>m</A>.
 DeclareGlobalFunction( "LeftOrder" );
 
 #! @Arguments [m, k]
@@ -129,20 +141,23 @@ DeclareGlobalFunction( "IsRightCyclic" );
 #! @Arguments [M]
 #! @Description
 #!  if magma is right cancellative <A>m</A>.
+#!
 DeclareGlobalFunction( "IsRightCancellative" );
 
 #! @Arguments [M]
 #! @Description
 #!  if magma is left cancellative <A>m</A>.
+#!
 DeclareGlobalFunction( "IsLeftCancellative" );
 
 #! @Arguments [m, k]
 #! @Description
-#!  if magma is cancellative <A>m</A>.
+#! if magma is cancellative <A>m</A>.
+#!
 DeclareGlobalFunction( "IsCancellative" );
 
 #! @Arguments [M]
 #! @Description
-#!  identifies whether magma <A>M</A> (a string) 
-#!  has property A3.
+#!  identifies whether magma <A>M</A> (a string) has property A3.
+#!
 DeclareGlobalFunction( "HasPropertyA3" );
