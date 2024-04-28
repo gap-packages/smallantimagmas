@@ -128,31 +128,55 @@ DeclareGlobalFunction( "LeftOrder" );
 #!  returns a right order of element <A>m</A>.
 DeclareGlobalFunction( "RightOrder" );
 
-#! @Arguments [M]
+#! @Arguments M
 #! @Description
 #!  if magma is left cyclic <A>m</A>.
 DeclareGlobalFunction( "IsLeftCyclic" );
 
-#! @Arguments [M]
+#! @Arguments M
 #! @Description
 #!  if magma is left cyclic <A>m</A>.
 DeclareGlobalFunction( "IsRightCyclic" );
 
-#! @Arguments [M]
+#! @Arguments M
 #! @Description
 #!  if magma is right cancellative <A>m</A>.
 #!
+#! @BeginExampleSession
+#! gap> List(AllSmallAntimagmas(2), M -> IsRightCancellative(M));
+#! [ false, true ]
+#! @EndExampleSession
+#!
 DeclareGlobalFunction( "IsRightCancellative" );
 
-#! @Arguments [M]
+#! @Arguments M
 #! @Description
 #!  if magma is left cancellative <A>m</A>.
 #!
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(2, 1);
+#! <magma with 2 generators>
+#! gap> Display( MultiplicationTable(M) );
+#! [ [  2,  1 ],
+#!   [  2,  1 ] ]
+#! gap> IsRightCancellative(M);
+#! false
+#! gap> IsLeftCancellative(M);
+#! true
+#! gap> List(AllSmallAntimagmas(2), M -> IsLeftCancellative(M));
+#! [ true, false ]
+#! @EndExampleSession
+#!
 DeclareGlobalFunction( "IsLeftCancellative" );
 
-#! @Arguments [m, k]
+#! @Arguments M
 #! @Description
 #! if magma is cancellative <A>m</A>.
+#!
+#! @BeginExampleSession
+#! gap> List(AllSmallAntimagmas(2), M -> IsCancellative(M));
+#! [ false, false ]
+#! @EndExampleSession
 #!
 DeclareGlobalFunction( "IsCancellative" );
 
