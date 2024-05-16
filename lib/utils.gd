@@ -1,5 +1,20 @@
 #! @Arguments M
 #! @Description
+#! indentifies associativity index of <A>M</A>.
+#!
+#! @BeginExampleSession
+#! gap> IsAntiassociative(OneSmallGroup(16));
+#! false
+#! gap> IsAntiassociative(OneSmallAntimagma(2));
+#! true
+#! gap> IsAntiassociative(OneSmallAntimagma(3));
+#! true
+#! @EndExampleSession
+#!
+DeclareGlobalFunction( "AssociativityIndex" );
+
+#! @Arguments M
+#! @Description
 #! identifies whether magma <A>M</A> is antiassociative magma.
 #!
 #! @BeginExampleSession

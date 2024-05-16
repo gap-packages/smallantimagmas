@@ -1,3 +1,8 @@
+InstallGlobalFunction(AssociativityIndex,
+    function(M)
+        return Size(Filtered(Tuples(M, 3), t -> (t[1] * t[2]) * t[3] = t[1] * (t[2] * t[3])));
+end);
+
 InstallGlobalFunction(IsAntiassociative,
     function(M)
         local x;
