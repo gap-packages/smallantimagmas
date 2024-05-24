@@ -3,11 +3,15 @@
 #! indentifies associativity index of <A>M</A>.
 #!
 #! @BeginExampleSession
-#! gap> IsAntiassociative(OneSmallGroup(16));
-#! false
-#! gap> IsAntiassociative(OneSmallAntimagma(2));
-#! true
-#! gap> IsAntiassociative(OneSmallAntimagma(3));
+#! gap> OneSmallAntimagma(2);
+#! <magma with 2 generators>
+#! gap> AssociativityIndex(OneSmallAntimagma(2));
+#! 0
+#! gap> OneSmallGroup(4);
+#! <pc group of size 4 with 2 generators>
+#! gap> AssociativityIndex(OneSmallGroup(4));
+#! 64
+#! gap> AssociativityIndex(OneSmallGroup(4)) = 4^3;
 #! true
 #! @EndExampleSession
 #!

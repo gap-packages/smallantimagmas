@@ -1,5 +1,8 @@
 gap> START_TEST("smallantimagmas: test_utils.tst");
 
+gap> ForAll(AllSmallGroups(3), M -> AssociativityIndex(M) = 3^3);
+true
+
 gap> ForAll(AllSmallAntimagmas(2), M -> AssociativityIndex(M) = 0);
 true
 
