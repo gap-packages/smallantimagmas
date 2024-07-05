@@ -19,6 +19,19 @@ DeclareGlobalFunction( "AssociativityIndex" );
 
 #! @Arguments M
 #! @Description
+#! builds a set of non-isomorphic submagmas of <A>M</A>.
+#!
+#! @BeginExampleSession
+#! gap> AllSmallAntimagmas(2);
+#! [ <magma with 2 generators>, <magma with 2 generators> ]
+#! gap> List(AllSmallAntimagmas(2), M -> AllSubmagmas(M));
+#! [ [ <magma with 1 generator> ], [ <magma with 1 generator> ] ]
+#! @EndExampleSession
+#!
+DeclareGlobalFunction( "AllSubmagmas" );
+
+#! @Arguments M
+#! @Description
 #! identifies whether magma <A>M</A> is antiassociative magma.
 #!
 #! @BeginExampleSession

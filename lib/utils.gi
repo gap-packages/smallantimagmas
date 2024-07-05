@@ -1,3 +1,17 @@
+InstallGlobalFunction(AllSubmagmas,
+    function(M)
+        local result, c, T;
+        result := [];
+        for c in Combinations(GeneratorsOfMagma(M)) do
+            T := Submagma(M, c);
+            if not ForAny(result, N -> IsMagmaIsomorphic(N, T)) and Size(T) > 0 then
+                Add(result, T);
+            fi;
+        od;
+        return result;
+end);
+
+
 InstallGlobalFunction(AssociativityIndex,
     function(M)
         return Size(Filtered(Tuples(M, 3), t -> (t[1] * t[2]) * t[3] = t[1] * (t[2] * t[3])));
