@@ -69,5 +69,15 @@ gap> Filtered(AllSmallAntimagmas(2), M -> IsCancellative(M) );
 gap> Filtered(AllSmallAntimagmas(3), M -> IsCancellative(M) );
 [ ]
 
+gap> Ms_2 := AllSmallAntimagmas(2);;
+
+gap> Ms_3 := AllSmallAntimagmas(3);;
+
+gap> List(Cartesian(Ms_2, Ms_3), M -> IsMagmaIsomorphic(M[1], M[2]));
+[ false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false ]
+
+gap> List(Cartesian(Ms_2, Ms_3), M -> MagmaIsomorphism(M[1], M[2]));
+[ fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail ]
+
 gap> STOP_TEST( "test_utils.tst" );
 
