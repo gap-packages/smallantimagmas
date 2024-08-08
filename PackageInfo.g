@@ -33,7 +33,7 @@ PackageWWWHome :=
   Concatenation( "https://github.com/limakzi/", LowercaseString( ~.PackageName ) ),
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/gap-packages/", LowercaseString( ~.PackageName ) ),
+    URL := Concatenation( "https://github.com/limakzi/", LowercaseString( ~.PackageName ) ),
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 SupportEmail := "limakzi@proton.me",
