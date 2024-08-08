@@ -18,7 +18,7 @@ Subtitle := "A fork of smallgrp package for small antiassociative magmas",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "0.1.0",
+Version := "0.0.15",
 
 ##  Release date of the current version in dd/mm/yyyy format.
 Date := "01/04/2024",
