@@ -13,6 +13,15 @@ DeclareGlobalFunction( "NrSmallAntimagmas" );
 
 #! @Arguments n
 #! @Description
+#! count number of antiassociative magmas of specified size <A>n</A> (a number) 
+#! @BeginExampleSession
+#! gap> RallyNrSmallAntimagmas(3);
+#! 52
+#! @EndExampleSession
+DeclareGlobalFunction( "ReallyNrSmallAntimagmas" );
+
+#! @Arguments n
+#! @Description
 #!  returns all antiassociative magmas of specified size <A>n</A> (a number) 
 #! @BeginExampleSession
 #! gap> AllSmallAntimagmas(2);

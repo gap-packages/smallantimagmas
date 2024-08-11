@@ -1,13 +1,10 @@
 gap> START_TEST("smallantimagmas: test_antimagmas_count.tst");
 
-gap> NrSmallAntimagmas(2);
-2
+gap> List([2,3,4], i -> NrSmallAntimagmas(i));
+[ 2, 10, 17780 ]
 
-gap> NrSmallAntimagmas(3);
-10
-
-gap> NrSmallAntimagmas(4);
-17780
+gap> List([2,3,4], i -> ReallyNrSmallAntimagmas(i));
+[ 2, 52, 421560 ]
 
 gap> STOP_TEST( "test_antimagmas_count.tst" );
 
