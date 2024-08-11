@@ -24,6 +24,12 @@ DeclareGlobalFunction( "NrSmallAntimagmas" );
 #! @EndExampleSession
 DeclareGlobalFunction( "AllSmallAntimagmas" );
 
+#! @Arguments n
+#! @Description
+#!  returns really all antiassociative magmas (isomorphic) of specified size <A>n</A> (a number) 
+#! @EndExampleSession
+DeclareGlobalFunction( "ReallyAllSmallAntimagmas" );
+
 #! @Arguments n, i
 #! @Description
 #!  returns antiassociative magma of id <A>[n, i]</A>.

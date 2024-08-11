@@ -44,3 +44,23 @@ __SmallAntimagmaHelper.getSmallAntimagmaMetadata := function(order)
     files := SortedList(List(Filtered(DirectoryContents(dir), f -> f <> ".." and f <> "."), f -> Filename(dir, f)));
     return ReadAsFunction(First(files));
 end;
+
+__SmallAntimagmaHelper.getAllSmallAntimagmaMetadataDirectory := function(order)
+    local result;
+    __SmallAntimagmaHelper.checkOrder(order);
+    result := DirectoriesPackageLibrary("smallantimagmas", Concatenation(["data", "/", "all", "/", String(order)]));
+    if Size(result) = 0 then
+        ErrorNoReturn("SmallAntimagmas:", "<order> is not yet implemeneted");
+    fi;
+    if Size(result) > 1 then
+        ErrorNoReturn("SmallAntimagmas:", "metadata directory must not be ambigous");
+    fi;
+    return First(result);
+end;
+
+__SmallAntimagmaHelper.getAllSmallAntimagmaMetadata := function(order)
+    local dir, files;
+    dir := __SmallAntimagmaHelper.getAllSmallAntimagmaMetadataDirectory(order);
+    files := SortedList(List(Filtered(DirectoryContents(dir), f -> f <> ".." and f <> "."), f -> Filename(dir, f)));
+    return ReadAsFunction(First(files));
+end;

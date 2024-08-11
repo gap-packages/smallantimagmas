@@ -17,3 +17,8 @@ InstallGlobalFunction(OneSmallAntimagma,
     function(order)
     return SmallAntimagma(order, Random([1 .. NrSmallAntimagmas(order) ]));
 end);
+
+InstallGlobalFunction(ReallyAllSmallAntimagmas,
+    function(order)
+    return List(__SmallAntimagmaHelper.getAllSmallAntimagmaMetadata(order)(), id -> MagmaByMultiplicationTable(id) );
+end);
