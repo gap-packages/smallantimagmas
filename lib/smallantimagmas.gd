@@ -26,7 +26,20 @@ DeclareGlobalFunction( "AllSmallAntimagmas" );
 
 #! @Arguments n
 #! @Description
-#!  returns really all antiassociative magmas (isomorphic) of specified size <A>n</A> (a number) 
+#! returns really-all antiassociative magmas, isomorphic, of specified size <A>n</A> (a number)
+#! @BeginExampleSession
+#! gap> ReallyAllSmallAntimagmas(2);
+#! [ <magma with 2 generators>, <magma with 2 generators> ]
+#! gap> ReallyAllSmallAntimagmas(3);
+#! [ <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, 
+#!   <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, 
+#!   <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, 
+#!   <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, 
+#!   <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, 
+#!   <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, 
+#!   <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, 
+#!   <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators> ]
+#! gap> 
 #! @EndExampleSession
 DeclareGlobalFunction( "ReallyAllSmallAntimagmas" );
 
