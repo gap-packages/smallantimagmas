@@ -7,3 +7,5 @@ disable:
   - whitespace-op-negative
   - space-before-bracket
   - space-after-bracket
+  - 1-line-function
+  - pointless-lambda
