@@ -10,7 +10,7 @@ end);
 
 InstallGlobalFunction(AllSmallAntimagmas,
     function(order)
-    return List(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(order)(), id -> MagmaByMultiplicationTable(id) );
+    return List(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(order)(), id -> MagmaByMultiplicationTable(id));
 end);
 
 InstallGlobalFunction(OneSmallAntimagma,
