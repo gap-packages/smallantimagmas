@@ -162,14 +162,14 @@ InstallGlobalFunction(IsRightCyclic,
         return ForAny(List(M), m -> RightOrder(m) = Size(M));
 end);
 
-InstallGlobalFunction(IsRightCancellative,
-    function(M)
-        return ForAll( Filtered( Tuples(M, 3), m -> m[1] * m[3] = m[2] * m[3] ), m -> m[1] = m[2] );
-end);
-
 InstallGlobalFunction(IsLeftCancellative,
     function(M)
         return ForAll( Filtered( Tuples(M, 3), m -> m[3] * m[1] = m[3] * m[2] ), m -> m[1] = m[2] );
+end);
+
+InstallGlobalFunction(IsRightCancellative,
+    function(M)
+        return ForAll( Filtered( Tuples(M, 3), m -> m[1] * m[3] = m[2] * m[3] ), m -> m[1] = m[2] );
 end);
 
 InstallGlobalFunction(IsCancellative,
