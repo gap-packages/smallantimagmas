@@ -1,5 +1,12 @@
 ## smallantimagmas
 
+`smallgrp` alternative for _antiassociative magmas_.
+
+
+### Installation
+
+To install the `smallantimagmas` package, simply place it into the `pkg` directory.
+
 
 ### Prover9
 
