@@ -18,13 +18,7 @@ end);
 
 InstallGlobalFunction(IsAntiassociative,
     function(M)
-        local x;
-        for x in IteratorOfTuples(M, 3) do
-            if ( x[1] * ( x[2] * x[3] ) ) = ( ( x[1] * x[2] ) * x[3] ) then
-                return false;
-            fi;
-        od;
-        return true;
+        return ForAll(Tuples(M, 3), m -> ( m[1] * m[2] ) * m[3] <> m[1] * ( m[2] * m[3] ) );
 end);
 
 InstallGlobalFunction(TransposedMagma,
