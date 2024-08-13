@@ -13,15 +13,6 @@ DeclareGlobalFunction( "NrSmallAntimagmas" );
 
 #! @Arguments n
 #! @Description
-#! count number of antiassociative magmas of specified size <A>n</A> (a number) 
-#! @BeginExampleSession
-#! gap> ReallyNrSmallAntimagmas(3);
-#! 52
-#! @EndExampleSession
-DeclareGlobalFunction( "ReallyNrSmallAntimagmas" );
-
-#! @Arguments n
-#! @Description
 #!  returns all antiassociative magmas of specified size <A>n</A> (a number) 
 #! @BeginExampleSession
 #! gap> AllSmallAntimagmas(2);
@@ -33,15 +24,6 @@ DeclareGlobalFunction( "ReallyNrSmallAntimagmas" );
 #! @EndExampleSession
 DeclareGlobalFunction( "AllSmallAntimagmas" );
 
-#! @Arguments n
-#! @Description
-#! returns really-all antiassociative magmas, isomorphic, of specified size <A>n</A> (a number)
-#! @BeginExampleSession
-#! gap> ReallyAllSmallAntimagmas(2);
-#! [ <magma with 2 generators>, <magma with 2 generators> ]
-#! @EndExampleSession
-DeclareGlobalFunction( "ReallyAllSmallAntimagmas" );
-
 #! @Arguments n, i
 #! @Description
 #!  returns antiassociative magma of id <A>[n, i]</A>.
@@ -51,3 +33,32 @@ DeclareGlobalFunction( "SmallAntimagma" );
 #! @Description
 #!  returns a random antiassociative magma of size <A>n</A>.
 DeclareGlobalFunction( "OneSmallAntimagma" );
+
+#! @Arguments M
+#! @Description
+#! returns an ID <A>[n, i]</A> of antiassociative magma <A>M</A> if size <A>n</A>.
+#! @BeginExampleSession
+#! gap> IdAntimagma(MagmaByMultiplicationTable([[2,1], [2,1]]));
+#! [ 2, 1 ]
+#! gap> IdAntimagma(MagmaByMultiplicationTable([[2,2], [1,1]]));
+#! [ 2, 2 ]
+#! @EndExampleSession
+DeclareGlobalFunction("IdAntimagma");
+
+#! @Arguments n
+#! @Description
+#! returns really-all antiassociative magmas, isomorphic, of specified size <A>n</A> (a number)
+#! @BeginExampleSession
+#! gap> ReallyAllSmallAntimagmas(2);
+#! [ <magma with 2 generators>, <magma with 2 generators> ]
+#! @EndExampleSession
+DeclareGlobalFunction( "ReallyAllSmallAntimagmas" );
+
+#! @Arguments n
+#! @Description
+#! count number of antiassociative magmas of specified size <A>n</A> (a number) 
+#! @BeginExampleSession
+#! gap> ReallyNrSmallAntimagmas(3);
+#! 52
+#! @EndExampleSession
+DeclareGlobalFunction( "ReallyNrSmallAntimagmas" );
