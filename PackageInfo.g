@@ -18,7 +18,7 @@ Subtitle := "A fork of smallgrp package for small antiassociative magmas",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "0.0.15",
+Version := "0.0.16",
 
 ##  Release date of the current version in dd/mm/yyyy format.
 Date := "01/04/2024",
@@ -155,7 +155,7 @@ Persons := [
 ##    "other"         for all other packages
 ##
 # Status := "accepted",
-Status := "deposited",
+Status := "dev",
 
 ##  You must provide the next two entries if and only if the status is
 ##  "accepted" because is was successfully refereed:
@@ -230,7 +230,7 @@ PackageDoc := rec(
   # a longer title of the book, this together with the book name should
   # fit on a single text line (appears with the '?books' command in GAP)
   # LongTitle := "Elementary Divisors of Integer Matrices",
-  LongTitle := "smallantimagmas/An antiassociative magmas package",
+  LongTitle := "smallantimagmas/Antiassociative magmas package",
   Autoload  := true
 ),
 
