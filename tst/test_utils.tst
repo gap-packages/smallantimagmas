@@ -36,38 +36,17 @@ true
 gap> ForAny(AllSmallAntimagmas(4), M -> not (HasPropertyA3(M) or HasPropertyA3( TransposedMagma(M) ) ) );
 true
 
-gap> ForAll(AllSmallGroups(2), M -> IsRightCancellative(M) );
+gap> ForAll([2..4], n -> ForAll(AllSmallGroups(n), G -> IsLeftCancellative(G)));
 true
 
-gap> ForAll(AllSmallGroups(3), M -> IsRightCancellative(M) );
+gap> ForAll([2..4], n -> ForAll(AllSmallGroups(n), G -> IsRightCancellative(G))); 
 true
 
-gap> ForAll(AllSmallGroups(4), M -> IsRightCancellative(M) );
+gap> ForAll([2..4], n -> ForAll(AllSmallGroups(n), G -> IsCancellative(G)));     
 true
 
-gap> ForAll(AllSmallGroups(2), M -> IsLeftCancellative(M) );
-true
-
-gap> ForAll(AllSmallGroups(3), M -> IsLeftCancellative(M) );
-true
-
-gap> ForAll(AllSmallGroups(4), M -> IsLeftCancellative(M) );
-true
-
-gap> ForAll(AllSmallGroups(2), M -> IsCancellative(M) );
-true
-
-gap> ForAll(AllSmallGroups(3), M -> IsCancellative(M) );
-true
-
-gap> ForAll(AllSmallGroups(4), M -> IsCancellative(M) );
-true
-
-gap> Filtered(AllSmallAntimagmas(2), M -> IsCancellative(M) );
-[ ]
-
-gap> Filtered(AllSmallAntimagmas(3), M -> IsCancellative(M) );
-[ ]
+gap> ForAny([2..3], n -> ForAny(AllSmallAntimagmas(n), G -> IsCancellative(G)));
+false
 
 gap> Ms_2 := AllSmallAntimagmas(2);;
 
