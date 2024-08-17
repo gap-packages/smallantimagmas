@@ -16,7 +16,7 @@ InstallGlobalFunction(AssociativityIndex,
         return Size(Filtered(Tuples(M, 3), t -> (t[1] * t[2]) * t[3] = t[1] * (t[2] * t[3])));
 end);
 
-InstallGlobalFunction(IsAntiassociative,
+InstallMethod(IsAntiassociative, "for a magma", [IsMagma],
     function(M)
         local x;
         for x in IteratorOfTuples(M, 3) do
@@ -168,19 +168,19 @@ InstallGlobalFunction(IsRightCyclic,
         return ForAny(List(M), m -> RightOrder(m) = Size(M));
 end);
 
-InstallGlobalFunction(IsRightCancellative,
-    function(M)
-        return ForAll( Filtered( Tuples(M, 3), m -> m[1] * m[3] = m[2] * m[3] ), m -> m[1] = m[2] );
-end);
-
-InstallGlobalFunction(IsLeftCancellative,
+InstallMethod(IsLeftCancellative, "for a magma", [IsMagma],
     function(M)
         return ForAll( Filtered( Tuples(M, 3), m -> m[3] * m[1] = m[3] * m[2] ), m -> m[1] = m[2] );
 end);
 
-InstallGlobalFunction(IsCancellative,
+InstallMethod(IsRightCancellative, "for a magma", [IsMagma],
     function(M)
-        return IsRightCancellative(M) and IsLeftCancellative(M);
+        return ForAll( Filtered( Tuples(M, 3), m -> m[1] * m[3] = m[2] * m[3] ), m -> m[1] = m[2] );
+end);
+
+InstallMethod(IsCancellative, "for a magma", [IsMagma],
+    function(M)
+        return IsLeftCancellative(M) and IsRightCancellative(M);
 end);
 
 InstallGlobalFunction(HasPropertyA3,

@@ -43,7 +43,7 @@ DeclareGlobalFunction( "AllSubmagmas" );
 #! true
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "IsAntiassociative" );
+DeclareProperty( "IsAntiassociative", IsMagma );
 
 #! @Arguments M, N
 #! @Description
@@ -179,7 +179,7 @@ DeclareGlobalFunction( "IsRightCyclic" );
 #! [ false, true ]
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "IsRightCancellative" );
+DeclareProperty( "IsRightCancellative", IsMagma );
 
 #! @Arguments M
 #! @Description
@@ -199,7 +199,7 @@ DeclareGlobalFunction( "IsRightCancellative" );
 #! [ true, false ]
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "IsLeftCancellative" );
+DeclareProperty( "IsLeftCancellative", IsMagma );
 
 #! @Arguments M
 #! @Description
@@ -210,7 +210,7 @@ DeclareGlobalFunction( "IsLeftCancellative" );
 #! [ false, false ]
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "IsCancellative" );
+DeclareProperty( "IsCancellative", IsMagma );
 
 #! @Arguments [M]
 #! @Description
