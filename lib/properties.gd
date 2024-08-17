@@ -15,7 +15,7 @@
 #! true
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "AssociativityIndex" );
+DeclareAttribute( "AssociativityIndex", IsMagma );
 
 #! @Arguments M
 #! @Description
