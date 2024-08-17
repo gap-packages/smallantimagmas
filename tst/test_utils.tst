@@ -36,17 +36,23 @@ true
 gap> ForAny(AllSmallAntimagmas(4), M -> not (HasPropertyA3(M) or HasPropertyA3( TransposedMagma(M) ) ) );
 true
 
-gap> ForAll([2..4], n -> ForAll(AllSmallGroups(n), G -> IsLeftCancellative(G)));
+gap> ForAll([2..10], n -> ForAll(AllSmallGroups(n), G -> IsLeftCancellative(G)));
 true
 
-gap> ForAll([2..4], n -> ForAll(AllSmallGroups(n), G -> IsRightCancellative(G))); 
+gap> ForAll([2..10], n -> ForAll(AllSmallGroups(n), G -> IsRightCancellative(G))); 
 true
 
-gap> ForAll([2..4], n -> ForAll(AllSmallGroups(n), G -> IsCancellative(G)));     
+gap> ForAll([2..10], n -> ForAll(AllSmallGroups(n), G -> IsCancellative(G)));     
 true
 
-gap> ForAny([2..3], n -> ForAny(AllSmallAntimagmas(n), G -> IsCancellative(G)));
+gap> ForAny([2..4], n -> ForAny(AllSmallAntimagmas(n), G -> IsCancellative(G)));
 false
+
+gap> ForAll([2..10], n -> ForAll(AllSmallGroups(n), G -> ForAll(Elements(G), g -> Order(g) = LeftOrder(g))));
+true
+
+gap> ForAll([2..10], n -> ForAll(AllSmallGroups(n), G -> ForAll(Elements(G), g -> Order(g) = RightOrder(g))));
+true
 
 gap> Ms_2 := AllSmallAntimagmas(2);;
 
