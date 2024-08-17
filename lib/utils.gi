@@ -177,6 +177,51 @@ InstallGlobalFunction(IsCancellative,
         return IsRightCancellative(M) and IsLeftCancellative(M);
 end);
 
+InstallGlobalFunction(IsDepartitionedOfCode,
+    function(M, partition, deragment)
+        return ForAll([1..Size(partition)], i -> IsSubset( Permuted(partition, deragment)[i], Unique(Flat(List(partition[i], m -> m*Elements(M)))) ));
+end);
+
+InstallGlobalFunction(DepartitionOfCode,
+    function(M, code)
+    local p, d, partitions, partition_deragments;
+
+    partitions := PartitionsSet(Elements(M), Sum(code));
+
+    for p in partitions do
+        partition_deragments := List(Derangements(p), d -> PermListList(p, d));
+
+        ## Filtered deragments of partition that matches the code of departition
+        partition_deragments := Filtered(partition_deragments, u -> ForAll(Collected(code), r -> IsBound(CycleStructurePerm(u)[r[1] - 1]) ));
+        partition_deragments := Filtered(partition_deragments, u -> ForAll(Collected(code), r -> CycleStructurePerm(u)[r[1] - 1] = r[2] ));
+
+        for d in partition_deragments do
+            if IsDepartitionedOfCode(M, p, d) then
+                return [p, d];
+            fi;
+        od;
+    od;
+    return fail;
+end);
+
+InstallGlobalFunction(DepartitionCodes,
+    function(M)
+        local k, available_codes;
+
+        available_codes := [];
+        for k in [1..Size(M)] do
+            Append(available_codes, Filtered(Tuples([2..Size(M)], k), t -> Sum(t) <= Size(M)));
+        od;
+
+        #available_codes := Filtered(available_codes, c -> DepartitionOfCode(M, c))[1];
+        return available_codes;
+end);
+
+InstallGlobalFunction(IsDepartitioned,
+    function(M)
+        return Size( DepartitionCodes(M) ) > 0;
+end);
+
 InstallGlobalFunction(HasPropertyA3,
     function(M)
         local partitions, s, p, ns, rows_cartesian, bool_across_values, bool_across_partitions;
