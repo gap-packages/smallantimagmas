@@ -172,17 +172,6 @@ DeclareProperty( "IsRightCyclic", IsMagma );
 
 #! @Arguments M
 #! @Description
-#!  if magma is right cancellative <A>m</A>.
-#!
-#! @BeginExampleSession
-#! gap> List(AllSmallAntimagmas(2), M -> IsRightCancellative(M));
-#! [ false, true ]
-#! @EndExampleSession
-#!
-DeclareProperty( "IsRightCancellative", IsMagma );
-
-#! @Arguments M
-#! @Description
 #!  if magma is left cancellative <A>m</A>.
 #!
 #! @BeginExampleSession
@@ -200,6 +189,17 @@ DeclareProperty( "IsRightCancellative", IsMagma );
 #! @EndExampleSession
 #!
 DeclareProperty( "IsLeftCancellative", IsMagma );
+
+#! @Arguments M
+#! @Description
+#!  if magma is right cancellative <A>m</A>.
+#!
+#! @BeginExampleSession
+#! gap> List(AllSmallAntimagmas(2), M -> IsRightCancellative(M));
+#! [ false, true ]
+#! @EndExampleSession
+#!
+DeclareProperty( "IsRightCancellative", IsMagma );
 
 #! @Arguments M
 #! @Description
