@@ -230,7 +230,7 @@ PackageDoc := rec(
   # a longer title of the book, this together with the book name should
   # fit on a single text line (appears with the '?books' command in GAP)
   # LongTitle := "Elementary Divisors of Integer Matrices",
-  LongTitle := "smallantimagmas/An antiassociative magmas package",
+  LongTitle := "smallantimagmas/Antimagmas package",
   Autoload  := true
 ),
 
@@ -239,7 +239,7 @@ PackageDoc := rec(
 Dependencies := rec(
   # GAP version, use the version string for specifying a least version,
   # prepend a '=' for specifying an exact version.
-  GAP := "4.10",
+  GAP := "4.12",
 
   # list of pairs [package name, version], package name is case
   # insensitive, exact version denoted with '=' prepended to version string.
