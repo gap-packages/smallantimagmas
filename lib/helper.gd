@@ -2,21 +2,21 @@ __SmallAntimagmaHelper := rec();
 
 __SmallAntimagmaHelper.checkOrder := function(order)
         if not IsInt(order) then
-            ErrorNoReturn("SmallAntimagmas: ", "<order> must be an integer");
+            ErrorNoReturn("smallantimagmas: ", "<order> must be an integer");
         fi;
 
         if order < 1 then
-            ErrorNoReturn("SmallAntimagmas:", "<order> must greater than or equal to 1");
+            ErrorNoReturn("smallantimagmas:", "<order> must greater than or equal to 1");
         fi;
 end;
 
 __SmallAntimagmaHelper.checkId := function(id)
         if not IsInt(id) then
-            ErrorNoReturn("SmallAntimagmas: ", "<id> must be an integer");
+            ErrorNoReturn("smallantimagmas: ", "<id> must be an integer");
         fi;
 
         if id < 1 then
-            ErrorNoReturn("SmallAntimagmas:", "<id> must greater than or equal to 1");
+            ErrorNoReturn("smallantimagmas:", "<id> must greater than or equal to 1");
         fi;
 end;
 
@@ -30,10 +30,10 @@ __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory := function(order)
     __SmallAntimagmaHelper.checkOrder(order);
     result := DirectoriesPackageLibrary("smallantimagmas", Concatenation(["data", "/", "non-isomorphic", "/", String(order)]));
     if Size(result) = 0 then
-        ErrorNoReturn("SmallAntimagmas:", "<order> is not yet implemeneted");
+        ErrorNoReturn("smallantimagmas:", "<order> is not yet implemeneted");
     fi;
     if Size(result) > 1 then
-        ErrorNoReturn("SmallAntimagmas:", "metadata directory must not be ambigous");
+        ErrorNoReturn("smallantimagmas:", "metadata directory must not be ambigous");
     fi;
     return First(result);
 end;
@@ -50,10 +50,10 @@ __SmallAntimagmaHelper.getAllSmallAntimagmaMetadataDirectory := function(order)
     __SmallAntimagmaHelper.checkOrder(order);
     result := DirectoriesPackageLibrary("smallantimagmas", Concatenation(["data", "/", "all", "/", String(order)]));
     if Size(result) = 0 then
-        ErrorNoReturn("SmallAntimagmas:", "<order> is not yet implemeneted");
+        ErrorNoReturn("smallantimagmas:", "<order> is not yet implemeneted");
     fi;
     if Size(result) > 1 then
-        ErrorNoReturn("SmallAntimagmas:", "metadata directory must not be ambigous");
+        ErrorNoReturn("smallantimagmas:", "metadata directory must not be ambigous");
     fi;
     return First(result);
 end;
