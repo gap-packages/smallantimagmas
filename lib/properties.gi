@@ -21,6 +21,16 @@ InstallMethod(CommutativityIndex, "for a magma", [IsMagma],
         return Size(Filtered(Combinations(Elements(M), 2), m -> m[1] * m[2] = m[2] * m[1]));
 end);
 
+InstallMethod(AnticommutativityIndex, "for a magma", [IsMagma],
+    function(M)
+        return Size(Filtered(Combinations(Elements(M), 2), m -> m[1] * m[2] <> m[2] * m[1]));
+end);
+
+InstallMethod(SquaresIndex, "for a magma", [IsMagma],
+    function(M)
+        return Size( Set(M, m -> m^2) );
+end);
+
 InstallMethod(IsAntiassociative, "for a magma", [IsMagma],
     function(M)
         local x;
@@ -39,7 +49,7 @@ end);
 
 InstallGlobalFunction(MagmaIsomorphismInvariants,
     function(M)
-        return [ Size(M), IsLeftCancellative(M), IsRightCancellative(M), CommutativityIndex(M) ];
+        return [ Size(M), IsLeftCancellative(M), IsRightCancellative(M), CommutativityIndex(M), AnticommutativityIndex(M), SquaresIndex(M) ];
 end);
 
 InstallGlobalFunction(MagmaIsomorphism,
