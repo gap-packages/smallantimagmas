@@ -6,13 +6,13 @@ false
 gap> IsAntiassociative(MagmaByMultiplicationTable([[2, 1], [2, 1]]));
 true
 
-gap> ForAll([2..3], n -> ForAll(AllSmallAntimagmas(n), M -> IsEmpty(Idempotents(M))));
+gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> IsEmpty(Idempotents(M)));
 true
 
-gap> ForAll([2..3], n -> ForAll(AllSmallAntimagmas(n), M -> IsEmpty(Center(M))));
+gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> IsEmpty(Center(M)));
 true
 
-gap> ForAll([2..3], n -> ForAll(AllSmallAntimagmas(n), M -> IsAntiassociative(M)));
+gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> IsAntiassociative(M));
 true
 
 gap> Collected( List(ReallyAllSmallAntimagmas(3), M -> IdSmallAntimagma(M)) );

@@ -32,3 +32,5 @@ jobs:
           find . -name '*.gi' | xargs -n1 gaplint
           echo "::group:: gaplint -- *.gd"
           find . -name '*.gd' | xargs -n1 gaplint
+          echo "::group:: gaplint -- *.tst"
+          find . -name '*.tst' | xargs -n1 gaplint

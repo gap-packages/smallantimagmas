@@ -1,9 +1,9 @@
 gap> START_TEST( "test_properties_magma_associativity_index.txt" );
 
-gap> ForAll([2..12], n -> ForAll(AllSmallGroups(n), M -> AssociativityIndex(M) = n^3));
+gap> ForAll( AllSmallGroups([2 .. 12]), M -> AssociativityIndex(M) = Size(M) ^ 3 );
 true
 
-gap> ForAll([2..3], n -> ForAll(AllSmallAntimagmas(n), M -> AssociativityIndex(M) = 0));
+gap>  ForAll(AllSmallAntimagmas([2 .. 3]), M -> AssociativityIndex(M) = 0);
 true
 
 gap> STOP_TEST( "test_properties_magma_associativity_index.txt" );

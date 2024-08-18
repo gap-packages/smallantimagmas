@@ -10,3 +10,4 @@ test_linting:
 	find . -type f -name "*.g" | xargs -n1 gaplint
 	find . -type f -name "*.gi" | xargs -n1 gaplint
 	find . -type f -name "*.gd" | xargs -n1 gaplint
+	find . -type f -name "*.tst" | xargs -n1 gaplint

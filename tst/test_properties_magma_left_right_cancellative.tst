@@ -1,15 +1,15 @@
 gap> START_TEST(  "test_properties_magma_left_right_cancellative.tst" );
 
-gap> ForAll([2..4], n -> ForAll(AllSmallGroups(n), G -> IsLeftCancellative(G)));
+gap> ForAll(AllSmallGroups([2 .. 4]), G -> IsLeftCancellative(G));
 true
 
-gap> ForAll([2..4], n -> ForAll(AllSmallGroups(n), G -> IsRightCancellative(G))); 
+gap> ForAll(AllSmallGroups([2 .. 4]), G -> IsRightCancellative(G));
 true
 
-gap> ForAll([2..4], n -> ForAll(AllSmallGroups(n), G -> IsCancellative(G)));     
+gap> ForAll(AllSmallGroups([2 .. 4]), G -> IsCancellative(G));
 true
 
-gap> ForAny([2..3], n -> ForAny(AllSmallAntimagmas(n), M -> IsCancellative(M)));
+gap> ForAny(AllSmallAntimagmas([2 .. 3]), M -> IsCancellative(M));
 false
 
 gap> STOP_TEST(  "test_properties_magma_left_right_cancellative.tst" );
