@@ -18,7 +18,7 @@ true
 gap> ForAll(ReallyAllSmallAntimagmas([2 .. 3]), M -> IdSmallAntimagma(M)[1] = Size(M));
 true
 
-gap> ForAll(ReallyAllSmallAntimagmas([2 .. 3]), M -> IdSmallAntimagma(M)[2] <= NrSmallAntimagmas(Size(M)));     
+gap> ForAll(ReallyAllSmallAntimagmas([2 .. 3]), M -> IdSmallAntimagma(M)[2] <= NrSmallAntimagmas(Size(M)));
 true
 
 gap> STOP_TEST( "test_antimagma.tst" );
