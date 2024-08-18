@@ -19,6 +19,33 @@ DeclareAttribute( "AssociativityIndex", IsMagma );
 
 #! @Arguments M
 #! @Description
+#! identifies commutativity index of <A>M</A>.
+#!
+#! @BeginExampleSession
+#! @EndExampleSession
+#!
+DeclareAttribute( "CommutativityIndex", IsMagma );
+
+#! @Arguments M
+#! @Description
+#! identifies commutativity index of <A>M</A>.
+#!
+#! @BeginExampleSession
+#! @EndExampleSession
+#!
+DeclareAttribute( "AnticommutativityIndex", IsMagma );
+
+#! @Arguments M
+#! @Description
+#! identifies squares index of <A>M</A>.
+#!
+#! @BeginExampleSession
+#! @EndExampleSession
+#!
+DeclareAttribute( "SquaresIndex", IsMagma );
+
+#! @Arguments M
+#! @Description
 #! builds a set of non-isomorphic submagmas of <A>M</A>.
 #!
 #! @BeginExampleSession
