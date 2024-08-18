@@ -5,12 +5,13 @@ end);
 
 InstallGlobalFunction(GeneratorFilterNonIsomorphicMagmas,
     function(magmas)
-        local result;
+        local result, m;
         result := [];
 
         while not IsEmpty(magmas) do
-            Add(result, First(magmas));
-            magmas := Filtered(magmas, m -> IsMagmaIsomorphic(First(magmas), m) = false);
+            m := First(magmas);
+            Add(result, m);
+            magmas := Filtered(magmas, n -> IsMagmaIsomorphic(m, n) = false);
         od;
         return result;
 end);

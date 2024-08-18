@@ -90,7 +90,7 @@ DeclareAttribute( "IdSmallAntimagma", IsMagma );
 #! @Arguments M
 #! @Description
 #! computes isomorphism invariants of <A>M</A>.
-DeclareGlobalFunction( "MagmaIsomorphismInvariants" );
+DeclareGlobalFunction( "MagmaIsomorphismInvariantsMatch" );
 
 #! @Arguments M, N
 #! @Description
@@ -197,15 +197,25 @@ DeclareGlobalFunction( "LeftPower" );
 #!  returns a right $k$-power of element <A>m</A>.
 DeclareGlobalFunction( "RightPower" );
 
-#! @Arguments [m, k]
+#! @Arguments [m]
 #! @Description
 #! returns a left order of element <A>m</A>.
-DeclareGlobalFunction( "LeftOrder" );
+DeclareAttribute( "LeftOrder", IsExtLElement );
 
-#! @Arguments [m, k]
+#! @Arguments [m]
 #! @Description
 #!  returns a right order of element <A>m</A>.
-DeclareGlobalFunction( "RightOrder" );
+DeclareAttribute( "RightOrder", IsExtRElement );
+
+#! @Arguments [m]
+#! @Description
+#! returns a left order of element <A>m</A>.
+DeclareAttribute( "LeftOrdersOfElements", IsMagma );
+
+#! @Arguments [m]
+#! @Description
+#! returns a left order of element <A>m</A>.
+DeclareAttribute( "RightOrdersOfElements", IsMagma );
 
 #! @Arguments M
 #! @Description

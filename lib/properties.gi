@@ -47,22 +47,29 @@ InstallGlobalFunction(TransposedMagma,
         return MagmaByMultiplicationTable(TransposedMat(MultiplicationTable(M)));
 end);
 
-InstallGlobalFunction(MagmaIsomorphismInvariants,
-    function(M)
-        return [ Size(M),
-                 IsLeftCancellative(M),
-                 IsRightCancellative(M),
-                 CommutativityIndex(M),
-                 AnticommutativityIndex(M),
-                 SquaresIndex(M)
+InstallGlobalFunction(MagmaIsomorphismInvariantsMatch,
+    function(M, N)
+        local invariants;
+        invariants := [
+            Size,
+            IsLeftCancellative,
+            IsRightCancellative,
+            CommutativityIndex,
+            AnticommutativityIndex,
+            SquaresIndex,
+            LeftOrdersOfElements,
+            RightOrdersOfElements,
+            IsLeftCyclic,
+            IsRightCyclic
         ];
+        return ForAll(invariants, f -> f(M) = f(N));
 end);
 
 InstallGlobalFunction(MagmaIsomorphism,
     function(M, N)
         local psi, n, p, m, elms;
 
-        if MagmaIsomorphismInvariants(M) <> MagmaIsomorphismInvariants(N) then
+        if not MagmaIsomorphismInvariantsMatch(M, N) then
             return fail;
         fi;
 
@@ -151,7 +158,7 @@ InstallGlobalFunction(RightPower,
         return result;
 end);
 
-InstallGlobalFunction(LeftOrder,
+InstallMethod(LeftOrder, "for a left-multiplicable element", [IsExtLElement],
     function(m)
         local temporary, next;
         temporary := [ m * m ];
@@ -168,7 +175,7 @@ InstallGlobalFunction(LeftOrder,
         return infinity;
 end);
 
-InstallGlobalFunction(RightOrder,
+InstallMethod(RightOrder, "for a right-multiplicable element", [IsExtRElement],
     function(m)
         local temporary, next;
         temporary := [ m * m ];
@@ -183,6 +190,16 @@ InstallGlobalFunction(RightOrder,
             return Size(temporary);
         fi;
         return infinity;
+end);
+
+InstallMethod(LeftOrdersOfElements, "for a magma", [IsMagma],
+    function(M)
+        return Collected( List(M, m -> LeftOrder(m) ) );
+end);
+
+InstallMethod(RightOrdersOfElements, "for a magma", [IsMagma],
+    function(M)
+        return Collected( List(M, m -> RightOrder(m) ) );
 end);
 
 InstallMethod(IsLeftCyclic, "for a magma", [IsMagma],
