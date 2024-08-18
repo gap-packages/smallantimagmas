@@ -45,6 +45,21 @@ DeclareGlobalFunction( "AllSubmagmas" );
 #!
 DeclareProperty( "IsAntiassociative", IsMagma );
 
+#! @Arguments M
+#! @Description
+#! identifies class of antiassociative magma <A>M</A>.
+#!
+#! @BeginExampleSession
+#! gap> IsAntiassociative(OneSmallGroup(16));
+#! false
+#! gap> IsAntiassociative(OneSmallAntimagma(2));
+#! true
+#! gap> IsAntiassociative(OneSmallAntimagma(3));
+#! true
+#! @EndExampleSession
+#!
+DeclareAttribute( "IdSmallAntimagma", IsMagma );
+
 #! @Arguments M, N
 #! @Description
 #! computes an isomoprhism between magmas <A>M</A>, <A>N</A>.
