@@ -11,7 +11,7 @@
 #! <pc group of size 4 with 2 generators>
 #! gap> AssociativityIndex(OneSmallGroup(4));
 #! 64
-#! gap> AssociativityIndex(OneSmallGroup(4)) = 4^3;
+#! gap> AssociativityIndex(OneSmallGroup(4)) = 4 ^ 3;
 #! true
 #! @EndExampleSession
 #!
@@ -123,7 +123,7 @@ DeclareGlobalFunction( "IsMagmaIsomorphic" );
 #! @BeginExampleSession
 #! gap> N := SmallAntimagma(2, 1);
 #! <magma with 2 generators>
-#! gap> M:= SmallAntimagma(2, 1);
+#! gap> M := SmallAntimagma(2, 1);
 #! <magma with 2 generators>
 #! gap> N := SmallAntimagma(2, 2);
 #! <magma with 2 generators>
