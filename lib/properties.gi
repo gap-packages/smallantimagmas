@@ -209,7 +209,8 @@ InstallGlobalFunction(HasPropertyA3,
 end);
 
 InstallMethod(IdSmallAntimagma, "for a magma", [IsMagma],
-    function(N)
-        return [ Size(N),
-                 First( Filtered([1 .. NrSmallAntimagmas(3)], index -> IsMagmaIsomorphic(N, SmallAntimagma(3, index) )) ) ];
+    function(M)
+        local n;
+        n := Size(M);
+        return [ n, First( Filtered([1 .. NrSmallAntimagmas(n)], index -> IsMagmaIsomorphic(M, SmallAntimagma(n, index) )) ) ];
 end);
