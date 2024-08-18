@@ -1,9 +1,9 @@
 #! @Arguments [m, k]
 #! @Description
 #! returns a right order of element <A>m</A>.
-DeclareGlobalFunction( "GeneratorPossibleDiagonals" );
+DeclareGlobalFunction( "AntimagmaGeneratorPossibleDiagonals" );
 
 #! @Arguments Ms
 #! @Description
 #! filters non-isomorphic magmas <A>m</A>.
-DeclareGlobalFunction( "GeneratorFilterNonIsomorphicMagmas" );
+DeclareGlobalFunction( "AntimagmaGeneratorFilterNonIsomorphicMagmas" );
