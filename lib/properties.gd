@@ -60,6 +60,11 @@ DeclareProperty( "IsAntiassociative", IsMagma );
 #!
 DeclareAttribute( "IdSmallAntimagma", IsMagma );
 
+#! @Arguments M
+#! @Description
+#! computes isomorphism invariants of <A>M</A>.
+DeclareGlobalFunction( "MagmaIsomorphismInvariants" );
+
 #! @Arguments M, N
 #! @Description
 #! computes an isomoprhism between magmas <A>M</A>, <A>N</A>.
