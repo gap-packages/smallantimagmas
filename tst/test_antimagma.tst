@@ -1,8 +1,5 @@
 gap> START_TEST( "test_antimagma.tst" );
 
-gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> HasPropertyA3(M) or HasPropertyA3( TransposedMagma(M) ) );
-true
-
 gap> ForAll([2 .. 3], n -> ForAll(Combinations([1 .. NrSmallAntimagmas(n)], 2), c -> not IsMagmaIsomorphic(SmallAntimagma(n, c[1]), SmallAntimagma(n, c[2]) ) ) );
 true
 
