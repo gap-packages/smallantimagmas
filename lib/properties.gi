@@ -226,29 +226,3 @@ InstallMethod(IsCancellative, "for a magma", [IsMagma],
     function(M)
         return IsLeftCancellative(M) and IsRightCancellative(M);
 end);
-
-InstallGlobalFunction(HasPropertyA3,
-    function(M)
-        local partitions, s, p, ns, rows_cartesian, bool_across_values, bool_across_partitions;
-        ns := GeneratorsOfMagma(M);
-        for s in [ 2 .. Size(M) ] do
-            partitions := PartitionsSet(ns, s);
-            for p in partitions do
-                rows_cartesian := List(p, p_i -> [ p_i, Set( Flat( List( p_i, p_x -> List( ns, x -> x * p_x ) ) ) ) ]);
-                bool_across_partitions := ForAll(rows_cartesian, r -> IsEmpty(Intersection(r[1], r[2])));
-                bool_across_values := ForAll(Combinations(List(rows_cartesian, r -> r[2]), 2), c -> IsEmpty(Intersection(c)));
-
-                if bool_across_values and bool_across_partitions then
-                    return true;
-                fi;
-            od;
-        od;
-        return false;
-end);
-
-InstallMethod(IdSmallAntimagma, "for a magma", [IsMagma],
-    function(M)
-        local n;
-        n := Size(M);
-        return [ n, First( Filtered([1 .. NrSmallAntimagmas(n)], index -> IsMagmaIsomorphic(M, SmallAntimagma(n, index) )) ) ];
-end);

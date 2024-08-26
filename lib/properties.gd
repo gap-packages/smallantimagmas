@@ -268,9 +268,3 @@ DeclareProperty( "IsRightCancellative", IsMagma );
 #! @EndExampleSession
 #!
 DeclareProperty( "IsCancellative", IsMagma );
-
-#! @Arguments [M]
-#! @Description
-#!  identifies whether magma <A>M</A> (a string) has property A3.
-#!
-DeclareGlobalFunction( "HasPropertyA3" );

@@ -20,6 +20,14 @@ InstallGlobalFunction(AllSmallAntimagmas,
         fi;
 end);
 
+InstallMethod(IdSmallAntimagma, "for a magma", [IsMagma],
+    function(M)
+        local n;
+        n := Size(M);
+        return [ n, First( Filtered([1 .. NrSmallAntimagmas(n)], index -> IsMagmaIsomorphic(M, SmallAntimagma(n, index) )) ) ];
+end);
+
+
 InstallGlobalFunction(OneSmallAntimagma,
     function(order)
         return SmallAntimagma(order, Random([1 .. NrSmallAntimagmas(order) ]));
