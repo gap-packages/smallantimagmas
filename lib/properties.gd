@@ -1,5 +1,17 @@
 #! @Arguments M
 #! @Description
+#! identifies associativity index of <A>M</A>.
+#!
+#! @BeginExampleSession
+#! gap> List(AllSmallAntimagmas(3), M -> DiagonalOfMultiplicationTable((M)));                
+#! [ [ 2, 1, 1 ], [ 2, 1, 1 ], [ 2, 3, 2 ], [ 2, 1, 1 ], [ 2, 1, 1 ], [ 2, 1, 2 ], [ 2, 3, 2 ], [ 2, 1, 2 ], 
+#! [ 2, 3, 1 ], [ 2, 3, 1 ] ]
+#! @EndExampleSession
+#!
+DeclareAttribute( "AssociativityIndex", IsMagma );
+
+#! @Arguments M
+#! @Description
 #! indentifies associativity index of <A>M</A>.
 #!
 #! @BeginExampleSession
@@ -14,8 +26,7 @@
 #! gap> AssociativityIndex(OneSmallGroup(4)) = 4 ^ 3;
 #! true
 #! @EndExampleSession
-#!
-DeclareAttribute( "AssociativityIndex", IsMagma );
+DeclareAttribute( "DiagonalOfMultiplicationTable", IsMagma);
 
 #! @Arguments M
 #! @Description

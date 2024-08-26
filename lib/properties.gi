@@ -11,6 +11,11 @@ InstallGlobalFunction(AllSubmagmas,
         return result;
 end);
 
+InstallMethod(DiagonalOfMultiplicationTable, "for a magma", [IsMagma],
+    function(M)
+        return DiagonalOfMatrix(MultiplicationTable(M));
+end);
+
 InstallMethod(AssociativityIndex, "for a magma", [IsMagma],
     function(M)
         return Size(Filtered(Tuples(M, 3), t -> (t[1] * t[2]) * t[3] = t[1] * (t[2] * t[3])));
