@@ -5,8 +5,8 @@ __SmallAntimagmaHelper.checkOrder := function(order)
             ErrorNoReturn("smallantimagmas: ", "<order> must be an integer");
         fi;
 
-        if order < 1 then
-            ErrorNoReturn("smallantimagmas:", "<order> must greater than or equal to 1");
+        if order < 2 then
+            ErrorNoReturn("smallantimagmas:", "<order> must greater than or equal to 2");
         fi;
 end;
 
