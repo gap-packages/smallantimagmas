@@ -64,3 +64,15 @@ __SmallAntimagmaHelper.getAllSmallAntimagmaMetadata := function(order)
     files := SortedList(List(Filtered(DirectoryContents(dir), f -> f <> ".." and f <> "."), f -> Filename(dir, f)));
     return ReadAsFunction(First(files));
 end;
+
+__SmallAntimagmaHelper.AntimagmaMultiplicationTableConvert := function(M)
+        local nrows;
+        nrows := NrRows(MultiplicationTable(M));
+        return List(MultiplicationTable(M), row -> Position( EnumeratorOfTuples([1 .. nrows], nrows), row ) );
+end;
+
+__SmallAntimagmaHelper.AntimagmaMultiplicationTableReverse := function(T)
+        local ncols;
+        ncols := Size(T);
+        return List(T, col -> EnumeratorOfTuples([1 .. ncols], ncols)[col] );
+end;
