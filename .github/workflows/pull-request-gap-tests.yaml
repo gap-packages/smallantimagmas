@@ -4,7 +4,8 @@ run-name: gap-test-${{ github.event.number }} ${{ github.event.pull_request.titl
 
 on:
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
 
 # the `concurrency` settings ensure that not too many CI jobs run in parallel
 concurrency:

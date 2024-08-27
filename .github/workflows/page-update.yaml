@@ -1,0 +1,52 @@
+---
+
+name: gh-page-update
+run-name: gh-page-update-${{ github.event.number }}
+on:
+  release:
+    types:
+      - published
+
+env:
+  GAPBRANCH: stable-4.13
+
+jobs:
+  gh-page-update:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+
+    steps:
+      - uses: gap-actions/setup-gap@v2
+        with:
+          GAPBRANCH: ${{ matrix.gap-branch }}
+
+      - name: git -- checkout page
+        uses: actions/checkout@v4
+        path: gh-pages
+        branch: gh-pages
+
+      - name: git -- checkout page
+        uses: actions/checkout@v4
+        path: smallantimagma
+        branch: ${{ github.ref_name }}
+
+      - name: metadata -- copy metada to update page
+        run: |
+          cp smallantimagma/PackageInfo.g gh-pages/PackageInfo.g
+
+      - name: web -- update website
+        uses: stefanzweifel/git-auto-commit-action@v5
+        repository: gh-pages
+        branch: gh-pages
+        push_options: '--force'
+        working-directory: ./gh-pages
+        run: |
+          gap update.g
+
+      - name: web -- update website
+        uses: stefanzweifel/git-auto-commit-action@v5
+        commit_message: '[ ${{ github.ref_name }}] - website update'
+        repository: gh-pages
+        branch: gh-pages
+        push_options: '--force'

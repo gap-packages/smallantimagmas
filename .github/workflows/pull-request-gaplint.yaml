@@ -4,7 +4,8 @@ name: gaplint
 run-name: gaplint-${{ github.event.number }} ${{ github.event.pull_request.title }}
 on:
   pull_request:
-    branches: ["main"]
+    branches: 
+      - main
 
 jobs:
   gaplint:
