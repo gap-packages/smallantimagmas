@@ -65,13 +65,13 @@ __SmallAntimagmaHelper.getAllSmallAntimagmaMetadata := function(order)
     return ReadAsFunction(First(files));
 end;
 
-__SmallAntimagmaHelper.AntimagmaMultiplicationTableConvert := function(M)
+__SmallAntimagmaHelper.MultiplicationTableConvert := function(T)
         local nrows;
-        nrows := NrRows(MultiplicationTable(M));
-        return List(MultiplicationTable(M), row -> Position( EnumeratorOfTuples([1 .. nrows], nrows), row ) );
+        nrows := NrRows(T);
+        return List(T, row -> Position( EnumeratorOfTuples([1 .. nrows], nrows), row ) );
 end;
 
-__SmallAntimagmaHelper.AntimagmaMultiplicationTableReverse := function(T)
+__SmallAntimagmaHelper.MultiplicationTableReverse := function(T)
         local ncols;
         ncols := Size(T);
         return List(T, col -> EnumeratorOfTuples([1 .. ncols], ncols)[col] );

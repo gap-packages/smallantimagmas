@@ -1,4 +1,4 @@
-gap> List(AllSmallAntimagmas([2 .. 3]), M -> __SmallAntimagmaHelper.AntimagmaMultiplicationTableConvert(M) );
+gap> List(AllSmallAntimagmas([2 .. 3]), M -> __SmallAntimagmaHelper.MultiplicationTableConvert(MultiplicationTable(M)) );
 [ 
     [3, 3],
     [4, 1],
@@ -14,5 +14,5 @@ gap> List(AllSmallAntimagmas([2 .. 3]), M -> __SmallAntimagmaHelper.AntimagmaMul
     [ 16, 16, 16 ] 
 ]
 
-gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> MultiplicationTable(M) = __SmallAntimagmaHelper.AntimagmaMultiplicationTableReverse(__SmallAntimagmaHelper.AntimagmaMultiplicationTableConvert(M)) );
+gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> MultiplicationTable(M) = __SmallAntimagmaHelper.MultiplicationTableReverse(__SmallAntimagmaHelper.MultiplicationTableConvert(MultiplicationTable(M))) );
 true
