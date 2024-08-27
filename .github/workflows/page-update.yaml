@@ -52,7 +52,7 @@ jobs:
       - name: web -- update website
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: '[ ${{ github.ref_name }}] - website update'
+          commit_message: '[${{ github.ref_name }}] - website update'
           repository: gh-pages
           branch: gh-pages
           push_options: '--force'
