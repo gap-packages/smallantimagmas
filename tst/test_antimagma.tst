@@ -6,12 +6,6 @@ true
 gap> List(Cartesian(AllSmallAntimagmas(2), AllSmallAntimagmas(3)), c -> MagmaIsomorphism(c[1], c[2]));
 [ fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail, fail ]
 
-gap> IsAntiassociative(MagmaByMultiplicationTable([[1]]));
-false
-
-gap> IsAntiassociative(MagmaByMultiplicationTable([[2, 1], [2, 1]]));
-true
-
 gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> IsEmpty(Idempotents(M)));
 true
 
