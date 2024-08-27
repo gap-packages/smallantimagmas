@@ -18,10 +18,10 @@ Subtitle := "A fork of smallgrp package for small antiassociative magmas",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "0.0.15",
+Version := "0.1.1",
 
 ##  Release date of the current version in dd/mm/yyyy format.
-Date := "01/04/2024",
+Date := "27/08/2024",
 
 ## Optional: license of the package, as an SPDX short-form identifiers;
 ## see <https://spdx.org/ids> for an explanation what an SPDX ID is, and
@@ -47,7 +47,7 @@ SupportEmail := "limakzi@proton.me",
 ##  example/init.g, ...    or example-3.3/init.g, ...  )
 #
 ArchiveURL := Concatenation( ~.SourceRepository.URL,
-                                 "/releases/download/v", ~.Version,
+                                 "/archive/refs/tags/v", ~.Version,
                                  "/", ~.PackageName, "-", ~.Version ),
 
 ##  All provided formats as list of file extensions, separated by white
@@ -379,4 +379,3 @@ AutoDoc := rec(
 ),
 
 ));
-
