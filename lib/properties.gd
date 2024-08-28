@@ -1,6 +1,6 @@
 #! @Arguments M
 #! @Description
-#! identifies whether magma <A>M</A> is antiassociative magma.
+#! identifies whether magma <A>M</A> is antiassociative.
 #!
 #! @BeginExampleSession
 #! gap> IsAntiassociative(OneSmallGroup(16));
