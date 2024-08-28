@@ -207,11 +207,6 @@ InstallMethod(RightOrdersOfElements, "for a magma", [IsMagma],
         return Collected( List(M, m -> RightOrder(m) ) );
 end);
 
-InstallMethod(IsDeranged, "for a magma", [IsMagma],
-    function(M)
-        Error("not yet impplemented");
-end);
-
 InstallMethod(IsLeftCyclic, "for a magma", [IsMagma],
     function(M)
         return ForAny(List(M), m -> LeftOrder(m) = Size(M));

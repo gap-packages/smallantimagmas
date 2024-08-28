@@ -242,11 +242,6 @@ DeclareAttribute( "RightOrdersOfElements", IsMagma );
 
 #! @Arguments M
 #! @Description
-#!  if magma is derannged <A>m</A>.
-DeclareProperty( "IsDeranged", IsMagma );
-
-#! @Arguments M
-#! @Description
 #!  if magma is left cyclic <A>m</A>.
 DeclareProperty( "IsLeftCyclic", IsMagma );
 
