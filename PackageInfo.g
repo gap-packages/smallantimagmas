@@ -18,7 +18,7 @@ Subtitle := "A fork of smallgrp package for small antiassociative magmas",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "0.2.4",
+Version := "0.2.5",
 
 ##  Release date of the current version in dd/mm/yyyy format.
 Date := "28/08/2024",
@@ -46,9 +46,10 @@ SupportEmail := "limakzi@proton.me",
 ##  directory containing the package (in our "example" probably:
 ##  example/init.g, ...    or example-3.3/init.g, ...  )
 #
+
 ArchiveURL := Concatenation( ~.SourceRepository.URL,
-                                 "/archive/refs/tags/v", ~.Version,
-                                 "/", ~.PackageName, "-", ~.Version ),
+                                 "/releases/download/v", ~.Version,
+                                 "/", ~.PackageName, "-v", ~.Version ),
 
 ##  All provided formats as list of file extensions, separated by white
 ##  space or commas.
