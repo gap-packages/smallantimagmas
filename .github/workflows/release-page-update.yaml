@@ -10,13 +10,13 @@ on:
 
 env:
   gap-branch: stable-4.13
+  archive-file:  ${{ github.repository }}-${{ github.ref_name }}.tar.gz
 
 jobs:
-  gh-page-update:
+  assets-build:
     runs-on: ubuntu-22.04
     permissions:
       contents: write
-
     steps:
       - name: git -- checkout repository
         uses: actions/checkout@v4
@@ -52,12 +52,55 @@ jobs:
 
       - name: pkg -- build an archive
         run: |
-          tar -czvf ${{ github.repository }}-${{ github.ref_name }}.tar.gz .
+          tar -czvf ${{ env.archive-file }} .
 
-      - name: github -- upload manual-pdf
+      - name: github -- upload artifacts
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            ${{ github.repository }}-${{ github.ref_name }}.tar.gz
+            ${{ env.archive-file }}
             doc/manual.pdf
 
+
+  update-website:
+    runs-on: ubuntu-22.04
+    needs: assets-build
+    permissions:
+      contents: write
+    steps:
+      - name: git -- checkout page
+        uses: actions/checkout@v4
+        with:
+          path: gh-pages
+          ref: gh-pages
+
+      - name: website -- download asset to be deployed
+        uses: robinraju/release-downloader@v1
+        with:
+          tag: ${{ github.ref_name }}
+          fileName: ${{ github.repository }}-${{ github.ref_name }}.tar.gz
+      
+      - name: website -- extract the archive
+        run: |
+          tar -xvf ${{ github.repository }}-${{ github.ref_name }}.tar.gz
+
+      - name: metadata -- copy metada to update page
+        run: |
+          rm -r ./gh-pages/doc
+          cp -r ./doc/ ./gh-pages/doc/
+          cp ./PackageInfo.g ./gh-pages/PackageInfo.g
+          cp ./README.md ./gh-pages/README.md
+          rm -v ./gh-pages/doc/.gitignore
+
+      - name: gap -- run update.g
+        working-directory: ./gh-pages
+        run: |
+          gap update.g
+
+      - name: git -- commit the update
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: '[${{ github.ref_name }}] - website update'
+          repository: gh-pages
+          branch: gh-pages
+          push_options: '--force'
