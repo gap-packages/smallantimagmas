@@ -1,7 +1,7 @@
 ---
 
-name: gh-page-update
-run-name: gh-page-update-${{ github.event.number }}
+name: release-gh-page-update
+run-name: release-gh-page-update-${{ github.ref_name }}
 on:
   workflow_dispatch: 
   release:
