@@ -191,8 +191,8 @@ PackageInfoURL :=
 # computing the Smith normal form of integer matrices and some related \
 # utilities.",
 AbstractHTML :=
-  "The <span class=\"pkgname\">smallantimagmas</span> package,         \
-   classifies all finite, antassociative magmas."
+  "The <span class=\"pkgname\">smallantimagmas</span> package, \
+   classifies all finite, antassociative magmas.",
 
 ##  Here is the information on the help books of the package, used for
 ##  loading into GAP's online help and maybe for an online copy of the
