@@ -40,15 +40,17 @@ jobs:
 
       - name: metadata -- copy metada to update page
         run: |
+          rm -r ./gh-pages/doc
           cp -r ./doc/ ./gh-pages/doc/
           cp ./PackageInfo.g ./gh-pages/PackageInfo.g
+          rm -v ./gh-pages/doc/.gitignore
 
-      - name: metadata -- update page
+      - name: gap -- run update.g
         working-directory: ./gh-pages
         run: |
           gap update.g
 
-      - name: web -- update website
+      - name: git -- commit the update
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: '[${{ github.ref_name }}] - website update'
