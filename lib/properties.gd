@@ -1,18 +1,21 @@
 #! @Arguments M
 #! @Description
-#! identifies associativity index of <A>M</A>.
+#! identifies whether magma <A>M</A> is antiassociative magma.
 #!
 #! @BeginExampleSession
-#! gap> List(AllSmallAntimagmas(3), M -> DiagonalOfMultiplicationTable((M)));                
-#! [ [ 2, 1, 1 ], [ 2, 1, 1 ], [ 2, 3, 2 ], [ 2, 1, 1 ], [ 2, 1, 1 ], [ 2, 1, 2 ], [ 2, 3, 2 ], [ 2, 1, 2 ], 
-#! [ 2, 3, 1 ], [ 2, 3, 1 ] ]
+#! gap> IsAntiassociative(OneSmallGroup(16));
+#! false
+#! gap> IsAntiassociative(OneSmallAntimagma(2));
+#! true
+#! gap> IsAntiassociative(OneSmallAntimagma(3));
+#! true
 #! @EndExampleSession
 #!
-DeclareAttribute( "AssociativityIndex", IsMagma );
+DeclareProperty( "IsAntiassociative", IsMagma );
 
 #! @Arguments M
 #! @Description
-#! indentifies associativity index of <A>M</A>.
+#! identifies associativity index of <A>M</A>.
 #!
 #! @BeginExampleSession
 #! gap> OneSmallAntimagma(2);
@@ -26,6 +29,23 @@ DeclareAttribute( "AssociativityIndex", IsMagma );
 #! gap> AssociativityIndex(OneSmallGroup(4)) = 4 ^ 3;
 #! true
 #! @EndExampleSession
+#!
+DeclareAttribute( "AssociativityIndex", IsMagma );
+
+#! @Arguments M
+#! @Description
+#! computes diaognal of multiplication table of <A>M</A>.
+#!
+#! @BeginExampleSession
+#! gap> List(AllSmallAntimagmas(3), M -> DiagonalOfMultiplicationTable((M)));                
+#! [ [ 2, 1, 1 ], [ 2, 1, 1 ], 
+#!   [ 2, 3, 2 ], [ 2, 1, 1 ], 
+#!   [ 2, 1, 1 ], [ 2, 1, 2 ], 
+#!   [ 2, 3, 2 ], [ 2, 1, 2 ], 
+#!   [ 2, 3, 1 ], [ 2, 3, 1 ]
+#! ]
+#! @EndExampleSession
+#!
 DeclareAttribute( "DiagonalOfMultiplicationTable", IsMagma);
 
 #! @Arguments M
@@ -33,13 +53,14 @@ DeclareAttribute( "DiagonalOfMultiplicationTable", IsMagma);
 #! identifies commutativity index of <A>M</A>.
 #!
 #! @BeginExampleSession
+#! 
 #! @EndExampleSession
 #!
 DeclareAttribute( "CommutativityIndex", IsMagma );
 
 #! @Arguments M
 #! @Description
-#! identifies commutativity index of <A>M</A>.
+#! calculates anticommutativity index of <A>M</A>.
 #!
 #! @BeginExampleSession
 #! @EndExampleSession
@@ -48,16 +69,22 @@ DeclareAttribute( "AnticommutativityIndex", IsMagma );
 
 #! @Arguments M
 #! @Description
-#! identifies squares index of <A>M</A>.
+#! computes squares index of <A>M</A> so the order of $\left\{ m^2 | m \in \right\}$.
 #!
 #! @BeginExampleSession
+#! gap> List(AllSmallAntimagmas(2), M -> List(M, m -> m * m) );                
+#! [ [ m2, m1 ], [ m2, m1 ] ]
+#! gap> List(AllSmallAntimagmas(2), M -> SquaresIndex(M ));
+#! [ 2, 2 ]
+#! gap> List(AllSmallAntimagmas(3), M -> SquaresIndex(M ));
+#! [ 2, 2, 2, 2, 2, 2, 2, 2, 3, 3 ]
 #! @EndExampleSession
 #!
 DeclareAttribute( "SquaresIndex", IsMagma );
 
 #! @Arguments M
 #! @Description
-#! builds a set of non-isomorphic submagmas of <A>M</A>.
+#! builds a collection of non-isomorphic submagmas of <A>M</A>.
 #!
 #! @BeginExampleSession
 #! gap> AllSmallAntimagmas(2);
@@ -67,21 +94,6 @@ DeclareAttribute( "SquaresIndex", IsMagma );
 #! @EndExampleSession
 #!
 DeclareGlobalFunction( "AllSubmagmas" );
-
-#! @Arguments M
-#! @Description
-#! identifies whether magma <A>M</A> is antiassociative magma.
-#!
-#! @BeginExampleSession
-#! gap> IsAntiassociative(OneSmallGroup(16));
-#! false
-#! gap> IsAntiassociative(OneSmallAntimagma(2));
-#! true
-#! gap> IsAntiassociative(OneSmallAntimagma(3));
-#! true
-#! @EndExampleSession
-#!
-DeclareProperty( "IsAntiassociative", IsMagma );
 
 #! @Arguments M
 #! @Description
