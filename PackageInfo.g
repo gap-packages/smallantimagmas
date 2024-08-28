@@ -18,7 +18,7 @@ Subtitle := "A fork of smallgrp package for small antiassociative magmas",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "0.2.8",
+Version := "0.2.9",
 
 ##  Release date of the current version in dd/mm/yyyy format.
 Date := "28/08/2024",
@@ -28,7 +28,7 @@ Date := "28/08/2024",
 ## <https://spdx.org/licenses> for a list of supported licenses.
 ## You can also combine multiple licenses via SPDX License Expressions,
 ## see <https://spdx.org/ids-how>, and more.
-License := "GPL",
+License := "GPL-3.0-or-later",
 PackageWWWHome :=
   Concatenation( "https://limakzi.github.io/", LowercaseString( ~.PackageName ) ),
 SourceRepository := rec(
