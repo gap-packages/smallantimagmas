@@ -1,5 +1,7 @@
+---
 name: pr-labeler
 run-name: pr-labeler-${{ github.event.number }} ${{ github.event.pull_request.title }}
+
 on:
   pull_request:
     types: [opened, reopened]

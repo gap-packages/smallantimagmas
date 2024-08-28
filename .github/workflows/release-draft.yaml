@@ -1,5 +1,4 @@
 ---
-
 name: release-draft
 run-name: release-draft-${{ github.event.number }}
 
