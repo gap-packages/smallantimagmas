@@ -28,7 +28,7 @@ Date := "27/08/2024",
 ## <https://spdx.org/licenses> for a list of supported licenses.
 ## You can also combine multiple licenses via SPDX License Expressions,
 ## see <https://spdx.org/ids-how>, and more.
-License := "MIT",
+License := "GPL",
 PackageWWWHome :=
   Concatenation( "https://github.com/limakzi/", LowercaseString( ~.PackageName ) ),
 SourceRepository := rec(
