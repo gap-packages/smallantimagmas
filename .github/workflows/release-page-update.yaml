@@ -18,9 +18,10 @@ jobs:
       contents: write
 
     steps:
-      - uses: gap-actions/setup-gap@v2
+      - name: git -- checkout repository
+        uses: actions/checkout@v4
         with:
-          GAPBRANCH: ${{ env.gap-branch }}
+          ref: ${{ github.ref_name }}
 
       - name: git -- checkout page
         uses: actions/checkout@v4
@@ -28,21 +29,19 @@ jobs:
           path: gh-pages
           ref: gh-pages
 
-      - name: git -- checkout page
-        uses: actions/checkout@v4
+      - uses: gap-actions/setup-gap@v2
         with:
-          path: smallantimagmas
-          ref: ${{ github.ref_name }}
+          GAPBRANCH: ${{ env.gap-branch }}
 
-      - name: metadata -- build docs
-        working-directory: ./smallantimagmas
-        run: |
-          gap makedoc.g
+      - name: gap -- build docs
+        uses: gap-actions/build-pkg-docs@v1
+        with:
+          use-latex: 'true'
 
       - name: metadata -- copy metada to update page
         run: |
-          cp smallantimagmas/PackageInfo.g gh-pages/PackageInfo.g
-          cp -r smallantimagmas/doc/ gh-pages/doc/
+          cp -r ./doc/ ./gh-pages/doc/
+          cp ./PackageInfo.g ./gh-pages/PackageInfo.g
 
       - name: metadata -- update page
         working-directory: ./gh-pages
