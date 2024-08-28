@@ -54,7 +54,7 @@ jobs:
       - name: pkg -- build an archive
         run: |
           touch ${{ env.archive-file }}
-          tar -czf ${{ env.archive-file }} --exclude=${{ env.archive-file }} --transform 's,^,/${{ env.revision }}/,' .
+          tar -czf ${{ env.archive-file }} --exclude=${{ env.archive-file }} --transform 's,^\.,${{ env.revision }}/,' .
 
       - name: github -- upload artifacts
         uses: softprops/action-gh-release@v2
