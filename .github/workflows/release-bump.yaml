@@ -10,6 +10,7 @@ on:
 
 env:
   gap-branch: stable-4.13
+  revision: ${{ github.event.repository.name }}-${{ github.ref_name }}
   archive-file:  ${{ github.event.repository.name }}-${{ github.ref_name }}.tar.gz
 
 jobs:
@@ -53,7 +54,7 @@ jobs:
       - name: pkg -- build an archive
         run: |
           touch ${{ env.archive-file }}
-          tar -czf ${{ env.archive-file }} --exclude=${{ env.archive-file }} .
+          tar -czf ${{ env.archive-file }} --exclude=${{ env.archive-file }} --transform 's,^,/${{ env.revision }}/,'.
 
       - name: github -- upload artifacts
         uses: softprops/action-gh-release@v2
@@ -79,18 +80,18 @@ jobs:
         uses: robinraju/release-downloader@v1
         with:
           tag: ${{ github.ref_name }}
-          fileName: ${{ github.repository }}-${{ github.ref_name }}.tar.gz
+          fileName: ${{ env.archive-file }}
       
       - name: website -- extract the archive
         run: |
-          tar -xvf ${{ github.repository }}-${{ github.ref_name }}.tar.gz
+          tar -xvf ${{ env.archive-file }}
 
       - name: metadata -- copy metada to update page
         run: |
           rm -r ./gh-pages/doc
-          cp -r ./doc/ ./gh-pages/doc/
-          cp ./PackageInfo.g ./gh-pages/PackageInfo.g
-          cp ./README.md ./gh-pages/README.md
+          cp -r ${{ env.revision }}/doc/ ./gh-pages/doc/
+          cp ${{ env.revision }}/PackageInfo.g ./gh-pages/PackageInfo.g
+          cp ${{ env.revision }}/README.md ./gh-pages/README.md
           rm -v ./gh-pages/doc/.gitignore
 
       - name: gap -- run update.g
