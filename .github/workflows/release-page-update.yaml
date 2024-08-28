@@ -1,7 +1,7 @@
 ---
 
-name: release-gh-page-update
-run-name: release-gh-page-update-${{ github.ref_name }}
+name: release
+run-name: release-${{ github.ref_name }}
 on:
   workflow_dispatch: 
   release:
@@ -23,12 +23,6 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
 
-      - name: git -- checkout page
-        uses: actions/checkout@v4
-        with:
-          path: gh-pages
-          ref: gh-pages
-
       - uses: gap-actions/setup-gap@v2
         with:
           GAPBRANCH: ${{ env.gap-branch }}
@@ -37,24 +31,30 @@ jobs:
         uses: gap-actions/build-pkg-docs@v1
         with:
           use-latex: 'true'
-
-      - name: metadata -- copy metada to update page
+      
+      - name: github -- run clean up for tarball
         run: |
-          rm -r ./gh-pages/doc
-          cp -r ./doc/ ./gh-pages/doc/
-          cp ./PackageInfo.g ./gh-pages/PackageInfo.g
-          cp ./README.md ./gh-pages/README.md
-          rm -v ./gh-pages/doc/.gitignore
+          echo "::group:: cleanup version control metadata"
+          rm -rvf .git
+          rm -rvf .svn
 
-      - name: gap -- run update.g
-        working-directory: ./gh-pages
+          echo "::group:: cleanup deployment metadata"
+          rm -rvf .github
+
+          echo "::group:: cleanup macos metadata"
+          find . -name .DS_Store -exec rm -f {} +
+          
+          echo "::group:: remove tex aux files"
+          find doc \( -name '*.aux' -o -name '*.bbl' -o -name '*.blg' -o -name '*.brf' -o -name '*.idx' -o -name '*.ilg' -o -name '*.ind' -o -name '*.log' -o -name '*.out' -o -name '*.pnr' -o -name '*.toc' -o -name '*.tst' \) -exec rm -f {} +
+
+      - name: github -- run autogen-sh
+        if: ${{ hashFiles('autogen.sh') != '' }}
         run: |
-          gap update.g
+          sh autogen.sh
+          rm -rf autom4te.cache
 
-      - name: git -- commit the update
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: github -- upload manual-pdf
+        uses: softprops/action-gh-release@v2
         with:
-          commit_message: '[${{ github.ref_name }}] - website update'
-          repository: gh-pages
-          branch: gh-pages
-          push_options: '--force'
+          files: doc/manual.pdf
+
