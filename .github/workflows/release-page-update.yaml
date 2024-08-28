@@ -43,6 +43,7 @@ jobs:
           rm -r ./gh-pages/doc
           cp -r ./doc/ ./gh-pages/doc/
           cp ./PackageInfo.g ./gh-pages/PackageInfo.g
+          cp ./README.md ./gh-pages/README.md
           rm -v ./gh-pages/doc/.gitignore
 
       - name: gap -- run update.g
