@@ -10,7 +10,7 @@ on:
 
 env:
   gap-branch: stable-4.13
-  archive-file:  ${{ github.repository }}-${{ github.ref_name }}.tar.gz
+  archive-file:  ${{ github.event.repository.name }}-${{ github.ref_name }}.tar.gz
 
 jobs:
   assets-build:
