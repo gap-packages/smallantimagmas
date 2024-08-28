@@ -116,7 +116,7 @@ DeclareGlobalFunction( "MagmaIsomorphismInvariantsMatch" );
 #! <mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "MagmaIsomorphism" );
+DeclareOperation( "MagmaIsomorphism", [IsMagma, IsMagma] );
 
 #! @Arguments M, N
 #! @Description
@@ -131,7 +131,7 @@ DeclareGlobalFunction( "MagmaIsomorphism" );
 #! <mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "MagmaAntiisomorphism" );
+DeclareOperation( "MagmaAntiisomorphism", [IsMagma, IsMagma] );
 
 #! @Arguments M, N
 #! @Description

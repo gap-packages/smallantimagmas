@@ -70,7 +70,7 @@ InstallGlobalFunction(MagmaIsomorphismInvariantsMatch,
         return ForAll(invariants, f -> f(M) = f(N));
 end);
 
-InstallGlobalFunction(MagmaIsomorphism,
+InstallMethod(MagmaIsomorphism, "for two magmas", true, [ IsMagma, IsMagma ], 0,
     function(M, N)
         local psi, n, p, m, elms;
 
@@ -93,7 +93,7 @@ InstallGlobalFunction(MagmaIsomorphism,
         return fail;
 end);
 
-InstallGlobalFunction(MagmaAntiisomorphism,
+InstallMethod(MagmaAntiisomorphism, "for two magmas", true, [ IsMagma, IsMagma ], 0,
     function(M, N)
         local psi, n, p, m, elms;
 
