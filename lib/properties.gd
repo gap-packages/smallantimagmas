@@ -69,7 +69,7 @@ DeclareAttribute( "AnticommutativityIndex", IsMagma );
 
 #! @Arguments M
 #! @Description
-#! computes squares index of <A>M</A> so the order of $\left\{ m^2 | m \in \right\}$.
+#! computes squares index of <A>M</A> so the order of $\left\{ m^2 | m \in M \right\}$.
 #!
 #! @BeginExampleSession
 #! gap> List(AllSmallAntimagmas(2), M -> List(M, m -> m * m) );                
