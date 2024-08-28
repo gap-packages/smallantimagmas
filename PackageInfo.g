@@ -13,7 +13,7 @@ PackageName := "smallantimagmas",
 
 ##  This may be used by a default banner or on a Web page, should fit on
 ##  one line.
-Subtitle := "A fork of smallgrp package for small antiassociative magmas",
+Subtitle := "A library of antiassociative magmas of small order",
 
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update

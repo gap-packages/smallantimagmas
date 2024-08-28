@@ -2,7 +2,7 @@
 
 ## smallantimagmas
 
-`smallgrp` alternative for _antiassociative magmas_.
+A library of antiassociative magmas of small order.
 
 
 ### Installation
