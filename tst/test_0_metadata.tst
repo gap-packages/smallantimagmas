@@ -1,6 +1,6 @@
 gap> START_TEST( "test_0_metadata.tst" );
 
-gap> ValidatePackageInfo("PackageInfo.g");
+gap> ValidatePackageInfo(Filename(DirectoriesPackageLibrary("smallantimagmas", ""), "PackageInfo.g"));
 true
 
 gap> STOP_TEST( "test_0_metadata.tst" );
