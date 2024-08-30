@@ -5,7 +5,7 @@
 A library of antiassociative magmas of small order.
 
 
-### Installation
+## Installation
 
 * Simply use [`packagemanager`][gap-pkg-packagemanager-homepage].
 
