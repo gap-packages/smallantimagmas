@@ -7,7 +7,7 @@ A library of antiassociative magmas of small order.
 
 ### Installation
 
-* Simply use [`packagemanager`](1).
+* Simply use [`packagemanager`][gap-pkg-packagemanager-homepage].
 
 ```
 gap> LoadPackage("packagemanager");
@@ -48,4 +48,4 @@ isofilter < antimagma.interps > antimagma.interps_uptoisomorphism
 
 ---
 
-[1]: https://github.com/gap-packages/PackageManager
+[gap-pkg-packagemanager-homepage]: https://github.com/gap-packages/PackageManager
