@@ -29,3 +29,6 @@ gap>
 ```
 
 * _Alternative_; just put `smallantimagmas` package in your `pkgs` directory.
+
+
+[gap-pkg-packagemanager-homepage]: https://github.com/gap-packages/PackageManager
