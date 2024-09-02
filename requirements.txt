@@ -1,1 +1,1 @@
-gaplint==1.2.1
+gaplint==1.3.2
