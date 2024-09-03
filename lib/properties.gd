@@ -291,3 +291,25 @@ DeclareProperty( "IsRightCancellative", IsMagma );
 #! @EndExampleSession
 #!
 DeclareProperty( "IsCancellative", IsMagma );
+
+#! @Arguments M
+#! @Description
+#! is a left-hand sided fixed-point free inducted <A>m</A>.
+#!
+#! @BeginExampleSession
+#! @EndExampleSession
+#!
+DeclareProperty( "IsLeftFPFInducted", IsMagma );
+
+#! @Arguments M
+#! @Description
+#! is a left-hand sided fixed-point free inducted <A>m</A>.
+#!
+#! @BeginExampleSession
+#! gap> List(AllSmallAntimagmas(2), M -> IsLeftFPFInducted(M) );
+#! [ false, true ]
+#! gap> List(AllSmallAntimagmas(2), M -> IsRightFPFInducted(M) );
+#! [ true, false ]
+#! @EndExampleSession
+#!
+DeclareProperty( "IsRightFPFInducted", IsMagma );

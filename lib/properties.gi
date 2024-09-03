@@ -231,3 +231,13 @@ InstallMethod(IsCancellative, "for a magma", [IsMagma],
     function(M)
         return IsLeftCancellative(M) and IsRightCancellative(M);
 end);
+
+InstallMethod(IsLeftFPFInducted, "for a magma", [IsMagma],
+    function(M)
+        return ForAll(M, m -> Size( Unique( m * Elements(M) ) ) = 1 and First( Unique( m * Elements(M) ) ) <> m);
+end);
+
+InstallMethod(IsRightFPFInducted, "for a magma", [IsMagma],
+    function(M)
+        return ForAll(M, m -> Size( Unique( Elements(M) * m ) ) = 1 and First( Unique( Elements(M) * m ) ) <> m);
+end);
