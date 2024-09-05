@@ -243,3 +243,13 @@ InstallMethod(IsRightFPFInducted, "for a magma", [IsMagma],
     function(M)
         return ForAll(M, m -> Size( Unique( Elements(M) * m ) ) = 1 and First( Unique( Elements(M) * m ) ) <> m);
 end);
+
+InstallMethod(IsLeftAlternative, "for a magma", [IsMagma],
+    function(M)
+        return ForAll(EnumeratorOfTuples(M, 2), c -> c[1] * ( c[1] * c[2] ) = ( c[1] * c[1] ) * c[2] );
+end);
+
+InstallMethod(IsRightAlternative, "for a magma", [IsMagma],
+    function(M)
+        return ForAll(EnumeratorOfTuples(M, 2), c -> c[1] * ( c[2] * c[2] ) = ( c[1] * c[2] ) * c[2] );
+end);

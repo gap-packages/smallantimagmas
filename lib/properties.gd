@@ -320,3 +320,21 @@ DeclareProperty( "IsLeftFPFInducted", IsMagma );
 #!
 #!
 DeclareProperty( "IsRightFPFInducted", IsMagma );
+
+#! @Arguments M
+#! @Description
+#! is a left-alternatve magma <A>M</A>.
+#!
+#! @BeginExampleSession
+#! @EndExampleSession
+#!
+DeclareProperty( "IsLeftAlternative", IsMagma );
+
+#! @Arguments M
+#! @Description
+#! is a right-alternatve magma <A>M</A>.
+#!
+#! @BeginExampleSession
+#! @EndExampleSession
+#!
+DeclareProperty( "IsRightAlternative", IsMagma );
