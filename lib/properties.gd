@@ -291,3 +291,50 @@ DeclareProperty( "IsRightCancellative", IsMagma );
 #! @EndExampleSession
 #!
 DeclareProperty( "IsCancellative", IsMagma );
+
+#! @Arguments M
+#! @Description
+#! is a left-hand sided fixed-point free inducted <A>m</A>.
+#!
+#! @BeginExampleSession
+#! gap> Display( MultiplicationTable( SmallAntimagma(2, 2) ) );
+#! [ [  2,  2 ],
+#!   [  1,  1 ] ]
+#! gap> IsLeftFPFInducted( SmallAntimagma(2, 2) ); 
+#! true
+#! @EndExampleSession
+#!
+DeclareProperty( "IsLeftFPFInducted", IsMagma );
+
+#! @Arguments M
+#! @Description
+#! is a right-hand sided fixed-point free inducted <A>m</A>.
+#!
+#! @BeginExampleSession
+#! gap> Display( MultiplicationTable( SmallAntimagma(2, 1) ) );
+#! [ [  2,  1 ],
+#!   [  2,  1 ] ]
+#! gap> IsRightFPFInducted( SmallAntimagma(2, 1) );            
+#! true
+#! @EndExampleSession
+#!
+#!
+DeclareProperty( "IsRightFPFInducted", IsMagma );
+
+#! @Arguments M
+#! @Description
+#! is a left-alternatve magma <A>M</A>.
+#!
+#! @BeginExampleSession
+#! @EndExampleSession
+#!
+DeclareProperty( "IsLeftAlternative", IsMagma );
+
+#! @Arguments M
+#! @Description
+#! is a right-alternatve magma <A>M</A>.
+#!
+#! @BeginExampleSession
+#! @EndExampleSession
+#!
+DeclareProperty( "IsRightAlternative", IsMagma );
