@@ -323,6 +323,41 @@ DeclareProperty( "IsRightFPFInducted", IsMagma );
 
 #! @Arguments M
 #! @Description
+#! is a left-hand sided derangment inducted <A>m</A>.
+#!
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(2, 2);
+#! <magma with 2 generators>
+#! gap> IsLeftFPFInducted(M);
+#! true
+#! gap> IsRightFPFInducted(M);
+#! false
+#! gap> IsRightDerangementInducted(M);
+#! false
+#! @EndExampleSession
+#!
+DeclareProperty( "IsLeftDerangementInducted", IsMagma );
+
+#! @Arguments M
+#! @Description
+#! is a right-hand sided derangment inducted <A>m</A>.
+#!
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(2, 1);
+#! <magma with 2 generators>
+#! gap> IsLeftFPFInducted(M);
+#! false
+#! gap> IsRightFPFInducted(M);
+#! true
+#! gap> IsRightDerangementInducted(M);
+#! true
+#! @EndExampleSession
+#!
+#!
+DeclareProperty( "IsRightDerangementInducted", IsMagma );
+
+#! @Arguments M
+#! @Description
 #! is a left-alternatve magma <A>M</A>.
 #!
 #! @BeginExampleSession

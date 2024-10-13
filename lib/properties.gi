@@ -244,6 +244,20 @@ InstallMethod(IsRightFPFInducted, "for a magma", [IsMagma],
         return ForAll(M, m -> Size( Unique( Elements(M) * m ) ) = 1 and First( Unique( Elements(M) * m ) ) <> m);
 end);
 
+InstallMethod(IsLeftDerangementInducted, "for a magma", [IsMagma],
+    function(M)
+        return ForAny(PartitionsSet(Elements(M)), p ->
+            ForAny(Derangements(p), d -> ForAll([1 .. Size(p)], i -> ForAll(p[i], m -> IsSubset(d[i], Unique(m * Elements(M))))))
+        );
+end);
+
+InstallMethod(IsRightDerangementInducted, "for a magma", [IsMagma],
+    function(M)
+        return ForAny(PartitionsSet(Elements(M)), p ->
+            ForAny(Derangements(p), d -> ForAll([1 .. Size(p)], i -> ForAll(p[i], m -> IsSubset(d[i], Unique(Elements(M) * m)))))
+        );
+end);
+
 InstallMethod(IsLeftAlternative, "for a magma", [IsMagma],
     function(M)
         return ForAll(EnumeratorOfTuples(M, 2), c -> c[1] * ( c[1] * c[2] ) = ( c[1] * c[1] ) * c[2] );
