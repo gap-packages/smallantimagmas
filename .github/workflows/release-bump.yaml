@@ -9,7 +9,7 @@ on:
       - published
 
 env:
-  gap-branch: stable-4.13
+  gap-branch: stable-4.14
   revision: ${{ github.event.repository.name }}-${{ github.ref_name }}
   archive-file:  ${{ github.event.repository.name }}-${{ github.ref_name }}.tar.gz
 
