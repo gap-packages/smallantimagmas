@@ -286,24 +286,7 @@ Dependencies := rec(
 ##  done automatically and need not be included in this function.
 ##
 #AvailabilityTest := ReturnTrue,
-AvailabilityTest := function()
-  local path, file;
-    # test for existence of the compiled binary
-    path := DirectoriesPackagePrograms( "example" );
-    file := Filename( path, "hello" );
-    if file = fail then
-      LogPackageLoadingMessage( PACKAGE_WARNING,
-          [ "The program `hello' is not compiled,",
-            "`HelloWorld()' is thus unavailable.",
-            "See the installation instructions;",
-            "type: ?Installing the Example package" ] );
-    fi;
-    # if the hello binary was vital to the package we would return
-    # the following ...
-    # return file <> fail;
-    # since the hello binary is not vital we return ...
-    return true;
-  end,
+AvailabilityTest := ReturnTrue,
 
 ##  *Optional*: the LoadPackage mechanism produces a nice default banner from
 ##  the info in this file. Normally, there is no need to change it, and we
