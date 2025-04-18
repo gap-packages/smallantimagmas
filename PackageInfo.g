@@ -170,7 +170,7 @@ Persons := [
 ##    "other"         for all other packages
 ##
 # Status := "accepted",
-Status := "deposited",
+Status := "accepted",
 
 ##  You must provide the next two entries if and only if the status is
 ##  "accepted" because is was successfully refereed:
@@ -180,7 +180,7 @@ CommunicatedBy := "Kamil Zabielski (Białystok)",
 
 # format: mm/yyyy
 # AcceptDate := "08/1999",
-#AcceptDate := "",
+AcceptDate := "08/2025",
 
 ##  For a central overview of all packages and a collection of all package
 ##  archives it is necessary to have two files accessible which should be
