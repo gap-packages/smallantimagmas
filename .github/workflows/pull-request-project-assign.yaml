@@ -7,7 +7,7 @@ on:
     types: [opened, reopened]
 
 permissions:
-  contents: read
+  pull-request: write
 
 jobs:
   add-assignment:
