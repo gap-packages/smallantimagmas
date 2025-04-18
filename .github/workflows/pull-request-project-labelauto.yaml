@@ -1,5 +1,5 @@
 ---
-name: pull-request labels-auto
+name: Pull-request - label automation
 run-name: pull-request labels-auto ${{ github.event.number }} ${{ github.event.pull_request.title }}
 
 on:

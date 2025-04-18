@@ -1,5 +1,5 @@
 ---
-name: pull-request labels-test
+name: Pull-request - label test
 run-name: pull-request labels-test ${{ github.event.number }} ${{ github.event.pull_request.title }}
 
 on:
