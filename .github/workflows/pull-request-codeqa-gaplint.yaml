@@ -1,5 +1,5 @@
 ---
-name: gaplint
+name: Code quality - gaplint
 run-name: gaplint-${{ github.event.number }} ${{ github.event.pull_request.title }}
 
 on:

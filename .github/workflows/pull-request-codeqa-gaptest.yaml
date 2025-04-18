@@ -1,5 +1,5 @@
 ---
-name: gap-tests
+name: Code quality - unit-tests
 run-name: gap-test-${{ github.event.number }} ${{ github.event.pull_request.title }}
 
 on:
