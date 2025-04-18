@@ -1,6 +1,6 @@
 ---
-name: pr-labeler
-run-name: pr-labeler-${{ github.event.number }} ${{ github.event.pull_request.title }}
+name: pull-request labels-auto
+run-name: pull-request labels-auto ${{ github.event.number }} ${{ github.event.pull_request.title }}
 
 on:
   pull_request:
