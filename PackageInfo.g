@@ -144,6 +144,20 @@ Persons := [
                        "Poland" ] ),
     Place         := "Białystok, Poland",
     Institution   := "Białystok University of Technology"
+  ),
+  rec(
+    LastName      := "Mazurek",
+    FirstNames    := "Ryszard",
+    IsAuthor      := true,
+    IsMaintainer  := false,
+    PostalAddress := Concatenation( [
+                       "Department of Theoretical Computer Science\n",
+                       "Białystok University of Technology\n",
+                       "Wiejska 45A\n",
+                       "15-325 Białystok\n",
+                       "Poland" ] ),
+    Place         := "Białystok, Poland",
+    Institution   := "Białystok University of Technology"
   )
 ],
 
