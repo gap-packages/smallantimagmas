@@ -11,6 +11,9 @@ on:
 jobs:
   label:
     runs-on: ubuntu-latest
+    permissions:
+      issues: read
+      pull-requests: read
     steps:
       - name: verify-linked-issue
         uses: hattan/verify-linked-issue-action@v1.1.0
