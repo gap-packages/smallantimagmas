@@ -3,7 +3,6 @@
 columns: 128
 disable:
   - align-assignments
-  - whitespace-op-negative
   - space-before-bracket
   - space-after-bracket
   - 1-line-function
