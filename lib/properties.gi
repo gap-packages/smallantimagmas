@@ -226,7 +226,7 @@ end);
 
 InstallMethod(IsRightCancellative, "for a magma", [IsMagma],
     function(M)
-        return IsLeftCancellative ( TransposedMagma(M) );;
+        return IsLeftCancellative ( TransposedMagma(M) );
 end);
 
 InstallMethod(IsCancellative, "for a magma", [IsMagma],
