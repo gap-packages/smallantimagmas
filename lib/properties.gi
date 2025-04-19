@@ -226,7 +226,7 @@ end);
 
 InstallMethod(IsRightCancellative, "for a magma", [IsMagma],
     function(M)
-        return ForAll( Filtered( Tuples(M, 3), m -> m[1] * m[3] = m[2] * m[3] ), m -> m[1] = m[2] );
+        return IsLeftCancellative ( TransposedMagma(M) );;
 end);
 
 InstallMethod(IsCancellative, "for a magma", [IsMagma],
@@ -241,7 +241,7 @@ end);
 
 InstallMethod(IsRightFPFInducted, "for a magma", [IsMagma],
     function(M)
-        return ForAll(M, m -> Size( Unique( Elements(M) * m ) ) = 1 and First( Unique( Elements(M) * m ) ) <> m);
+        return IsLeftFPFInducted( TransposedMagma(M) );
 end);
 
 InstallMethod(IsLeftDerangementInducted, "for a magma", [IsMagma],
@@ -257,13 +257,7 @@ end);
 
 InstallMethod(IsRightDerangementInducted, "for a magma", [IsMagma],
     function(M)
-        return ForAny(PartitionsSet(Elements(M)), p ->
-            ForAny(Derangements(p), d ->
-                ForAll([1 .. Size(p)], i ->
-                    ForAll(p[i], m -> IsSubset(d[i], Unique(Elements(M) * m)))
-                )
-            )
-        );
+        return IsLeftDerangementInducted( TransposedMagma(M) );
 end);
 
 InstallMethod(IsLeftAlternative, "for a magma", [IsMagma],
@@ -273,5 +267,5 @@ end);
 
 InstallMethod(IsRightAlternative, "for a magma", [IsMagma],
     function(M)
-        return ForAll(EnumeratorOfTuples(M, 2), c -> c[1] * ( c[2] * c[2] ) = ( c[1] * c[2] ) * c[2] );
+        return IsLeftAlternative( TransposedMagma(M) );
 end);
