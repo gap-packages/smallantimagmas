@@ -89,9 +89,9 @@ ArchiveFormats := ".tar.gz",
 ##  archives)
 ##
 ##  These entries are *optional*.
-#TextFiles := ["init.g", ......],
-#BinaryFiles := ["doc/manual.dvi", ......],
-#TextBinaryFilesPatterns := [ "TGPLv3", "Texamples/*", "B*.in", ......],
+# TextFiles := ["init.g", ......],
+# BinaryFiles := ["doc/manual.dvi", ......],
+# TextBinaryFilesPatterns := [ "TGPLv3", "Texamples/*", "B*.in", ......],
 
 ##  Information about authors and maintainers is contained in the `Persons'
 ##  field which is a list of records, one record for each person; each
@@ -299,7 +299,7 @@ Dependencies := rec(
 ##  tests of other packages, as given under .Dependencies above, will be
 ##  done automatically and need not be included in this function.
 ##
-#AvailabilityTest := ReturnTrue,
+# AvailabilityTest := ReturnTrue,
 AvailabilityTest := ReturnTrue,
 
 ##  *Optional*: the LoadPackage mechanism produces a nice default banner from
