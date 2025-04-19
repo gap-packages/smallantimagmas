@@ -1,6 +1,6 @@
 ---
-name: Code quality - unit-tests
-run-name: gap-test-${{ github.event.number }} ${{ github.event.pull_request.title }}
+name: Code quality
+run-name: code-quality-${{ github.event.number }} ${{ github.event.pull_request.title }}
 
 on:
   pull_request:
@@ -15,8 +15,7 @@ concurrency:
   cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
 
 jobs:
-  # The CI test job
-  test:
+  gaptest:
     name: Code quality - unit-tests (${{ matrix.gap-branch }})
     runs-on: ubuntu-latest
     strategy:
@@ -55,3 +54,32 @@ jobs:
 
       - name: Show code-coverage
         uses: gap-actions/process-coverage@v2
+
+  gaplint:
+    name: Code quality - gaplint
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+          cache: pip
+
+      - name: Install python-dependencies
+        uses: py-actions/py-dependency-install@v4
+        with:
+          update-pip: true
+
+      - name: Run gaplint
+        run: |
+          echo "::group:: gaplint -- *.g"
+          find . -name '*.g' | xargs -n1 gaplint
+          echo "::group:: gaplint -- *.gi"
+          find . -name '*.gi' | xargs -n1 gaplint
+          echo "::group:: gaplint -- *.gd"
+          find . -name '*.gd' | xargs -n1 gaplint
+          echo "::group:: gaplint -- *.tst"
+          find . -name '*.tst' | xargs -n1 gaplint
