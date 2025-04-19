@@ -1,6 +1,6 @@
 ---
-name: Pull-request - label management
-run-name: pull-request label-management ${{ github.event.number }} ${{ github.event.pull_request.title }}
+name: Label management
+run-name: label-management ${{ github.event.number }} ${{ github.event.pull_request.title }}
 
 on:
   pull_request:
