@@ -1,0 +1,50 @@
+---
+name: Pull-request - label management
+run-name: pull-request label-management ${{ github.event.number }} ${{ github.event.pull_request.title }}
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  label-auto:
+    name: Pull-request - labels auto-assign
+    id: label-auto
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: TimonVS/pr-labeler-action@v5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          configuration-path: .github/config.pull-request-label.yaml
+
+  label-test:
+    name: Pull-request - labels test
+    id: label-test
+    needs: label-auto
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: mheap/github-action-required-labels@v5
+        with:
+          mode: maximum
+          count: 1
+          labels: |
+            release-patch
+            release-minor
+            release-major
+      - uses: mheap/github-action-required-labels@v5
+        with:
+          mode: exactly
+          count: 1
+          labels: |
+            bug
+            feature
+            dependencies
+            documentation
