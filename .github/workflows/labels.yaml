@@ -10,7 +10,7 @@ on:
 
 jobs:
   label-auto:
-    name: Pull-request - labels auto-assign
+    name: Labels - auto-create
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -22,7 +22,7 @@ jobs:
           configuration-path: .github/config.pull-request-label.yaml
 
   label-test:
-    name: Pull-request - labels test
+    name: Labels - test
     needs: label-auto
     runs-on: ubuntu-latest
     permissions:
