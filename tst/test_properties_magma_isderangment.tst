@@ -11,7 +11,7 @@ gap> List(Filtered(AllSmallAntimagmas(3), M -> IsLeftDerangementInducted ), M ->
 [ true, true, true, true, true ]
 
 ## there-are-4-antimagmas-that-are-both-left-right-derangement-inducted
-gap> Filtered(AllSmallAntimagmas(4), M -> IsLeftDerangementInducted and IsRightDerangementInducted );
+gap> Filtered(AllSmallAntimagmas(4), M -> IsLeftDerangementInducted(M) and IsRightDerangementInducted(M) );
 [ <magma with 4 generators> ]
 
 gap> STOP_TEST( "test_properties_magma_isderangment.tst" );
