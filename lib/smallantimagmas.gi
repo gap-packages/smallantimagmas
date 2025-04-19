@@ -12,7 +12,7 @@ end);
 
 InstallGlobalFunction(AllSmallAntimagmas,
     function(order)
-        if IsList(order) and ForAll(order, o -> IsInt(o)) then
+        if IsList(order) and ForAll(order, o -> IsInt) then
             return Flat(
                 List(order, o -> List(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(o)(),
                                     table -> MagmaByMultiplicationTable(
@@ -48,7 +48,7 @@ end);
 
 InstallGlobalFunction(ReallyAllSmallAntimagmas,
     function(order)
-        if IsList(order) and ForAll(order, o -> IsInt(o)) then
+        if IsList(order) and ForAll(order, o -> IsInt) then
             return Flat(
                 List(order, o -> List(__SmallAntimagmaHelper.getAllSmallAntimagmaMetadata(o)(),
                                     table -> MagmaByMultiplicationTable(

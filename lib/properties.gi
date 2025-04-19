@@ -201,12 +201,12 @@ end);
 
 InstallMethod(LeftOrdersOfElements, "for a magma", [IsMagma],
     function(M)
-        return Collected( List(M, m -> LeftOrder(m) ) );
+        return Collected( List(M, m -> LeftOrder) );
 end);
 
 InstallMethod(RightOrdersOfElements, "for a magma", [IsMagma],
     function(M)
-        return Collected( List(M, m -> RightOrder(m) ) );
+        return Collected( List(M, m -> RightOrder ) );
 end);
 
 InstallMethod(IsLeftCyclic, "for a magma", [IsMagma],

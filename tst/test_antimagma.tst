@@ -12,7 +12,7 @@ true
 gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> IsEmpty(Center(M)));
 true
 
-gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> IsAntiassociative(M));
+gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> IsAntiassociative);
 true
 
 gap> ForAll(ReallyAllSmallAntimagmas([2 .. 3]), M -> IdSmallAntimagma(M)[1] = Size(M));

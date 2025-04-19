@@ -1,15 +1,15 @@
 gap> START_TEST( "test_properties_magma_left_right_cyclic.tst" );
 
-gap> ForAll(Filtered(AllSmallGroups([2 .. 12]), G -> not IsCyclic(G)), G -> not IsLeftCyclic(G));
+gap> ForAll(Filtered(AllSmallGroups([2 .. 12]), G -> not IsCyclic), G -> not IsLeftCyclic);
 true
 
-gap> ForAll(Filtered(AllSmallGroups([2 .. 12]), G -> IsCyclic(G)), G -> IsLeftCyclic(G));
+gap> ForAll(Filtered(AllSmallGroups([2 .. 12]), G -> IsCyclic), G -> IsLeftCyclic);
 true
 
-gap> ForAll(Filtered(AllSmallGroups([2 .. 12]), G -> not IsCyclic(G)), G -> not IsRightCyclic(G));
+gap> ForAll(Filtered(AllSmallGroups([2 .. 12]), G -> not IsCyclic), G -> not IsRightCyclic);
 true
 
-gap> ForAll(Filtered(AllSmallGroups([2 .. 12]), G -> IsCyclic(G)), G -> IsRightCyclic(G));        
+gap> ForAll(Filtered(AllSmallGroups([2 .. 12]), G -> IsCyclic), G -> IsRightCyclic);        
 true
 
 gap> STOP_TEST( "test_properties_magma_left_right_cyclic.tst" );
