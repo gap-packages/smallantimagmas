@@ -9,12 +9,13 @@ on:
 
 jobs:
   gaplint:
+    name: Code quality - gaplint
     runs-on: ubuntu-22.04
     steps:
-      - name: git -- checkout
+      - name: checkout -- this repository
         uses: actions/checkout@v4
 
-      - name: python -- setup
+      - name: python -- setup python
         uses: actions/setup-python@v5
         with:
           python-version: 3.12
@@ -25,7 +26,7 @@ jobs:
         with:
           update-pip: true
 
-      - name: gaplint - lint
+      - name: gaplint -- run linting
         run: |
           echo "::group:: gaplint -- *.g"
           find . -name '*.g' | xargs -n1 gaplint
