@@ -12,21 +12,21 @@ jobs:
     name: Code quality - gaplint
     runs-on: ubuntu-22.04
     steps:
-      - name: checkout -- this repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: python -- setup python
+      - name: Setup python
         uses: actions/setup-python@v5
         with:
           python-version: 3.12
           cache: pip
 
-      - name: python -- install dependencies
+      - name: Install python-dependencies
         uses: py-actions/py-dependency-install@v4
         with:
           update-pip: true
 
-      - name: gaplint -- run linting
+      - name: Run gaplint
         run: |
           echo "::group:: gaplint -- *.g"
           find . -name '*.g' | xargs -n1 gaplint
