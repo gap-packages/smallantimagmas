@@ -28,4 +28,5 @@ jobs:
           labels: |
             bug
             feature
+            dependencies
             documentation
