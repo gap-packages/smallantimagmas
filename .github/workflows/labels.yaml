@@ -11,7 +11,6 @@ on:
 jobs:
   label-auto:
     name: Pull-request - labels auto-assign
-    id: label-auto
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -24,7 +23,6 @@ jobs:
 
   label-test:
     name: Pull-request - labels test
-    id: label-test
     needs: label-auto
     runs-on: ubuntu-latest
     permissions:
