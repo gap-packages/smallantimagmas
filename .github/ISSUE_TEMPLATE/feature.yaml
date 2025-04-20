@@ -1,8 +1,9 @@
 ---
 name: Feature Request
-about: Suggest a new feature or enhancement for this project
+description: Suggest a new feature or enhancement for this project
 title: "[Feature Request]: "
-labels: ['feature', 'triage']
+projects: ["limakzi/smallantimagmas"]
+labels: ["feature", "triage"]
 assignees:
   - limakzi
 
