@@ -88,7 +88,7 @@ InstallMethod(MagmaIsomorphism, "for two magmas", true, [ IsMagma, IsMagma ], 0,
 
             psi := GeneralMappingByElements( M, N, elms);
 
-            if ForAll(Tuples(m, 2), t -> psi(t[1] * t[2]) = psi(t[1]) * psi(t[2])) then
+            if RespectsMultiplication(psi) then
                 return psi;
             fi;
         od;
