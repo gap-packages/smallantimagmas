@@ -125,7 +125,7 @@ DeclareGlobalFunction( "MagmaIsomorphismInvariantsMatch" );
 #! gap> N := MagmaByMultiplicationTable([ [2, 1], [2, 1] ]);
 #! <magma with 2 generators>
 #! gap> MagmaIsomorphism(M, N);
-#! <mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >
+#! <general mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >
 #! @EndExampleSession
 #!
 DeclareOperation( "MagmaIsomorphism", [IsMagma, IsMagma] );
