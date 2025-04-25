@@ -28,7 +28,7 @@ end);
 
 InstallMethod(AnticommutativityIndex, "for a magma", [IsMagma],
     function(M)
-        return (Binomial(Size(Elements(M), 2)) - CommutativityIndex(M));
+        return ((Binomial(Size(M), 2)) - CommutativityIndex(M));
 end);
 
 InstallMethod(SquaresIndex, "for a magma", [IsMagma],
