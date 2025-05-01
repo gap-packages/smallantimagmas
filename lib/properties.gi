@@ -16,9 +16,9 @@ InstallMethod(DiagonalOfMultiplicationTable, "for a magma", [IsMagma],
         return DiagonalOfMatrix(MultiplicationTable(M));
 end);
 
-InstallMethod(DigraphOfDiagonal, "for a magma", [IsMagma],
+InstallMethod(DigraphByDiagonal, "for a magma", [IsMagma],
     function(M)
-        return DigraphByEdges(List([1 .. Size(M)], i -> [i, DiagonalOfMultiplicationTable(M)[i]]);
+        return DigraphByEdges(List([1 .. Size(M)], i -> [i, DiagonalOfMultiplicationTable(M)[i]]));
 end);
 
 InstallMethod(AssociativityIndex, "for a magma", [IsMagma],
@@ -72,9 +72,9 @@ InstallGlobalFunction(MagmaIsomorphismInvariantsMatch,
             LeftOrdersOfElements,
             RightOrdersOfElements,
             IsLeftCyclic,
-            IsRightCyclic
+            IsRightCyclic,
         ];
-        return ForAll(invariants, f -> f(M) = f(N));
+        return IsIsomorphicDigraph(DigraphByDiagonal(M), DigraphByDiagonal(N)) and ForAll(invariants, f -> f(M) = f(N));
 end);
 
 InstallMethod(MagmaIsomorphism, "for two magmas", true, [ IsMagma, IsMagma ], 0,

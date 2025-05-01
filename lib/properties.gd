@@ -53,9 +53,11 @@ DeclareAttribute( "DiagonalOfMultiplicationTable", IsMagma);
 #! computes digraph of diagonal of multiplication table <A>M</A>.
 #!
 #! @BeginExampleSession
+#! gap> DigraphByDiagonal(Random(AllSmallAntimagmas(3)));
+#! <immutable digraph with 3 vertices, 3 edges>
 #! @EndExampleSession
 #!
-DeclareAttribute( "DigraphOfDiagonal", IsMagma);
+DeclareAttribute( "DigraphByDiagonal", IsMagma);
 
 #! @Arguments M
 #! @Description
