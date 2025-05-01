@@ -50,6 +50,15 @@ DeclareAttribute( "DiagonalOfMultiplicationTable", IsMagma);
 
 #! @Arguments M
 #! @Description
+#! computes digraph of diagonal of multiplication table <A>M</A>.
+#!
+#! @BeginExampleSession
+#! @EndExampleSession
+#!
+DeclareAttribute( "DigraphOfDiagonal", IsMagma);
+
+#! @Arguments M
+#! @Description
 #! identifies commutativity index of <A>M</A>.
 #!
 #! @BeginExampleSession
