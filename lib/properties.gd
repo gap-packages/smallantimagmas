@@ -267,7 +267,7 @@ DeclareProperty( "IsLeftDistributive", IsMagma );
 #!
 #! @BeginExampleSession
 #! gap> List(AllSmallAntimagmas(3), M -> IsRightDistributive(M) );
-#! [ true, false, false, false, false, false, false, false, false, true ]
+#! [ false, false, false, false, true, false, false, false, true, false ]
 #! @EndExampleSession
 #!
 DeclareProperty( "IsRightDistributive", IsMagma );
