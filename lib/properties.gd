@@ -255,6 +255,8 @@ DeclareProperty( "IsRightCyclic", IsMagma );
 #!  if magma is left distributive <A>m</A>.
 #!
 #! @BeginExampleSession
+#! gap> List(AllSmallAntimagmas(3), M -> IsLeftDistributive(M) );
+#! [ true, false, false, false, false, false, false, false, false, true ]
 #! @EndExampleSession
 #!
 DeclareProperty( "IsLeftDistributive", IsMagma );
@@ -264,6 +266,8 @@ DeclareProperty( "IsLeftDistributive", IsMagma );
 #!  if magma is right distributive <A>m</A>.
 #!
 #! @BeginExampleSession
+#! gap> List(AllSmallAntimagmas(3), M -> IsRightDistributive(M) );
+#! [ true, false, false, false, false, false, false, false, false, true ]
 #! @EndExampleSession
 #!
 DeclareProperty( "IsRightDistributive", IsMagma );
