@@ -229,6 +229,16 @@ InstallMethod(IsRightCancellative, "for a magma", [IsMagma],
         return IsLeftCancellative ( TransposedMagma(M) );
 end);
 
+InstallMethod(IsLeftDistributive, "for a magma", [IsMagma],
+    function(M)
+        return ForAll( Tuples(M, 3), m -> m[1] * (m[2] * m[3]) = (m[1]*m[2]) * (m[1]*m[3]) );
+end);
+
+InstallMethod(IsRightDistributive, "for a magma", [IsMagma],
+    function(M)
+        return IsLeftDistributive ( TransposedMagma(M) );
+end);
+
 InstallMethod(IsCancellative, "for a magma", [IsMagma],
     function(M)
         return IsLeftCancellative(M) and IsRightCancellative(M);

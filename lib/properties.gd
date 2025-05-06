@@ -252,6 +252,24 @@ DeclareProperty( "IsRightCyclic", IsMagma );
 
 #! @Arguments M
 #! @Description
+#!  if magma is left distributive <A>m</A>.
+#!
+#! @BeginExampleSession
+#! @EndExampleSession
+#!
+DeclareProperty( "IsLeftDistributive", IsMagma );
+
+#! @Arguments M
+#! @Description
+#!  if magma is right distributive <A>m</A>.
+#!
+#! @BeginExampleSession
+#! @EndExampleSession
+#!
+DeclareProperty( "IsRightDistributive", IsMagma );
+
+#! @Arguments M
+#! @Description
 #!  if magma is left cancellative <A>m</A>.
 #!
 #! @BeginExampleSession
