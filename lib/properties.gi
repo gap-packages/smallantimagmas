@@ -231,7 +231,7 @@ end);
 
 InstallMethod(IsLeftDistributive, "for a magma", [IsMagma],
     function(M)
-        return ForAll( Tuples(M, 3), m -> m[1] * (m[2] * m[3]) = (m[1]*m[2]) * (m[1]*m[3]) );
+        return ForAll( Tuples(M, 3), m -> m[1] * ( m[2] * m[3] ) = ( m[1] * m[2] ) * ( m[1] * m[3] ) );
 end);
 
 InstallMethod(IsRightDistributive, "for a magma", [IsMagma],
