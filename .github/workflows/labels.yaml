@@ -31,14 +31,6 @@ jobs:
     steps:
       - uses: mheap/github-action-required-labels@v5
         with:
-          mode: maximum
-          count: 1
-          labels: |
-            release-patch
-            release-minor
-            release-major
-      - uses: mheap/github-action-required-labels@v5
-        with:
           mode: exactly
           count: 1
           labels: |
@@ -46,3 +38,4 @@ jobs:
             feature
             dependencies
             documentation
+            release
