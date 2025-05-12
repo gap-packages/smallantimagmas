@@ -8,13 +8,16 @@ on:
   pull_request_target:
     types: [opened, reopened, synchronize]
 
+permissions:
+  statuses: read
+  contents: read
+  issues: write
+  pull-requests: write
+
 jobs:
   label-auto:
     name: Labels - auto-create
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
     steps:
       - uses: TimonVS/pr-labeler-action@v5
         with:
@@ -25,9 +28,6 @@ jobs:
     name: Labels - test
     needs: label-auto
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
     steps:
       - uses: mheap/github-action-required-labels@v5
         with:
