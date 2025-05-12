@@ -1,6 +1,4 @@
 ---
 bug: ['fix/*', 'bugfix/*']
 feature: ['feature/*', 'feat/*']
-release-patch: ['release/*', 'bump/*']
-release-minor: ['release/*', 'bump/*']
-release-major: ['release/*', 'bump/*']
+release: ['release/*', 'bump/*']
