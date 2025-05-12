@@ -30,5 +30,11 @@ gap>
 
 * _Alternative_; just put `smallantimagmas` package in your `pkgs` directory.
 
+## Acknowledgements
+
+This work was supported by: 
+* The grant WZ/WI-IIT/2/2025 from the Bialystok University of Technology and funded from the resources for research by the Ministry of Science and Higher Education of Poland.
+* The grant from the London Mathematical Society: Scheme 4 Research in Pairs.
+
 
 [gap-pkg-packagemanager-homepage]: https://github.com/gap-packages/PackageManager
