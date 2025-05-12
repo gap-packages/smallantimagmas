@@ -16,6 +16,7 @@ permissions:
 
 jobs:
   update_release_draft:
+    name: Release draft - update release notes
     permissions:
       contents: write
       pull-requests: write
