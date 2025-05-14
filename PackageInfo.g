@@ -18,10 +18,10 @@ Subtitle := "A library of antiassociative magmas of small order",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "0.4.0",
+Version := "0.4.1",
 
 ##  Release date of the current version in dd/mm/yyyy format.
-Date := "12/05/2025",
+Date := "14/05/2025",
 
 ## Optional: license of the package, as an SPDX short-form identifiers;
 ## see <https://spdx.org/ids> for an explanation what an SPDX ID is, and
@@ -30,13 +30,13 @@ Date := "12/05/2025",
 ## see <https://spdx.org/ids-how>, and more.
 License := "GPL-3.0-or-later",
 PackageWWWHome :=
-  Concatenation( "https://limakzi.github.io/", LowercaseString( ~.PackageName ) ),
+  Concatenation( "https://gap-packages.github.io/", LowercaseString( ~.PackageName ) ),
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/limakzi/", LowercaseString( ~.PackageName ) ),
+    URL := Concatenation( "https://github.com/gap-packages/", LowercaseString( ~.PackageName ) ),
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-SupportEmail := "limakzi@proton.me",
+SupportEmail := "kamil@zabielscy.com",
 
 ##  URL of the archive(s) of the current package release, but *without*
 ##  the format extension(s), like '.tar.gz' or '-win.zip', which are given next.

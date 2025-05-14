@@ -1,7 +1,7 @@
 name: smallantimagmas
-version: "0.4.0"
+version: "0.4.1"
 license: "GPL-3.0-or-later"
-date: 2025-05-12
+date: 2025-05-14
 description: |
     A library of antiassociative magmas of small order
 
@@ -19,13 +19,13 @@ needed-pkgs:
       version: "1.5"
       url: "https://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
 
-www: https://limakzi.github.io/smallantimagmas
+www: https://gap-packages.github.io/smallantimagmas
 readme: README.md
-packageinfo: https://limakzi.github.io/smallantimagmas/PackageInfo.g
+packageinfo: https://gap-packages.github.io/smallantimagmas/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/limakzi/smallantimagmas/releases/download/v0.4.0/smallantimagmas-v0.4.0.tar.gz
+      url: https://github.com/gap-packages/smallantimagmas/releases/download/v0.4.1/smallantimagmas-v0.4.1.tar.gz
 
 abstract: |
     The <span class="pkgname">smallantimagmas</span> package,    classifies all finite, antassociative magmas.
@@ -39,10 +39,10 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>ZM25</span>]   <b class='BibAuthor'>Zabielski, K. and Mazurek, R.</b>,
      <i class='BibTitle'>smallantimagmas, A library of antiassociative magmas of small order,
-             Version 0.4.0</i>
+             Version 0.4.1</i>
      (<span class='BibYear'>2025</span>)<br />
     (<span class='BibNote'>GAP package</span>),
-    <span class='BibHowpublished'><a href="https://limakzi.github.io/smallantimagmas">https://limakzi.github.io/smallantimagmas</a></span>.
+    <span class='BibHowpublished'><a href="https://gap-packages.github.io/smallantimagmas">https://gap-packages.github.io/smallantimagmas</a></span>.
     </p>
     
 
@@ -50,12 +50,12 @@ bibtex: |
     @misc{ smallantimagmas,
       author =           {Zabielski, K. and Mazurek, R.},
       title =            {{smallantimagmas},   {A   library  of  antiassociative
-                          magmas of small order}, {V}ersion 0.4.0},
+                          magmas of small order}, {V}ersion 0.4.1},
       month =            {May},
       year =             {2025},
       note =             {GAP package},
-      howpublished =     {\href      {https://limakzi.github.io/smallantimagmas}
-                          {\texttt{https://limakzi.github.io/}\discretionary
+      howpublished =     {\href {https://gap-packages.github.io/smallantimagmas}
+                          {\texttt{https://gap\texttt{\symbol{45}}packages.github.io/}\discretionary
                           {}{}{}\texttt{smallantimagmas}}},
       keywords =         {smallantimagmas; antiassociative},
       printedkey =       {ZM25}
