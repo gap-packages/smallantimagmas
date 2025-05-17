@@ -27,6 +27,7 @@ jobs:
       - uses: gap-actions/setup-gap@v2
         with:
           GAPBRANCH: ${{ env.gap-branch }}
+          GAP_PKGS_TO_BUILD: 'digraphs'
 
       - name: gap -- build docs
         uses: gap-actions/build-pkg-docs@v1
@@ -73,6 +74,7 @@ jobs:
       - uses: gap-actions/setup-gap@v2
         with:
           GAPBRANCH: ${{ env.gap-branch }}
+          GAP_PKGS_TO_BUILD: 'digraphs'
 
       - name: git -- checkout page
         uses: actions/checkout@v4
