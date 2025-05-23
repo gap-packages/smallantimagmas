@@ -51,7 +51,13 @@ gap> AntimagmaGeneratorPossibleDiagonals(4);
     [ 4, 4, 4, 1 ], [ 4, 4, 4, 2 ], [ 4, 4, 4, 3 ] 
 ]
 
-gap> AntimagmaGeneratorFilterNonIsomorphicMagmas(ReallyAllSmallAntimagmas(3));
+gap> UpToIsomorphism(AllSmallAntimagmas(3));
+[ 
+    <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>,
+    <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>
+]
+
+gap> UpToIsomorphism(ReallyAllSmallAntimagmas(3));
 [ 
     <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>,
     <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>

@@ -16,5 +16,5 @@ DeclareGlobalFunction( "AntimagmaGeneratorPossibleDiagonals" );
 
 #! @Arguments Ms
 #! @Description
-#! filters non-isomorphic magmas <A>m</A>.
-DeclareGlobalFunction( "AntimagmaGeneratorFilterNonIsomorphicMagmas" );
+#! filters non-isomorphic magmas <A>Ms</A>.
+DeclareGlobalFunction( "UpToIsomorphism" );
