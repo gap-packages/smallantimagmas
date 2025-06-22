@@ -86,7 +86,7 @@ InstallMethod(MagmaIsomorphism, "for two magmas", true, [ IsMagma, IsMagma ], 0,
         m := Elements(M);
 
         for p in PermutationsList(Elements(N)) do
-            elms := List([ 1 .. n ], i -> Tuple( [ m[i], p[i] ] ) );
+            elms := List([ 1 .. n ], i -> DirectProductElement( [ m[i], p[i] ] ) );
 
             psi := GeneralMappingByElements( M, N, elms);
 
@@ -109,7 +109,7 @@ InstallMethod(MagmaAntiisomorphism, "for two magmas", true, [ IsMagma, IsMagma ]
         m := Elements(M);
 
         for p in PermutationsList(Elements(N)) do
-            elms := List([ 1 .. n ], i -> Tuple( [ m[i], p[i] ] ) );
+            elms := List([ 1 .. n ], i -> DirectProductElement( [ m[i], p[i] ] ) );
             psi := GeneralMappingByElements( M, N, elms);
 
             if ForAll(Tuples(m, 2), t -> psi(t[1] * t[2]) = psi(t[2]) * psi(t[1])) then
