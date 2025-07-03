@@ -18,7 +18,7 @@ end);
 
 InstallMethod(AssociativityIndex, "for a magma", [IsMagma],
     function(M)
-        return Size(Filtered(Tuples(M, 3), t -> (t[1] * t[2]) * t[3] = t[1] * (t[2] * t[3])));
+        return Size(Filtered(EnumeratorOfTuples(M, 3), t -> (t[1] * t[2]) * t[3] = t[1] * (t[2] * t[3])));
 end);
 
 InstallMethod(CommutativityIndex, "for a magma", [IsMagma],
@@ -112,7 +112,7 @@ InstallMethod(MagmaAntiisomorphism, "for two magmas", true, [ IsMagma, IsMagma ]
             elms := List([ 1 .. n ], i -> DirectProductElement( [ m[i], p[i] ] ) );
             psi := GeneralMappingByElements( M, N, elms);
 
-            if ForAll(Tuples(m, 2), t -> psi(t[1] * t[2]) = psi(t[2]) * psi(t[1])) then
+            if ForAll(EnumeratorOfTuples(m, 2), t -> psi(t[1] * t[2]) = psi(t[2]) * psi(t[1])) then
                 return psi;
             fi;
         od;
@@ -223,7 +223,7 @@ end);
 
 InstallMethod(IsLeftCancellative, "for a magma", [IsMagma],
     function(M)
-        return ForAll( Filtered( Tuples(M, 3), m -> m[3] * m[1] = m[3] * m[2] ), m -> m[1] = m[2] );
+        return ForAll( Filtered( EnumeratorOfTuples(M, 3), m -> m[3] * m[1] = m[3] * m[2] ), m -> m[1] = m[2] );
 end);
 
 InstallMethod(IsRightCancellative, "for a magma", [IsMagma],
@@ -233,7 +233,7 @@ end);
 
 InstallMethod(IsLeftDistributive, "for a magma", [IsMagma],
     function(M)
-        return ForAll( Tuples(M, 3), m -> m[1] * ( m[2] * m[3] ) = ( m[1] * m[2] ) * ( m[1] * m[3] ) );
+        return ForAll( EnumeratorOfTuples(M, 3), m -> m[1] * ( m[2] * m[3] ) = ( m[1] * m[2] ) * ( m[1] * m[3] ) );
 end);
 
 InstallMethod(IsRightDistributive, "for a magma", [IsMagma],
