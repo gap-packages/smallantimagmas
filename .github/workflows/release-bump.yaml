@@ -20,7 +20,7 @@ jobs:
       contents: write
     steps:
       - name: git -- checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ github.ref_name }}
 
@@ -75,7 +75,7 @@ jobs:
           GAPBRANCH: ${{ env.gap-branch }}
 
       - name: git -- checkout page
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           path: gh-pages
           ref: gh-pages
