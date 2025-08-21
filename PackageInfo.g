@@ -375,9 +375,11 @@ AutoDoc := rec(
     Bibliography := """
       <List>
       <Item>
-      <URL Text="On divisibility in small finitely generated antiassociative groupoids">\
+      Ryszard Mazurek.
+      <URL Text="Antiassociative magmas">\
 https://link.springer.com/article/10.1007/s10231-024-01512-5</URL>,
       Annali di Matematica Pura ed Applicata, 2024.
+      DOI: 10.1007/s10231-024-01512-5.
       </Item>
       <Item>
       <URL Text="Number of nonassociative binary operations on a set of n elements">\
