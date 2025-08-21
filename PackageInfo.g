@@ -49,7 +49,7 @@ SupportEmail := "kamil@zabielscy.com",
 
 ArchiveURL := Concatenation(~.SourceRepository.URL,
                                  "/releases/download/v", ~.Version,
-                                 "/", ~.PackageName, "-v", ~.Version ),
+                                 "/", ~.PackageName, "-v", ~.Version),
 
 ##  All provided formats as list of file extensions, separated by white
 ##  space or commas.
@@ -144,7 +144,7 @@ Persons := [
                        "Poland"]),
     Place         := "Białystok, Poland",
     Institution   := "Białystok University of Technology"
-  ),
+),
   rec(
     LastName      := "Mazurek",
     FirstNames    := "Ryszard",
@@ -158,7 +158,7 @@ Persons := [
                        "Poland"]),
     Place         := "Białystok, Poland",
     Institution   := "Białystok University of Technology"
-  )
+)
 ],
 
 ##  Status information. Currently the following cases are recognized:
@@ -372,7 +372,7 @@ AutoDoc := rec(
       contributions to this package and its documentation provided by &GAP;
       users and developers.
       """,
-  ),
+),
 ),
 
 ));

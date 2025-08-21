@@ -69,8 +69,7 @@ InstallGlobalFunction(MagmaIsomorphismInvariantsMatch,
             LeftOrdersOfElements,
             RightOrdersOfElements,
             IsLeftCyclic,
-            IsRightCyclic
-        ];
+            IsRightCyclic];
         return ForAll(invariants, f -> f(M) = f(N));
 end);
 
@@ -261,10 +260,7 @@ InstallMethod(IsLeftDerangementInducted, "for a magma", [IsMagma],
         return ForAny(PartitionsSet(Elements(M)), p ->
             ForAny(Derangements(p), d ->
                 ForAll([1 .. Size(p)], i ->
-                    ForAll(p[i], m -> IsSubset(d[i], Unique(m * Elements(M))))
-                )
-            )
-        );
+                    ForAll(p[i], m -> IsSubset(d[i], Unique(m * Elements(M)))))));
 end);
 
 InstallMethod(IsRightDerangementInducted, "for a magma", [IsMagma],
