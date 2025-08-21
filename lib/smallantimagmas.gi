@@ -65,3 +65,39 @@ InstallGlobalFunction(ReallyAllSmallAntimagmas,
             );
         fi;
 end);
+
+InstallGlobalFunction(NrSmallAntimagmasUpToAntiisomorphism,
+    function(order)
+        local allMagmas, result, i, j, isEquivalent;
+
+        # Start with all magmas up to isomorphism
+        allMagmas := AllSmallAntimagmas(order);
+        result := [];
+
+        # For each magma, check if it's equivalent (anti-isomorphic) to any previous one
+        for i in [1 .. Size(allMagmas)] do
+            isEquivalent := false;
+            for j in [1 .. Size(result)] do
+                if IsMagmaAntiisomorphic(allMagmas[i], result[j]) then
+                    isEquivalent := true;
+                    break;
+                fi;
+            od;
+
+            # If not equivalent to any previous magma, add it to result
+            if not isEquivalent then
+                Add(result, allMagmas[i]);
+            fi;
+        od;
+
+        return Size(result);
+end);
+
+InstallGlobalFunction(SmallAntimagmasInformation,
+    function(order)
+        return rec(
+            total := ReallyNrSmallAntimagmas(order),
+            upToIsomorphism := NrSmallAntimagmas(order),
+            upToIsomorphismAndAntiisomorphism := NrSmallAntimagmasUpToAntiisomorphism(order)
+        );
+end);
