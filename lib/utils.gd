@@ -12,9 +12,9 @@
 #! ]
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "AntimagmaGeneratorPossibleDiagonals" );
+DeclareGlobalFunction("AntimagmaGeneratorPossibleDiagonals");
 
 #! @Arguments Ms
 #! @Description
 #! filters non-isomorphic magmas <A>Ms</A>.
-DeclareGlobalFunction( "UpToIsomorphism" );
+DeclareGlobalFunction("UpToIsomorphism");

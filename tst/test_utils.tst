@@ -10,7 +10,7 @@ gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> ForAll(M, m -> LeftPower(m, 2) = 
 true
 
 gap> AntimagmaGeneratorPossibleDiagonals(2);  
-[ [ 2, 1 ] ]
+[[2, 1 ]]
 
 gap> AntimagmaGeneratorPossibleDiagonals(3);
 [ 
@@ -63,5 +63,5 @@ gap> UpToIsomorphism(ReallyAllSmallAntimagmas(3));
     <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>
 ]
 
-gap> STOP_TEST( "test_utils.tst" );
+gap> STOP_TEST("test_utils.tst");
 
