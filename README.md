@@ -1,4 +1,4 @@
-[![release](https://github.com/limakzi/smallantimagmas/actions/workflows/release-bump.yaml/badge.svg)](https://github.com/limakzi/smallantimagmas/actions/workflows/release-bump.yaml)
+[![release](https://github.com/gap-packages/smallantimagmas/actions/workflows/release-bump.yaml/badge.svg)](https://github.com/gap-packages/smallantimagmas/actions/workflows/release-bump.yaml)
 
 ## smallantimagmas
 
@@ -13,7 +13,7 @@ A library of antiassociative magmas of small order.
 gap> LoadPackage("packagemanager");
 true
 
-gap> InstallPackage("https://github.com/limakzi/smallantimagmas.git");
+gap> InstallPackage("https://github.com/gap-packages/smallantimagmas.git");
 #I  Created directory /home/limakzi/.gap/
 #I  Created directory /home/limakzi/.gap/pkg/
 #I  Cloning to /home/limakzi/.gap/pkg/smallantimagmas ...

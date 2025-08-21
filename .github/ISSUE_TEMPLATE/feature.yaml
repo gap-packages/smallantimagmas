@@ -2,7 +2,7 @@
 name: Feature Request
 description: Suggest a new feature or enhancement for this project
 title: "[Feature Request]: "
-projects: ["limakzi/smallantimagmas"]
+projects: ["gap-packages/smallantimagmas"]
 labels: ["feature", "triage"]
 assignees:
   - limakzi
