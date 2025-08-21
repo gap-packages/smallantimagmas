@@ -372,7 +372,21 @@ AutoDoc := rec(
       contributions to this package and its documentation provided by &GAP;
       users and developers.
       """,
+    Bibliography := """
+      <List>
+      <Item>
+      <URL Text="On divisibility in small finitely generated antiassociative groupoids">\
+https://link.springer.com/article/10.1007/s10231-024-01512-5</URL>,
+      Annali di Matematica Pura ed Applicata, 2024.
+      </Item>
+      <Item>
+      <URL Text="Number of nonassociative binary operations on a set of n elements">\
+https://oeis.org/A079179</URL>,
+      On-Line Encyclopedia of Integer Sequences (OEIS).
+      </Item>
+      </List>
+      """,
   ),
-),
+)
 
 ));
