@@ -79,3 +79,26 @@ DeclareGlobalFunction( "ReallyAllSmallAntimagmas" );
 #! @EndExampleSession
 #!
 DeclareGlobalFunction( "ReallyNrSmallAntimagmas" );
+
+#! @Arguments n
+#! @Description
+#! counts number of antiassociative magmas of specified size <A>n</A> up to isomorphism and anti-isomorphism.
+#!
+#! @BeginExampleSession
+#! gap> NrSmallAntimagmasUpToAntiisomorphism(3);
+#! 7
+#! @EndExampleSession
+#!
+DeclareGlobalFunction( "NrSmallAntimagmasUpToAntiisomorphism" );
+
+#! @Arguments n
+#! @Description
+#! provides information about antiassociative magmas of specified size <A>n</A>, including
+#! total count, count up to isomorphism, and count up to isomorphism and anti-isomorphism.
+#!
+#! @BeginExampleSession
+#! gap> SmallAntimagmasInformation(3);
+#! rec( total := 52, upToIsomorphism := 10, upToIsomorphismAndAntiisomorphism := 7 )
+#! @EndExampleSession
+#!
+DeclareGlobalFunction( "SmallAntimagmasInformation" );
