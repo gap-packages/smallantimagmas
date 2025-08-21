@@ -33,14 +33,14 @@ end);
 
 InstallMethod(SquaresIndex, "for a magma", [IsMagma],
     function(M)
-        return Size( Set(M, m -> m ^ 2) );
+        return Size(Set(M, m -> m ^ 2));
 end);
 
 InstallMethod(IsAntiassociative, "for a magma", [IsMagma],
     function(M)
         local x;
         for x in IteratorOfTuples(M, 3) do
-            if ( x[1] * ( x[2] * x[3] ) ) = ( ( x[1] * x[2] ) * x[3] ) then
+            if (x[1] * (x[2] * x[3])) = ((x[1] * x[2]) * x[3]) then
                 return false;
             fi;
         od;
@@ -74,7 +74,7 @@ InstallGlobalFunction(MagmaIsomorphismInvariantsMatch,
         return ForAll(invariants, f -> f(M) = f(N));
 end);
 
-InstallMethod(MagmaIsomorphism, "for two magmas", true, [ IsMagma, IsMagma ], 0,
+InstallMethod(MagmaIsomorphism, "for two magmas", true, [IsMagma, IsMagma], 0,
     function(M, N)
         local psi, n, p, m, elms;
 
@@ -86,9 +86,9 @@ InstallMethod(MagmaIsomorphism, "for two magmas", true, [ IsMagma, IsMagma ], 0,
         m := Elements(M);
 
         for p in PermutationsList(Elements(N)) do
-            elms := List([ 1 .. n ], i -> DirectProductElement( [ m[i], p[i] ] ) );
+            elms := List([1 .. n], i -> DirectProductElement([m[i], p[i]]));
 
-            psi := GeneralMappingByElements( M, N, elms);
+            psi := GeneralMappingByElements(M, N, elms);
 
             if RespectsMultiplication(psi) then
                 return psi;
@@ -97,7 +97,7 @@ InstallMethod(MagmaIsomorphism, "for two magmas", true, [ IsMagma, IsMagma ], 0,
         return fail;
 end);
 
-InstallMethod(MagmaAntiisomorphism, "for two magmas", true, [ IsMagma, IsMagma ], 0,
+InstallMethod(MagmaAntiisomorphism, "for two magmas", true, [IsMagma, IsMagma], 0,
     function(M, N)
         local psi, n, p, m, elms;
 
@@ -109,8 +109,8 @@ InstallMethod(MagmaAntiisomorphism, "for two magmas", true, [ IsMagma, IsMagma ]
         m := Elements(M);
 
         for p in PermutationsList(Elements(N)) do
-            elms := List([ 1 .. n ], i -> DirectProductElement( [ m[i], p[i] ] ) );
-            psi := GeneralMappingByElements( M, N, elms);
+            elms := List([1 .. n], i -> DirectProductElement([m[i], p[i]]));
+            psi := GeneralMappingByElements(M, N, elms);
 
             if ForAll(EnumeratorOfTuples(m, 2), t -> psi(t[1] * t[2]) = psi(t[2]) * psi(t[1])) then
                 return psi;
@@ -170,7 +170,7 @@ end);
 InstallMethod(LeftOrder, "for a left-multiplicable element", [IsExtLElement],
     function(m)
         local temporary, next;
-        temporary := [ m * m ];
+        temporary := [m * m];
 
         next := m * Last(temporary);
         while not (next in temporary) do
@@ -187,7 +187,7 @@ end);
 InstallMethod(RightOrder, "for a right-multiplicable element", [IsExtRElement],
     function(m)
         local temporary, next;
-        temporary := [ m * m ];
+        temporary := [m * m];
 
         next := Last(temporary) * m;
         while not (next in temporary) do
@@ -203,12 +203,12 @@ end);
 
 InstallMethod(LeftOrdersOfElements, "for a magma", [IsMagma],
     function(M)
-        return Collected( List(M, m -> LeftOrder(m) ) );
+        return Collected(List(M, m -> LeftOrder(m)));
 end);
 
 InstallMethod(RightOrdersOfElements, "for a magma", [IsMagma],
     function(M)
-        return Collected( List(M, m -> RightOrder(m) ) );
+        return Collected(List(M, m -> RightOrder(m)));
 end);
 
 InstallMethod(IsLeftCyclic, "for a magma", [IsMagma],
@@ -223,22 +223,22 @@ end);
 
 InstallMethod(IsLeftCancellative, "for a magma", [IsMagma],
     function(M)
-        return ForAll( Filtered( EnumeratorOfTuples(M, 3), m -> m[3] * m[1] = m[3] * m[2] ), m -> m[1] = m[2] );
+        return ForAll(Filtered(EnumeratorOfTuples(M, 3), m -> m[3] * m[1] = m[3] * m[2]), m -> m[1] = m[2]);
 end);
 
 InstallMethod(IsRightCancellative, "for a magma", [IsMagma],
     function(M)
-        return IsLeftCancellative ( TransposedMagma(M) );
+        return IsLeftCancellative(TransposedMagma(M));
 end);
 
 InstallMethod(IsLeftDistributive, "for a magma", [IsMagma],
     function(M)
-        return ForAll( EnumeratorOfTuples(M, 3), m -> m[1] * ( m[2] * m[3] ) = ( m[1] * m[2] ) * ( m[1] * m[3] ) );
+        return ForAll(EnumeratorOfTuples(M, 3), m -> m[1] * (m[2] * m[3]) = (m[1] * m[2]) * (m[1] * m[3]));
 end);
 
 InstallMethod(IsRightDistributive, "for a magma", [IsMagma],
     function(M)
-        return IsLeftDistributive ( TransposedMagma(M) );
+        return IsLeftDistributive(TransposedMagma(M));
 end);
 
 InstallMethod(IsCancellative, "for a magma", [IsMagma],
@@ -248,12 +248,12 @@ end);
 
 InstallMethod(IsLeftFPFInducted, "for a magma", [IsMagma],
     function(M)
-        return ForAll(M, m -> Size( Unique( m * Elements(M) ) ) = 1 and First( Unique( m * Elements(M) ) ) <> m);
+        return ForAll(M, m -> Size(Unique(m * Elements(M))) = 1 and First(Unique(m * Elements(M))) <> m);
 end);
 
 InstallMethod(IsRightFPFInducted, "for a magma", [IsMagma],
     function(M)
-        return IsLeftFPFInducted( TransposedMagma(M) );
+        return IsLeftFPFInducted(TransposedMagma(M));
 end);
 
 InstallMethod(IsLeftDerangementInducted, "for a magma", [IsMagma],
@@ -269,15 +269,15 @@ end);
 
 InstallMethod(IsRightDerangementInducted, "for a magma", [IsMagma],
     function(M)
-        return IsLeftDerangementInducted( TransposedMagma(M) );
+        return IsLeftDerangementInducted(TransposedMagma(M));
 end);
 
 InstallMethod(IsLeftAlternative, "for a magma", [IsMagma],
     function(M)
-        return ForAll(EnumeratorOfTuples(M, 2), c -> c[1] * ( c[1] * c[2] ) = ( c[1] * c[1] ) * c[2] );
+        return ForAll(EnumeratorOfTuples(M, 2), c -> c[1] * (c[1] * c[2]) = (c[1] * c[1]) * c[2]);
 end);
 
 InstallMethod(IsRightAlternative, "for a magma", [IsMagma],
     function(M)
-        return IsLeftAlternative( TransposedMagma(M) );
+        return IsLeftAlternative(TransposedMagma(M));
 end);

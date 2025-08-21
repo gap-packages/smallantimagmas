@@ -14,7 +14,7 @@
 #! ]
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "AllSmallAntimagmas" );
+DeclareGlobalFunction("AllSmallAntimagmas");
 
 #! @Arguments n
 #! @Description
@@ -29,7 +29,7 @@ DeclareGlobalFunction( "AllSmallAntimagmas" );
 #! 17780
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "NrSmallAntimagmas" );
+DeclareGlobalFunction("NrSmallAntimagmas");
 
 #! @Arguments n, i
 #! @Description
@@ -42,7 +42,7 @@ DeclareGlobalFunction( "NrSmallAntimagmas" );
 #! <magma with 4 generators>
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "SmallAntimagma" );
+DeclareGlobalFunction("SmallAntimagma");
 
 #! @Arguments n
 #! @Description
@@ -56,7 +56,7 @@ DeclareGlobalFunction( "SmallAntimagma" );
 #! <magma with 3 generators>
 #! @EndExampleSessions
 #!
-DeclareGlobalFunction( "OneSmallAntimagma" );
+DeclareGlobalFunction("OneSmallAntimagma");
 
 #! @Arguments n
 #! @Description
@@ -67,7 +67,7 @@ DeclareGlobalFunction( "OneSmallAntimagma" );
 #! [ <magma with 2 generators>, <magma with 2 generators> ]
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "ReallyAllSmallAntimagmas" );
+DeclareGlobalFunction("ReallyAllSmallAntimagmas");
 
 #! @Arguments n
 #! @Description
@@ -78,4 +78,4 @@ DeclareGlobalFunction( "ReallyAllSmallAntimagmas" );
 #! 52
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "ReallyNrSmallAntimagmas" );
+DeclareGlobalFunction("ReallyNrSmallAntimagmas");

@@ -68,7 +68,7 @@ end;
 __SmallAntimagmaHelper.MultiplicationTableConvert := function(T)
         local nrows;
         nrows := NrRows(T);
-        return List(T, row -> Position( EnumeratorOfTuples([1 .. nrows], nrows), row ) );
+        return List(T, row -> Position(EnumeratorOfTuples([1 .. nrows], nrows), row));
 end;
 
 __SmallAntimagmaHelper.MultiplicationTableReverse := function(T)

@@ -5,7 +5,7 @@
 ##
 #############################################################################
 
-SetPackageInfo( rec(
+SetPackageInfo(rec(
 
 ##  This is case sensitive, use your preferred spelling.
 ##
@@ -30,12 +30,12 @@ Date := "03/07/2025",
 ## see <https://spdx.org/ids-how>, and more.
 License := "GPL-3.0-or-later",
 PackageWWWHome :=
-  Concatenation( "https://gap-packages.github.io/", LowercaseString( ~.PackageName ) ),
+  Concatenation("https://gap-packages.github.io/", LowercaseString(~.PackageName)),
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/gap-packages/", LowercaseString( ~.PackageName ) ),
+    URL := Concatenation("https://github.com/gap-packages/", LowercaseString(~.PackageName)),
 ),
-IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+IssueTrackerURL := Concatenation(~.SourceRepository.URL, "/issues"),
 SupportEmail := "kamil@zabielscy.com",
 
 ##  URL of the archive(s) of the current package release, but *without*
@@ -47,7 +47,7 @@ SupportEmail := "kamil@zabielscy.com",
 ##  example/init.g, ...    or example-3.3/init.g, ...  )
 #
 
-ArchiveURL := Concatenation( ~.SourceRepository.URL,
+ArchiveURL := Concatenation(~.SourceRepository.URL,
                                  "/releases/download/v", ~.Version,
                                  "/", ~.PackageName, "-v", ~.Version ),
 
@@ -136,12 +136,12 @@ Persons := [
     FirstNames    := "Kamil",
     IsAuthor      := true,
     IsMaintainer  := true,
-    PostalAddress := Concatenation( [
+    PostalAddress := Concatenation([
                        "Department of Theoretical Computer Science\n",
                        "Białystok University of Technology\n",
                        "Wiejska 45A\n",
                        "15-325 Białystok\n",
-                       "Poland" ] ),
+                       "Poland"]),
     Place         := "Białystok, Poland",
     Institution   := "Białystok University of Technology"
   ),
@@ -150,12 +150,12 @@ Persons := [
     FirstNames    := "Ryszard",
     IsAuthor      := true,
     IsMaintainer  := false,
-    PostalAddress := Concatenation( [
+    PostalAddress := Concatenation([
                        "Department of Theoretical Computer Science\n",
                        "Białystok University of Technology\n",
                        "Wiejska 45A\n",
                        "15-325 Białystok\n",
-                       "Poland" ] ),
+                       "Poland"]),
     Place         := "Białystok, Poland",
     Institution   := "Białystok University of Technology"
   )
@@ -193,9 +193,9 @@ AcceptDate := "08/2025",
 ##  and updating of the package in the GAP distribution.
 #
 README_URL :=
-  Concatenation( ~.PackageWWWHome, "/README.md" ),
+  Concatenation(~.PackageWWWHome, "/README.md"),
 PackageInfoURL :=
-  Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
+  Concatenation(~.PackageWWWHome, "/PackageInfo.g"),
 
 ##  Provide a short (up to a few lines) abstract in HTML format, explaining
 ##  the package content. This text will be displayed on the package overview

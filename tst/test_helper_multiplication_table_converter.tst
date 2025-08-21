@@ -1,4 +1,4 @@
-gap> START_TEST( "test_helper_multiplicaton_table_converter.tst" );
+gap> START_TEST("test_helper_multiplicaton_table_converter.tst");
 
 gap> List([1 .. 2], n -> List(EnumeratorOfTuples([1 .. n], n)));
 [
@@ -38,4 +38,4 @@ gap> List(AllSmallAntimagmas([2 .. 3]), M -> __SmallAntimagmaHelper.Multiplicati
 gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> MultiplicationTable(M) = __SmallAntimagmaHelper.MultiplicationTableReverse(__SmallAntimagmaHelper.MultiplicationTableConvert(MultiplicationTable(M))) );
 true
 
-gap> STOP_TEST( "test_helper_multiplicaton_table_converter.tst" );
+gap> STOP_TEST("test_helper_multiplicaton_table_converter.tst");

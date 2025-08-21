@@ -11,7 +11,7 @@
 #! true
 #! @EndExampleSession
 #!
-DeclareProperty( "IsAntiassociative", IsMagma );
+DeclareProperty("IsAntiassociative", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -30,7 +30,7 @@ DeclareProperty( "IsAntiassociative", IsMagma );
 #! true
 #! @EndExampleSession
 #!
-DeclareAttribute( "AssociativityIndex", IsMagma );
+DeclareAttribute("AssociativityIndex", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -46,7 +46,7 @@ DeclareAttribute( "AssociativityIndex", IsMagma );
 #! ]
 #! @EndExampleSession
 #!
-DeclareAttribute( "DiagonalOfMultiplicationTable", IsMagma);
+DeclareAttribute("DiagonalOfMultiplicationTable", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -56,7 +56,7 @@ DeclareAttribute( "DiagonalOfMultiplicationTable", IsMagma);
 #! 
 #! @EndExampleSession
 #!
-DeclareAttribute( "CommutativityIndex", IsMagma );
+DeclareAttribute("CommutativityIndex", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -65,7 +65,7 @@ DeclareAttribute( "CommutativityIndex", IsMagma );
 #! @BeginExampleSession
 #! @EndExampleSession
 #!
-DeclareAttribute( "AnticommutativityIndex", IsMagma );
+DeclareAttribute("AnticommutativityIndex", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -80,7 +80,7 @@ DeclareAttribute( "AnticommutativityIndex", IsMagma );
 #! [ 2, 2, 2, 2, 2, 2, 2, 2, 3, 3 ]
 #! @EndExampleSession
 #!
-DeclareAttribute( "SquaresIndex", IsMagma );
+DeclareAttribute("SquaresIndex", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -93,7 +93,7 @@ DeclareAttribute( "SquaresIndex", IsMagma );
 #! [ [ <magma with 1 generator> ], [ <magma with 1 generator> ] ]
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "AllSubmagmas" );
+DeclareGlobalFunction("AllSubmagmas");
 
 #! @Arguments M
 #! @Description
@@ -108,12 +108,12 @@ DeclareGlobalFunction( "AllSubmagmas" );
 #! true
 #! @EndExampleSession
 #!
-DeclareAttribute( "IdSmallAntimagma", IsMagma );
+DeclareAttribute("IdSmallAntimagma", IsMagma);
 
 #! @Arguments M
 #! @Description
 #! computes isomorphism invariants of <A>M</A>.
-DeclareGlobalFunction( "MagmaIsomorphismInvariantsMatch" );
+DeclareGlobalFunction("MagmaIsomorphismInvariantsMatch");
 
 #! @Arguments M, N
 #! @Description
@@ -128,7 +128,7 @@ DeclareGlobalFunction( "MagmaIsomorphismInvariantsMatch" );
 #! <general mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >
 #! @EndExampleSession
 #!
-DeclareOperation( "MagmaIsomorphism", [IsMagma, IsMagma] );
+DeclareOperation("MagmaIsomorphism", [IsMagma, IsMagma]);
 
 #! @Arguments M, N
 #! @Description
@@ -143,7 +143,7 @@ DeclareOperation( "MagmaIsomorphism", [IsMagma, IsMagma] );
 #! <mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >
 #! @EndExampleSession
 #!
-DeclareOperation( "MagmaAntiisomorphism", [IsMagma, IsMagma] );
+DeclareOperation("MagmaAntiisomorphism", [IsMagma, IsMagma]);
 
 #! @Arguments M, N
 #! @Description
@@ -164,7 +164,7 @@ DeclareOperation( "MagmaAntiisomorphism", [IsMagma, IsMagma] );
 #! false
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "IsMagmaIsomorphic" );
+DeclareGlobalFunction("IsMagmaIsomorphic");
 
 #! @Arguments [M, N]
 #! @Description
@@ -185,7 +185,7 @@ DeclareGlobalFunction( "IsMagmaIsomorphic" );
 #! true
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "IsMagmaAntiisomorphic" );
+DeclareGlobalFunction("IsMagmaAntiisomorphic");
 
 #! @Arguments [M]
 #! @Description
@@ -208,47 +208,47 @@ DeclareGlobalFunction( "IsMagmaAntiisomorphic" );
 #!   [  1,  1 ] ]
 #! @EndExampleSession
 #!
-DeclareGlobalFunction( "TransposedMagma" );
+DeclareGlobalFunction("TransposedMagma");
 
 #! @Arguments [m, k]
 #! @Description
 #! returns a left $k$-power of element <A>m</A>.
-DeclareGlobalFunction( "LeftPower" );
+DeclareGlobalFunction("LeftPower");
 
 #! @Arguments [m, k]
 #! @Description
 #!  returns a right $k$-power of element <A>m</A>.
-DeclareGlobalFunction( "RightPower" );
+DeclareGlobalFunction("RightPower");
 
 #! @Arguments [m]
 #! @Description
 #! returns a left order of element <A>m</A>.
-DeclareAttribute( "LeftOrder", IsExtLElement );
+DeclareAttribute("LeftOrder", IsExtLElement);
 
 #! @Arguments [m]
 #! @Description
 #!  returns a right order of element <A>m</A>.
-DeclareAttribute( "RightOrder", IsExtRElement );
+DeclareAttribute("RightOrder", IsExtRElement);
 
 #! @Arguments [m]
 #! @Description
 #! returns a left order of element <A>m</A>.
-DeclareAttribute( "LeftOrdersOfElements", IsMagma );
+DeclareAttribute("LeftOrdersOfElements", IsMagma);
 
 #! @Arguments [m]
 #! @Description
 #! returns a left order of element <A>m</A>.
-DeclareAttribute( "RightOrdersOfElements", IsMagma );
+DeclareAttribute("RightOrdersOfElements", IsMagma);
 
 #! @Arguments M
 #! @Description
 #!  if magma is left cyclic <A>m</A>.
-DeclareProperty( "IsLeftCyclic", IsMagma );
+DeclareProperty("IsLeftCyclic", IsMagma);
 
 #! @Arguments M
 #! @Description
 #!  if magma is left cyclic <A>m</A>.
-DeclareProperty( "IsRightCyclic", IsMagma );
+DeclareProperty("IsRightCyclic", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -259,7 +259,7 @@ DeclareProperty( "IsRightCyclic", IsMagma );
 #! [ true, false, false, false, false, false, false, false, false, true ]
 #! @EndExampleSession
 #!
-DeclareProperty( "IsLeftDistributive", IsMagma );
+DeclareProperty("IsLeftDistributive", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -270,7 +270,7 @@ DeclareProperty( "IsLeftDistributive", IsMagma );
 #! [ false, false, false, false, true, false, false, false, true, false ]
 #! @EndExampleSession
 #!
-DeclareProperty( "IsRightDistributive", IsMagma );
+DeclareProperty("IsRightDistributive", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -290,7 +290,7 @@ DeclareProperty( "IsRightDistributive", IsMagma );
 #! [ true, false ]
 #! @EndExampleSession
 #!
-DeclareProperty( "IsLeftCancellative", IsMagma );
+DeclareProperty("IsLeftCancellative", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -301,7 +301,7 @@ DeclareProperty( "IsLeftCancellative", IsMagma );
 #! [ false, true ]
 #! @EndExampleSession
 #!
-DeclareProperty( "IsRightCancellative", IsMagma );
+DeclareProperty("IsRightCancellative", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -312,7 +312,7 @@ DeclareProperty( "IsRightCancellative", IsMagma );
 #! [ false, false ]
 #! @EndExampleSession
 #!
-DeclareProperty( "IsCancellative", IsMagma );
+DeclareProperty("IsCancellative", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -326,7 +326,7 @@ DeclareProperty( "IsCancellative", IsMagma );
 #! true
 #! @EndExampleSession
 #!
-DeclareProperty( "IsLeftFPFInducted", IsMagma );
+DeclareProperty("IsLeftFPFInducted", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -341,7 +341,7 @@ DeclareProperty( "IsLeftFPFInducted", IsMagma );
 #! @EndExampleSession
 #!
 #!
-DeclareProperty( "IsRightFPFInducted", IsMagma );
+DeclareProperty("IsRightFPFInducted", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -358,7 +358,7 @@ DeclareProperty( "IsRightFPFInducted", IsMagma );
 #! false
 #! @EndExampleSession
 #!
-DeclareProperty( "IsLeftDerangementInducted", IsMagma );
+DeclareProperty("IsLeftDerangementInducted", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -376,7 +376,7 @@ DeclareProperty( "IsLeftDerangementInducted", IsMagma );
 #! @EndExampleSession
 #!
 #!
-DeclareProperty( "IsRightDerangementInducted", IsMagma );
+DeclareProperty("IsRightDerangementInducted", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -385,7 +385,7 @@ DeclareProperty( "IsRightDerangementInducted", IsMagma );
 #! @BeginExampleSession
 #! @EndExampleSession
 #!
-DeclareProperty( "IsLeftAlternative", IsMagma );
+DeclareProperty("IsLeftAlternative", IsMagma);
 
 #! @Arguments M
 #! @Description
@@ -394,4 +394,4 @@ DeclareProperty( "IsLeftAlternative", IsMagma );
 #! @BeginExampleSession
 #! @EndExampleSession
 #!
-DeclareProperty( "IsRightAlternative", IsMagma );
+DeclareProperty("IsRightAlternative", IsMagma);

@@ -1,4 +1,4 @@
-gap> START_TEST( "test_antimagma.tst" );
+gap> START_TEST("test_antimagma.tst");
 
 gap> ForAll([2 .. 3], n -> ForAll(Combinations([1 .. NrSmallAntimagmas(n)], 2), c -> not IsMagmaIsomorphic(SmallAntimagma(n, c[1]), SmallAntimagma(n, c[2]) ) ) );
 true
@@ -21,4 +21,4 @@ true
 gap> ForAll(ReallyAllSmallAntimagmas([2 .. 3]), M -> IdSmallAntimagma(M)[2] <= NrSmallAntimagmas(Size(M)));
 true
 
-gap> STOP_TEST( "test_antimagma.tst" );
+gap> STOP_TEST("test_antimagma.tst");
