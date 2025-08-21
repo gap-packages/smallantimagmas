@@ -10,7 +10,7 @@ gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> ForAll(M, m -> LeftPower(m, 2) = 
 true
 
 gap> AntimagmaGeneratorPossibleDiagonals(2);  
-[[ 2, 1 ]]
+[[2, 1 ]]
 
 gap> AntimagmaGeneratorPossibleDiagonals(3);
 [ 

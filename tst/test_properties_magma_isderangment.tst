@@ -7,7 +7,7 @@ gap> List(AllSmallAntimagmas(3), M -> IsRightDerangementInducted(M) );
 [ true, true, true, true, false, false, false, false, false, true ]
 
 ## all-left-derangement-antimagmas-after-transposition-become-right-derangment
-gap> List(Filtered(AllSmallAntimagmas(3), M -> IsLeftDerangementInducted(M) ), M -> IsRightDerangementInducted( TransposedMagma(M) ) );
+gap> List(Filtered(AllSmallAntimagmas(3), M -> IsLeftDerangementInducted(M)), M -> IsRightDerangementInducted(TransposedMagma(M)));
 [ true, true, true, true, true ]
 
 ## there-are-4-antimagmas-that-are-both-left-right-derangement-inducted
