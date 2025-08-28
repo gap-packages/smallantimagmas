@@ -1,1 +1,1 @@
-gaplint==1.4.0
+gaplint==1.5.1
