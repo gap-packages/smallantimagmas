@@ -24,7 +24,7 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
 
-      - uses: gap-actions/setup-gap@v2
+      - uses: gap-actions/setup-gap@v3
         with:
           GAPBRANCH: ${{ env.gap-branch }}
 
@@ -70,7 +70,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: gap-actions/setup-gap@v2
+      - uses: gap-actions/setup-gap@v3
         with:
           GAPBRANCH: ${{ env.gap-branch }}
 
