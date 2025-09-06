@@ -29,7 +29,7 @@ jobs:
           GAPBRANCH: ${{ env.gap-branch }}
 
       - name: gap -- build docs
-        uses: gap-actions/build-pkg-docs@v1
+        uses: gap-actions/build-pkg-docs@v2
         with:
           use-latex: 'true'
 
