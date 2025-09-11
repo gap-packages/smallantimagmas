@@ -53,7 +53,7 @@ jobs:
           only-needed: true
 
       - name: Show code-coverage
-        uses: gap-actions/process-coverage@v2
+        uses: gap-actions/process-coverage@v3
 
   gaplint:
     name: Code quality - gaplint
