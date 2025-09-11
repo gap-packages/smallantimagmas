@@ -45,10 +45,10 @@ jobs:
           use-latex: 'true'
 
       - name: Run gap-tests
-        uses: gap-actions/run-pkg-tests@v3
+        uses: gap-actions/run-pkg-tests@v4
 
       - name: Run gap-tests (only-needed)
-        uses: gap-actions/run-pkg-tests@v3
+        uses: gap-actions/run-pkg-tests@v4
         with:
           only-needed: true
 
