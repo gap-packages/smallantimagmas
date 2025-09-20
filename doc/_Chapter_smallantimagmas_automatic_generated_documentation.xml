@@ -684,9 +684,9 @@ gap> AntimagmaGeneratorPossibleDiagonals(3);
 
 
 <ManSection>
-  <Func Arg="Ms" Name="AntimagmaGeneratorFilterNonIsomorphicMagmas" />
+  <Func Arg="Ms" Name="UpToIsomorphism" />
  <Description>
- filters non-isomorphic magmas <A>m</A>.
+ filters non-isomorphic magmas <A>Ms</A>.
  </Description>
 </ManSection>
 

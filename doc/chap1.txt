@@ -498,11 +498,11 @@
     [4X[28X][128X[104X
   [4X[32X[104X
   
-  [1X1.3-15 AntimagmaGeneratorFilterNonIsomorphicMagmas[101X
+  [1X1.3-15 UpToIsomorphism[101X
   
-  [33X[1;0Y[29X[2XAntimagmaGeneratorFilterNonIsomorphicMagmas[102X( [3XMs[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XUpToIsomorphism[102X( [3XMs[103X ) [32X function[133X
   
-  [33X[0;0Yfilters non-isomorphic magmas [3Xm[103X.[133X
+  [33X[0;0Yfilters non-isomorphic magmas [3XMs[103X.[133X
   
   
   [1X1.4 [33X[0;0Ysmallantimagmas automatic generated documentation of methods[133X[101X
