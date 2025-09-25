@@ -395,3 +395,12 @@ DeclareProperty("IsLeftAlternative", IsMagma);
 #! @EndExampleSession
 #!
 DeclareProperty("IsRightAlternative", IsMagma);
+
+#! @Arguments M
+#! @Description
+#! builds a diograph from the diagonal of <A>M</A>.
+#!
+#! @BeginExampleSession
+#! @EndExampleSession
+#!
+DeclareAttribute("DigraphOfDiagonal", IsMagma);
