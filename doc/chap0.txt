@@ -6,10 +6,10 @@
               [1X A library of antiassociative magmas of small order [101X
   
   
-                                     0.5.0
+                                     0.5.1
   
   
-                                  3 July 2025
+                               26 September 2025
   
   
                                 Kamil Zabielski
@@ -83,8 +83,6 @@
       1.3-11 OneSmallAntimagma
       1.3-12 ReallyAllSmallAntimagmas
       1.3-13 ReallyNrSmallAntimagmas
-      1.3-14 AntimagmaGeneratorPossibleDiagonals
-      1.3-15 UpToIsomorphism
     1.4 [33X[0;0Ysmallantimagmas automatic generated documentation of methods[133X
       1.4-1 MagmaIsomorphism
       1.4-2 MagmaAntiisomorphism
