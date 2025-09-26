@@ -6,15 +6,17 @@
 #! gap> AntimagmaGeneratorPossibleDiagonals(2);
 #! [ [ 2, 1 ] ]
 #! gap> AntimagmaGeneratorPossibleDiagonals(3);
-#! [ 
-#!   [ 2, 1, 1 ], [ 2, 1, 2 ], [ 2, 3, 1 ], [ 2, 3, 2 ], 
-#!   [ 3, 1, 1 ], [ 3, 1, 2 ], [ 3, 3, 1 ], [ 3, 3, 2 ] 
+#! [
+#!   [ 2, 1, 1 ], [ 2, 1, 2 ], [ 2, 3, 1 ], [ 2, 3, 2 ],
+#!   [ 3, 1, 1 ], [ 3, 1, 2 ], [ 3, 3, 1 ], [ 3, 3, 2 ]
 #! ]
 #! @EndExampleSession
 #!
-DeclareGlobalFunction("AntimagmaGeneratorPossibleDiagonals");
+
+DeclareOperation("AntimagmaGeneratorPossibleDiagonals", [IsInt]);
 
 #! @Arguments Ms
 #! @Description
 #! filters non-isomorphic magmas <A>Ms</A>.
-DeclareGlobalFunction("UpToIsomorphism");
+
+DeclareOperation("UpToIsomorphism", [IsList]);

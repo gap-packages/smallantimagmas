@@ -1,9 +1,9 @@
-InstallGlobalFunction(AntimagmaGeneratorPossibleDiagonals,
+InstallMethod(AntimagmaGeneratorPossibleDiagonals, "for possible antiassociative diagonals", [IsPosInt],
     function(n)
         return Filtered(EnumeratorOfTuples([1 .. n], n), t -> ForAll([1 .. n], i -> t[i] <> i));
 end);
 
-InstallGlobalFunction(UpToIsomorphism,
+InstallMethod(UpToIsomorphism, "for a list of non-equivalent antimagmas", [IsList],
     function(Ms)
         local result, m;
         result := [];
