@@ -280,5 +280,5 @@ end);
 
 InstallMethod(DigraphOfDiagonal, "for a magma", [IsMagma],
     function(M)
-        return DigraphByEdges(List([1..Size(M)], m -> [m, DiagonalOfMultiplicationTable(M)[m]]));
+        return DigraphByEdges(List([1 .. Size(M)], m -> [m, DiagonalOfMultiplicationTable(M)[m]]));
 end);
