@@ -55,7 +55,7 @@ end);
 InstallGlobalFunction(MagmaIsomorphismInvariantsMatch,
     function(M, N)
         local invariants;
-        if IsIsomorphicDigraphs(DigraphOfDiagonal(M), DigraphOfDiagonal(N)) = false then
+        if IsIsomorphicDigraph(DigraphOfDiagonal(M), DigraphOfDiagonal(N)) = false then
             return false;
         fi;
 
