@@ -55,6 +55,10 @@ end);
 InstallGlobalFunction(MagmaIsomorphismInvariantsMatch,
     function(M, N)
         local invariants;
+        if IsIsomorphicDigraph(DigraphOfDiagonal(M), DigraphOfDiagonal(N)) = false then
+            return false;
+        fi;
+
         invariants := [
             Size,
             IsLeftCancellative,
@@ -276,4 +280,9 @@ end);
 InstallMethod(IsRightAlternative, "for a magma", [IsMagma],
     function(M)
         return IsLeftAlternative(TransposedMagma(M));
+end);
+
+InstallMethod(DigraphOfDiagonal, "for a magma", [IsMagma],
+    function(M)
+        return DigraphByEdges(List([1 .. Size(M)], m -> [m, DiagonalOfMultiplicationTable(M)[m]]));
 end);

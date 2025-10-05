@@ -72,11 +72,11 @@ DeclareAttribute("AnticommutativityIndex", IsMagma);
 #! computes squares index of <A>M</A> so the order of $\left\{ m^2 | m \in M \right\}$.
 #!
 #! @BeginExampleSession
-#! gap> List(AllSmallAntimagmas(2), M -> List(M, m -> m * m) );                
+#! gap> List(AllSmallAntimagmas(2), M -> List(M, m -> m * m));                
 #! [ [ m2, m1 ], [ m2, m1 ] ]
-#! gap> List(AllSmallAntimagmas(2), M -> SquaresIndex(M ));
+#! gap> List(AllSmallAntimagmas(2), M -> SquaresIndex(M));
 #! [ 2, 2 ]
-#! gap> List(AllSmallAntimagmas(3), M -> SquaresIndex(M ));
+#! gap> List(AllSmallAntimagmas(3), M -> SquaresIndex(M));
 #! [ 2, 2, 2, 2, 2, 2, 2, 2, 3, 3 ]
 #! @EndExampleSession
 #!
@@ -122,7 +122,7 @@ DeclareGlobalFunction("MagmaIsomorphismInvariantsMatch");
 #! @BeginExampleSession
 #! gap> M := SmallAntimagma(2, 1);
 #! <magma with 2 generators>
-#! gap> N := MagmaByMultiplicationTable([ [2, 1], [2, 1] ]);
+#! gap> N := MagmaByMultiplicationTable([[2, 1], [2, 1]]);
 #! <magma with 2 generators>
 #! gap> MagmaIsomorphism(M, N);
 #! <general mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >
@@ -154,7 +154,7 @@ DeclareOperation("MagmaAntiisomorphism", [IsMagma, IsMagma]);
 #! <magma with 2 generators>
 #! gap> N := SmallAntimagma(2, 2);
 #! <magma with 2 generators>
-#! gap> T := MagmaByMultiplicationTable([ [2, 1], [2, 1] ]);
+#! gap> T := MagmaByMultiplicationTable([[2, 1], [2, 1]]);
 #! <magma with 2 generators>
 #! gap> IsMagmaIsomorphic(M, M);
 #! true
@@ -255,7 +255,7 @@ DeclareProperty("IsRightCyclic", IsMagma);
 #!  if magma is left distributive <A>m</A>.
 #!
 #! @BeginExampleSession
-#! gap> List(AllSmallAntimagmas(3), M -> IsLeftDistributive(M) );
+#! gap> List(AllSmallAntimagmas(3), M -> IsLeftDistributive(M));
 #! [ true, false, false, false, false, false, false, false, false, true ]
 #! @EndExampleSession
 #!
@@ -266,7 +266,7 @@ DeclareProperty("IsLeftDistributive", IsMagma);
 #!  if magma is right distributive <A>m</A>.
 #!
 #! @BeginExampleSession
-#! gap> List(AllSmallAntimagmas(3), M -> IsRightDistributive(M) );
+#! gap> List(AllSmallAntimagmas(3), M -> IsRightDistributive(M));
 #! [ false, false, false, false, true, false, false, false, true, false ]
 #! @EndExampleSession
 #!
@@ -279,7 +279,7 @@ DeclareProperty("IsRightDistributive", IsMagma);
 #! @BeginExampleSession
 #! gap> M := SmallAntimagma(2, 1);
 #! <magma with 2 generators>
-#! gap> Display( MultiplicationTable(M) );
+#! gap> Display(MultiplicationTable(M));
 #! [ [  2,  1 ],
 #!   [  2,  1 ] ]
 #! gap> IsRightCancellative(M);
@@ -319,10 +319,10 @@ DeclareProperty("IsCancellative", IsMagma);
 #! is a left-hand sided fixed-point free inducted <A>m</A>.
 #!
 #! @BeginExampleSession
-#! gap> Display( MultiplicationTable( SmallAntimagma(2, 2) ) );
+#! gap> Display(MultiplicationTable(SmallAntimagma(2, 2)));
 #! [ [  2,  2 ],
 #!   [  1,  1 ] ]
-#! gap> IsLeftFPFInducted( SmallAntimagma(2, 2) ); 
+#! gap> IsLeftFPFInducted(SmallAntimagma(2, 2));
 #! true
 #! @EndExampleSession
 #!
@@ -333,10 +333,10 @@ DeclareProperty("IsLeftFPFInducted", IsMagma);
 #! is a right-hand sided fixed-point free inducted <A>m</A>.
 #!
 #! @BeginExampleSession
-#! gap> Display( MultiplicationTable( SmallAntimagma(2, 1) ) );
+#! gap> Display(MultiplicationTable(SmallAntimagma(2, 1)));
 #! [ [  2,  1 ],
 #!   [  2,  1 ] ]
-#! gap> IsRightFPFInducted( SmallAntimagma(2, 1) );            
+#! gap> IsRightFPFInducted(SmallAntimagma(2, 1));
 #! true
 #! @EndExampleSession
 #!
@@ -395,3 +395,12 @@ DeclareProperty("IsLeftAlternative", IsMagma);
 #! @EndExampleSession
 #!
 DeclareProperty("IsRightAlternative", IsMagma);
+
+#! @Arguments M
+#! @Description
+#! builds a digraph from the diagonal of <A>M</A>.
+#!
+#! @BeginExampleSession
+#! @EndExampleSession
+#!
+DeclareAttribute("DigraphOfDiagonal", IsMagma);

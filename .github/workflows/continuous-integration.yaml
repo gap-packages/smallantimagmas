@@ -36,6 +36,11 @@ jobs:
         with:
           GAPBRANCH: ${{ matrix.gap-branch }}
 
+      - name: Install additional packages
+        shell: bash
+        run: |
+          gap -c 'LoadPackage("PackageManager"); InstallPackage("digraphs"); QUIT;'
+
       - name: Build gap-package
         uses: gap-actions/build-pkg@v2
 
