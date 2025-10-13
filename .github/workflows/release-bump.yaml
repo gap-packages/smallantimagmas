@@ -26,7 +26,7 @@ jobs:
 
       - uses: gap-actions/setup-gap@v3
         with:
-          GAPBRANCH: ${{ env.gap-branch }}
+          gap-version: ${{ env.gap-branch }}
 
       - name: gap -- build docs
         uses: gap-actions/build-pkg-docs@v2
@@ -72,7 +72,7 @@ jobs:
     steps:
       - uses: gap-actions/setup-gap@v3
         with:
-          GAPBRANCH: ${{ env.gap-branch }}
+          gap-version: ${{ env.gap-branch }}
 
       - name: git -- checkout page
         uses: actions/checkout@v5
