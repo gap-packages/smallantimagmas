@@ -34,7 +34,7 @@ DeclareAttribute("AssociativityIndex", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! computes diaognal of multiplication table of <A>M</A>.
+#! computes diagonal of multiplication table of <A>M</A>.
 #!
 #! @BeginExampleSession
 #! gap> List(AllSmallAntimagmas(3), M -> DiagonalOfMultiplicationTable((M)));                
