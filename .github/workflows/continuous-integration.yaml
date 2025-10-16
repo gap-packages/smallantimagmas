@@ -34,7 +34,7 @@ jobs:
       - name: Setup gap-system
         uses: gap-actions/setup-gap@v3
         with:
-          GAPBRANCH: ${{ matrix.gap-branch }}
+          gap-version: ${{ matrix.gap-branch }}
 
       - name: Install additional packages
         shell: bash
