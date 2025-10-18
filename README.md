@@ -1,4 +1,4 @@
-[![release](https://github.com/gap-packages/smallantimagmas/actions/workflows/release-bump.yaml/badge.svg)](https://github.com/gap-packages/smallantimagmas/actions/workflows/release-bump.yaml)
+[![release](https://github.com/gap-packages/smallantimagmas/actions/workflows/release-bump.yml/badge.svg)](https://github.com/gap-packages/smallantimagmas/actions/workflows/release-bump.yml)
 
 ## smallantimagmas
 

@@ -1,6 +1,6 @@
 ---
-name: Code quality
-run-name: code-quality-${{ github.event.number }} ${{ github.event.pull_request.title }}
+name: CI
+run-name: CI-${{ github.event.number }} ${{ github.event.pull_request.title }}
 
 on:
   pull_request:
