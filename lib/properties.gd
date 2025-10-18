@@ -34,14 +34,33 @@ DeclareAttribute("AssociativityIndex", IsMagma);
 
 #! @Arguments M
 #! @Description
+#! computes automorphism group of antimagma <A>M</A>.
+#!
+#! @BeginExampleSession
+#! gap> M := OneSmallAntimagma(2);
+#! <magma with 2 generators>
+#! gap> MagmaAutomorphismGroup(M);
+#! <group with 2 generators>
+#! gap> G := MagmaAutomorphismGroup(M);
+#! <group with 2 generators>
+#! gap> Order(G);
+#! 2
+#! gap> List(G, g -> g);
+#! [ IdentityMapping( <magma with 2 generators> ), <mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) > ]
+#! @EndExampleSession
+#!
+DeclareAttribute("MagmaAutomorphismGroup", IsMagma);
+
+#! @Arguments M
+#! @Description
 #! computes diagonal of multiplication table of <A>M</A>.
 #!
 #! @BeginExampleSession
-#! gap> List(AllSmallAntimagmas(3), M -> DiagonalOfMultiplicationTable((M)));                
-#! [ [ 2, 1, 1 ], [ 2, 1, 1 ], 
-#!   [ 2, 3, 2 ], [ 2, 1, 1 ], 
-#!   [ 2, 1, 1 ], [ 2, 1, 2 ], 
-#!   [ 2, 3, 2 ], [ 2, 1, 2 ], 
+#! gap> List(AllSmallAntimagmas(3), M -> DiagonalOfMultiplicationTable((M)));
+#! [ [ 2, 1, 1 ], [ 2, 1, 1 ],
+#!   [ 2, 3, 2 ], [ 2, 1, 1 ],
+#!   [ 2, 1, 1 ], [ 2, 1, 2 ],
+#!   [ 2, 3, 2 ], [ 2, 1, 2 ],
 #!   [ 2, 3, 1 ], [ 2, 3, 1 ]
 #! ]
 #! @EndExampleSession
@@ -53,7 +72,7 @@ DeclareAttribute("DiagonalOfMultiplicationTable", IsMagma);
 #! identifies commutativity index of <A>M</A>.
 #!
 #! @BeginExampleSession
-#! 
+#!
 #! @EndExampleSession
 #!
 DeclareAttribute("CommutativityIndex", IsMagma);
@@ -72,7 +91,7 @@ DeclareAttribute("AnticommutativityIndex", IsMagma);
 #! computes squares index of <A>M</A> so the order of $\left\{ m^2 | m \in M \right\}$.
 #!
 #! @BeginExampleSession
-#! gap> List(AllSmallAntimagmas(2), M -> List(M, m -> m * m));                
+#! gap> List(AllSmallAntimagmas(2), M -> List(M, m -> m * m));
 #! [ [ m2, m1 ], [ m2, m1 ] ]
 #! gap> List(AllSmallAntimagmas(2), M -> SquaresIndex(M));
 #! [ 2, 2 ]
