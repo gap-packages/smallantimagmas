@@ -1,4 +1,5 @@
 [![release](https://github.com/gap-packages/smallantimagmas/actions/workflows/release-bump.yml/badge.svg)](https://github.com/gap-packages/smallantimagmas/actions/workflows/release-bump.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17207672.svg)](https://doi.org/10.5281/zenodo.17207672)
 
 ## smallantimagmas
 
