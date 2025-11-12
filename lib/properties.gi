@@ -11,6 +11,24 @@ InstallGlobalFunction(AllSubmagmas,
         return result;
 end);
 
+InstallMethod(MagmaAutomorphismGroup, "for a magma", [IsMagma],
+    function(M)
+        local auts, n, p, m, elms, psi;
+        auts := [];
+        n := Size(M);
+        m := Elements(M);
+
+        for p in PermutationsList(m) do
+            elms := List([1 .. n], i -> DirectProductElement([m[i], p[i]]));
+            psi := GeneralMappingByElements(M, M, elms);
+
+            if RespectsMultiplication(psi) then
+                Add(auts, psi);
+            fi;
+        od;
+        return Group(auts);
+end);
+
 InstallMethod(DiagonalOfMultiplicationTable, "for a magma", [IsMagma],
     function(M)
         return DiagonalOfMatrix(MultiplicationTable(M));
