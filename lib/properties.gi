@@ -72,8 +72,7 @@ InstallGlobalFunction(MagmaIsomorphismInvariantsMatch,
             SquaresIndex,
             LeftOrdersOfElements,
             RightOrdersOfElements,
-            IsLeftCyclic,
-            IsRightCyclic];
+            IsCyclic];
         return ForAll(invariants, f -> f(M) = f(N));
 end);
 
@@ -214,14 +213,9 @@ InstallMethod(RightOrdersOfElements, "for a magma", [IsMagma],
         return Collected(List(M, m -> RightOrder(m)));
 end);
 
-InstallMethod(IsLeftCyclic, "for a magma", [IsMagma],
+InstallMethod(IsCyclic, "for a magma", [IsMagma],
     function(M)
-        return ForAny(List(M), m -> LeftOrder(m) = Size(M));
-end);
-
-InstallMethod(IsRightCyclic, "for a magma", [IsMagma],
-    function(M)
-        return ForAny(List(M), m -> RightOrder(m) = Size(M));
+        return ForAny(Elements(M), m -> Size(Submagma(M, [m])) = Size(M));
 end);
 
 InstallMethod(IsLeftCancellative, "for a magma", [IsMagma],
