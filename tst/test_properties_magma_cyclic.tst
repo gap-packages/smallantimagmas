@@ -13,4 +13,10 @@ gap> M := SmallAntimagma(4, 1);
 gap> IsCyclic(M);
 false
 
+# Test 3: Test with a cyclic group (positive case)
+gap> G := CyclicGroup(4);
+<pc group of size 4 with 1 generator>
+gap> IsCyclic(G);
+true
+
 gap> STOP_TEST("test_properties_magma_cyclic.tst");
