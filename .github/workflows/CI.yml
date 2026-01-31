@@ -92,3 +92,30 @@ jobs:
           find . -name '*.gd' | xargs -n1 gaplint
           echo "::group:: gaplint -- *.tst"
           find . -name '*.tst' | xargs -n1 gaplint
+
+  required:
+    name: Required checks - pull-request
+    runs-on: ubuntu-latest
+    needs:
+      - gaptest
+      - gaplint
+
+    steps:
+      - id: status
+        name: Determine status
+        run: |
+          results=$(tr -d '\n' <<< '${{ toJSON(needs.*.result) }}')
+          if ! grep -q -v -E '(failure|cancelled)' <<< "$results"; then
+            result="failed"
+          else
+            result="success"
+          fi
+          {
+            echo "result=${result}"
+            echo "results=${results}"
+          } | tee -a "$GITHUB_OUTPUT"
+      - if: always() && steps.status.outputs.result != 'success'
+        name: Check for failed status
+        run: |
+          echo "One or more required build workflows failed: ${{ steps.status.outputs.results }}"
+          exit 1
