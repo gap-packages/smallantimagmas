@@ -65,7 +65,7 @@ jobs:
         uses: gap-actions/process-coverage@v3
 
   gaplint:
-    name: Lint
+    name: code - lint
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
