@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   gaptest:
-    name: Code quality - unit-tests (${{ matrix.gap-branch }})
+    name: Tests (${{ matrix.gap-branch }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -65,7 +65,7 @@ jobs:
         uses: gap-actions/process-coverage@v3
 
   gaplint:
-    name: Code quality - gaplint
+    name: Lint
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
