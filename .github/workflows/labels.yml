@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   label-auto:
-    name: Labels - auto-create
+    name: Labels - auto
     runs-on: ubuntu-latest
     steps:
       - uses: TimonVS/pr-labeler-action@v5
