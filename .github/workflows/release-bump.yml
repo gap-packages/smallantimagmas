@@ -15,7 +15,7 @@ env:
 
 jobs:
   assets-build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-slim
     permissions:
       contents: write
     steps:
@@ -65,7 +65,7 @@ jobs:
 
 
   update-website:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-slim
     needs: assets-build
     permissions:
       contents: write

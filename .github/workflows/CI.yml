@@ -20,7 +20,7 @@ concurrency:
 jobs:
   gaptest:
     name: Code - units (${{ matrix.gap-branch }})
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     strategy:
       fail-fast: false
       matrix:
@@ -66,7 +66,7 @@ jobs:
 
   gaplint:
     name: Code - lint
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-slim
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -95,7 +95,7 @@ jobs:
 
   required:
     name: Required checks - pull-request
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     needs:
       - gaptest
       - gaplint
