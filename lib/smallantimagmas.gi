@@ -6,10 +6,10 @@ end);
 InstallGlobalFunction(SmallAntimagma,
     function(arg)
         local order, id;
-        if Length(arg) = 1 and IsList(arg[1]) and Length(arg[1]) = 2 then
+        if Length(arg) = 1 and IsList(arg[1]) and Length(arg[1]) = 2 and ForAll(arg[1], IsInt) then
             order := arg[1][1];
             id := arg[1][2];
-        elif Length(arg) = 2 then
+        elif Length(arg) = 2 and ForAll(arg, IsInt) then
             order := arg[1];
             id := arg[2];
         else
