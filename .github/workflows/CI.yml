@@ -21,6 +21,8 @@ jobs:
   gaptest:
     name: Code - units (${{ matrix.gap-branch }})
     runs-on: ubuntu-slim
+    permissions:
+      contents: read
     strategy:
       fail-fast: false
       matrix:
@@ -67,6 +69,8 @@ jobs:
   gaplint:
     name: Code - lint
     runs-on: ubuntu-slim
+    permissions:
+      contents: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -96,6 +100,7 @@ jobs:
   required:
     name: Required checks - pull-request
     runs-on: ubuntu-slim
+    permissions: {}
     needs:
       - gaptest
       - gaplint
