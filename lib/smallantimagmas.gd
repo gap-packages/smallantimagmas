@@ -32,6 +32,7 @@ DeclareGlobalFunction("AllSmallAntimagmas");
 DeclareGlobalFunction("NrSmallAntimagmas");
 
 #! @Arguments n, i
+#! @Arguments [n, i]
 #! @Description
 #! returns antiassociative magma of id <A>[n, i]</A>.
 #!
@@ -39,6 +40,8 @@ DeclareGlobalFunction("NrSmallAntimagmas");
 #! gap> SmallAntimagma(2, 1);
 #! <magma with 2 generators>
 #! gap> SmallAntimagma(4, 5);
+#! <magma with 4 generators>
+#! gap> SmallAntimagma([4, 5]);
 #! <magma with 4 generators>
 #! @EndExampleSession
 #!
