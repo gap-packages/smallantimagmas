@@ -20,7 +20,7 @@ gap> mingens := MinimalGeneratingSet(M);
 gap> Size(Submagma(M, mingens)) = Size(M);
 true
 
-# Test that MinimalGeneratingSet for size 3 antimagmas
+# Test MinimalGeneratingSet for size 3 antimagmas
 gap> M := SmallAntimagma(3, 1);
 <magma with 3 generators>
 
