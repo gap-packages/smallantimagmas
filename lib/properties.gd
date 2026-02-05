@@ -414,7 +414,7 @@ DeclareAttribute("DigraphOfDiagonal", IsMagma);
 #! gap> M := SmallAntimagma(2, 1);
 #! <magma with 2 generators>
 #! gap> MinimalGeneratingSet(M);
-#! [ m1, m2 ]
+#! [ m1 ]
 #! @EndExampleSession
 #!
 DeclareAttribute("MinimalGeneratingSet", IsMagma);

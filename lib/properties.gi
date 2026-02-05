@@ -303,8 +303,4 @@ InstallMethod(MinimalGeneratingSet, "for a magma", [IsMagma],
                 fi;
             od;
         od;
-        
-        # This point should never be reached since the full set of generators
-        # should always generate the magma
-        Error("MinimalGeneratingSet: Internal error - generators do not generate the magma. This should never happen.");
 end);
