@@ -304,6 +304,7 @@ InstallMethod(MinimalGeneratingSet, "for a magma", [IsMagma],
             od;
         od;
         
-        # Fallback: return all generators (should not reach here)
-        return gens;
+        # This point should never be reached since the full set of generators
+        # should always generate the magma
+        Error("MinimalGeneratingSet: Failed to find generating set");
 end);
