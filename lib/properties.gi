@@ -289,40 +289,21 @@ end);
 
 InstallMethod(MinimalGeneratingSet, "for a magma", [IsMagma],
     function(M)
-        local elms, subset, len, gens, i, testset, is_minimal;
+        local gens, subset, len;
         
-        # First check if the existing generators are already minimal
+        # Get the generators of the magma
         gens := GeneratorsOfMagma(M);
-        if Length(gens) > 0 then
-            # Check if we can remove any generator
-            is_minimal := true;
-            for i in [1 .. Length(gens)] do
-                testset := Concatenation(gens{[1 .. i - 1]}, gens{[i + 1 .. Length(gens)]});
-                if Length(testset) > 0 and Size(Submagma(M, testset)) = Size(M) then
-                    # Found a redundant generator, continue with full search
-                    is_minimal := false;
-                    break;
-                fi;
-            od;
-            # If we didn't find any redundant generators, return the existing set
-            if is_minimal then
-                return gens;
-            fi;
-        fi;
         
-        # Get all elements of the magma
-        elms := Elements(M);
-        
-        # Try generating sets of increasing size
-        for len in [1 .. Size(M)] do
+        # Try subsets of generators of increasing size
+        for len in [1 .. Length(gens)] do
             # Try all subsets of size len
-            for subset in Combinations(elms, len) do
+            for subset in Combinations(gens, len) do
                 if Size(Submagma(M, subset)) = Size(M) then
                     return subset;
                 fi;
             od;
         od;
         
-        # Fallback: return all elements (should not reach here for finite magmas)
-        return elms;
+        # Fallback: return all generators (should not reach here)
+        return gens;
 end);

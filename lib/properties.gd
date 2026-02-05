@@ -408,9 +408,7 @@ DeclareAttribute("DigraphOfDiagonal", IsMagma);
 #! @Arguments M
 #! @Description
 #! returns the minimal generating set for the magma <A>M</A>.
-#! A minimal generating set is the smallest subset S of M such that M equals the closure of S.
-#! Note: For magmas with more than 10 elements, this function may be slow due to 
-#! the combinatorial nature of the problem.
+#! A minimal generating set is the smallest subset of GeneratorsOfMagma(M) such that M equals the closure of that subset.
 #!
 #! @BeginExampleSession
 #! gap> M := SmallAntimagma(2, 1);
