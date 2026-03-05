@@ -233,7 +233,8 @@ DeclareAttribute("RightOrder", IsExtRElement);
 #! @Arguments [m]
 #! @Description
 #! returns a list <A>[i, p]</A> of minimum numbers such that
-#! <A>LeftPower(m, i + p) = LeftPower(m, i)</A>.
+#! <A>LeftPower(m, i + p) = LeftPower(m, i)</A>; computed via transposition
+#! and right-hand index-period on the transposed magma.
 DeclareAttribute("LeftIndexPeriod", IsExtLElement);
 
 #! @Arguments [m]
