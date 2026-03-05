@@ -204,6 +204,42 @@ InstallMethod(RightOrder, "for a right-multiplicable element", [IsExtRElement],
         return infinity;
 end);
 
+InstallMethod(LeftIndexPeriod, "for a left-multiplicable element", [IsExtLElement],
+    function(m)
+        local i, y, index, powers;
+
+        i := 1;
+        y := m;
+        powers := [y];
+
+        repeat
+            i := i + 1;
+            y := m * y;
+            Add(powers, y);
+        until not IsDuplicateFreeList(powers);
+
+        index := Position(powers, powers[i]);
+        return [index, Length(powers) - index];
+end);
+
+InstallMethod(RightIndexPeriod, "for a right-multiplicable element", [IsExtRElement],
+    function(m)
+        local i, y, index, powers;
+
+        i := 1;
+        y := m;
+        powers := [y];
+
+        repeat
+            i := i + 1;
+            y := y * m;
+            Add(powers, y);
+        until not IsDuplicateFreeList(powers);
+
+        index := Position(powers, powers[i]);
+        return [index, Length(powers) - index];
+end);
+
 InstallMethod(LeftOrdersOfElements, "for a magma", [IsMagma],
     function(M)
         return Collected(List(M, m -> LeftOrder(m)));

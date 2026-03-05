@@ -232,6 +232,18 @@ DeclareAttribute("RightOrder", IsExtRElement);
 
 #! @Arguments [m]
 #! @Description
+#! returns the minimum numbers <A>i, p</A> such that
+#! <A>LeftPower(m, i + p) = LeftPower(m, i)</A>.
+DeclareAttribute("LeftIndexPeriod", IsExtLElement);
+
+#! @Arguments [m]
+#! @Description
+#! returns the minimum numbers <A>i, p</A> such that
+#! <A>RightPower(m, i + p) = RightPower(m, i)</A>.
+DeclareAttribute("RightIndexPeriod", IsExtRElement);
+
+#! @Arguments [m]
+#! @Description
 #! returns a left order of element <A>m</A>.
 DeclareAttribute("LeftOrdersOfElements", IsMagma);
 
