@@ -232,13 +232,13 @@ DeclareAttribute("RightOrder", IsExtRElement);
 
 #! @Arguments [m]
 #! @Description
-#! returns the minimum numbers <A>i, p</A> such that
+#! returns a list <A>[i, p]</A> of minimum numbers such that
 #! <A>LeftPower(m, i + p) = LeftPower(m, i)</A>.
 DeclareAttribute("LeftIndexPeriod", IsExtLElement);
 
 #! @Arguments [m]
 #! @Description
-#! returns the minimum numbers <A>i, p</A> such that
+#! returns a list <A>[i, p]</A> of minimum numbers such that
 #! <A>RightPower(m, i + p) = RightPower(m, i)</A>.
 DeclareAttribute("RightIndexPeriod", IsExtRElement);
 
