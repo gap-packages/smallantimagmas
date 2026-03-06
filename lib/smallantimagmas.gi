@@ -1,14 +1,16 @@
 InstallGlobalFunction(NrSmallAntimagmas,
     function(order)
-    return Size(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(order)());
+    return __SmallAntimagmaHelper.getSmallAntimagmaMetadataIndex(order).size;
 end);
 
 InstallGlobalFunction(SmallAntimagma,
     function(order, id)
         return MagmaByMultiplicationTable(
             __SmallAntimagmaHelper.MultiplicationTableDecode(
-                __SmallAntimagmaHelper.getSmallAntimagmaMetadata(
-                    order)()[id], order));
+                __SmallAntimagmaHelper.EliasFanoIndexListGet(
+                    __SmallAntimagmaHelper.getSmallAntimagmaMetadataIndex(
+                        order), id),
+                order));
 end);
 
 InstallGlobalFunction(AllSmallAntimagmas,
@@ -16,16 +18,18 @@ InstallGlobalFunction(AllSmallAntimagmas,
         if IsList(order) and ForAll(order, o -> IsInt(o)) then
             return Flat(
                 List(order, o -> List(
-                    __SmallAntimagmaHelper.getSmallAntimagmaMetadata(
-                        o)(),
+                    __SmallAntimagmaHelper.EliasFanoIndexListDecode(
+                        __SmallAntimagmaHelper
+                            .getSmallAntimagmaMetadataIndex(o)),
                     table -> MagmaByMultiplicationTable(
                         __SmallAntimagmaHelper
                             .MultiplicationTableDecode(
                                 table, o)))));
         elif IsInt(order) then
             return List(
-                __SmallAntimagmaHelper.getSmallAntimagmaMetadata(
-                    order)(),
+                __SmallAntimagmaHelper.EliasFanoIndexListDecode(
+                    __SmallAntimagmaHelper
+                        .getSmallAntimagmaMetadataIndex(order)),
                 table -> MagmaByMultiplicationTable(
                     __SmallAntimagmaHelper
                         .MultiplicationTableDecode(
@@ -47,7 +51,8 @@ end);
 
 InstallGlobalFunction(ReallyNrSmallAntimagmas,
     function(order)
-        return Size(__SmallAntimagmaHelper.getAllSmallAntimagmaMetadata(order)());
+        return __SmallAntimagmaHelper
+            .getAllSmallAntimagmaMetadataIndex(order).size;
 end);
 
 InstallGlobalFunction(ReallyAllSmallAntimagmas,
@@ -55,16 +60,18 @@ InstallGlobalFunction(ReallyAllSmallAntimagmas,
         if IsList(order) and ForAll(order, o -> IsInt(o)) then
             return Flat(
                 List(order, o -> List(
-                    __SmallAntimagmaHelper
-                        .getAllSmallAntimagmaMetadata(o)(),
+                    __SmallAntimagmaHelper.EliasFanoIndexListDecode(
+                        __SmallAntimagmaHelper
+                            .getAllSmallAntimagmaMetadataIndex(o)),
                     table -> MagmaByMultiplicationTable(
                         __SmallAntimagmaHelper
                             .MultiplicationTableDecode(
                                 table, o)))));
         elif IsInt(order) then
             return List(
-                __SmallAntimagmaHelper
-                    .getAllSmallAntimagmaMetadata(order)(),
+                __SmallAntimagmaHelper.EliasFanoIndexListDecode(
+                    __SmallAntimagmaHelper
+                        .getAllSmallAntimagmaMetadataIndex(order)),
                 table -> MagmaByMultiplicationTable(
                     __SmallAntimagmaHelper
                         .MultiplicationTableDecode(

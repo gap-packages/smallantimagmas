@@ -25,6 +25,17 @@ __SmallAntimagmaHelper.checkOrderId := function(order, id)
     __SmallAntimagmaHelper.checkOrder(id);
 end;
 
+__SmallAntimagmaHelper.checkNonnegativeIntegerList := function(values)
+    if not IsList(values) then
+        ErrorNoReturn("smallantimagmas: ", "<values> must be a list");
+    fi;
+
+    if not ForAll(values, value -> IsInt(value) and value >= 0) then
+        ErrorNoReturn("smallantimagmas: ",
+                      "<values> must contain only nonnegative integers");
+    fi;
+end;
+
 __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory := function(order)
     local result;
     __SmallAntimagmaHelper.checkOrder(order);
@@ -207,3 +218,199 @@ __SmallAntimagmaHelper.MultiplicationTableGetEntry :=
     row_id := QuoInt(encoded, powers_nn[r]) mod nn;
     return row_dict[row_id + 1][c];
 end;
+
+__SmallAntimagmaHelper.IntegerLog2Floor := function(n)
+    local result;
+    result := 0;
+
+    while n >= 2 do
+        n := QuoInt(n, 2);
+        result := result + 1;
+    od;
+
+    return result;
+end;
+
+__SmallAntimagmaHelper.EliasFanoIndexOfSet := function(values)
+    local set_values, size, universe, lower_bits_count,
+          lower_base, lower_mask, lower_parts, upper_positions,
+          i, high_part, result;
+
+    __SmallAntimagmaHelper.checkNonnegativeIntegerList(values);
+
+    set_values := Set(values);
+    size := Length(set_values);
+
+    if size = 0 then
+        return rec(
+            size := 0,
+            universe := 0,
+            lowerBitsCount := 0,
+            lowerBase := 1,
+            lowerMask := 0,
+            lowerParts := [],
+            upperPositions := []);
+    fi;
+
+    universe := Maximum(set_values) + 1;
+    if universe <= size then
+        lower_bits_count := 0;
+    else
+        lower_bits_count := __SmallAntimagmaHelper.IntegerLog2Floor(
+            QuoInt(universe, size));
+    fi;
+
+    lower_base := 2 ^ lower_bits_count;
+    lower_mask := lower_base - 1;
+    lower_parts := List(set_values, value -> value mod lower_base);
+    upper_positions := [];
+
+    for i in [1 .. size] do
+        high_part := QuoInt(set_values[i], lower_base);
+        Add(upper_positions, high_part + i);
+    od;
+
+    MakeImmutable(lower_parts);
+    MakeImmutable(upper_positions);
+
+    result := rec(
+        size := size,
+        universe := universe,
+        lowerBitsCount := lower_bits_count,
+        lowerBase := lower_base,
+        lowerMask := lower_mask,
+        lowerParts := lower_parts,
+        upperPositions := upper_positions);
+    MakeImmutable(result);
+    return result;
+end;
+
+__SmallAntimagmaHelper.EliasFanoIndexGet := function(index, position)
+    local high_part;
+
+    if not IsInt(position) or position < 1 or position > index.size then
+        ErrorNoReturn("smallantimagmas: ",
+                      "<position> must be an integer between 1 and index.size");
+    fi;
+
+    high_part := index.upperPositions[position] - position;
+    return high_part * index.lowerBase + index.lowerParts[position];
+end;
+
+__SmallAntimagmaHelper.EliasFanoIndexDecode := function(index)
+    return List([1 .. index.size],
+                position -> __SmallAntimagmaHelper.EliasFanoIndexGet(
+                    index, position));
+end;
+
+__SmallAntimagmaHelper.EliasFanoIndexContains := function(index, value)
+    local left, right, middle, current;
+
+    if not IsInt(value) or value < 0 then
+        return false;
+    fi;
+
+    left := 1;
+    right := index.size;
+
+    while left <= right do
+        middle := QuoInt(left + right, 2);
+        current := __SmallAntimagmaHelper.EliasFanoIndexGet(index, middle);
+
+        if current = value then
+            return true;
+        elif current < value then
+            left := middle + 1;
+        else
+            right := middle - 1;
+        fi;
+    od;
+
+    return false;
+end;
+
+__SmallAntimagmaHelper.EliasFanoIndexOfList := function(values)
+    local sorted_values, positions, result;
+
+    __SmallAntimagmaHelper.checkNonnegativeIntegerList(values);
+    sorted_values := Set(values);
+    positions := List(values,
+                      value -> PositionSorted(sorted_values, value));
+    MakeImmutable(positions);
+
+    result := rec(
+        size := Length(values),
+        index := __SmallAntimagmaHelper.EliasFanoIndexOfSet(sorted_values),
+        positions := positions);
+    MakeImmutable(result);
+    return result;
+end;
+
+__SmallAntimagmaHelper.EliasFanoIndexListGet := function(index, position)
+    if not IsInt(position) or position < 1 or position > index.size then
+        ErrorNoReturn("smallantimagmas: ",
+                      "<position> must be an integer between 1 and index.size");
+    fi;
+
+    return __SmallAntimagmaHelper.EliasFanoIndexGet(index.index,
+                                                    index.positions[position]);
+end;
+
+__SmallAntimagmaHelper.EliasFanoIndexListDecode := function(index)
+    return List([1 .. index.size],
+                position -> __SmallAntimagmaHelper.EliasFanoIndexListGet(
+                    index, position));
+end;
+
+__SmallAntimagmaHelper.IsEliasFanoSetIndex := function(index)
+    return IsRecord(index)
+           and IsBound(index.size)
+           and IsBound(index.universe)
+           and IsBound(index.lowerBitsCount)
+           and IsBound(index.lowerBase)
+           and IsBound(index.lowerMask)
+           and IsBound(index.lowerParts)
+           and IsBound(index.upperPositions);
+end;
+
+__SmallAntimagmaHelper.IsEliasFanoListIndex := function(index)
+    return IsRecord(index)
+           and IsBound(index.size)
+           and IsBound(index.index)
+           and IsBound(index.positions)
+           and __SmallAntimagmaHelper.IsEliasFanoSetIndex(index.index);
+end;
+
+__SmallAntimagmaHelper.MetadataIndexFromData := function(metadata)
+    if __SmallAntimagmaHelper.IsEliasFanoListIndex(metadata) then
+        return metadata;
+    fi;
+
+    return __SmallAntimagmaHelper.EliasFanoIndexOfList(metadata);
+end;
+
+__SmallAntimagmaHelper.getSmallAntimagmaMetadataIndex :=
+    (function()
+        local cache;
+        cache := [];
+        return function(order)
+            if not IsBound(cache[order]) then
+                cache[order] := __SmallAntimagmaHelper.MetadataIndexFromData(
+                    __SmallAntimagmaHelper.getSmallAntimagmaMetadata(order)());
+            fi;
+            return cache[order];
+        end;
+    end)();
+
+__SmallAntimagmaHelper.getAllSmallAntimagmaMetadataIndex :=
+    (function()
+        local cache;
+        cache := [];
+        return function(order)
+            if not IsBound(cache[order]) then
+                cache[order] := __SmallAntimagmaHelper.MetadataIndexFromData(
+                    __SmallAntimagmaHelper.getAllSmallAntimagmaMetadata(order)());
+            fi;
+            return cache[order];
+        end;
+    end)();
