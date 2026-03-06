@@ -31,28 +31,40 @@ gap> __SmallAntimagmaHelper.PowersOfNNWithCache(5);
 [ 1, 3125, 9765625, 30517578125, 95367431640625 ]
 
 # ====================================================================
-# RowDictWithCache: verify dictionary sizes
+# RowFromId: verify row ID 0 yields the all-ones row
 # ====================================================================
-gap> Length(__SmallAntimagmaHelper.RowDictWithCache(2));
-4
-
-gap> Length(__SmallAntimagmaHelper.RowDictWithCache(3));
-27
-
-gap> Length(__SmallAntimagmaHelper.RowDictWithCache(4));
-256
-
-# ====================================================================
-# RowDictWithCache: verify specific entries (row ID 0 -> all ones)
-# ====================================================================
-gap> __SmallAntimagmaHelper.RowDictWithCache(2)[1];
+gap> __SmallAntimagmaHelper.RowFromId(0, 2);
 [ 1, 1 ]
 
-gap> __SmallAntimagmaHelper.RowDictWithCache(3)[1];
+gap> __SmallAntimagmaHelper.RowFromId(0, 3);
 [ 1, 1, 1 ]
 
-gap> __SmallAntimagmaHelper.RowDictWithCache(4)[1];
+gap> __SmallAntimagmaHelper.RowFromId(0, 4);
 [ 1, 1, 1, 1 ]
+
+# ====================================================================
+# RowFromId: verify maximum row ID (n^n - 1) yields all-n row
+# ====================================================================
+gap> __SmallAntimagmaHelper.RowFromId(3, 2);
+[ 2, 2 ]
+
+gap> __SmallAntimagmaHelper.RowFromId(26, 3);
+[ 3, 3, 3 ]
+
+gap> __SmallAntimagmaHelper.RowFromId(255, 4);
+[ 4, 4, 4, 4 ]
+
+# ====================================================================
+# RowFromId: verify specific intermediate row entries
+# ====================================================================
+gap> __SmallAntimagmaHelper.RowFromId(1, 2);
+[ 2, 1 ]
+
+gap> __SmallAntimagmaHelper.RowFromId(2, 2);
+[ 1, 2 ]
+
+gap> __SmallAntimagmaHelper.RowFromId(5, 3);
+[ 3, 2, 1 ]
 
 # ====================================================================
 # MultiplicationTableEncode: encode known tables

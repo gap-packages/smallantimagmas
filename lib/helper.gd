@@ -143,27 +143,18 @@ __SmallAntimagmaHelper.PowersOfNNWithCache :=
     end)();
 
 # ====================================================================
-# Row dictionary cache: all n^n possible rows for order n
-# GAP arrays are 1-indexed, so row ID 0 is stored at index 1.
+# Compute a single row from its row ID (0-indexed) for order n.
+# row_id encodes the row in base n: the entry in column c (1-indexed)
+# is (QuoInt(row_id, n^(c-1)) mod n) + 1.  Valid row IDs range from
+# 0 (all-ones row) to n^n - 1 (all-n row).
+# Avoids materialising all n^n rows at once.
 # ====================================================================
-__SmallAntimagmaHelper.RowDictWithCache :=
-    (function()
-        local cache;
-        cache := [];
-        return function(n)
-            local nn, powers_n;
-            if not IsBound(cache[n]) then
-                nn := n ^ n;
-                powers_n :=
-                    __SmallAntimagmaHelper.PowersOfNWithCache(n);
-                cache[n] := List([0 .. nn - 1], i ->
-                    List([1 .. n],
-                         c -> (QuoInt(i, powers_n[c]) mod n) + 1));
-                MakeImmutable(cache[n]);
-            fi;
-            return cache[n];
-        end;
-    end)();
+__SmallAntimagmaHelper.RowFromId :=
+    function(row_id, n)
+    local powers_n;
+    powers_n := __SmallAntimagmaHelper.PowersOfNWithCache(n);
+    return List([1 .. n], c -> (QuoInt(row_id, powers_n[c]) mod n) + 1);
+end;
 
 # ====================================================================
 # Encode a multiplication table (list of lists, entries 1..n) to a
@@ -194,14 +185,13 @@ end;
 # ====================================================================
 __SmallAntimagmaHelper.MultiplicationTableDecode :=
     function(encoded, n)
-    local powers_nn, nn, row_dict;
+    local powers_nn, nn;
     powers_nn := __SmallAntimagmaHelper.PowersOfNNWithCache(n);
     nn := n ^ n;
-    row_dict := __SmallAntimagmaHelper.RowDictWithCache(n);
     return List([1 .. n], function(r)
         local row_id;
         row_id := QuoInt(encoded, powers_nn[r]) mod nn;
-        return row_dict[row_id + 1];
+        return __SmallAntimagmaHelper.RowFromId(row_id, n);
     end);
 end;
 
@@ -211,12 +201,12 @@ end;
 # ====================================================================
 __SmallAntimagmaHelper.MultiplicationTableGetEntry :=
     function(encoded, n, r, c)
-    local row_id, powers_nn, nn, row_dict;
+    local row_id, powers_nn, nn, powers_n;
     powers_nn := __SmallAntimagmaHelper.PowersOfNNWithCache(n);
+    powers_n := __SmallAntimagmaHelper.PowersOfNWithCache(n);
     nn := n ^ n;
-    row_dict := __SmallAntimagmaHelper.RowDictWithCache(n);
     row_id := QuoInt(encoded, powers_nn[r]) mod nn;
-    return row_dict[row_id + 1][c];
+    return (QuoInt(row_id, powers_n[c]) mod n) + 1;
 end;
 
 __SmallAntimagmaHelper.IntegerLog2Floor := function(n)
