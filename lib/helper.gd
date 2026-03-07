@@ -47,7 +47,7 @@ __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory := function(order)
     fi;
     if Size(result) > 1 then
         ErrorNoReturn("smallantimagmas:",
-                       "metadata directory must not be ambigous");
+                       "metadata directory must not be ambiguous");
     fi;
     return First(result);
 end;
@@ -70,7 +70,7 @@ __SmallAntimagmaHelper.getAllSmallAntimagmaMetadataDirectory :=
     fi;
     if Size(result) > 1 then
         ErrorNoReturn("smallantimagmas:",
-                       "metadata directory must not be ambigous");
+                       "metadata directory must not be ambiguous");
     fi;
     return First(result);
 end;
