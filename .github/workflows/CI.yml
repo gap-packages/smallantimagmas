@@ -46,7 +46,7 @@ jobs:
           gap -c 'LoadPackage("PackageManager"); InstallPackage("digraphs"); QUIT;'
 
       - name: Build gap-package
-        uses: gap-actions/build-pkg@v2
+        uses: gap-actions/build-pkg@v3
 
       - name: Provision documentation for package
         uses: gap-actions/build-pkg-docs@v2
