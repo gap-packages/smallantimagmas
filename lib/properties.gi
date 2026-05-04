@@ -286,3 +286,21 @@ InstallMethod(DigraphOfDiagonal, "for a magma", [IsMagma],
     function(M)
         return DigraphByEdges(List([1 .. Size(M)], m -> [m, DiagonalOfMultiplicationTable(M)[m]]));
 end);
+
+InstallMethod(MinimalGeneratingSet, "for a magma", [IsMagma],
+    function(M)
+        local gens, subset, len;
+        
+        # Get the generators of the magma
+        gens := GeneratorsOfMagma(M);
+        
+        # Try subsets of generators of increasing size
+        for len in [1 .. Length(gens)] do
+            # Try all subsets of size len
+            for subset in Combinations(gens, len) do
+                if Size(Submagma(M, subset)) = Size(M) then
+                    return subset;
+                fi;
+            od;
+        od;
+end);

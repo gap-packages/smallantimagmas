@@ -404,3 +404,17 @@ DeclareProperty("IsRightAlternative", IsMagma);
 #! @EndExampleSession
 #!
 DeclareAttribute("DigraphOfDiagonal", IsMagma);
+
+#! @Arguments M
+#! @Description
+#! returns the minimal generating set for the magma <A>M</A>.
+#! A minimal generating set is the smallest subset of GeneratorsOfMagma(M) such that M equals the closure of that subset.
+#!
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(2, 1);
+#! <magma with 2 generators>
+#! gap> MinimalGeneratingSet(M);
+#! [ m1 ]
+#! @EndExampleSession
+#!
+DeclareAttribute("MinimalGeneratingSet", IsMagma);
