@@ -286,3 +286,23 @@ InstallMethod(DigraphOfDiagonal, "for a magma", [IsMagma],
     function(M)
         return DigraphByEdges(List([1 .. Size(M)], m -> [m, DiagonalOfMultiplicationTable(M)[m]]));
 end);
+
+InstallMethod(GeneratingSet, "for a magma", [IsMagma],
+    function(M)
+        return GeneratorsOfMagma(M);
+end);
+
+InstallOtherMethod(MinimalGeneratingSet, "for a magma", [IsMagma],
+    function(M)
+        local elms, n, k, c;
+        elms := Elements(M);
+        n := Size(elms);
+        for k in [1 .. n] do
+            for c in Combinations(elms, k) do
+                if Size(Submagma(M, c)) = n then
+                    return c;
+                fi;
+            od;
+        od;
+        return elms;
+end);
