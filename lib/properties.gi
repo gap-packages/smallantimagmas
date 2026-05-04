@@ -261,11 +261,13 @@ end);
 
 InstallMethod(IsLeftDerangementInducted, "for a magma", [IsMagma],
     function(M)
+        local elms;
+        elms := Elements(M);
         return ForAny([1 .. Size(M)], k ->
-            ForAny(PartitionsSet(Elements(M), k), p ->
+            ForAny(PartitionsSet(elms, k), p ->
                 ForAny(Derangements(p), d ->
                     ForAll([1 .. Size(p)], i ->
-                        ForAll(p[i], m -> IsSubset(d[i], Unique(m * Elements(M))))))));
+                        ForAll(p[i], m -> IsSubset(d[i], Unique(m * elms)))))));
 end);
 
 InstallMethod(IsRightDerangementInducted, "for a magma", [IsMagma],
