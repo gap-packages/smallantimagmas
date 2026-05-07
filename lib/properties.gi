@@ -204,6 +204,40 @@ InstallMethod(RightOrder, "for a right-multiplicable element", [IsExtRElement],
         return infinity;
 end);
 
+InstallMethod(LeftIndexPeriod, "for a left-multiplicable element", [IsExtLElement],
+    function(m)
+        local M, MT, pos;
+        M := Parent(m);
+        MT := TransposedMagma(M);
+        pos := Position(Elements(M), m);
+        if pos = fail then
+            Error("LeftIndexPeriod: element ", m, " not found in parent magma");
+        fi;
+        return RightIndexPeriod(Elements(MT)[pos]);
+end);
+
+InstallMethod(RightIndexPeriod, "for a right-multiplicable element", [IsExtRElement],
+    function(m)
+        local index, maxExponent, n, powerExponent, powers, y;
+        n := Size(Parent(m));
+        if n = 1 then
+            return [1, 1];
+        fi;
+        maxExponent := n ^ 2;
+        y := m;
+        powers := [];
+
+        for powerExponent in [1 .. maxExponent] do
+            index := Position(powers, y);
+            if index <> fail then
+                return [index, powerExponent - index];
+            fi;
+            Add(powers, y);
+            y := y * m;
+        od;
+        Error("RightIndexPeriod: no index-period found up to n^2 for element ", m, " in magma of size ", n);
+end);
+
 InstallMethod(LeftOrdersOfElements, "for a magma", [IsMagma],
     function(M)
         return Collected(List(M, m -> LeftOrder(m)));
