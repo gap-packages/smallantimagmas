@@ -16,11 +16,11 @@ permissions:
 
 jobs:
   update_release_draft:
-    name: Release draft - update release notes
+    name: Release - draft
     permissions:
       contents: write
       pull-requests: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: release-drafter/release-drafter@v6
         env:

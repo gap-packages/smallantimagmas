@@ -18,8 +18,8 @@ permissions: write-all
 
 jobs:
   release:
-    name: "Release the GAP package"
-    runs-on: ubuntu-latest
+    name: Release
+    runs-on: ubuntu-slim
 
     steps:
       - uses: actions/checkout@v6
