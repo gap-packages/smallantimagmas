@@ -404,3 +404,34 @@ DeclareProperty("IsRightAlternative", IsMagma);
 #! @EndExampleSession
 #!
 DeclareAttribute("DigraphOfDiagonal", IsMagma);
+
+#! @Arguments M
+#! @Description
+#! returns a generating set of magma <A>M</A>, i.e. a subset
+#! $S \subseteq M$ such that $M = \langle S \rangle$.
+#!
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(2, 1);
+#! <magma with 2 generators>
+#! gap> Size(Submagma(M, GeneratingSet(M))) = Size(M);
+#! true
+#! @EndExampleSession
+#!
+DeclareAttribute("GeneratingSet", IsMagma);
+
+#! @Arguments M
+#! @Description
+#! returns a minimal generating set of magma <A>M</A>, i.e. a subset
+#! $S \subseteq M$ of smallest cardinality such that $M = \langle S \rangle$.
+#!
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(2, 1);
+#! <magma with 2 generators>
+#! gap> S := MinimalGeneratingSet(M);;
+#! gap> Size(Submagma(M, S)) = Size(M);
+#! true
+#! gap> ForAll(AllSmallAntimagmas(2), M -> Size(Submagma(M, MinimalGeneratingSet(M))) = Size(M));
+#! true
+#! gap> ForAll(AllSmallAntimagmas(3), M -> Size(Submagma(M, MinimalGeneratingSet(M))) = Size(M));
+#! true
+#! @EndExampleSession
