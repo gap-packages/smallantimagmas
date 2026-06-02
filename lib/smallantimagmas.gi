@@ -1,6 +1,6 @@
 InstallGlobalFunction(NrSmallAntimagmas,
     function(order)
-    return Size(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(order)());
+    return __SmallAntimagmaHelper.getSmallAntimagmaMetadataIndex(order).size;
 end);
 
 InstallGlobalFunction(SmallAntimagma,
@@ -16,19 +16,34 @@ InstallGlobalFunction(SmallAntimagma,
             Error("SmallAntimagma: expected (n, i) or [n, i]");
         fi;
         return MagmaByMultiplicationTable(
-            __SmallAntimagmaHelper.MultiplicationTableReverse(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(order)()[id]));
+            __SmallAntimagmaHelper.MultiplicationTableDecode(
+                __SmallAntimagmaHelper.EliasFanoIndexListGet(
+                    __SmallAntimagmaHelper.getSmallAntimagmaMetadataIndex(
+                        order), id),
+                order));
 end);
 
 InstallGlobalFunction(AllSmallAntimagmas,
     function(order)
         if IsList(order) and ForAll(order, o -> IsInt(o)) then
             return Flat(
-                List(order, o -> List(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(o)(),
-                                    table -> MagmaByMultiplicationTable(
-                                        __SmallAntimagmaHelper.MultiplicationTableReverse(table)))));
+                List(order, o -> List(
+                    __SmallAntimagmaHelper.EliasFanoIndexListDecode(
+                        __SmallAntimagmaHelper
+                            .getSmallAntimagmaMetadataIndex(o)),
+                    table -> MagmaByMultiplicationTable(
+                        __SmallAntimagmaHelper
+                            .MultiplicationTableDecode(
+                                table, o)))));
         elif IsInt(order) then
-            return List(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(order)(), table -> MagmaByMultiplicationTable(
-                                        __SmallAntimagmaHelper.MultiplicationTableReverse(table)));
+            return List(
+                __SmallAntimagmaHelper.EliasFanoIndexListDecode(
+                    __SmallAntimagmaHelper
+                        .getSmallAntimagmaMetadataIndex(order)),
+                table -> MagmaByMultiplicationTable(
+                    __SmallAntimagmaHelper
+                        .MultiplicationTableDecode(
+                            table, order)));
         fi;
 end);
 
@@ -46,19 +61,30 @@ end);
 
 InstallGlobalFunction(ReallyNrSmallAntimagmas,
     function(order)
-        return Size(__SmallAntimagmaHelper.getAllSmallAntimagmaMetadata(order)());
+        return __SmallAntimagmaHelper
+            .getAllSmallAntimagmaMetadataIndex(order).size;
 end);
 
 InstallGlobalFunction(ReallyAllSmallAntimagmas,
     function(order)
         if IsList(order) and ForAll(order, o -> IsInt(o)) then
             return Flat(
-                List(order, o -> List(__SmallAntimagmaHelper.getAllSmallAntimagmaMetadata(o)(),
-                                    table -> MagmaByMultiplicationTable(
-                                        __SmallAntimagmaHelper.MultiplicationTableReverse(table)))));
+                List(order, o -> List(
+                    __SmallAntimagmaHelper.EliasFanoIndexListDecode(
+                        __SmallAntimagmaHelper
+                            .getAllSmallAntimagmaMetadataIndex(o)),
+                    table -> MagmaByMultiplicationTable(
+                        __SmallAntimagmaHelper
+                            .MultiplicationTableDecode(
+                                table, o)))));
         elif IsInt(order) then
-            return List(__SmallAntimagmaHelper.getAllSmallAntimagmaMetadata(order)(),
-                                    table -> MagmaByMultiplicationTable(
-                                        __SmallAntimagmaHelper.MultiplicationTableReverse(table)));
+            return List(
+                __SmallAntimagmaHelper.EliasFanoIndexListDecode(
+                    __SmallAntimagmaHelper
+                        .getAllSmallAntimagmaMetadataIndex(order)),
+                table -> MagmaByMultiplicationTable(
+                    __SmallAntimagmaHelper
+                        .MultiplicationTableDecode(
+                            table, order)));
         fi;
 end);
