@@ -20,16 +20,16 @@ jobs:
       contents: write
     steps:
       - name: git -- checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           ref: ${{ github.ref_name }}
 
-      - uses: gap-actions/setup-gap@v3
+      - uses: gap-actions/setup-gap@2a5e919b2684ba9f268f14bf8f567e4f2c4020a8 # v3
         with:
           gap-version: ${{ env.gap-branch }}
 
       - name: gap -- build docs
-        uses: gap-actions/build-pkg-docs@v2
+        uses: gap-actions/build-pkg-docs@ee3f0345faaa15e9c0173f8f2aec61e65483168f # v2
         with:
           use-latex: 'true'
 
@@ -57,7 +57,7 @@ jobs:
           tar -czf ${{ env.archive-file }} --exclude=${{ env.archive-file }} --transform 's,^\.,${{ env.revision }},' .
 
       - name: github -- upload artifacts
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2
         with:
           files: |
             ${{ env.archive-file }}
@@ -70,18 +70,18 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: gap-actions/setup-gap@v3
+      - uses: gap-actions/setup-gap@2a5e919b2684ba9f268f14bf8f567e4f2c4020a8 # v3
         with:
           gap-version: ${{ env.gap-branch }}
 
       - name: git -- checkout page
-        uses: actions/checkout@v7
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           path: gh-pages
           ref: gh-pages
 
       - name: website -- download asset to be deployed
-        uses: robinraju/release-downloader@v1
+        uses: robinraju/release-downloader@28fc21f50d76778e7023361aa1f863e717d3d56f # v1
         with:
           tag: ${{ github.ref_name }}
           fileName: ${{ env.archive-file }}
@@ -104,7 +104,7 @@ jobs:
           gap update.g
 
       - name: git -- commit the update
-        uses: stefanzweifel/git-auto-commit-action@v7
+        uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         with:
           commit_message: '[${{ github.ref_name }}] - website update'
           repository: gh-pages
