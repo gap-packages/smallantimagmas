@@ -33,10 +33,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
 
       - name: Setup gap-system
-        uses: gap-actions/setup-gap@v3
+        uses: gap-actions/setup-gap@2a5e919b2684ba9f268f14bf8f567e4f2c4020a8 # v3
         with:
           gap-version: ${{ matrix.gap-branch }}
 
@@ -46,39 +46,39 @@ jobs:
           gap -c 'LoadPackage("PackageManager"); InstallPackage("digraphs"); QUIT;'
 
       - name: Build gap-package
-        uses: gap-actions/build-pkg@v3
+        uses: gap-actions/build-pkg@ea5a215744d2952bc0528321c4ec14b3c4946b5d # v3
 
       - name: Provision documentation for package
-        uses: gap-actions/build-pkg-docs@v2
+        uses: gap-actions/build-pkg-docs@ee3f0345faaa15e9c0173f8f2aec61e65483168f # v2
         with:
           use-latex: 'true'
 
       - name: Run gap-tests
-        uses: gap-actions/run-pkg-tests@v4
+        uses: gap-actions/run-pkg-tests@142daa59ba8d2b2893339e40935ab394a2bda1e3 # v4
 
       - name: Run gap-tests (only-needed)
-        uses: gap-actions/run-pkg-tests@v4
+        uses: gap-actions/run-pkg-tests@142daa59ba8d2b2893339e40935ab394a2bda1e3 # v4
         with:
           only-needed: true
 
       - name: Show code-coverage
-        uses: gap-actions/process-coverage@v3
+        uses: gap-actions/process-coverage@500e7ca58e508de2b0dce5d1738f5fd0980bed0a # v3
 
   gaplint:
     name: Code quality - gaplint
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
 
       - name: Setup python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
         with:
           python-version: 3.13
           cache: pip
 
       - name: Install python-dependencies
-        uses: py-actions/py-dependency-install@v4
+        uses: py-actions/py-dependency-install@30aa0023464ed4b5b116bd9fbdab87acf01a484e # v4
         with:
           update-pip: true
 
