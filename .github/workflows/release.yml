@@ -26,7 +26,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
-      - uses: gap-actions/setup-gap@2a5e919b2684ba9f268f14bf8f567e4f2c4020a8 # v3
+      - uses: gap-actions/setup-gap@56db7f90d3f9cd5dbe13f86ea29bb1c8424521e5 # v3
         with:
           gap-version: 'devel'
       - uses: gap-actions/build-pkg-docs@ee3f0345faaa15e9c0173f8f2aec61e65483168f # v2
