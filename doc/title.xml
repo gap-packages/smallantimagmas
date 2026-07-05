@@ -9,10 +9,10 @@
     A library of antiassociative magmas of small order
   </Subtitle>
   <Version>
-    0.5.1
+    0.6.0
   </Version>
   <Author>
-    Kamil Zabielski<Alt Only="LaTeX"><Br/></Alt>
+    Kamil Zabielski
 <Address>
 Department of Theoretical Computer Science<Br/>
 Białystok University of Technology<Br/>
@@ -20,10 +20,9 @@ Wiejska 45A<Br/>
 15-325 Białystok<Br/>
 Poland<Br/>
 </Address>
-
   </Author>
   <Author>
-    Ryszard Mazurek<Alt Only="LaTeX"><Br/></Alt>
+    Ryszard Mazurek
 <Address>
 Department of Theoretical Computer Science<Br/>
 Białystok University of Technology<Br/>
@@ -31,10 +30,9 @@ Wiejska 45A<Br/>
 15-325 Białystok<Br/>
 Poland<Br/>
 </Address>
-
   </Author>
   <Date>
-    26 September 2025
+    5 July 2026
   </Date>
   <Copyright>
           <Index>License</Index>

@@ -8,6 +8,7 @@
   [2XAssociativityIndex[102X, for IsMagma 1.2-1 
   [2XCommutativityIndex[102X, for IsMagma 1.2-3 
   [2XDiagonalOfMultiplicationTable[102X, for IsMagma 1.2-2 
+  [2XDigraphOfDiagonal[102X, for IsMagma 1.2-11 
   [2XIdSmallAntimagma[102X, for IsMagma 1.2-6 
   [2XIsAntiassociative[102X, for IsMagma 1.1-1 
   [2XIsCancellative[102X, for IsMagma 1.1-8 

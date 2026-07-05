@@ -90,30 +90,27 @@
 \begin{titlepage}
 \mbox{}\vfill
 
-\begin{center}{\maintitlesize \textbf{ smallantimagmas \mbox{}}}\\
+\begin{center}{\maintitlesize \textbf{ smallantimagmas \\
+\mbox{}}}\\
 \vfill
 
-\hypersetup{pdftitle= smallantimagmas }
+\hypersetup{pdftitle={ smallantimagmas }}
 \markright{\scriptsize \mbox{}\hfill  smallantimagmas  \hfill\mbox{}}
-{\Huge \textbf{ A library of antiassociative magmas of small order \mbox{}}}\\
+{\Huge \textbf{ A library of antiassociative magmas of small order \\
+\mbox{}}}\\
 \vfill
 
-{\Huge  0.5.1 \mbox{}}\\[1cm]
-{ 26 September 2025 \mbox{}}\\[1cm]
+{\Huge  0.6.0 \mbox{}}\\[1cm]
+{ 5 July 2026 \mbox{}}\\[1cm]
 \mbox{}\\[2cm]
-{\Large \textbf{ Kamil Zabielski\\
-  \mbox{}}}\\
-{\Large \textbf{ Ryszard Mazurek\\
-  \mbox{}}}\\
-\hypersetup{pdfauthor= Kamil Zabielski\\
-  ;  Ryszard Mazurek\\
-  }
+{\Large \textbf{\strut  Kamil Zabielski   \strut\mbox{}}}\\
+{\Large \textbf{\strut  Ryszard Mazurek   \strut\mbox{}}}\\
+\hypersetup{pdfauthor={ Kamil Zabielski  ;  Ryszard Mazurek  }}
 \end{center}\vfill
 
 \mbox{}\\
 {\mbox{}\\
-\small \noindent \textbf{ Kamil Zabielski\\
-  }\\
+\small \noindent \textbf{ Kamil Zabielski  }\\
   Address: \begin{minipage}[t]{8cm}\noindent
  Department of Theoretical Computer Science\\
  Bia{\l}ystok University of Technology\\
@@ -123,8 +120,7 @@
  \end{minipage}
 }\\
 {\mbox{}\\
-\small \noindent \textbf{ Ryszard Mazurek\\
-  }\\
+\small \noindent \textbf{ Ryszard Mazurek  }\\
   Address: \begin{minipage}[t]{8cm}\noindent
  Department of Theoretical Computer Science\\
  Bia{\l}ystok University of Technology\\
@@ -241,7 +237,7 @@ contributions to this package and its documentation provided by \textsf{GAP} use
 
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(3), M -> IsLeftDistributive(M) );|
+  !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(3), M -> IsLeftDistributive(M));|
   [ true, false, false, false, false, false, false, false, false, true ]
 \end{Verbatim}
  
@@ -265,7 +261,7 @@ contributions to this package and its documentation provided by \textsf{GAP} use
 
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(3), M -> IsRightDistributive(M) );|
+  !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(3), M -> IsRightDistributive(M));|
   [ false, false, false, false, true, false, false, false, true, false ]
 \end{Verbatim}
  
@@ -291,7 +287,7 @@ contributions to this package and its documentation provided by \textsf{GAP} use
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@M := SmallAntimagma(2, 1);|
   <magma with 2 generators>
-  !gapprompt@gap>| !gapinput@Display( MultiplicationTable(M) );|
+  !gapprompt@gap>| !gapinput@Display(MultiplicationTable(M));|
   [ [  2,  1 ],
     [  2,  1 ] ]
   !gapprompt@gap>| !gapinput@IsRightCancellative(M);|
@@ -371,10 +367,10 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
 
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@Display( MultiplicationTable( SmallAntimagma(2, 2) ) );|
+  !gapprompt@gap>| !gapinput@Display(MultiplicationTable(SmallAntimagma(2, 2)));|
   [ [  2,  2 ],
     [  1,  1 ] ]
-  !gapprompt@gap>| !gapinput@IsLeftFPFInducted( SmallAntimagma(2, 2) ); |
+  !gapprompt@gap>| !gapinput@IsLeftFPFInducted(SmallAntimagma(2, 2));|
   true
 \end{Verbatim}
  
@@ -399,10 +395,10 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
 
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@Display( MultiplicationTable( SmallAntimagma(2, 1) ) );|
+  !gapprompt@gap>| !gapinput@Display(MultiplicationTable(SmallAntimagma(2, 1)));|
   [ [  2,  1 ],
     [  2,  1 ] ]
-  !gapprompt@gap>| !gapinput@IsRightFPFInducted( SmallAntimagma(2, 1) );            |
+  !gapprompt@gap>| !gapinput@IsRightFPFInducted(SmallAntimagma(2, 1));|
   true
 \end{Verbatim}
  
@@ -559,7 +555,7 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
 }\hfill{\scriptsize (attribute)}}\\
 
 
- computes diaognal of multiplication table of \mbox{\texttt{\mdseries\slshape M}}. 
+ computes diagonal of multiplication table of \mbox{\texttt{\mdseries\slshape M}}. 
 
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
@@ -628,11 +624,11 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
 
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(2), M -> List(M, m -> m * m) );                |
+  !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(2), M -> List(M, m -> m * m));                |
   [ [ m2, m1 ], [ m2, m1 ] ]
-  !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(2), M -> SquaresIndex(M ));|
+  !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(2), M -> SquaresIndex(M));|
   [ 2, 2 ]
-  !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(3), M -> SquaresIndex(M ));|
+  !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(3), M -> SquaresIndex(M));|
   [ 2, 2, 2, 2, 2, 2, 2, 2, 3, 3 ]
 \end{Verbatim}
  
@@ -712,6 +708,25 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
 
  returns a left order of element \mbox{\texttt{\mdseries\slshape m}}. }
 
+ 
+
+\subsection{\textcolor{Chapter }{DigraphOfDiagonal (for IsMagma)}}
+\logpage{[ 1, 2, 11 ]}\nobreak
+\hyperdef{L}{X839A47BE7E7939C5}{}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{DigraphOfDiagonal({\mdseries\slshape M})\index{DigraphOfDiagonal@\texttt{DigraphOfDiagonal}!for IsMagma}
+\label{DigraphOfDiagonal:for IsMagma}
+}\hfill{\scriptsize (attribute)}}\\
+
+
+ builds a digraph from the diagonal of \mbox{\texttt{\mdseries\slshape M}}. 
+
+ 
+\begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
+\end{Verbatim}
+ 
+
+ }
+
  }
 
  
@@ -772,7 +787,7 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
   <magma with 2 generators>
   !gapprompt@gap>| !gapinput@N := SmallAntimagma(2, 2);|
   <magma with 2 generators>
-  !gapprompt@gap>| !gapinput@T := MagmaByMultiplicationTable([ [2, 1], [2, 1] ]);|
+  !gapprompt@gap>| !gapinput@T := MagmaByMultiplicationTable([[2, 1], [2, 1]]);|
   <magma with 2 generators>
   !gapprompt@gap>| !gapinput@IsMagmaIsomorphic(M, M);|
   true
@@ -931,7 +946,7 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
 \subsection{\textcolor{Chapter }{SmallAntimagma}}
 \logpage{[ 1, 3, 10 ]}\nobreak
 \hyperdef{L}{X7903CEEA79DEBA73}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SmallAntimagma({\mdseries\slshape n, i})\index{SmallAntimagma@\texttt{SmallAntimagma}}
+{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{SmallAntimagma({\mdseries\slshape [n, i]})\index{SmallAntimagma@\texttt{SmallAntimagma}}
 \label{SmallAntimagma}
 }\hfill{\scriptsize (function)}}\\
 
@@ -943,6 +958,8 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
   !gapprompt@gap>| !gapinput@SmallAntimagma(2, 1);|
   <magma with 2 generators>
   !gapprompt@gap>| !gapinput@SmallAntimagma(4, 5);|
+  <magma with 4 generators>
+  !gapprompt@gap>| !gapinput@SmallAntimagma([4, 5]);|
   <magma with 4 generators>
 \end{Verbatim}
  
@@ -1039,7 +1056,7 @@ specified size \mbox{\texttt{\mdseries\slshape n}} (a number)
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@M := SmallAntimagma(2, 1);|
   <magma with 2 generators>
-  !gapprompt@gap>| !gapinput@N := MagmaByMultiplicationTable([ [2, 1], [2, 1] ]);|
+  !gapprompt@gap>| !gapinput@N := MagmaByMultiplicationTable([[2, 1], [2, 1]]);|
   <magma with 2 generators>
   !gapprompt@gap>| !gapinput@MagmaIsomorphism(M, N);|
   <general mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >

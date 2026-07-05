@@ -23,11 +23,9 @@ gap> IsAntiassociative(OneSmallAntimagma(3));
 true
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Prop Arg="M" Name="IsLeftCyclic" Label="for IsMagma"/>
@@ -38,7 +36,6 @@ true
  </Description>
 </ManSection>
 
-
 <ManSection>
   <Prop Arg="M" Name="IsRightCyclic" Label="for IsMagma"/>
  <Returns><K>true</K> or <K>false</K>
@@ -48,7 +45,6 @@ true
  </Description>
 </ManSection>
 
-
 <ManSection>
   <Prop Arg="M" Name="IsLeftDistributive" Label="for IsMagma"/>
  <Returns><K>true</K> or <K>false</K>
@@ -57,15 +53,13 @@ true
   if magma is left distributive <A>m</A>.
 <P/>
 <Example><![CDATA[
-gap> List(AllSmallAntimagmas(3), M -> IsLeftDistributive(M) );
+gap> List(AllSmallAntimagmas(3), M -> IsLeftDistributive(M));
 [ true, false, false, false, false, false, false, false, false, true ]
 ]]></Example>
-
 
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Prop Arg="M" Name="IsRightDistributive" Label="for IsMagma"/>
@@ -75,15 +69,13 @@ gap> List(AllSmallAntimagmas(3), M -> IsLeftDistributive(M) );
   if magma is right distributive <A>m</A>.
 <P/>
 <Example><![CDATA[
-gap> List(AllSmallAntimagmas(3), M -> IsRightDistributive(M) );
+gap> List(AllSmallAntimagmas(3), M -> IsRightDistributive(M));
 [ false, false, false, false, true, false, false, false, true, false ]
 ]]></Example>
-
 
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Prop Arg="M" Name="IsLeftCancellative" Label="for IsMagma"/>
@@ -95,7 +87,7 @@ gap> List(AllSmallAntimagmas(3), M -> IsRightDistributive(M) );
 <Example><![CDATA[
 gap> M := SmallAntimagma(2, 1);
 <magma with 2 generators>
-gap> Display( MultiplicationTable(M) );
+gap> Display(MultiplicationTable(M));
 [ [  2,  1 ],
   [  2,  1 ] ]
 gap> IsRightCancellative(M);
@@ -106,11 +98,9 @@ gap> List(AllSmallAntimagmas(2), M -> IsLeftCancellative(M));
 [ true, false ]
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Prop Arg="M" Name="IsRightCancellative" Label="for IsMagma"/>
@@ -124,11 +114,9 @@ gap> List(AllSmallAntimagmas(2), M -> IsRightCancellative(M));
 [ false, true ]
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Prop Arg="M" Name="IsCancellative" Label="for IsMagma"/>
@@ -142,11 +130,9 @@ gap> List(AllSmallAntimagmas(2), M -> IsCancellative(M));
 [ false, false ]
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Prop Arg="M" Name="IsLeftFPFInducted" Label="for IsMagma"/>
@@ -156,18 +142,16 @@ gap> List(AllSmallAntimagmas(2), M -> IsCancellative(M));
  is a left-hand sided fixed-point free inducted <A>m</A>.
 <P/>
 <Example><![CDATA[
-gap> Display( MultiplicationTable( SmallAntimagma(2, 2) ) );
+gap> Display(MultiplicationTable(SmallAntimagma(2, 2)));
 [ [  2,  2 ],
   [  1,  1 ] ]
-gap> IsLeftFPFInducted( SmallAntimagma(2, 2) ); 
+gap> IsLeftFPFInducted(SmallAntimagma(2, 2));
 true
 ]]></Example>
-
 
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Prop Arg="M" Name="IsRightFPFInducted" Label="for IsMagma"/>
@@ -177,18 +161,16 @@ true
  is a right-hand sided fixed-point free inducted <A>m</A>.
 <P/>
 <Example><![CDATA[
-gap> Display( MultiplicationTable( SmallAntimagma(2, 1) ) );
+gap> Display(MultiplicationTable(SmallAntimagma(2, 1)));
 [ [  2,  1 ],
   [  2,  1 ] ]
-gap> IsRightFPFInducted( SmallAntimagma(2, 1) );            
+gap> IsRightFPFInducted(SmallAntimagma(2, 1));
 true
 ]]></Example>
-
 
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Prop Arg="M" Name="IsLeftDerangementInducted" Label="for IsMagma"/>
@@ -208,11 +190,9 @@ gap> IsRightDerangementInducted(M);
 false
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Prop Arg="M" Name="IsRightDerangementInducted" Label="for IsMagma"/>
@@ -232,11 +212,9 @@ gap> IsRightDerangementInducted(M);
 true
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Prop Arg="M" Name="IsLeftAlternative" Label="for IsMagma"/>
@@ -248,11 +226,9 @@ true
 <Example><![CDATA[
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Prop Arg="M" Name="IsRightAlternative" Label="for IsMagma"/>
@@ -264,14 +240,11 @@ true
 <Example><![CDATA[
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
 
-
 </Section>
-
 
 <Section Label="Chapter_smallantimagmas_automatic_generated_documentation_Section_smallantimagmas_automatic_generated_documentation_of_attributes">
 <Heading>smallantimagmas automatic generated documentation of attributes</Heading>
@@ -294,16 +267,14 @@ gap> AssociativityIndex(OneSmallGroup(4)) = 4 ^ 3;
 true
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
 
-
 <ManSection>
   <Attr Arg="M" Name="DiagonalOfMultiplicationTable" Label="for IsMagma"/>
  <Description>
- computes diaognal of multiplication table of <A>M</A>.
+ computes diagonal of multiplication table of <A>M</A>.
 <P/>
 <Example><![CDATA[
 gap> List(AllSmallAntimagmas(3), M -> DiagonalOfMultiplicationTable((M)));                
@@ -315,11 +286,9 @@ gap> List(AllSmallAntimagmas(3), M -> DiagonalOfMultiplicationTable((M)));
 ]
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Attr Arg="M" Name="CommutativityIndex" Label="for IsMagma"/>
@@ -330,11 +299,9 @@ gap> List(AllSmallAntimagmas(3), M -> DiagonalOfMultiplicationTable((M)));
 
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Attr Arg="M" Name="AnticommutativityIndex" Label="for IsMagma"/>
@@ -344,11 +311,9 @@ gap> List(AllSmallAntimagmas(3), M -> DiagonalOfMultiplicationTable((M)));
 <Example><![CDATA[
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Attr Arg="M" Name="SquaresIndex" Label="for IsMagma"/>
@@ -356,19 +321,17 @@ gap> List(AllSmallAntimagmas(3), M -> DiagonalOfMultiplicationTable((M)));
  computes squares index of <A>M</A> so the order of <Math>\left\{ m^2 | m \in M \right\}</Math>.
 <P/>
 <Example><![CDATA[
-gap> List(AllSmallAntimagmas(2), M -> List(M, m -> m * m) );                
+gap> List(AllSmallAntimagmas(2), M -> List(M, m -> m * m));                
 [ [ m2, m1 ], [ m2, m1 ] ]
-gap> List(AllSmallAntimagmas(2), M -> SquaresIndex(M ));
+gap> List(AllSmallAntimagmas(2), M -> SquaresIndex(M));
 [ 2, 2 ]
-gap> List(AllSmallAntimagmas(3), M -> SquaresIndex(M ));
+gap> List(AllSmallAntimagmas(3), M -> SquaresIndex(M));
 [ 2, 2, 2, 2, 2, 2, 2, 2, 3, 3 ]
 ]]></Example>
-
 
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Attr Arg="M" Name="IdSmallAntimagma" Label="for IsMagma"/>
@@ -384,11 +347,9 @@ gap> IsAntiassociative(OneSmallAntimagma(3));
 true
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Attr Arg="[m]" Name="LeftOrder" Label="for IsExtLElement"/>
@@ -397,14 +358,12 @@ true
  </Description>
 </ManSection>
 
-
 <ManSection>
   <Attr Arg="[m]" Name="RightOrder" Label="for IsExtRElement"/>
  <Description>
   returns a right order of element <A>m</A>.
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Attr Arg="[m]" Name="LeftOrdersOfElements" Label="for IsMagma"/>
@@ -413,7 +372,6 @@ true
  </Description>
 </ManSection>
 
-
 <ManSection>
   <Attr Arg="[m]" Name="RightOrdersOfElements" Label="for IsMagma"/>
  <Description>
@@ -421,9 +379,19 @@ true
  </Description>
 </ManSection>
 
+<ManSection>
+  <Attr Arg="M" Name="DigraphOfDiagonal" Label="for IsMagma"/>
+ <Description>
+ builds a digraph from the diagonal of <A>M</A>.
+<P/>
+<Example><![CDATA[
+]]></Example>
+
+<P/>
+ </Description>
+</ManSection>
 
 </Section>
-
 
 <Section Label="Chapter_smallantimagmas_automatic_generated_documentation_Section_smallantimagmas_automatic_generated_documentation_of_global_functions">
 <Heading>smallantimagmas automatic generated documentation of global functions</Heading>
@@ -440,11 +408,9 @@ gap> List(AllSmallAntimagmas(2), M -> AllSubmagmas(M));
 [ [ <magma with 1 generator> ], [ <magma with 1 generator> ] ]
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Func Arg="M" Name="MagmaIsomorphismInvariantsMatch" />
@@ -452,7 +418,6 @@ gap> List(AllSmallAntimagmas(2), M -> AllSubmagmas(M));
  computes isomorphism invariants of <A>M</A>.
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Func Arg="M, N" Name="IsMagmaIsomorphic" />
@@ -464,7 +429,7 @@ gap> M := SmallAntimagma(2, 1);
 <magma with 2 generators>
 gap> N := SmallAntimagma(2, 2);
 <magma with 2 generators>
-gap> T := MagmaByMultiplicationTable([ [2, 1], [2, 1] ]);
+gap> T := MagmaByMultiplicationTable([[2, 1], [2, 1]]);
 <magma with 2 generators>
 gap> IsMagmaIsomorphic(M, M);
 true
@@ -474,11 +439,9 @@ gap> IsMagmaIsomorphic(M, N);
 false
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Func Arg="[M, N]" Name="IsMagmaAntiisomorphic" />
@@ -500,11 +463,9 @@ gap> IsMagmaAntiisomorphic(M, TransposedMagma(M));
 true
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Func Arg="[M]" Name="TransposedMagma" />
@@ -528,11 +489,9 @@ gap> Display(MultiplicationTable(TransposedMagma(M)));
   [  1,  1 ] ]
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Func Arg="[m, k]" Name="LeftPower" />
@@ -541,14 +500,12 @@ gap> Display(MultiplicationTable(TransposedMagma(M)));
  </Description>
 </ManSection>
 
-
 <ManSection>
   <Func Arg="[m, k]" Name="RightPower" />
  <Description>
   returns a right <Math>k</Math>-power of element <A>m</A>.
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Func Arg="n" Name="AllSmallAntimagmas" />
@@ -567,11 +524,9 @@ gap> AllSmallAntimagmas(3);
 ]
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Func Arg="n" Name="NrSmallAntimagmas" />
@@ -587,14 +542,12 @@ gap> NrSmallAntimagmas(4);
 17780
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
 
-
 <ManSection>
-  <Func Arg="n, i" Name="SmallAntimagma" />
+  <Func Arg="[n, i]" Name="SmallAntimagma" />
  <Description>
  returns antiassociative magma of id <A>[n, i]</A>.
 <P/>
@@ -603,13 +556,13 @@ gap> SmallAntimagma(2, 1);
 <magma with 2 generators>
 gap> SmallAntimagma(4, 5);
 <magma with 4 generators>
+gap> SmallAntimagma([4, 5]);
+<magma with 4 generators>
 ]]></Example>
-
 
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Func Arg="n" Name="OneSmallAntimagma" />
@@ -624,11 +577,9 @@ gap> OneSmallAntimagma(3);
 <magma with 3 generators>
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Func Arg="n" Name="ReallyAllSmallAntimagmas" />
@@ -640,11 +591,9 @@ gap> ReallyAllSmallAntimagmas(2);
 [ <magma with 2 generators>, <magma with 2 generators> ]
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Func Arg="n" Name="ReallyNrSmallAntimagmas" />
@@ -656,14 +605,11 @@ gap> ReallyNrSmallAntimagmas(3);
 52
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
 
-
 </Section>
-
 
 <Section Label="Chapter_smallantimagmas_automatic_generated_documentation_Section_smallantimagmas_automatic_generated_documentation_of_methods">
 <Heading>smallantimagmas automatic generated documentation of methods</Heading>
@@ -676,17 +622,15 @@ gap> ReallyNrSmallAntimagmas(3);
 <Example><![CDATA[
 gap> M := SmallAntimagma(2, 1);
 <magma with 2 generators>
-gap> N := MagmaByMultiplicationTable([ [2, 1], [2, 1] ]);
+gap> N := MagmaByMultiplicationTable([[2, 1], [2, 1]]);
 <magma with 2 generators>
 gap> MagmaIsomorphism(M, N);
 <general mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
-
 
 <ManSection>
   <Oper Arg="M, N" Name="MagmaAntiisomorphism" Label="for IsMagma, IsMagma"/>
@@ -702,14 +646,11 @@ gap> MagmaAntiisomorphism(M, N);
 <mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >
 ]]></Example>
 
-
 <P/>
  </Description>
 </ManSection>
 
-
 </Section>
-
 
 </Chapter>
 

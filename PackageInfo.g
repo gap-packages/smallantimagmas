@@ -18,10 +18,10 @@ Subtitle := "A library of antiassociative magmas of small order",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "0.5.1",
+Version := "0.6.0",
 
 ##  Release date of the current version in dd/mm/yyyy format.
-Date := "26/09/2025",
+Date := "05/07/2026",
 
 ## Optional: license of the package, as an SPDX short-form identifiers;
 ## see <https://spdx.org/ids> for an explanation what an SPDX ID is, and
@@ -259,7 +259,7 @@ Dependencies := rec(
   # insensitive, exact version denoted with '=' prepended to version string.
   # without these, the package will not load
   # NeededOtherPackages := [["GAPDoc", "1.5"]],
-  NeededOtherPackages := [["GAPDoc", "1.5"]],
+  NeededOtherPackages := [["GAPDoc", "1.5"], ["Digraphs", "1.8.3"]],
 
   # list of pairs [package name, version] as above,
   # these package are will be loaded if they are available,
