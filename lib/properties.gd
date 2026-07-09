@@ -40,9 +40,7 @@ DeclareAttribute("AssociativityIndex", IsMagma);
 #! gap> List(AllSmallAntimagmas(3), M -> DiagonalOfMultiplicationTable((M)));                
 #! [ [ 2, 1, 1 ], [ 2, 1, 1 ], 
 #!   [ 2, 3, 2 ], [ 2, 1, 1 ], 
-#!   [ 2, 1, 1 ], [ 2, 1, 2 ], 
-#!   [ 2, 3, 2 ], [ 2, 1, 2 ], 
-#!   [ 2, 3, 1 ], [ 2, 3, 1 ]
+#!   [ 2, 3, 1 ]
 #! ]
 #! @EndExampleSession
 #!
@@ -73,11 +71,11 @@ DeclareAttribute("AnticommutativityIndex", IsMagma);
 #!
 #! @BeginExampleSession
 #! gap> List(AllSmallAntimagmas(2), M -> List(M, m -> m * m));                
-#! [ [ m2, m1 ], [ m2, m1 ] ]
+#! [ [ m2, m1 ] ]
 #! gap> List(AllSmallAntimagmas(2), M -> SquaresIndex(M));
-#! [ 2, 2 ]
+#! [ 2 ]
 #! gap> List(AllSmallAntimagmas(3), M -> SquaresIndex(M));
-#! [ 2, 2, 2, 2, 2, 2, 2, 2, 3, 3 ]
+#! [ 2, 2, 2, 2, 3 ]
 #! @EndExampleSession
 #!
 DeclareAttribute("SquaresIndex", IsMagma);
@@ -88,9 +86,9 @@ DeclareAttribute("SquaresIndex", IsMagma);
 #!
 #! @BeginExampleSession
 #! gap> AllSmallAntimagmas(2);
-#! [ <magma with 2 generators>, <magma with 2 generators> ]
+#! [ <magma with 2 generators> ]
 #! gap> List(AllSmallAntimagmas(2), M -> AllSubmagmas(M));
-#! [ [ <magma with 1 generator> ], [ <magma with 1 generator> ] ]
+#! [ [ <magma with 1 generator> ] ]
 #! @EndExampleSession
 #!
 DeclareGlobalFunction("AllSubmagmas");
@@ -137,7 +135,7 @@ DeclareOperation("MagmaIsomorphism", [IsMagma, IsMagma]);
 #! @BeginExampleSession
 #! gap> M := SmallAntimagma(2, 1);
 #! <magma with 2 generators>
-#! gap> N := SmallAntimagma(2, 2);
+#! gap> N := TransposedMagma(M);
 #! <magma with 2 generators>
 #! gap> MagmaAntiisomorphism(M, N);
 #! <mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >
@@ -152,7 +150,7 @@ DeclareOperation("MagmaAntiisomorphism", [IsMagma, IsMagma]);
 #! @BeginExampleSession
 #! gap> M := SmallAntimagma(2, 1);
 #! <magma with 2 generators>
-#! gap> N := SmallAntimagma(2, 2);
+#! gap> N := TransposedMagma(M);
 #! <magma with 2 generators>
 #! gap> T := MagmaByMultiplicationTable([[2, 1], [2, 1]]);
 #! <magma with 2 generators>
@@ -175,7 +173,7 @@ DeclareGlobalFunction("IsMagmaIsomorphic");
 #! <magma with 2 generators>
 #! gap> M := SmallAntimagma(2, 1);
 #! <magma with 2 generators>
-#! gap> N := SmallAntimagma(2, 2);
+#! gap> N := TransposedMagma(M);
 #! <magma with 2 generators>
 #! gap> IsMagmaAntiisomorphic(M, M);
 #! false
@@ -256,7 +254,7 @@ DeclareProperty("IsRightCyclic", IsMagma);
 #!
 #! @BeginExampleSession
 #! gap> List(AllSmallAntimagmas(3), M -> IsLeftDistributive(M));
-#! [ true, false, false, false, false, false, false, false, false, true ]
+#! [ true, false, false, false, false ]
 #! @EndExampleSession
 #!
 DeclareProperty("IsLeftDistributive", IsMagma);
@@ -267,7 +265,7 @@ DeclareProperty("IsLeftDistributive", IsMagma);
 #!
 #! @BeginExampleSession
 #! gap> List(AllSmallAntimagmas(3), M -> IsRightDistributive(M));
-#! [ false, false, false, false, true, false, false, false, true, false ]
+#! [ false, false, false, false, true ]
 #! @EndExampleSession
 #!
 DeclareProperty("IsRightDistributive", IsMagma);
@@ -287,7 +285,7 @@ DeclareProperty("IsRightDistributive", IsMagma);
 #! gap> IsLeftCancellative(M);
 #! true
 #! gap> List(AllSmallAntimagmas(2), M -> IsLeftCancellative(M));
-#! [ true, false ]
+#! [ true ]
 #! @EndExampleSession
 #!
 DeclareProperty("IsLeftCancellative", IsMagma);
@@ -298,7 +296,7 @@ DeclareProperty("IsLeftCancellative", IsMagma);
 #!
 #! @BeginExampleSession
 #! gap> List(AllSmallAntimagmas(2), M -> IsRightCancellative(M));
-#! [ false, true ]
+#! [ false ]
 #! @EndExampleSession
 #!
 DeclareProperty("IsRightCancellative", IsMagma);
@@ -309,7 +307,7 @@ DeclareProperty("IsRightCancellative", IsMagma);
 #!
 #! @BeginExampleSession
 #! gap> List(AllSmallAntimagmas(2), M -> IsCancellative(M));
-#! [ false, false ]
+#! [ false ]
 #! @EndExampleSession
 #!
 DeclareProperty("IsCancellative", IsMagma);
@@ -319,10 +317,10 @@ DeclareProperty("IsCancellative", IsMagma);
 #! is a left-hand sided fixed-point free inducted <A>m</A>.
 #!
 #! @BeginExampleSession
-#! gap> Display(MultiplicationTable(SmallAntimagma(2, 2)));
+#! gap> Display(MultiplicationTable(TransposedMagma(SmallAntimagma(2, 1))));
 #! [ [  2,  2 ],
 #!   [  1,  1 ] ]
-#! gap> IsLeftFPFInducted(SmallAntimagma(2, 2));
+#! gap> IsLeftFPFInducted(TransposedMagma(SmallAntimagma(2, 1)));
 #! true
 #! @EndExampleSession
 #!
@@ -348,7 +346,7 @@ DeclareProperty("IsRightFPFInducted", IsMagma);
 #! is a left-hand sided derangment inducted <A>m</A>.
 #!
 #! @BeginExampleSession
-#! gap> M := SmallAntimagma(2, 2);
+#! gap> M := TransposedMagma(SmallAntimagma(2, 1));
 #! <magma with 2 generators>
 #! gap> IsLeftFPFInducted(M);
 #! true

@@ -20,3 +20,16 @@ DeclareOperation("AntimagmaGeneratorPossibleDiagonals", [IsInt]);
 #! filters non-isomorphic magmas <A>Ms</A>.
 
 DeclareOperation("UpToIsomorphism", [IsList]);
+
+#! @Arguments Ms
+#! @Description
+#! filters magmas <A>Ms</A> up to isomorphism and anti-isomorphism, i.e. keeps
+#! a single representative for every class of magmas that are pairwise
+#! isomorphic or anti-isomorphic.
+#!
+#! @BeginExampleSession
+#! gap> UpToIsomorphismAndAntiisomorphism(AllSmallAntimagmas(2));
+#! [ <magma with 2 generators> ]
+#! @EndExampleSession
+
+DeclareOperation("UpToIsomorphismAndAntiisomorphism", [IsList]);

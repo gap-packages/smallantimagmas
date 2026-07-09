@@ -15,3 +15,16 @@ InstallMethod(UpToIsomorphism, "for a list of non-equivalent antimagmas", [IsLis
         od;
         return result;
 end);
+
+InstallMethod(UpToIsomorphismAndAntiisomorphism, "for a list of non-equivalent antimagmas", [IsList],
+    function(Ms)
+        local result, m;
+        result := [];
+
+        while not IsEmpty(Ms) do
+            m := First(Ms);
+            Add(result, m);
+            Ms := Filtered(Ms, n -> IsMagmaIsomorphic(m, n) = false and IsMagmaAntiisomorphic(m, n) = false);
+        od;
+        return result;
+end);
