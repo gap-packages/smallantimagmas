@@ -61,24 +61,3 @@ DeclareGlobalFunction("SmallAntimagma");
 #!
 DeclareGlobalFunction("OneSmallAntimagma");
 
-#! @Arguments n
-#! @Description
-#! returns really-all antiassociative magmas, isomorphic, of specified size <A>n</A> (a number)
-#! 
-#! @BeginExampleSession
-#! gap> ReallyAllSmallAntimagmas(2);
-#! [ <magma with 2 generators>, <magma with 2 generators> ]
-#! @EndExampleSession
-#!
-DeclareGlobalFunction("ReallyAllSmallAntimagmas");
-
-#! @Arguments n
-#! @Description
-#! counts number of antiassociative magmas of specified size <A>n</A> (a number) 
-#!
-#! @BeginExampleSession
-#! gap> ReallyNrSmallAntimagmas(3);
-#! 52
-#! @EndExampleSession
-#!
-DeclareGlobalFunction("ReallyNrSmallAntimagmas");

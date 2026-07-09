@@ -57,11 +57,5 @@ gap> UpToIsomorphism(AllSmallAntimagmas(3));
     <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>
 ]
 
-gap> UpToIsomorphism(ReallyAllSmallAntimagmas(3));
-[ 
-    <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>,
-    <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>
-]
-
 gap> STOP_TEST("test_utils.tst");
 
