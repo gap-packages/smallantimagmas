@@ -55,10 +55,10 @@ jobs:
           use-latex: 'true'
 
       - name: Run gap-tests
-        uses: gap-actions/run-pkg-tests@142daa59ba8d2b2893339e40935ab394a2bda1e3 # v4
+        uses: gap-actions/run-pkg-tests@b1f75421e9d57ebf51a41dfcfa19b9fe2f3030da # v4
 
       - name: Run gap-tests (only-needed)
-        uses: gap-actions/run-pkg-tests@142daa59ba8d2b2893339e40935ab394a2bda1e3 # v4
+        uses: gap-actions/run-pkg-tests@b1f75421e9d57ebf51a41dfcfa19b9fe2f3030da # v4
         with:
           only-needed: true
 
