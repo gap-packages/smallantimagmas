@@ -16,8 +16,4 @@ true
 gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> DigraphOfDiagonal(M) = DigraphOfDiagonal(TransposedMagma(M)));
 true
 
-## all isomorphic magmas must have isomorphic digraphs
-gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> ForAll(Filtered(ReallyAllSmallAntimagmas(Size(M)), N -> IsMagmaIsomorphic(M, N)), N -> IsIsomorphicDigraph(DigraphOfDiagonal(N), DigraphOfDiagonal(M))));
-true
-
 gap> STOP_TEST("test_properties_magma_digraph.tst");

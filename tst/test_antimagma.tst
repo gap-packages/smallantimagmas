@@ -15,12 +15,6 @@ true
 gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> IsAntiassociative(M));
 true
 
-gap> ForAll(ReallyAllSmallAntimagmas([2 .. 3]), M -> IdSmallAntimagma(M)[1] = Size(M));
-true
-
-gap> ForAll(ReallyAllSmallAntimagmas([2 .. 3]), M -> IdSmallAntimagma(M)[2] <= NrSmallAntimagmas(Size(M)));
-true
-
 gap> ForAll([2 .. 3], n -> ForAll([1 .. NrSmallAntimagmas(n)], i -> IsMagmaIsomorphic(SmallAntimagma([n, i]), SmallAntimagma(n, i))));
 true
 

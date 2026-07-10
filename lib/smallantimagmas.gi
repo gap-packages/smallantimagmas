@@ -44,21 +44,3 @@ InstallGlobalFunction(OneSmallAntimagma,
         return SmallAntimagma(order, Random([1 .. NrSmallAntimagmas(order)]));
 end);
 
-InstallGlobalFunction(ReallyNrSmallAntimagmas,
-    function(order)
-        return Size(__SmallAntimagmaHelper.getAllSmallAntimagmaMetadata(order)());
-end);
-
-InstallGlobalFunction(ReallyAllSmallAntimagmas,
-    function(order)
-        if IsList(order) and ForAll(order, o -> IsInt(o)) then
-            return Flat(
-                List(order, o -> List(__SmallAntimagmaHelper.getAllSmallAntimagmaMetadata(o)(),
-                                    table -> MagmaByMultiplicationTable(
-                                        __SmallAntimagmaHelper.MultiplicationTableReverse(table)))));
-        elif IsInt(order) then
-            return List(__SmallAntimagmaHelper.getAllSmallAntimagmaMetadata(order)(),
-                                    table -> MagmaByMultiplicationTable(
-                                        __SmallAntimagmaHelper.MultiplicationTableReverse(table)));
-        fi;
-end);
