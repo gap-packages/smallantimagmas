@@ -53,7 +53,6 @@ gap> AntimagmaGeneratorPossibleDiagonals(4);
 
 gap> UpToIsomorphism(AllSmallAntimagmas(3));
 [ 
-    <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>,
     <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>
 ]
 
