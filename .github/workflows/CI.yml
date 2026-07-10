@@ -19,18 +19,15 @@ concurrency:
 
 jobs:
   gaptest:
-    name: Code quality - unit-tests (${{ matrix.gap-branch }})
+    name: Code quality - unit-tests (${{ matrix.gap-version }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        gap-branch:
-          - master
-          - stable-4.16
-          - stable-4.15
-          - stable-4.14
-          - stable-4.13
-          - stable-4.12
+        gap-version:
+          - 'devel'   # current GAP development version from git
+          - 'latest'  # latest GAP release
+          - 'minimal' # oldest GAP release supported by this package
 
     steps:
       - name: Checkout repository
@@ -39,7 +36,7 @@ jobs:
       - name: Setup gap-system
         uses: gap-actions/setup-gap@c8f35d3b8f94d5c9986e427ea0f3389f88a3a6f1 # v3
         with:
-          gap-version: ${{ matrix.gap-branch }}
+          gap-version: ${{ matrix.gap-version }}
 
       - name: Install additional packages
         shell: bash
@@ -60,7 +57,7 @@ jobs:
       - name: Run gap-tests (only-needed)
         uses: gap-actions/run-pkg-tests@b1f75421e9d57ebf51a41dfcfa19b9fe2f3030da # v4
         with:
-          only-needed: true
+          mode: onlyneeded
 
       - name: Show code-coverage
         uses: gap-actions/process-coverage@500e7ca58e508de2b0dce5d1738f5fd0980bed0a # v3
