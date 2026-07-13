@@ -62,7 +62,7 @@ jobs:
       - name: Show code-coverage
         uses: gap-actions/process-coverage@500e7ca58e508de2b0dce5d1738f5fd0980bed0a # v3
 
-      - uses: codecov/codecov-action@v6
+      - uses: codecov/codecov-action@v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
