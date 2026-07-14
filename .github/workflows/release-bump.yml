@@ -24,7 +24,7 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
 
-      - uses: gap-actions/setup-gap@c8f35d3b8f94d5c9986e427ea0f3389f88a3a6f1 # v3
+      - uses: gap-actions/setup-gap@f12222f1b86ce1f8a246c4000abfd6e69893411c # v3
         with:
           gap-version: ${{ env.gap-branch }}
 
@@ -70,7 +70,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: gap-actions/setup-gap@c8f35d3b8f94d5c9986e427ea0f3389f88a3a6f1 # v3
+      - uses: gap-actions/setup-gap@f12222f1b86ce1f8a246c4000abfd6e69893411c # v3
         with:
           gap-version: ${{ env.gap-branch }}
 
