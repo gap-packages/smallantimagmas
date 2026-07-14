@@ -24,8 +24,8 @@ gap> List(AllSmallAntimagmas([2 .. 3]), M -> __SmallAntimagmaHelper.Multiplicati
     [3, 3],
     [ 10, 10, 10 ],
     [ 10, 10, 19 ],
-    [ 11, 17, 11 ],
     [ 10, 19, 10 ],
+    [ 10, 19, 19 ],
     [ 14, 27, 1 ] 
 ]
 
