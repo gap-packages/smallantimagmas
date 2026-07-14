@@ -44,7 +44,7 @@ jobs:
           gap -c 'LoadPackage("PackageManager"); InstallPackage("digraphs"); QUIT;'
 
       - name: Build gap-package
-        uses: gap-actions/build-pkg@ea5a215744d2952bc0528321c4ec14b3c4946b5d # v3
+        uses: gap-actions/build-pkg@a5d43878fc0af9eec0ec4dff928fc1f7e4e67501 # v3
 
       - name: Provision documentation for package
         uses: gap-actions/build-pkg-docs@f1927364d4a2df557251a26afca0377edf1163ce # v2
