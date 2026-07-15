@@ -50,7 +50,7 @@ gap> __SmallAntimagmaHelper.TablesEncode(3, [[1, 1, 1]]);
 gap> __SmallAntimagmaHelper.TablesEncode(3, [[27, 27, 27]]) = [27 ^ 3 - 1];
 true
 
-# The order-3 data as stored in data/non-isomorphic/3: the tables in
+# The order-3 data as stored in data/3: the tables in
 # row form are [10, 10, 10], [10, 10, 19], [10, 19, 10], [10, 19, 19]
 # and [14, 27, 1], i.e. the base-27 numbers 6813, 6822, 7056, 7065
 # and 10179, hence the deltas below.

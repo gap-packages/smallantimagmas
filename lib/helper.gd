@@ -28,7 +28,7 @@ end;
 __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory := function(order)
     local result;
     __SmallAntimagmaHelper.checkOrder(order);
-    result := DirectoriesPackageLibrary("smallantimagmas", Concatenation(["data", "/", "non-isomorphic", "/", String(order)]));
+    result := DirectoriesPackageLibrary("smallantimagmas", Concatenation(["data", "/", String(order)]));
     if Size(result) = 0 then
         ErrorNoReturn("smallantimagmas:", "<order> is not yet implemeneted");
     fi;
