@@ -54,7 +54,7 @@ true
 <P/>
 <Example><![CDATA[
 gap> List(AllSmallAntimagmas(3), M -> IsLeftDistributive(M));
-[ true, false, false, false, false, false, false, false, false, true ]
+[ true, false, false, false, false ]
 ]]></Example>
 
 <P/>
@@ -70,7 +70,7 @@ gap> List(AllSmallAntimagmas(3), M -> IsLeftDistributive(M));
 <P/>
 <Example><![CDATA[
 gap> List(AllSmallAntimagmas(3), M -> IsRightDistributive(M));
-[ false, false, false, false, true, false, false, false, true, false ]
+[ false, false, false, false, true ]
 ]]></Example>
 
 <P/>
@@ -95,7 +95,7 @@ false
 gap> IsLeftCancellative(M);
 true
 gap> List(AllSmallAntimagmas(2), M -> IsLeftCancellative(M));
-[ true, false ]
+[ true ]
 ]]></Example>
 
 <P/>
@@ -111,7 +111,7 @@ gap> List(AllSmallAntimagmas(2), M -> IsLeftCancellative(M));
 <P/>
 <Example><![CDATA[
 gap> List(AllSmallAntimagmas(2), M -> IsRightCancellative(M));
-[ false, true ]
+[ false ]
 ]]></Example>
 
 <P/>
@@ -127,7 +127,7 @@ gap> List(AllSmallAntimagmas(2), M -> IsRightCancellative(M));
 <P/>
 <Example><![CDATA[
 gap> List(AllSmallAntimagmas(2), M -> IsCancellative(M));
-[ false, false ]
+[ false ]
 ]]></Example>
 
 <P/>
@@ -142,10 +142,10 @@ gap> List(AllSmallAntimagmas(2), M -> IsCancellative(M));
  is a left-hand sided fixed-point free inducted <A>m</A>.
 <P/>
 <Example><![CDATA[
-gap> Display(MultiplicationTable(SmallAntimagma(2, 2)));
+gap> Display(MultiplicationTable(TransposedMagma(SmallAntimagma(2, 1))));
 [ [  2,  2 ],
   [  1,  1 ] ]
-gap> IsLeftFPFInducted(SmallAntimagma(2, 2));
+gap> IsLeftFPFInducted(TransposedMagma(SmallAntimagma(2, 1)));
 true
 ]]></Example>
 
@@ -180,7 +180,7 @@ true
  is a left-hand sided derangment inducted <A>m</A>.
 <P/>
 <Example><![CDATA[
-gap> M := SmallAntimagma(2, 2);
+gap> M := TransposedMagma(SmallAntimagma(2, 1));
 <magma with 2 generators>
 gap> IsLeftFPFInducted(M);
 true
@@ -280,9 +280,7 @@ true
 gap> List(AllSmallAntimagmas(3), M -> DiagonalOfMultiplicationTable((M)));                
 [ [ 2, 1, 1 ], [ 2, 1, 1 ], 
   [ 2, 3, 2 ], [ 2, 1, 1 ], 
-  [ 2, 1, 1 ], [ 2, 1, 2 ], 
-  [ 2, 3, 2 ], [ 2, 1, 2 ], 
-  [ 2, 3, 1 ], [ 2, 3, 1 ]
+  [ 2, 3, 1 ]
 ]
 ]]></Example>
 
@@ -322,11 +320,11 @@ gap> List(AllSmallAntimagmas(3), M -> DiagonalOfMultiplicationTable((M)));
 <P/>
 <Example><![CDATA[
 gap> List(AllSmallAntimagmas(2), M -> List(M, m -> m * m));                
-[ [ m2, m1 ], [ m2, m1 ] ]
+[ [ m2, m1 ] ]
 gap> List(AllSmallAntimagmas(2), M -> SquaresIndex(M));
-[ 2, 2 ]
+[ 2 ]
 gap> List(AllSmallAntimagmas(3), M -> SquaresIndex(M));
-[ 2, 2, 2, 2, 2, 2, 2, 2, 3, 3 ]
+[ 2, 2, 2, 2, 3 ]
 ]]></Example>
 
 <P/>
@@ -403,9 +401,9 @@ true
 <P/>
 <Example><![CDATA[
 gap> AllSmallAntimagmas(2);
-[ <magma with 2 generators>, <magma with 2 generators> ]
+[ <magma with 2 generators> ]
 gap> List(AllSmallAntimagmas(2), M -> AllSubmagmas(M));
-[ [ <magma with 1 generator> ], [ <magma with 1 generator> ] ]
+[ [ <magma with 1 generator> ] ]
 ]]></Example>
 
 <P/>
@@ -427,7 +425,7 @@ gap> List(AllSmallAntimagmas(2), M -> AllSubmagmas(M));
 <Example><![CDATA[
 gap> M := SmallAntimagma(2, 1);
 <magma with 2 generators>
-gap> N := SmallAntimagma(2, 2);
+gap> N := TransposedMagma(M);
 <magma with 2 generators>
 gap> T := MagmaByMultiplicationTable([[2, 1], [2, 1]]);
 <magma with 2 generators>
@@ -453,7 +451,7 @@ gap> N := SmallAntimagma(2, 1);
 <magma with 2 generators>
 gap> M := SmallAntimagma(2, 1);
 <magma with 2 generators>
-gap> N := SmallAntimagma(2, 2);
+gap> N := TransposedMagma(M);
 <magma with 2 generators>
 gap> IsMagmaAntiisomorphic(M, M);
 false
@@ -510,16 +508,16 @@ gap> Display(MultiplicationTable(TransposedMagma(M)));
 <ManSection>
   <Func Arg="n" Name="AllSmallAntimagmas" />
  <Description>
- returns all antiassociative magmas of specified size <A>n</A> (a number)
+ returns all antiassociative magmas of specified size <A>n</A> (a number), up to
+ isomorphism and anti-isomorphism, i.e. keeping a single representative for every
+ class of magmas that are pairwise isomorphic or anti-isomorphic.
 <P/>
 <Example><![CDATA[
 gap> AllSmallAntimagmas(2);
-[ <magma with 2 generators>, <magma with 2 generators> ]
+[ <magma with 2 generators> ]
 gap> AllSmallAntimagmas(3);
 [ 
   <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>,
-  <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>,
-  <magma with 3 generators>, <magma with 3 generators>,
   <magma with 3 generators>, <magma with 3 generators>
 ]
 ]]></Example>
@@ -531,15 +529,16 @@ gap> AllSmallAntimagmas(3);
 <ManSection>
   <Func Arg="n" Name="NrSmallAntimagmas" />
  <Description>
- counts number of antiassociative magmas of specified size <A>n</A> (a number).
+ counts number of antiassociative magmas of specified size <A>n</A> (a number), up to
+ isomorphism and anti-isomorphism.
 <P/>
 <Example><![CDATA[
 gap> NrSmallAntimagmas(2);
-2
+1
 gap> NrSmallAntimagmas(3);
-10
+5
 gap> NrSmallAntimagmas(4);
-17780
+8891
 ]]></Example>
 
 <P/>
@@ -549,7 +548,7 @@ gap> NrSmallAntimagmas(4);
 <ManSection>
   <Func Arg="[n, i]" Name="SmallAntimagma" />
  <Description>
- returns antiassociative magma of id <A>[n, i]</A>.
+ returns antiassociative magma of id <A>[n, i]</A>, up to isomorphism and anti-isomorphism.
 <P/>
 <Example><![CDATA[
 gap> SmallAntimagma(2, 1);
@@ -567,7 +566,7 @@ gap> SmallAntimagma([4, 5]);
 <ManSection>
   <Func Arg="n" Name="OneSmallAntimagma" />
  <Description>
- returns a random antiassociative magma of size <A>n</A>.
+ returns a random antiassociative magma of size <A>n</A>, up to isomorphism and anti-isomorphism.
 <P/>
 <Example><![CDATA[
 gap> OneSmallAntimagma(2);
@@ -575,34 +574,6 @@ gap> OneSmallAntimagma(2);
 
 gap> OneSmallAntimagma(3);
 <magma with 3 generators>
-]]></Example>
-
-<P/>
- </Description>
-</ManSection>
-
-<ManSection>
-  <Func Arg="n" Name="ReallyAllSmallAntimagmas" />
- <Description>
- returns really-all antiassociative magmas, isomorphic, of specified size <A>n</A> (a number)
-<P/>
-<Example><![CDATA[
-gap> ReallyAllSmallAntimagmas(2);
-[ <magma with 2 generators>, <magma with 2 generators> ]
-]]></Example>
-
-<P/>
- </Description>
-</ManSection>
-
-<ManSection>
-  <Func Arg="n" Name="ReallyNrSmallAntimagmas" />
- <Description>
- counts number of antiassociative magmas of specified size <A>n</A> (a number) 
-<P/>
-<Example><![CDATA[
-gap> ReallyNrSmallAntimagmas(3);
-52
 ]]></Example>
 
 <P/>
@@ -640,7 +611,7 @@ gap> MagmaIsomorphism(M, N);
 <Example><![CDATA[
 gap> M := SmallAntimagma(2, 1);
 <magma with 2 generators>
-gap> N := SmallAntimagma(2, 2);
+gap> N := TransposedMagma(M);
 <magma with 2 generators>
 gap> MagmaAntiisomorphism(M, N);
 <mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >

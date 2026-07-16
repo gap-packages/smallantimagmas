@@ -238,7 +238,7 @@ contributions to this package and its documentation provided by \textsf{GAP} use
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(3), M -> IsLeftDistributive(M));|
-  [ true, false, false, false, false, false, false, false, false, true ]
+  [ true, false, false, false, false ]
 \end{Verbatim}
  
 
@@ -262,7 +262,7 @@ contributions to this package and its documentation provided by \textsf{GAP} use
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(3), M -> IsRightDistributive(M));|
-  [ false, false, false, false, true, false, false, false, true, false ]
+  [ false, false, false, false, true ]
 \end{Verbatim}
  
 
@@ -295,7 +295,7 @@ contributions to this package and its documentation provided by \textsf{GAP} use
   !gapprompt@gap>| !gapinput@IsLeftCancellative(M);|
   true
   !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(2), M -> IsLeftCancellative(M));|
-  [ true, false ]
+  [ true ]
 \end{Verbatim}
  
 
@@ -319,7 +319,7 @@ contributions to this package and its documentation provided by \textsf{GAP} use
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(2), M -> IsRightCancellative(M));|
-  [ false, true ]
+  [ false ]
 \end{Verbatim}
  
 
@@ -343,7 +343,7 @@ contributions to this package and its documentation provided by \textsf{GAP} use
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(2), M -> IsCancellative(M));|
-  [ false, false ]
+  [ false ]
 \end{Verbatim}
  
 
@@ -367,10 +367,10 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
 
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@Display(MultiplicationTable(SmallAntimagma(2, 2)));|
+  !gapprompt@gap>| !gapinput@Display(MultiplicationTable(TransposedMagma(SmallAntimagma(2, 1))));|
   [ [  2,  2 ],
     [  1,  1 ] ]
-  !gapprompt@gap>| !gapinput@IsLeftFPFInducted(SmallAntimagma(2, 2));|
+  !gapprompt@gap>| !gapinput@IsLeftFPFInducted(TransposedMagma(SmallAntimagma(2, 1)));|
   true
 \end{Verbatim}
  
@@ -422,7 +422,7 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
 
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@M := SmallAntimagma(2, 2);|
+  !gapprompt@gap>| !gapinput@M := TransposedMagma(SmallAntimagma(2, 1));|
   <magma with 2 generators>
   !gapprompt@gap>| !gapinput@IsLeftFPFInducted(M);|
   true
@@ -562,9 +562,7 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
   !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(3), M -> DiagonalOfMultiplicationTable((M)));                |
   [ [ 2, 1, 1 ], [ 2, 1, 1 ], 
     [ 2, 3, 2 ], [ 2, 1, 1 ], 
-    [ 2, 1, 1 ], [ 2, 1, 2 ], 
-    [ 2, 3, 2 ], [ 2, 1, 2 ], 
-    [ 2, 3, 1 ], [ 2, 3, 1 ]
+    [ 2, 3, 1 ]
   ]
 \end{Verbatim}
  
@@ -625,11 +623,11 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(2), M -> List(M, m -> m * m));                |
-  [ [ m2, m1 ], [ m2, m1 ] ]
+  [ [ m2, m1 ] ]
   !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(2), M -> SquaresIndex(M));|
-  [ 2, 2 ]
+  [ 2 ]
   !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(3), M -> SquaresIndex(M));|
-  [ 2, 2, 2, 2, 2, 2, 2, 2, 3, 3 ]
+  [ 2, 2, 2, 2, 3 ]
 \end{Verbatim}
  
 
@@ -749,9 +747,9 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@AllSmallAntimagmas(2);|
-  [ <magma with 2 generators>, <magma with 2 generators> ]
+  [ <magma with 2 generators> ]
   !gapprompt@gap>| !gapinput@List(AllSmallAntimagmas(2), M -> AllSubmagmas(M));|
-  [ [ <magma with 1 generator> ], [ <magma with 1 generator> ] ]
+  [ [ <magma with 1 generator> ] ]
 \end{Verbatim}
  
 
@@ -785,7 +783,7 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@M := SmallAntimagma(2, 1);|
   <magma with 2 generators>
-  !gapprompt@gap>| !gapinput@N := SmallAntimagma(2, 2);|
+  !gapprompt@gap>| !gapinput@N := TransposedMagma(M);|
   <magma with 2 generators>
   !gapprompt@gap>| !gapinput@T := MagmaByMultiplicationTable([[2, 1], [2, 1]]);|
   <magma with 2 generators>
@@ -818,7 +816,7 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
   <magma with 2 generators>
   !gapprompt@gap>| !gapinput@M := SmallAntimagma(2, 1);|
   <magma with 2 generators>
-  !gapprompt@gap>| !gapinput@N := SmallAntimagma(2, 2);|
+  !gapprompt@gap>| !gapinput@N := TransposedMagma(M);|
   <magma with 2 generators>
   !gapprompt@gap>| !gapinput@IsMagmaAntiisomorphic(M, M);|
   false
@@ -898,17 +896,17 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
 }\hfill{\scriptsize (function)}}\\
 
 
- returns all antiassociative magmas of specified size \mbox{\texttt{\mdseries\slshape n}} (a number) 
+ returns all antiassociative magmas of specified size \mbox{\texttt{\mdseries\slshape n}} (a number), up to isomorphism and anti\texttt{\symbol{45}}isomorphism, i.e.
+keeping a single representative for every class of magmas that are pairwise
+isomorphic or anti\texttt{\symbol{45}}isomorphic. 
 
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@AllSmallAntimagmas(2);|
-  [ <magma with 2 generators>, <magma with 2 generators> ]
+  [ <magma with 2 generators> ]
   !gapprompt@gap>| !gapinput@AllSmallAntimagmas(3);|
   [ 
     <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>,
-    <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>,
-    <magma with 3 generators>, <magma with 3 generators>,
     <magma with 3 generators>, <magma with 3 generators>
   ]
 \end{Verbatim}
@@ -926,16 +924,16 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
 }\hfill{\scriptsize (function)}}\\
 
 
- counts number of antiassociative magmas of specified size \mbox{\texttt{\mdseries\slshape n}} (a number). 
+ counts number of antiassociative magmas of specified size \mbox{\texttt{\mdseries\slshape n}} (a number), up to isomorphism and anti\texttt{\symbol{45}}isomorphism. 
 
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@NrSmallAntimagmas(2);|
-  2
+  1
   !gapprompt@gap>| !gapinput@NrSmallAntimagmas(3);|
-  10
+  5
   !gapprompt@gap>| !gapinput@NrSmallAntimagmas(4);|
-  17780
+  8891
 \end{Verbatim}
  
 
@@ -951,7 +949,7 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
 }\hfill{\scriptsize (function)}}\\
 
 
- returns antiassociative magma of id \mbox{\texttt{\mdseries\slshape [n, i]}}. 
+ returns antiassociative magma of id \mbox{\texttt{\mdseries\slshape [n, i]}}, up to isomorphism and anti\texttt{\symbol{45}}isomorphism. 
 
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
@@ -976,7 +974,7 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
 }\hfill{\scriptsize (function)}}\\
 
 
- returns a random antiassociative magma of size \mbox{\texttt{\mdseries\slshape n}}. 
+ returns a random antiassociative magma of size \mbox{\texttt{\mdseries\slshape n}}, up to isomorphism and anti\texttt{\symbol{45}}isomorphism. 
 
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
@@ -985,49 +983,6 @@ inducted \mbox{\texttt{\mdseries\slshape m}}.
   
   !gapprompt@gap>| !gapinput@OneSmallAntimagma(3);|
   <magma with 3 generators>
-\end{Verbatim}
- 
-
- }
-
- 
-
-\subsection{\textcolor{Chapter }{ReallyAllSmallAntimagmas}}
-\logpage{[ 1, 3, 12 ]}\nobreak
-\hyperdef{L}{X7D0A720279246D45}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{ReallyAllSmallAntimagmas({\mdseries\slshape n})\index{ReallyAllSmallAntimagmas@\texttt{ReallyAllSmallAntimagmas}}
-\label{ReallyAllSmallAntimagmas}
-}\hfill{\scriptsize (function)}}\\
-
-
- returns really\texttt{\symbol{45}}all antiassociative magmas, isomorphic, of
-specified size \mbox{\texttt{\mdseries\slshape n}} (a number) 
-
- 
-\begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@ReallyAllSmallAntimagmas(2);|
-  [ <magma with 2 generators>, <magma with 2 generators> ]
-\end{Verbatim}
- 
-
- }
-
- 
-
-\subsection{\textcolor{Chapter }{ReallyNrSmallAntimagmas}}
-\logpage{[ 1, 3, 13 ]}\nobreak
-\hyperdef{L}{X796637787C216BA1}{}
-{\noindent\textcolor{FuncColor}{$\triangleright$\enspace\texttt{ReallyNrSmallAntimagmas({\mdseries\slshape n})\index{ReallyNrSmallAntimagmas@\texttt{ReallyNrSmallAntimagmas}}
-\label{ReallyNrSmallAntimagmas}
-}\hfill{\scriptsize (function)}}\\
-
-
- counts number of antiassociative magmas of specified size \mbox{\texttt{\mdseries\slshape n}} (a number) 
-
- 
-\begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@ReallyNrSmallAntimagmas(3);|
-  52
 \end{Verbatim}
  
 
@@ -1081,7 +1036,7 @@ specified size \mbox{\texttt{\mdseries\slshape n}} (a number)
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@M := SmallAntimagma(2, 1);|
   <magma with 2 generators>
-  !gapprompt@gap>| !gapinput@N := SmallAntimagma(2, 2);|
+  !gapprompt@gap>| !gapinput@N := TransposedMagma(M);|
   <magma with 2 generators>
   !gapprompt@gap>| !gapinput@MagmaAntiisomorphism(M, N);|
   <mapping: Domain([ m1, m2 ]) -> Domain([ m1, m2 ]) >
