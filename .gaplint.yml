@@ -4,6 +4,5 @@ columns: 128
 disable:
   - no-space-after-comment
   - align-assignments
-  - whitespace-op-negative
   - 1-line-function
   - pointless-lambda
