@@ -6,7 +6,7 @@ __SmallAntimagmaHelper.checkOrder := function(order)
         fi;
 
         if order < 2 then
-            ErrorNoReturn("smallantimagmas:", "<order> must greater than or equal to 2");
+            ErrorNoReturn("smallantimagmas:", "<order> must be greater than or equal to 2");
         fi;
 end;
 
@@ -16,7 +16,7 @@ __SmallAntimagmaHelper.checkId := function(id)
         fi;
 
         if id < 1 then
-            ErrorNoReturn("smallantimagmas:", "<id> must greater than or equal to 1");
+            ErrorNoReturn("smallantimagmas:", "<id> must be greater than or equal to 1");
         fi;
 end;
 
@@ -30,10 +30,10 @@ __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory := function(order)
     __SmallAntimagmaHelper.checkOrder(order);
     result := DirectoriesPackageLibrary("smallantimagmas", Concatenation(["data", "/", "non-isomorphic", "/", String(order)]));
     if Size(result) = 0 then
-        ErrorNoReturn("smallantimagmas:", "<order> is not yet implemeneted");
+        ErrorNoReturn("smallantimagmas:", "<order> is not yet implemented");
     fi;
     if Size(result) > 1 then
-        ErrorNoReturn("smallantimagmas:", "metadata directory must not be ambigous");
+        ErrorNoReturn("smallantimagmas:", "metadata directory must not be ambiguous");
     fi;
     return First(result);
 end;
