@@ -2,9 +2,10 @@
 name: Label management
 run-name: label-management ${{ github.event.number }} ${{ github.event.pull_request.title }}
 
+# pull_request_target runs with a write-scoped GITHUB_TOKEN even for fork PRs,
+# which the labeling steps need. SECURITY: never check out or execute PR code
+# in this workflow — that would let a fork PR escalate to the write token.
 on:
-  pull_request:
-    types: [opened, reopened, synchronize]
   pull_request_target:
     types: [opened, reopened, synchronize]
 
