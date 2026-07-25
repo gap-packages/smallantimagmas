@@ -79,7 +79,7 @@ end);
 
 InstallMethod(MagmaIsomorphism, "for two magmas", true, [IsMagma, IsMagma], 0,
     function(M, N)
-        local psi, n, p, m, elms;
+        local psi, n, p, m, ns, elms;
 
         if not MagmaIsomorphismInvariantsMatch(M, N) then
             return fail;
@@ -87,9 +87,10 @@ InstallMethod(MagmaIsomorphism, "for two magmas", true, [IsMagma, IsMagma], 0,
 
         n := Size(M);
         m := Elements(M);
+        ns := Elements(N);
 
-        for p in PermutationsList(Elements(N)) do
-            elms := List([1 .. n], i -> DirectProductElement([m[i], p[i]]));
+        for p in SymmetricGroup(n) do
+            elms := List([1 .. n], i -> DirectProductElement([m[i], ns[i ^ p]]));
 
             psi := GeneralMappingByElements(M, N, elms);
 
@@ -102,7 +103,7 @@ end);
 
 InstallMethod(MagmaAntiisomorphism, "for two magmas", true, [IsMagma, IsMagma], 0,
     function(M, N)
-        local psi, n, p, m, elms;
+        local psi, n, p, m, ns, elms;
 
         if Size(M) <> Size(N) then
             return fail;
@@ -110,9 +111,10 @@ InstallMethod(MagmaAntiisomorphism, "for two magmas", true, [IsMagma, IsMagma], 
 
         n := Size(M);
         m := Elements(M);
+        ns := Elements(N);
 
-        for p in PermutationsList(Elements(N)) do
-            elms := List([1 .. n], i -> DirectProductElement([m[i], p[i]]));
+        for p in SymmetricGroup(n) do
+            elms := List([1 .. n], i -> DirectProductElement([m[i], ns[i ^ p]]));
             psi := GeneralMappingByElements(M, N, elms);
 
             if ForAll(EnumeratorOfTuples(m, 2), t -> psi(t[1] * t[2]) = psi(t[2]) * psi(t[1])) then
