@@ -33,7 +33,6 @@ DeclareGlobalFunction("AllSmallAntimagmas");
 DeclareGlobalFunction("NrSmallAntimagmas");
 
 #! @Arguments n, i
-#! @Arguments [n, i]
 #! @Description
 #! returns antiassociative magma of id <A>[n, i]</A>, up to isomorphism and anti-isomorphism.
 #!
