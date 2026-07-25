@@ -245,7 +245,7 @@ DeclareProperty("IsLeftCyclic", IsMagma);
 
 #! @Arguments M
 #! @Description
-#!  if magma is left cyclic <A>m</A>.
+#!  if magma is right cyclic <A>m</A>.
 DeclareProperty("IsRightCyclic", IsMagma);
 
 #! @Arguments M
