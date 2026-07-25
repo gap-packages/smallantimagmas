@@ -164,7 +164,7 @@ DeclareOperation("MagmaAntiisomorphism", [IsMagma, IsMagma]);
 #!
 DeclareGlobalFunction("IsMagmaIsomorphic");
 
-#! @Arguments [M, N]
+#! @Arguments M, N
 #! @Description
 #! identifies whether magmas <A>M</A>, <A>N</A> are antiisomorphic.
 #!
@@ -185,7 +185,7 @@ DeclareGlobalFunction("IsMagmaIsomorphic");
 #!
 DeclareGlobalFunction("IsMagmaAntiisomorphic");
 
-#! @Arguments [M]
+#! @Arguments M
 #! @Description
 #! generates transposed magma <A>M</A>.
 #!
@@ -208,32 +208,32 @@ DeclareGlobalFunction("IsMagmaAntiisomorphic");
 #!
 DeclareGlobalFunction("TransposedMagma");
 
-#! @Arguments [m, k]
+#! @Arguments m, k
 #! @Description
 #! returns a left $k$-power of element <A>m</A>.
 DeclareGlobalFunction("LeftPower");
 
-#! @Arguments [m, k]
+#! @Arguments m, k
 #! @Description
 #!  returns a right $k$-power of element <A>m</A>.
 DeclareGlobalFunction("RightPower");
 
-#! @Arguments [m]
+#! @Arguments m
 #! @Description
 #! returns a left order of element <A>m</A>.
 DeclareAttribute("LeftOrder", IsExtLElement);
 
-#! @Arguments [m]
+#! @Arguments m
 #! @Description
 #!  returns a right order of element <A>m</A>.
 DeclareAttribute("RightOrder", IsExtRElement);
 
-#! @Arguments [m]
+#! @Arguments m
 #! @Description
 #! returns a left order of element <A>m</A>.
 DeclareAttribute("LeftOrdersOfElements", IsMagma);
 
-#! @Arguments [m]
+#! @Arguments m
 #! @Description
 #! returns a left order of element <A>m</A>.
 DeclareAttribute("RightOrdersOfElements", IsMagma);
