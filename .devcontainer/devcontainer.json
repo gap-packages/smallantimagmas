@@ -1,4 +1,0 @@
-{
-  "image": "ghcr.io/limakzi/jupyter-gap:4.14.0-full",
-  "forwardPorts": [8888]
-}
