@@ -344,6 +344,8 @@ DeclareProperty("IsRightFPFInducted", IsMagma);
 #! @Arguments M
 #! @Description
 #! is a left-hand sided derangment inducted <A>m</A>.
+#! The verification follows the endofunction algorithm
+#! of <Cite Key="MazurekZabielski2026"/>.
 #!
 #! @BeginExampleSession
 #! gap> M := TransposedMagma(SmallAntimagma(2, 1));
@@ -361,6 +363,8 @@ DeclareProperty("IsLeftDerangementInducted", IsMagma);
 #! @Arguments M
 #! @Description
 #! is a right-hand sided derangment inducted <A>m</A>.
+#! The verification follows the endofunction algorithm
+#! of <Cite Key="MazurekZabielski2026"/>.
 #!
 #! @BeginExampleSession
 #! gap> M := SmallAntimagma(2, 1);
