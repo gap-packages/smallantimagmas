@@ -263,10 +263,86 @@ end);
 
 InstallMethod(IsLeftDerangementInducted, "for a magma", [IsMagma],
     function(M)
-        return ForAny(PartitionsSet(Elements(M)), p ->
-            ForAny(Derangements(p), d ->
-                ForAll([1 .. Size(p)], i ->
-                    ForAll(p[i], m -> IsSubset(d[i], Unique(m * Elements(M)))))));
+        local closureCycles, admissiblePairs, candidateBlocks,
+              elements, cycles, pair, cand;
+
+        # permutation closure of the diagonal endofunction f(x) = x * x:
+        # iterate f until the image stabilises, then return the cycles of
+        # the induced permutation of the fibers, each cycle a list of
+        # blocks of magma elements in cyclic order
+        closureCycles := function(elts)
+            local fk, labels, perm;
+            fk := elts;
+            while Size(Set(List(fk, y -> y * y))) < Size(Set(fk)) do
+                fk := List(fk, y -> y * y);
+            od;
+            labels := Set(fk);
+            perm := PermList(List(labels, v -> Position(labels, v * v)));
+            return List(Cycles(perm, [1 .. Length(labels)]),
+                c -> List(c, pos -> Set(elts{Positions(fk, labels[pos])})));
+        end;
+
+        # admissible pairs (alpha, beta) for the given cycle lengths:
+        # alpha picks a prime divisor of each cycle length, beta picks
+        # a shift in [0 .. p - 1] for every repeated prime
+        admissiblePairs := function(lengths)
+            local result, alpha, primes, betaChoices, beta;
+            result := [];
+            for alpha in Cartesian(List(lengths, PrimeDivisors)) do
+                primes := Set(alpha);
+                betaChoices := List(primes, p -> Cartesian(Concatenation(
+                    [[0]],
+                    List([2 .. Number(alpha, q -> q = p)],
+                        t -> [0 .. p - 1]))));
+                for beta in Cartesian(betaChoices) do
+                    Add(result,
+                        rec(alpha := alpha, primes := primes, beta := beta));
+                od;
+            od;
+            return result;
+        end;
+
+        # maximal element of the closure poset determined by an
+        # admissible pair: blocks of the induced partition together with
+        # the index of the image block under the induced derangement
+        candidateBlocks := function(cycs, chosen)
+            local blocks, img, k, p, cycleIdxs, offset, j, t, c, b, Z;
+            blocks := [];
+            img := [];
+            for k in [1 .. Length(chosen.primes)] do
+                p := chosen.primes[k];
+                cycleIdxs := Positions(chosen.alpha, p);
+                offset := Length(blocks);
+                for j in [0 .. p - 1] do
+                    Z := [];
+                    for t in [1 .. Length(cycleIdxs)] do
+                        c := cycs[cycleIdxs[t]];
+                        b := chosen.beta[k][t];
+                        UniteSet(Z, Union(c{Filtered([1 .. Length(c)],
+                            s -> s mod p = (b + j + 1) mod p)}));
+                    od;
+                    Add(blocks, Z);
+                    Add(img, offset + ((j + 1) mod p) + 1);
+                od;
+            od;
+            return rec(blocks := blocks, img := img);
+        end;
+
+        elements := Elements(M);
+        if ForAny(elements, x -> x in Set(x * elements)) then
+            return false;
+        fi;
+        cycles := closureCycles(elements);
+        for pair in admissiblePairs(List(cycles, Length)) do
+            cand := candidateBlocks(cycles, pair);
+            if ForAll([1 .. Length(cand.blocks)], blk ->
+                    ForAll(cand.blocks[blk],
+                        x -> IsSubset(cand.blocks[cand.img[blk]],
+                            Set(x * elements)))) then
+                return true;
+            fi;
+        od;
+        return false;
 end);
 
 InstallMethod(IsRightDerangementInducted, "for a magma", [IsMagma],
