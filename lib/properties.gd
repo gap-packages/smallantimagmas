@@ -3,7 +3,7 @@
 #! identifies whether magma <A>M</A> is antiassociative.
 #!
 #! @BeginExampleSession
-#! gap> IsAntiassociative(OneSmallGroup(16));
+#! gap> IsAntiassociative(CyclicGroup(16));
 #! false
 #! gap> IsAntiassociative(OneSmallAntimagma(2));
 #! true
@@ -22,11 +22,11 @@ DeclareProperty("IsAntiassociative", IsMagma);
 #! <magma with 2 generators>
 #! gap> AssociativityIndex(OneSmallAntimagma(2));
 #! 0
-#! gap> OneSmallGroup(4);
+#! gap> CyclicGroup(4);
 #! <pc group of size 4 with 2 generators>
-#! gap> AssociativityIndex(OneSmallGroup(4));
+#! gap> AssociativityIndex(CyclicGroup(4));
 #! 64
-#! gap> AssociativityIndex(OneSmallGroup(4)) = 4 ^ 3;
+#! gap> AssociativityIndex(CyclicGroup(4)) = 4 ^ 3;
 #! true
 #! @EndExampleSession
 #!
@@ -98,7 +98,7 @@ DeclareGlobalFunction("AllSubmagmas");
 #! identifies class of antiassociative magma <A>M</A>.
 #!
 #! @BeginExampleSession
-#! gap> IsAntiassociative(OneSmallGroup(16));
+#! gap> IsAntiassociative(CyclicGroup(16));
 #! false
 #! gap> IsAntiassociative(OneSmallAntimagma(2));
 #! true
