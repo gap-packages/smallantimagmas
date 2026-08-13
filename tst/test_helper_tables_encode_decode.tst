@@ -97,4 +97,46 @@ gap> ForAll([2 .. 3], n -> __SmallAntimagmaHelper.TablesEncode(n,
 > __SmallAntimagmaHelper.getSmallAntimagmaMetadata(n)()));
 true
 
+# n = 2, base 4, digits (r - 1): [ 3, 3 ] -> 2 * 4 + 2 = 10, delta from 0 is 10
+gap> __SmallAntimagmaHelper.TablesEncode(2, List(AllSmallAntimagmas(2), M -> __SmallAntimagmaHelper.MultiplicationTableConvert(MultiplicationTable(M)))) = [ 10 ];
+true
+
+# n = 3, base 27, digit weights 729, 27, 1:
+#   [ 10, 10, 10 ] ->  9 * 729 +  9 * 27 +  9 =  6813
+#   [ 10, 10, 19 ] ->  9 * 729 +  9 * 27 + 18 =  6822
+#   [ 10, 19, 10 ] ->  9 * 729 + 18 * 27 +  9 =  7056
+#   [ 10, 19, 19 ] ->  9 * 729 + 18 * 27 + 18 =  7065
+#   [ 14, 27,  1 ] -> 13 * 729 + 26 * 27 +  0 = 10179
+# sorted, the deltas are 6813, 9, 234, 9, 3114
+gap> __SmallAntimagmaHelper.TablesEncode(3, List(AllSmallAntimagmas(3), M -> __SmallAntimagmaHelper.MultiplicationTableConvert(MultiplicationTable(M)))) = [ 6813, 9, 234, 9, 3114 ];
+true
+
+# and those hand-computed deltas decode to exactly what data/2 and data/3 ship
+gap> __SmallAntimagmaHelper.TablesDecode(2, [ 10 ]) = __SmallAntimagmaHelper.getSmallAntimagmaMetadata(2)();
+true
+
+gap> __SmallAntimagmaHelper.TablesDecode(3, [ 6813, 9, 234, 9, 3114 ]) = __SmallAntimagmaHelper.getSmallAntimagmaMetadata(3)();
+true
+
+# the full encoded table, i.e. the deltas exactly as stored in data/n
+gap> storedDeltas := function(n)
+>     local dir, files;
+>     dir := __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory(n);
+>     files := SortedList(List(Filtered(DirectoryContents(dir), f -> f <> "." and f <> ".."), f -> Filename(dir, f)));
+>     return ReadAsFunction(First(files))();
+> end;;
+
+gap> storedDeltas(2) = [ 10 ];
+true
+
+gap> storedDeltas(3) = [ 6813, 9, 234, 9, 3114 ];
+true
+
+# encoding all antimagmas reproduces the stored table exactly
+gap> ForAll([2 .. 3], n -> __SmallAntimagmaHelper.TablesEncode(n, List(AllSmallAntimagmas(n), M -> __SmallAntimagmaHelper.MultiplicationTableConvert(MultiplicationTable(M)))) = storedDeltas(n));
+true
+
+gap> ForAll([2 .. 3], n -> __SmallAntimagmaHelper.TablesDecode(n, storedDeltas(n)) = __SmallAntimagmaHelper.getSmallAntimagmaMetadata(n)());
+true
+
 gap> STOP_TEST("test_helper_tables_encode_decode.tst");

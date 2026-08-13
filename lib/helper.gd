@@ -38,6 +38,11 @@ __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory := function(order)
     return First(result);
 end;
 
+# packs every row form into a base-(n^n) number, sorts them, and returns the
+# successive differences, so a data file holds small deltas, not big integers.
+#
+#     2, [ [ 3, 3 ] ]                      -> [ 10 ]            (2 * 4 + 2)
+#     3, [ [ 10, 10, 10 ], [ 14, 27, 1 ] ] -> [ 6813, 3366 ]
 __SmallAntimagmaHelper.TablesEncode := function(order, tables)
     local m, numbers, deltas, prev, t, N, r;
     m := order ^ order;
@@ -59,6 +64,11 @@ __SmallAntimagmaHelper.TablesEncode := function(order, tables)
     return deltas;
 end;
 
+# inverse of TablesEncode: prefix-sums the deltas, then reads every number as n
+# digits in base n^n, each digit shifted by one.
+#
+#     2, [ 10 ]          -> [ [ 3, 3 ] ]
+#     3, [ 6813, 3366 ]  -> [ [ 10, 10, 10 ], [ 14, 27, 1 ] ]
 __SmallAntimagmaHelper.TablesDecode := function(order, deltas)
     local m, prev, result, d, N, t, i;
     m := order ^ order;
@@ -85,12 +95,23 @@ __SmallAntimagmaHelper.getSmallAntimagmaMetadata := function(order)
     return {} -> tables;
 end;
 
+# encodes an n x n table into its row form: every row [ r_1, ..., r_n ] becomes
+# its position in EnumeratorOfTuples([1 .. n], n), that is
+# 1 + Sum_k (r_k - 1) * n^(n - k).
+#
+#     [ [ 2, 1 ], [ 2, 1 ] ]                    -> [ 3, 3 ]
+#     [ [ 2, 2, 2 ], [ 3, 3, 3 ], [ 1, 1, 1 ] ] -> [ 14, 27, 1 ]
 __SmallAntimagmaHelper.MultiplicationTableConvert := function(T)
         local nrows;
         nrows := NrRows(T);
         return List(T, row -> Position(EnumeratorOfTuples([1 .. nrows], nrows), row));
 end;
 
+# inverse of MultiplicationTableConvert: a row code c becomes the digits of c - 1
+# in base n, every digit shifted by one.
+#
+#     [ 3, 3 ]      -> [ [ 2, 1 ], [ 2, 1 ] ]
+#     [ 14, 27, 1 ] -> [ [ 2, 2, 2 ], [ 3, 3, 3 ], [ 1, 1, 1 ] ]
 __SmallAntimagmaHelper.MultiplicationTableReverse := function(T)
         local ncols;
         ncols := Size(T);
