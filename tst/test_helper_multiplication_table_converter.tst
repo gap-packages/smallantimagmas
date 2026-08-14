@@ -33,7 +33,7 @@ gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> MultiplicationTable(M) = __SmallA
 true
 
 # n = 2, weights 2, 1: [ 2, 1 ] -> 1 + 1 * 2 + 0 * 1 = 3
-gap> List(AllSmallAntimagmas(2), M -> __SmallAntimagmaHelper.MultiplicationTableConvert(MultiplicationTable(M))) = [ [ 3, 3 ] ];
+gap> List(AllSmallAntimagmas(2), M -> __SmallAntimagmaHelper.MultiplicationTableConvert(MultiplicationTable(M))) = [[3, 3]];
 true
 
 # n = 3, weights 9, 3, 1:
@@ -43,15 +43,15 @@ true
 #   [ 3, 1, 1 ] -> 1 + 2 * 9 + 0 * 3 + 0 * 1 = 19
 #   [ 3, 3, 3 ] -> 1 + 2 * 9 + 2 * 3 + 2 * 1 = 27
 gap> List(AllSmallAntimagmas(3), M -> __SmallAntimagmaHelper.MultiplicationTableConvert(MultiplicationTable(M))) = [
->     [ 10, 10, 10 ], [ 10, 10, 19 ], [ 10, 19, 10 ], [ 10, 19, 19 ], [ 14, 27, 1 ]
+>     [10, 10, 10], [10, 10, 19], [10, 19, 10], [10, 19, 19], [14, 27, 1]
 > ];
 true
 
 # decoding those row forms gives the tables back
-gap> List([ [ 3, 3 ] ], T -> __SmallAntimagmaHelper.MultiplicationTableReverse(T)) = List(AllSmallAntimagmas(2), MultiplicationTable);
+gap> List([[3, 3]], T -> __SmallAntimagmaHelper.MultiplicationTableReverse(T)) = List(AllSmallAntimagmas(2), MultiplicationTable);
 true
 
-gap> List([ [ 10, 10, 10 ], [ 10, 10, 19 ], [ 10, 19, 10 ], [ 10, 19, 19 ], [ 14, 27, 1 ] ], T -> __SmallAntimagmaHelper.MultiplicationTableReverse(T)) = List(AllSmallAntimagmas(3), MultiplicationTable);
+gap> List([[10, 10, 10], [10, 10, 19], [10, 19, 10], [10, 19, 19], [14, 27, 1]], T -> __SmallAntimagmaHelper.MultiplicationTableReverse(T)) = List(AllSmallAntimagmas(3), MultiplicationTable);
 true
 
 gap> STOP_TEST("test_helper_multiplication_table_converter.tst");
