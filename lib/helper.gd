@@ -1,5 +1,119 @@
 __SmallAntimagmaHelper := rec();
 
+# walks the numbers of a data file, a block at a time, without handing it to the
+# parser and without ever holding the whole of it.
+#
+# the file is a single list literal, and a list literal is one expression: the
+# parser builds a node per entry and refuses the whole function once that
+# expression grows too large, which the 233701268 entries of order 5 do. the
+# bytes are plain enough to scan directly, so this reads them in blocks and hands
+# the numbers of each block to <process>, which returns false to stop the walk.
+#
+#     "local result;result:=[10];return result;"        -> [ 10 ]
+#     "local result;result:=[6813,3366];return result;" -> [ 6813, 3366 ]
+__SmallAntimagmaHelper.ForEachBlock := function(path, process)
+    local stream, tail, chunk, piece, opened, closed, more, at, i;
+
+    stream := InputTextFile(path);
+    if stream = fail then
+        ErrorNoReturn("smallantimagmas: ", "<path> could not be read");
+    fi;
+
+    tail := "";
+    opened := false;
+    closed := false;
+    more := true;
+
+    repeat
+        chunk := ReadAll(stream, 2 ^ 22);
+        if chunk = fail then
+            chunk := "";
+        fi;
+        tail := Concatenation(tail, chunk);
+        piece := "";
+
+        if not opened then
+            at := Position(tail, '[');
+            if at <> fail then
+                tail := tail{[at + 1 .. Length(tail)]};
+                opened := true;
+            fi;
+        fi;
+
+        if opened then
+            at := Position(tail, ']');
+            if at <> fail then
+                piece := tail{[1 .. at - 1]};
+                tail := "";
+                closed := true;
+            else
+                # cut at the last comma, so that no number is split in two
+                i := Length(tail);
+                while i > 0 and tail[i] <> ',' do
+                    i := i - 1;
+                od;
+                if i > 0 then
+                    piece := tail{[1 .. i - 1]};
+                    tail := tail{[i + 1 .. Length(tail)]};
+                fi;
+            fi;
+        fi;
+
+        if piece <> "" then
+            more := process(List(SplitString(piece, ","), Int));
+        fi;
+    until closed or chunk = "" or not more;
+
+    CloseStream(stream);
+
+    if more and not closed then
+        ErrorNoReturn("smallantimagmas: ", "<path> holds no complete list of tables");
+    fi;
+end;
+
+# every delta of a data file.
+__SmallAntimagmaHelper.ReadDeltas := function(path)
+    local deltas;
+    deltas := [];
+    __SmallAntimagmaHelper.ForEachBlock(path, function(block)
+        Append(deltas, block);
+        return true;
+    end);
+    return deltas;
+end;
+
+# the key of entry <id> of a data file, or, with <id> = fail, how many it holds.
+#
+# the deltas are a prefix sum, so reaching an entry needs nothing but a running
+# total: whole blocks are summed by the kernel and dropped again, and the walk
+# stops the moment the entry is reached. memory is constant either way, and the
+# cost grows with <id>, not with the size of the file.
+__SmallAntimagmaHelper.ScanDeltas := function(path, id)
+    local key, seen, found;
+
+    key := 0;
+    seen := 0;
+    found := fail;
+
+    __SmallAntimagmaHelper.ForEachBlock(path, function(block)
+        if id <> fail and seen + Length(block) >= id then
+            found := key + Sum(block{[1 .. id - seen]});
+            return false;
+        fi;
+        key := key + Sum(block);
+        seen := seen + Length(block);
+        return true;
+    end);
+
+    if id = fail then
+        return seen;
+    fi;
+    if found = fail then
+        ErrorNoReturn("smallantimagmas: ", "<id> is larger than the number of antimagmas of that order");
+    fi;
+    return found;
+end;
+
 __SmallAntimagmaHelper.checkOrder := function(order)
         if not IsInt(order) then
             ErrorNoReturn("smallantimagmas: ", "<order> must be an integer");
@@ -64,35 +178,63 @@ __SmallAntimagmaHelper.TablesEncode := function(order, tables)
     return deltas;
 end;
 
+# one packed number read back as the row form of a table: n digits in base n^n,
+# each digit shifted by one.
+#
+#     2, 10   -> [ 3, 3 ]
+#     3, 6813 -> [ 10, 10, 10 ]
+__SmallAntimagmaHelper.TableOfKey := function(order, key)
+    local m, t, i;
+    m := order ^ order;
+    t := [];
+    for i in [1 .. order] do
+        Add(t, RemInt(key, m) + 1);
+        key := QuoInt(key, m);
+    od;
+    return Reversed(t);
+end;
+
 # inverse of TablesEncode: prefix-sums the deltas, then reads every number as n
 # digits in base n^n, each digit shifted by one.
 #
 #     2, [ 10 ]          -> [ [ 3, 3 ] ]
 #     3, [ 6813, 3366 ]  -> [ [ 10, 10, 10 ], [ 14, 27, 1 ] ]
 __SmallAntimagmaHelper.TablesDecode := function(order, deltas)
-    local m, prev, result, d, N, t, i;
-    m := order ^ order;
+    local prev, result, d;
     prev := 0;
     result := [];
     for d in deltas do
         prev := prev + d;
-        N := prev;
-        t := [];
-        for i in [1 .. order] do
-            Add(t, RemInt(N, m) + 1);
-            N := QuoInt(N, m);
-        od;
-        Add(result, Reversed(t));
+        Add(result, __SmallAntimagmaHelper.TableOfKey(order, prev));
     od;
     return result;
 end;
 
-__SmallAntimagmaHelper.getSmallAntimagmaMetadata := function(order)
-    local dir, files, tables;
+# the file holding the tables of one order.
+__SmallAntimagmaHelper.getSmallAntimagmaMetadataFile := function(order)
+    local dir, files;
     dir := __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory(order);
     files := SortedList(List(Filtered(DirectoryContents(dir), f -> f <> ".." and f <> "."), f -> Filename(dir, f)));
-    tables := __SmallAntimagmaHelper.TablesDecode(order, ReadAsFunction(First(files))());
+    return First(files);
+end;
+
+__SmallAntimagmaHelper.getSmallAntimagmaMetadata := function(order)
+    local tables;
+    tables := __SmallAntimagmaHelper.TablesDecode(order,
+        __SmallAntimagmaHelper.ReadDeltas(__SmallAntimagmaHelper.getSmallAntimagmaMetadataFile(order)));
     return {} -> tables;
+end;
+
+# the row form of the table of entry <id>, and of no other.
+__SmallAntimagmaHelper.TableAt := function(order, id)
+    return __SmallAntimagmaHelper.TableOfKey(order, __SmallAntimagmaHelper.ScanDeltas(
+        __SmallAntimagmaHelper.getSmallAntimagmaMetadataFile(order), id));
+end;
+
+# how many tables the file of one order holds, without building any of them.
+__SmallAntimagmaHelper.CountTables := function(order)
+    return __SmallAntimagmaHelper.ScanDeltas(
+        __SmallAntimagmaHelper.getSmallAntimagmaMetadataFile(order), fail);
 end;
 
 # encodes an n x n table into its row form: every row [ r_1, ..., r_n ] becomes

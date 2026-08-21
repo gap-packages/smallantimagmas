@@ -1,6 +1,6 @@
 InstallGlobalFunction(NrSmallAntimagmas,
     function(order)
-    return Size(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(order)());
+    return __SmallAntimagmaHelper.CountTables(order);
 end);
 
 InstallGlobalFunction(SmallAntimagma,
@@ -16,7 +16,7 @@ InstallGlobalFunction(SmallAntimagma,
             Error("SmallAntimagma: expected (n, i) or [n, i]");
         fi;
         return MagmaByMultiplicationTable(
-            __SmallAntimagmaHelper.MultiplicationTableReverse(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(order)()[id]));
+            __SmallAntimagmaHelper.MultiplicationTableReverse(__SmallAntimagmaHelper.TableAt(order, id)));
 end);
 
 InstallGlobalFunction(AllSmallAntimagmas,
