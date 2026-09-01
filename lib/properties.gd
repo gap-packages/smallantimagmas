@@ -1,6 +1,9 @@
 #! @Arguments M
 #! @Description
-#! identifies whether magma <A>M</A> is antiassociative.
+#! identifies whether magma <A>M</A> is antiassociative <Cite Key="Rogers1963"/>.
+#! A magma <A>M</A> is antiassociative if
+#! <M>(x * y) * z \neq x * (y * z)</M> holds for all <M>x, y, z \in M</M>,
+#! i.e. associativity fails for every triple of elements.
 #!
 #! @BeginExampleSession
 #! gap> IsAntiassociative(CyclicGroup(16));
