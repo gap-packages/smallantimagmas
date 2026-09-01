@@ -18,4 +18,16 @@ true
 gap> ForAll([2 .. 3], n -> ForAll([1 .. NrSmallAntimagmas(n)], i -> IsMagmaIsomorphic(SmallAntimagma([n, i]), SmallAntimagma(n, i))));
 true
 
+## Size(OneSmallAntimagma(n)) = n
+gap> List([2 .. 4], n -> Size(OneSmallAntimagma(n)));
+[ 2, 3, 4 ]
+
+## IsAntiassociative(OneSmallAntimagma(n))
+gap> ForAll([2 .. 4], n -> IsAntiassociative(OneSmallAntimagma(n)));
+true
+
+## IdSmallAntimagma(OneSmallAntimagma(n))[1] = n
+gap> ForAll([2 .. 3], n -> IdSmallAntimagma(OneSmallAntimagma(n))[1] = n);
+true
+
 gap> STOP_TEST("test_antimagma.tst");
