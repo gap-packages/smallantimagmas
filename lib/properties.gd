@@ -51,10 +51,23 @@ DeclareAttribute("DiagonalOfMultiplicationTable", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! identifies commutativity index of <A>M</A>.
+#! identifies commutativity index of <A>M</A>, i.e. the number of unordered pairs
+#! <M>\{ x, y \} \subseteq M</M> with <M>x \neq y</M> such that <M>x * y = y * x</M>.
+#! It ranges from <M>0</M>, when <A>M</A> is anticommutative,
+#! up to <M>{ |M| \choose 2 }</M>, when <A>M</A> is commutative.
 #!
 #! @BeginExampleSession
-#! 
+#! gap> M := OneSmallAntimagma(2);;
+#! gap> MultiplicationTable(M);
+#! [ [ 2, 1 ], [ 2, 1 ] ]
+#! gap> CommutativityIndex(M);
+#! 0
+#! gap> List(AllSmallAntimagmas(3), M -> CommutativityIndex(M));
+#! [ 1, 1, 1, 1, 0 ]
+#! gap> MultiplicationTable(AllSmallAntimagmas(3)[5]);
+#! [ [ 2, 2, 2 ], [ 3, 3, 3 ], [ 1, 1, 1 ] ]
+#! gap> CommutativityIndex(CyclicGroup(3)) = Binomial(3, 2);
+#! true
 #! @EndExampleSession
 #!
 DeclareAttribute("CommutativityIndex", IsMagma);
