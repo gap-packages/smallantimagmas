@@ -343,17 +343,75 @@ DeclareProperty("IsRightFPFInducted", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! is a left-hand sided derangment inducted <A>m</A>.
-#! The verification follows the endofunction algorithm
-#! of <Cite Key="MazurekZabielski2026"/>.
+#! whether <A>M</A> has property (A2) of <Cite Key="Mazurek2025"/>: there
+#! is a partition <M>P</M> of <A>M</A> and a derangement <M>d</M> of
+#! <M>P</M> with <M>xM \subseteq d(B)</M> for all <M>B \in P</M>,
+#! <M>x \in B</M>.
+#!
+#! Any <M>x \in xM</M> refutes (A2). Below, <M>f</M> denotes the diagonal
+#! endofunction <M>x \mapsto xx</M> of <A>M</A>.
+#!
+#! <M>n = 2</M>, <M>f</M> the transposition:
 #!
 #! @BeginExampleSession
-#! gap> M := TransposedMagma(SmallAntimagma(2, 1));
-#! <magma with 2 generators>
-#! gap> IsLeftFPFInducted(M);
+#! gap> M := TransposedMagma(SmallAntimagma(2, 1));;
+#! gap> Display(MultiplicationTable(M));
+#! [ [  2,  2 ],
+#!   [  1,  1 ] ]
+#! gap> partition := List(Elements(M), x -> [x]);;
+#! gap> List(partition, B -> List(Unique(B[1] * Elements(M)),
+#! >      y -> Position(Elements(M), y)));
+#! [ [ 2 ], [ 1 ] ]
+#! gap> IsLeftDerangementInducted(M);
 #! true
-#! gap> IsRightFPFInducted(M);
+#! @EndExampleSession
+#!
+#! <M>n = 3</M>, <M>f</M> a 3-cycle:
+#!
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(3, 5);;
+#! gap> Display(MultiplicationTable(M));
+#! [ [  2,  2,  2 ],
+#!   [  3,  3,  3 ],
+#!   [  1,  1,  1 ] ]
+#! gap> partition := List(Elements(M), x -> [x]);;
+#! gap> List(partition, B -> List(Unique(B[1] * Elements(M)),
+#! >      y -> Position(Elements(M), y)));
+#! [ [ 2 ], [ 3 ], [ 1 ] ]
+#! gap> IsLeftDerangementInducted(M);
+#! true
+#! @EndExampleSession
+#!
+#! <M>n = 4</M>, failing (A2) although <M>x \notin xM</M> for all
+#! <M>x</M>: here <M>f</M> alone does not decide, since <M>m_2</M> and
+#! <M>m_3</M> have non-constant left translations. From
+#! <M>m_2 M = \{m_1, m_3\}</M> the block <M>C \ni m_1</M> also contains
+#! <M>m_3</M>, whence
+#! <M>d(C) \supseteq m_1 M \cup m_3 M = \{m_1, m_2, m_4\}</M> meets
+#! <M>C</M>, so <M>d(C) = C</M>.
+#!
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(4, 8313);;
+#! gap> Display(MultiplicationTable(M));
+#! [ [  2,  2,  2,  2 ],
+#!   [  3,  3,  1,  1 ],
+#!   [  4,  4,  1,  1 ],
+#!   [  2,  2,  2,  2 ] ]
+#! gap> List(Elements(M), x -> List(Set(x * Elements(M)),
+#! >      y -> Position(Elements(M), y)));
+#! [ [ 2 ], [ 1, 3 ], [ 1, 4 ], [ 2 ] ]
+#! gap> ForAny(Elements(M), x -> x in Set(x * Elements(M)));
 #! false
+#! gap> IsLeftDerangementInducted(M);
+#! false
+#! @EndExampleSession
+#!
+#! (A2) is not left-right symmetric:
+#!
+#! @BeginExampleSession
+#! gap> M := TransposedMagma(SmallAntimagma(2, 1));;
+#! gap> IsLeftDerangementInducted(M);
+#! true
 #! gap> IsRightDerangementInducted(M);
 #! false
 #! @EndExampleSession
