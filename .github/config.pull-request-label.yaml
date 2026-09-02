@@ -1,4 +1,0 @@
----
-bug: ['fix/*', 'bugfix/*']
-feature: ['feature/*', 'feat/*']
-release: ['release/*', 'bump/*']

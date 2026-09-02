@@ -1,6 +1,9 @@
 #! @Arguments M
 #! @Description
-#! identifies whether magma <A>M</A> is antiassociative.
+#! identifies whether magma <A>M</A> is antiassociative <Cite Key="Rogers1963"/>.
+#! A magma <A>M</A> is antiassociative if
+#! <M>(x * y) * z \neq x * (y * z)</M> holds for all <M>x, y, z \in M</M>,
+#! i.e. associativity fails for every triple of elements.
 #!
 #! @BeginExampleSession
 #! gap> IsAntiassociative(CyclicGroup(16));
@@ -48,10 +51,23 @@ DeclareAttribute("DiagonalOfMultiplicationTable", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! identifies commutativity index of <A>M</A>.
+#! identifies commutativity index of <A>M</A>, i.e. the number of unordered pairs
+#! <M>\{ x, y \} \subseteq M</M> with <M>x \neq y</M> such that <M>x * y = y * x</M>.
+#! It ranges from <M>0</M>, when <A>M</A> is anticommutative,
+#! up to <M>{ |M| \choose 2 }</M>, when <A>M</A> is commutative.
 #!
 #! @BeginExampleSession
-#! 
+#! gap> M := OneSmallAntimagma(2);;
+#! gap> MultiplicationTable(M);
+#! [ [ 2, 1 ], [ 2, 1 ] ]
+#! gap> CommutativityIndex(M);
+#! 0
+#! gap> List(AllSmallAntimagmas(3), M -> CommutativityIndex(M));
+#! [ 1, 1, 1, 1, 0 ]
+#! gap> MultiplicationTable(AllSmallAntimagmas(3)[5]);
+#! [ [ 2, 2, 2 ], [ 3, 3, 3 ], [ 1, 1, 1 ] ]
+#! gap> CommutativityIndex(CyclicGroup(3)) = Binomial(3, 2);
+#! true
 #! @EndExampleSession
 #!
 DeclareAttribute("CommutativityIndex", IsMagma);
@@ -67,13 +83,16 @@ DeclareAttribute("AnticommutativityIndex", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! computes squares index of <A>M</A> so the order of $\left\{ m^2 | m \in M \right\}$.
+#! computes squares index of <A>M</A>, i.e. the size of the set of squares
+#! <M>\{ m^2 \mid m \in M \}</M>.
 #!
 #! @BeginExampleSession
-#! gap> List(AllSmallAntimagmas(2), M -> List(M, m -> m * m));                
-#! [ [ m2, m1 ] ]
+#! gap> List(AllSmallAntimagmas(2), M -> Set(M, m -> m ^ 2));
+#! [ [ m1, m2 ] ]
 #! gap> List(AllSmallAntimagmas(2), M -> SquaresIndex(M));
 #! [ 2 ]
+#! gap> List(AllSmallAntimagmas(3), M -> Set(M, m -> m ^ 2));
+#! [ [ m1, m2 ], [ m1, m2 ], [ m1, m2 ], [ m1, m2 ], [ m1, m2, m3 ] ]
 #! gap> List(AllSmallAntimagmas(3), M -> SquaresIndex(M));
 #! [ 2, 2, 2, 2, 3 ]
 #! @EndExampleSession
@@ -272,7 +291,11 @@ DeclareProperty("IsRightDistributive", IsMagma);
 
 #! @Arguments M
 #! @Description
-#!  if magma is left cancellative <A>m</A>.
+#! identifies whether magma <A>M</A> is left cancellative.
+#! A magma <A>M</A> is left cancellative if
+#! <M>z * x = z * y</M> implies <M>x = y</M> for all <M>x, y, z \in M</M>,
+#! i.e. for each <M>z \in M</M> the left translation <M>x \mapsto z * x</M>
+#! is injective.
 #!
 #! @BeginExampleSession
 #! gap> M := SmallAntimagma(2, 1);
@@ -292,18 +315,37 @@ DeclareProperty("IsLeftCancellative", IsMagma);
 
 #! @Arguments M
 #! @Description
-#!  if magma is right cancellative <A>m</A>.
+#! identifies whether magma <A>M</A> is right cancellative.
+#! A magma <A>M</A> is right cancellative if
+#! <M>x * z = y * z</M> implies <M>x = y</M> for all <M>x, y, z \in M</M>,
+#! i.e. for each <M>z \in M</M> the right translation <M>x \mapsto x * z</M>
+#! is injective.
 #!
 #! @BeginExampleSession
 #! gap> List(AllSmallAntimagmas(2), M -> IsRightCancellative(M));
 #! [ false ]
+#! gap> M := SmallAntimagma(3, 5);
+#! <magma with 3 generators>
+#! gap> Display(MultiplicationTable(M));
+#! [ [  2,  2,  2 ],
+#!   [  3,  3,  3 ],
+#!   [  1,  1,  1 ] ]
+#! gap> IsRightCancellative(M);
+#! true
+#! gap> IsLeftCancellative(M);
+#! false
+#! gap> List(AllSmallAntimagmas(3), M -> IsRightCancellative(M));
+#! [ false, false, false, false, true ]
 #! @EndExampleSession
 #!
 DeclareProperty("IsRightCancellative", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! if magma is cancellative <A>m</A>.
+#! identifies whether magma <A>M</A> is cancellative.
+#! A magma <A>M</A> is cancellative if it is both left cancellative and
+#! right cancellative, i.e. <M>z * x = z * y</M> implies <M>x = y</M> and
+#! <M>x * z = y * z</M> implies <M>x = y</M> for all <M>x, y, z \in M</M>.
 #!
 #! @BeginExampleSession
 #! gap> List(AllSmallAntimagmas(2), M -> IsCancellative(M));
