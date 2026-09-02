@@ -21,7 +21,7 @@ concurrency:
 
 jobs:
   gaptest:
-    name: Code quality - unit-tests (${{ matrix.gap-version }})
+    name: unit-tests (${{ matrix.gap-version }})
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -71,7 +71,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
 
   gaplint:
-    name: Code quality - gaplint
+    name: gaplint
     runs-on: ubuntu-latest
     permissions:
       contents: read
