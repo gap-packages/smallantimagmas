@@ -291,7 +291,11 @@ DeclareProperty("IsRightDistributive", IsMagma);
 
 #! @Arguments M
 #! @Description
-#!  if magma is left cancellative <A>m</A>.
+#! identifies whether magma <A>M</A> is left cancellative.
+#! A magma <A>M</A> is left cancellative if
+#! <M>z * x = z * y</M> implies <M>x = y</M> for all <M>x, y, z \in M</M>,
+#! i.e. for each <M>z \in M</M> the left translation <M>x \mapsto z * x</M>
+#! is injective.
 #!
 #! @BeginExampleSession
 #! gap> M := SmallAntimagma(2, 1);
@@ -311,18 +315,37 @@ DeclareProperty("IsLeftCancellative", IsMagma);
 
 #! @Arguments M
 #! @Description
-#!  if magma is right cancellative <A>m</A>.
+#! identifies whether magma <A>M</A> is right cancellative.
+#! A magma <A>M</A> is right cancellative if
+#! <M>x * z = y * z</M> implies <M>x = y</M> for all <M>x, y, z \in M</M>,
+#! i.e. for each <M>z \in M</M> the right translation <M>x \mapsto x * z</M>
+#! is injective.
 #!
 #! @BeginExampleSession
 #! gap> List(AllSmallAntimagmas(2), M -> IsRightCancellative(M));
 #! [ false ]
+#! gap> M := SmallAntimagma(3, 5);
+#! <magma with 3 generators>
+#! gap> Display(MultiplicationTable(M));
+#! [ [  2,  2,  2 ],
+#!   [  3,  3,  3 ],
+#!   [  1,  1,  1 ] ]
+#! gap> IsRightCancellative(M);
+#! true
+#! gap> IsLeftCancellative(M);
+#! false
+#! gap> List(AllSmallAntimagmas(3), M -> IsRightCancellative(M));
+#! [ false, false, false, false, true ]
 #! @EndExampleSession
 #!
 DeclareProperty("IsRightCancellative", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! if magma is cancellative <A>m</A>.
+#! identifies whether magma <A>M</A> is cancellative.
+#! A magma <A>M</A> is cancellative if it is both left cancellative and
+#! right cancellative, i.e. <M>z * x = z * y</M> implies <M>x = y</M> and
+#! <M>x * z = y * z</M> implies <M>x = y</M> for all <M>x, y, z \in M</M>.
 #!
 #! @BeginExampleSession
 #! gap> List(AllSmallAntimagmas(2), M -> IsCancellative(M));
