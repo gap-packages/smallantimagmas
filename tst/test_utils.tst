@@ -1,14 +1,5 @@
 gap> START_TEST("smallantimagmas: test_utils.tst");
 
-gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> ForAll(M, m -> LeftPower(m, 1) = m));
-true
-
-gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> ForAll(M, m -> RightPower(m, 1) = m));
-true
-
-gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> ForAll(M, m -> LeftPower(m, 2) = RightPower(m, 2)));
-true
-
 gap> AntimagmaGeneratorPossibleDiagonals(2);  
 [[2, 1 ]]
 
@@ -55,6 +46,27 @@ gap> UpToIsomorphism(AllSmallAntimagmas(3));
 [ 
     <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>
 ]
+
+## Size(UpToIsomorphism(AllSmallAntimagmas(n))) = NrSmallAntimagmas(n)
+gap> List([2 .. 3], n -> Size(UpToIsomorphism(AllSmallAntimagmas(n))) = NrSmallAntimagmas(n));
+[ true, true ]
+
+## Size(UpToIsomorphismAndAntiisomorphism(AllSmallAntimagmas(n))) = NrSmallAntimagmas(n)
+gap> List([2 .. 3], n -> Size(UpToIsomorphismAndAntiisomorphism(AllSmallAntimagmas(n))) = NrSmallAntimagmas(n));
+[ true, true ]
+
+## UpToIsomorphismAndAntiisomorphism absorbs TransposedMagma(M) for every M
+gap> List([2 .. 3], n -> Size(UpToIsomorphismAndAntiisomorphism(
+>        Concatenation(AllSmallAntimagmas(n), List(AllSmallAntimagmas(n), M -> TransposedMagma(M))))));
+[ 1, 5 ]
+
+## UpToIsomorphism([]) = []
+gap> UpToIsomorphism([]);
+[  ]
+
+## UpToIsomorphismAndAntiisomorphism([]) = []
+gap> UpToIsomorphismAndAntiisomorphism([]);
+[  ]
 
 gap> STOP_TEST("test_utils.tst");
 

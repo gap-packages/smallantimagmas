@@ -10,6 +10,8 @@ on:
     branches:
       - main
 
+permissions: {}
+
 # the `concurrency` settings ensure that not too many CI jobs run in parallel
 concurrency:
   # group by workflow and ref; the last slightly strange component ensures that for pull
@@ -21,6 +23,8 @@ jobs:
   gaptest:
     name: Code quality - unit-tests (${{ matrix.gap-version }})
     runs-on: ubuntu-slim
+    permissions:
+      contents: read
     strategy:
       fail-fast: false
       matrix:
@@ -69,6 +73,8 @@ jobs:
   gaplint:
     name: Code quality - gaplint
     runs-on: ubuntu-slim
+    permissions:
+      contents: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
