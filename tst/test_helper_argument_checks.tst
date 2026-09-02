@@ -14,11 +14,20 @@ Error, smallantimagmas: <order> is not yet implemented
 
 ## AllSmallAntimagmas(order) reaches checkOrder
 gap> AllSmallAntimagmas(0);
-Error, smallantimagmas: <order> must be greater than or equal to 2
+Error, smallantimagmas: <order> must be greater than or equal to 1
+
+gap> SmallAntimagma(0, 1);
+Error, smallantimagmas: <order> must be greater than or equal to 1
+
+gap> NrSmallAntimagmas(1);
+0
+
+gap> AllSmallAntimagmas(1);
+[  ]
 
 ## SmallAntimagma(order, id) reaches checkOrder
 gap> SmallAntimagma(1, 1);
-Error, smallantimagmas: <order> must be greater than or equal to 2
+Error, smallantimagmas: <id> is larger than the number of antimagmas of that order
 
 ## getSmallAntimagmaMetadataDirectory(order) rejects order with no data directory
 gap> __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory(9);
