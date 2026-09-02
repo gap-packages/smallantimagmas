@@ -83,13 +83,16 @@ DeclareAttribute("AnticommutativityIndex", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! computes squares index of <A>M</A> so the order of $\left\{ m^2 | m \in M \right\}$.
+#! computes squares index of <A>M</A>, i.e. the size of the set of squares
+#! <M>\{ m^2 \mid m \in M \}</M>.
 #!
 #! @BeginExampleSession
-#! gap> List(AllSmallAntimagmas(2), M -> List(M, m -> m * m));                
-#! [ [ m2, m1 ] ]
+#! gap> List(AllSmallAntimagmas(2), M -> Set(M, m -> m ^ 2));
+#! [ [ m1, m2 ] ]
 #! gap> List(AllSmallAntimagmas(2), M -> SquaresIndex(M));
 #! [ 2 ]
+#! gap> List(AllSmallAntimagmas(3), M -> Set(M, m -> m ^ 2));
+#! [ [ m1, m2 ], [ m1, m2 ], [ m1, m2 ], [ m1, m2 ], [ m1, m2, m3 ] ]
 #! gap> List(AllSmallAntimagmas(3), M -> SquaresIndex(M));
 #! [ 2, 2, 2, 2, 3 ]
 #! @EndExampleSession
