@@ -239,23 +239,17 @@ DeclareGlobalFunction("RightPower");
 
 #! @Arguments m
 #! @Description
-#! returns a left order of element <A>m</A>.
-DeclareAttribute("LeftOrder", IsExtLElement);
+#! returns the pair $[ i, p ]$ of minimal index and period of element <A>m</A>,
+#! that is the least $i, p \geq 1$ with
+#! $\texttt{LeftPower}(m, i + p) = \texttt{LeftPower}(m, i)$.
+DeclareAttribute("LeftIndexPeriod", IsExtLElement);
 
 #! @Arguments m
 #! @Description
-#!  returns a right order of element <A>m</A>.
-DeclareAttribute("RightOrder", IsExtRElement);
-
-#! @Arguments m
-#! @Description
-#! returns a left order of element <A>m</A>.
-DeclareAttribute("LeftOrdersOfElements", IsMagma);
-
-#! @Arguments m
-#! @Description
-#! returns a left order of element <A>m</A>.
-DeclareAttribute("RightOrdersOfElements", IsMagma);
+#!  returns the pair $[ i, p ]$ of minimal index and period of element <A>m</A>,
+#!  that is the least $i, p \geq 1$ with
+#!  $\texttt{RightPower}(m, i + p) = \texttt{RightPower}(m, i)$.
+DeclareAttribute("RightIndexPeriod", IsExtRElement);
 
 #! @Arguments M
 #! @Description

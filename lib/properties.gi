@@ -54,10 +54,13 @@ end);
 
 InstallGlobalFunction(MagmaIsomorphismInvariantsMatch,
     function(M, N)
-        local invariants;
+        local invariants, leftIndexPeriods, rightIndexPeriods;
         if IsIsomorphicDigraph(DigraphOfDiagonal(M), DigraphOfDiagonal(N)) = false then
             return false;
         fi;
+
+        leftIndexPeriods := K -> Collected(List(K, m -> LeftIndexPeriod(m)));
+        rightIndexPeriods := K -> Collected(List(K, m -> RightIndexPeriod(m)));
 
         invariants := [
             Size,
@@ -70,8 +73,8 @@ InstallGlobalFunction(MagmaIsomorphismInvariantsMatch,
             CommutativityIndex,
             AnticommutativityIndex,
             SquaresIndex,
-            LeftOrdersOfElements,
-            RightOrdersOfElements,
+            leftIndexPeriods,
+            rightIndexPeriods,
             IsLeftCyclic,
             IsRightCyclic];
         return ForAll(invariants, f -> f(M) = f(N));
@@ -172,10 +175,10 @@ InstallGlobalFunction(RightPower,
         return result;
 end);
 
-InstallMethod(LeftOrder, "for a left-multiplicable element", [IsExtLElement],
+InstallMethod(LeftIndexPeriod, "for a left-multiplicable element", [IsExtLElement],
     function(m)
-        local temporary, next;
-        temporary := [m * m];
+        local temporary, next, index;
+        temporary := [m];
 
         next := m * Last(temporary);
         while not (next in temporary) do
@@ -183,16 +186,14 @@ InstallMethod(LeftOrder, "for a left-multiplicable element", [IsExtLElement],
             next := m * Last(temporary);
         od;
 
-        if m = Last(temporary) then
-            return Size(temporary);
-        fi;
-        return infinity;
+        index := Position(temporary, next);
+        return [index, Size(temporary) - index + 1];
 end);
 
-InstallMethod(RightOrder, "for a right-multiplicable element", [IsExtRElement],
+InstallMethod(RightIndexPeriod, "for a right-multiplicable element", [IsExtRElement],
     function(m)
-        local temporary, next;
-        temporary := [m * m];
+        local temporary, next, index;
+        temporary := [m];
 
         next := Last(temporary) * m;
         while not (next in temporary) do
@@ -200,30 +201,18 @@ InstallMethod(RightOrder, "for a right-multiplicable element", [IsExtRElement],
             next := Last(temporary) * m;
         od;
 
-        if m = Last(temporary) then
-            return Size(temporary);
-        fi;
-        return infinity;
-end);
-
-InstallMethod(LeftOrdersOfElements, "for a magma", [IsMagma],
-    function(M)
-        return Collected(List(M, m -> LeftOrder(m)));
-end);
-
-InstallMethod(RightOrdersOfElements, "for a magma", [IsMagma],
-    function(M)
-        return Collected(List(M, m -> RightOrder(m)));
+        index := Position(temporary, next);
+        return [index, Size(temporary) - index + 1];
 end);
 
 InstallMethod(IsLeftCyclic, "for a magma", [IsMagma],
     function(M)
-        return ForAny(List(M), m -> LeftOrder(m) = Size(M));
+        return ForAny(List(M), m -> LeftIndexPeriod(m) = [1, Size(M)]);
 end);
 
 InstallMethod(IsRightCyclic, "for a magma", [IsMagma],
     function(M)
-        return ForAny(List(M), m -> RightOrder(m) = Size(M));
+        return ForAny(List(M), m -> RightIndexPeriod(m) = [1, Size(M)]);
 end);
 
 InstallMethod(IsLeftCancellative, "for a magma", [IsMagma],
