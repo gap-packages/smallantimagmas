@@ -5,6 +5,8 @@
 #! class of magmas that are pairwise isomorphic or anti-isomorphic.
 #!
 #! @BeginExampleSession
+#! gap> AllSmallAntimagmas(1);
+#! [  ]
 #! gap> AllSmallAntimagmas(2);
 #! [ <magma with 2 generators> ]
 #! gap> AllSmallAntimagmas(3);
@@ -22,6 +24,8 @@ DeclareGlobalFunction("AllSmallAntimagmas");
 #! isomorphism and anti-isomorphism.
 #!
 #! @BeginExampleSession
+#! gap> NrSmallAntimagmas(1);
+#! 0
 #! gap> NrSmallAntimagmas(2);
 #! 1
 #! gap> NrSmallAntimagmas(3);
