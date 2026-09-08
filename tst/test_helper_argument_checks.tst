@@ -24,6 +24,21 @@ Error, smallantimagmas: <order> must be greater than or equal to 2
 gap> __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory(9);
 Error, smallantimagmas: <order> is not yet implemented
 
+## AllSmallAntimagmas(order, view) rejects a non-string view
+gap> AllSmallAntimagmas(2, 7);
+Error, smallantimagmas: expected (<order>) or (<order>, <view>)
+
+## AllSmallAntimagmas(order, view) rejects more than one view
+gap> AllSmallAntimagmas(2, "labelled", "labelled");
+Error, smallantimagmas: expected (<order>) or (<order>, <view>)
+
+## NrSmallAntimagmas(order, view) rejects an unknown view
+gap> width := SizeScreen();;
+gap> SizeScreen([256, 24]);;
+gap> NrSmallAntimagmas(2, "nope");
+Error, smallantimagmas: <view> must be one of labelled, up-to-isomorphism, up-to-isomorphism-antiisomorphism
+gap> SizeScreen(width);;
+
 ## SmallAntimagma(arg...) rejects a single non-list argument
 gap> SmallAntimagma(2);
 Error, SmallAntimagma: expected (n, i) or [n, i]
