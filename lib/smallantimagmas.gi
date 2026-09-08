@@ -1,6 +1,9 @@
 InstallGlobalFunction(NrSmallAntimagmas,
-    function(order)
-    return __SmallAntimagmaHelper.CountTables(order);
+    function(arg...)
+        local orders, view;
+        orders := __SmallAntimagmaHelper.checkOrders(First(arg));
+        view := __SmallAntimagmaHelper.checkView(arg{[2 .. Size(arg)]});
+        return Sum(orders, view.nr);
 end);
 
 InstallGlobalFunction(SmallAntimagma,
@@ -20,16 +23,11 @@ InstallGlobalFunction(SmallAntimagma,
 end);
 
 InstallGlobalFunction(AllSmallAntimagmas,
-    function(order)
-        if IsList(order) and ForAll(order, o -> IsInt(o)) then
-            return Flat(
-                List(order, o -> List(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(o)(),
-                                    table -> MagmaByMultiplicationTable(
-                                        __SmallAntimagmaHelper.MultiplicationTableReverse(table)))));
-        elif IsInt(order) then
-            return List(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(order)(), table -> MagmaByMultiplicationTable(
-                                        __SmallAntimagmaHelper.MultiplicationTableReverse(table)));
-        fi;
+    function(arg...)
+        local orders, view;
+        orders := __SmallAntimagmaHelper.checkOrders(First(arg));
+        view := __SmallAntimagmaHelper.checkView(arg{[2 .. Size(arg)]});
+        return Concatenation(List(orders, view.all));
 end);
 
 InstallMethod(IdSmallAntimagma, "for a magma", [IsMagma],
@@ -44,4 +42,3 @@ InstallGlobalFunction(OneSmallAntimagma,
     function(order)
         return SmallAntimagma(order, Random([1 .. NrSmallAntimagmas(order)]));
 end);
-
