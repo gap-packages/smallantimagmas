@@ -259,3 +259,88 @@ __SmallAntimagmaHelper.MultiplicationTableReverse := function(T)
         ncols := Size(T);
         return List(T, col -> EnumeratorOfTuples([1 .. ncols], ncols)[col]);
 end;
+
+# the three views AllSmallAntimagmas and NrSmallAntimagmas offer, with the steps
+# they are built from.
+__SmallAntimagmaHelper.Views := (function()
+    local magmasOf, labelledTables, splitByTranspose;
+
+    # what the data file holds: one magma per iso-or-antiisomorphism class.
+    magmasOf := function(order)
+        return List(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(order)(),
+                    table -> MagmaByMultiplicationTable(
+                        __SmallAntimagmaHelper.MultiplicationTableReverse(table)));
+    end;
+
+    # the orbit of the table under S_n: one table per magma on [ 1 .. n ]
+    # isomorphic to M, that is n! / |Aut(M)| of them.
+    labelledTables := function(M)
+        local T, n, relabel;
+        T := MultiplicationTable(M);
+        n := Size(M);
+        relabel := p -> List([1 .. n], i -> List([1 .. n], j -> (T[i / p][j / p]) ^ p));
+        return Set(SymmetricGroup(n), relabel);
+    end;
+
+    # an iso-or-antiisomorphism class is [M] together with [M^op], so the
+    # transpose splits it into its two isomorphism classes.
+    splitByTranspose := function(magmas)
+        local classes, M, transpose;
+        classes := [];
+        for M in magmas do
+            Add(classes, M);
+            transpose := TransposedMat(MultiplicationTable(M));
+            if not transpose in labelledTables(M) then
+                Add(classes, MagmaByMultiplicationTable(transpose));
+            fi;
+        od;
+        return classes;
+    end;
+
+    return [
+
+        rec(name := "labelled",
+            all := order -> List(Concatenation(List(splitByTranspose(magmasOf(order)), labelledTables)),
+                                 MagmaByMultiplicationTable),
+            nr := order -> Sum(splitByTranspose(magmasOf(order)), M -> Size(labelledTables(M)))),
+
+        rec(name := "up-to-isomorphism",
+            all := order -> splitByTranspose(magmasOf(order)),
+            nr := order -> Size(splitByTranspose(magmasOf(order)))),
+
+        rec(name := "up-to-isomorphism-antiisomorphism",
+            all := order -> magmasOf(order),
+            nr := order -> __SmallAntimagmaHelper.CountTables(order))];
+end)();
+
+# taken when no view is named
+__SmallAntimagmaHelper.DefaultView := "up-to-isomorphism-antiisomorphism";
+
+# one order or a list of them; checkOrder does the complaining
+__SmallAntimagmaHelper.checkOrders := function(orders)
+    if not IsList(orders) then
+        orders := [orders];
+    fi;
+    Perform(orders, __SmallAntimagmaHelper.checkOrder);
+    return orders;
+end;
+
+# the optional second argument names the view
+__SmallAntimagmaHelper.checkView := function(rest)
+    local name, view;
+
+    if IsEmpty(rest) then
+        name := __SmallAntimagmaHelper.DefaultView;
+    elif Size(rest) = 1 and IsString(First(rest)) then
+        name := First(rest);
+    else
+        ErrorNoReturn("smallantimagmas: ", "expected (<order>) or (<order>, <view>)");
+    fi;
+
+    view := First(__SmallAntimagmaHelper.Views, v -> v.name = name);
+    if view = fail then
+        ErrorNoReturn("smallantimagmas: ", "<view> must be one of ",
+            JoinStringsWithSeparator(List(__SmallAntimagmaHelper.Views, v -> v.name), ", "));
+    fi;
+    return view;
+end;
