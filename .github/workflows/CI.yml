@@ -22,7 +22,7 @@ concurrency:
 jobs:
   gaptest:
     name: unit-tests (${{ matrix.gap-version }})
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     permissions:
       contents: read
     strategy:
