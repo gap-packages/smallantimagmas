@@ -442,3 +442,23 @@ DeclareProperty("IsRightAlternative", IsMagma);
 #! @EndExampleSession
 #!
 DeclareAttribute("DigraphOfDiagonal", IsMagma);
+
+#!
+#! @Arguments n
+#! @Description
+#! returns the isomorphism types of the diagonal digraphs of the
+#! <A>n</A>-element antimagmas, one digraph per type, ordered by number of
+#! connected components and then by the least diagonal inducing the type.
+#! For <M>n = 4</M> this is the order <M>\Gamma_1, \ldots, \Gamma_6</M> of
+#! <Cite Key="MazurekZabielski2025"/>.
+#!
+#! @BeginExampleSession
+#! gap> List(DiagonalDigraphTypes(3), OutNeighbours);
+#! [ [ [ 2 ], [ 1 ], [ 1 ] ], [ [ 2 ], [ 3 ], [ 1 ] ] ]
+#! gap> List(DiagonalDigraphTypes(4), OutNeighbours);
+#! [ [ [ 2 ], [ 1 ], [ 1 ], [ 1 ] ], [ [ 2 ], [ 1 ], [ 1 ], [ 2 ] ],
+#!   [ [ 2 ], [ 1 ], [ 1 ], [ 3 ] ], [ [ 2 ], [ 3 ], [ 1 ], [ 1 ] ],
+#!   [ [ 2 ], [ 3 ], [ 4 ], [ 1 ] ], [ [ 2 ], [ 1 ], [ 4 ], [ 3 ] ] ]
+#! @EndExampleSession
+#!
+DeclareOperation("DiagonalDigraphTypes", [IsPosInt]);
