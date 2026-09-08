@@ -353,3 +353,22 @@ InstallMethod(DigraphOfDiagonal, "for a magma", [IsMagma],
     function(M)
         return DigraphByEdges(List([1 .. Size(M)], m -> [m, DiagonalOfMultiplicationTable(M)[m]]));
 end);
+InstallMethod(DiagonalDigraphTypes, "for a magma order", [IsPosInt],
+    function(n)
+        local digraphOfDiagonal, types, diagonal, candidate;
+
+        digraphOfDiagonal := d -> DigraphByEdges(List([1 .. n], i -> [i, d[i]]));
+
+        types := [];
+        for diagonal in AntimagmaGeneratorPossibleDiagonals(n) do
+            candidate := digraphOfDiagonal(diagonal);
+            if not ForAny(types, type -> IsIsomorphicDigraph(candidate, type)) then
+                Add(types, candidate);
+            fi;
+        od;
+
+        # the diagonals arrive lexicographically, so every representative kept
+        # is the least of its type and this key needs no stable Sort
+        SortBy(types, type -> [DigraphNrConnectedComponents(type), OutNeighbours(type)]);
+        return types;
+end);

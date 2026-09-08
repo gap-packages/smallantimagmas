@@ -52,10 +52,10 @@ DeclareGlobalFunction("AllSmallAntimagmas");
 #! @BeginExampleSession
 #! gap> NrSmallAntimagmas(4);
 #! 8891
-#! gap> NrSmallAntimagmas(4, "up-to-isomorphism");
-#! 17780
-#! gap> NrSmallAntimagmas(4, "labelled");
-#! 421560
+#! gap> NrSmallAntimagmas(3, "up-to-isomorphism");
+#! 10
+#! gap> NrSmallAntimagmas(3, "labelled");
+#! 52
 #! gap> List([2 .. 4], NrSmallAntimagmas);
 #! [ 1, 5, 8891 ]
 #! gap> NrSmallAntimagmas([2, 3]);
