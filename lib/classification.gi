@@ -54,7 +54,13 @@ __SmallAntimagmaHelper.Invariants := [
         description := "the index-period profile",
         types := {order, magmas} -> IndexPeriodProfileTypes(magmas),
         headers := types -> List([1 .. Size(types)], i -> Concatenation("P_", String(i))),
-        typeOf := {types, M} -> Position(types, IndexPeriodProfile(M)))
+        typeOf := {types, M} -> Position(types, IndexPeriodProfile(M))),
+
+    rec(name := "mediality",
+        description := "the mediality index",
+        types := {order, magmas} -> Set(magmas, MedialityIndex),
+        headers := types -> List(types, String),
+        typeOf := {types, M} -> Position(types, MedialityIndex(M)))
 ];
 
 __SmallAntimagmaHelper.AllInvariants := "all";
