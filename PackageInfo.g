@@ -245,8 +245,7 @@ PackageDoc := rec(
   # a longer title of the book, this together with the book name should
   # fit on a single text line (appears with the '?books' command in GAP)
   # LongTitle := "Elementary Divisors of Integer Matrices",
-  LongTitle := "smallantimagmas/Antimagmas package",
-  Autoload  := true
+  LongTitle := "smallantimagmas/Antimagmas package"
 ),
 
 ##  Are there restrictions on the operating system for this package? Or does
