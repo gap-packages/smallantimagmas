@@ -462,3 +462,55 @@ DeclareAttribute("DigraphOfDiagonal", IsMagma);
 #! @EndExampleSession
 #!
 DeclareOperation("DiagonalDigraphTypes", [IsPosInt]);
+
+#! @Arguments M
+#! @Description
+#! returns the translation profile of the magma <A>M</A>, the pair
+#! <M>[\ell, r]</M> in which <M>\ell</M> is the number of distinct left
+#! translations <M>x \mapsto z * x</M> and <M>r</M> the number of distinct
+#! right translations <M>x \mapsto x * z</M>, for <M>z \in M</M>. These are
+#! the numbers of distinct rows and of distinct columns of the multiplication
+#! table, so transposing <A>M</A> swaps the two entries.
+#! For an antiassociative magma <M>\ell = 1</M> exactly when <A>M</A> is
+#! <Ref Prop="IsRightFPFInducted" Label="for IsMagma"/>, and <M>r = 1</M>
+#! exactly when it is <Ref Prop="IsLeftFPFInducted" Label="for IsMagma"/>.
+#!
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(3, 5);
+#! <magma with 3 generators>
+#! gap> Display(MultiplicationTable(M));
+#! [ [  2,  2,  2 ],
+#!   [  3,  3,  3 ],
+#!   [  1,  1,  1 ] ]
+#! gap> TranslationProfile(M);
+#! [ 3, 1 ]
+#! gap> TranslationProfile(TransposedMagma(M));
+#! [ 1, 3 ]
+#! gap> List(AllSmallAntimagmas(3), TranslationProfile);
+#! [ [ 1, 2 ], [ 2, 2 ], [ 2, 2 ], [ 2, 2 ], [ 3, 1 ] ]
+#! @EndExampleSession
+#!
+DeclareAttribute("TranslationProfile", IsMagma);
+
+#! @Arguments n
+#! @Description
+#! returns the types of translation profile of the <A>n</A>-element
+#! antimagmas, one sorted pair <M>\{\ell, r\}</M> per type, that is the
+#! profiles of <Ref Attr="TranslationProfile" Label="for IsMagma"/> taken up
+#! to the swap of antiisomorphism. The types are ordered by decreasing smaller
+#! entry and then by increasing larger entry, so that the profiles with a
+#! one-sided fixed-point free inducted side come last. The profile
+#! <M>\{1, 1\}</M> never occurs, as a magma whose product depends on neither
+#! factor is associative.
+#!
+#! @BeginExampleSession
+#! gap> TranslationProfileTypes(2);
+#! [ [ 1, 2 ] ]
+#! gap> TranslationProfileTypes(3);
+#! [ [ 2, 2 ], [ 1, 2 ], [ 1, 3 ] ]
+#! gap> TranslationProfileTypes(4);
+#! [ [ 4, 4 ], [ 3, 3 ], [ 3, 4 ], [ 2, 2 ], [ 2, 3 ], [ 2, 4 ], [ 1, 2 ],
+#!   [ 1, 3 ], [ 1, 4 ] ]
+#! @EndExampleSession
+#!
+DeclareOperation("TranslationProfileTypes", [IsPosInt]);

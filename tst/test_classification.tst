@@ -6,7 +6,7 @@ Error, smallantimagmas: <magmas> must be a non-empty list
 
 ## SmallAntimagmaClassification(magmas, by) rejects an unknown invariant
 gap> SmallAntimagmaClassification(AllSmallAntimagmas(2), "nope");
-Error, smallantimagmas: <by> must be one of all, diagonal, cancellativity
+Error, smallantimagmas: <by> must be one of all, diagonal, cancellativity, translation
 
 ## SmallAntimagmaClassification(magmas, by) rejects a non-string invariant
 gap> SmallAntimagmaClassification(AllSmallAntimagmas(2), 7);
@@ -18,7 +18,7 @@ Error, smallantimagmas: <order> must be an integer
 
 ## SmallAntimagmasInformation(n, by) rejects an unknown invariant
 gap> SmallAntimagmasInformation(2, "nope");
-Error, smallantimagmas: <by> must be one of all, diagonal, cancellativity
+Error, smallantimagmas: <by> must be one of all, diagonal, cancellativity, translation
 
 ## a classification views as the number of classes it holds
 gap> SmallAntimagmaClassification(AllSmallAntimagmas(3, "up-to-isomorphism"));
@@ -28,6 +28,15 @@ gap> SmallAntimagmaClassification(AllSmallAntimagmas(3, "up-to-isomorphism"));
 gap> ForAll([2 .. 4], n -> ForAll(AntimagmaGeneratorPossibleDiagonals(n),
 >     d -> Number(DiagonalDigraphTypes(n), D -> IsIsomorphicDigraph(D,
 >         DigraphByEdges(List([1 .. n], i -> [i, d[i]])))) = 1));
+true
+
+## every antimagma has exactly one type of translation profile
+gap> ForAll([2 .. 4], function(n)
+>     local types;
+>     types := TranslationProfileTypes(n);
+>     return ForAll(AllSmallAntimagmas(n, "up-to-isomorphism"),
+>         M -> Number(types, T -> T = SortedList(TranslationProfile(M))) = 1);
+> end);
 true
 
 ## the row is left out when the transposes are not all present

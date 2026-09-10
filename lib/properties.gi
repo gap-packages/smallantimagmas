@@ -372,3 +372,23 @@ InstallMethod(DiagonalDigraphTypes, "for a magma order", [IsPosInt],
         SortBy(types, type -> [DigraphNrConnectedComponents(type), OutNeighbours(type)]);
         return types;
 end);
+
+InstallMethod(TranslationProfile, "for a magma", [IsMagma],
+    function(M)
+        local table;
+        table := MultiplicationTable(M);
+        return [Size(Set(table)), Size(Set(TransposedMat(table)))];
+end);
+
+InstallMethod(TranslationProfileTypes, "for a magma order", [IsPosInt],
+    function(n)
+        local types;
+
+        __SmallAntimagmaHelper.checkOrder(n);
+
+        # the type is invariant under transposition, so one representative per
+        # class of isomorphic or antiisomorphic magmas sees every type
+        types := Set(AllSmallAntimagmas(n), M -> SortedList(TranslationProfile(M)));
+        SortBy(types, type -> [-type[1], type[2]]);
+        return types;
+end);

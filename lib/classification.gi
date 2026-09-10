@@ -12,7 +12,13 @@ __SmallAntimagmaHelper.Invariants := [
         types := order -> [[false, false], [true, false], [false, true], [true, true]],
         headers := types -> ["neither", "left", "right", "both"],
         typeOf := {types, M} -> Position(types,
-            [IsLeftCancellative(M), IsRightCancellative(M)]))
+            [IsLeftCancellative(M), IsRightCancellative(M)])),
+
+    rec(name := "translation",
+        description := "the translation profile",
+        types := TranslationProfileTypes,
+        headers := types -> List([1 .. Size(types)], i -> Concatenation("T_", String(i))),
+        typeOf := {types, M} -> Position(types, SortedList(TranslationProfile(M))))
 ];
 
 __SmallAntimagmaHelper.AllInvariants := "all";
