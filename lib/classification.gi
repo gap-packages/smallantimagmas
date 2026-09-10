@@ -12,7 +12,13 @@ __SmallAntimagmaHelper.Invariants := [
         types := order -> [[false, false], [true, false], [false, true], [true, true]],
         headers := types -> ["neither", "left", "right", "both"],
         typeOf := {types, M} -> Position(types,
-            [IsLeftCancellative(M), IsRightCancellative(M)]))
+            [IsLeftCancellative(M), IsRightCancellative(M)])),
+
+    # no fixed list of types: the columns are the values that occur
+    rec(name := "congruences",
+        description := "the number of congruences",
+        headers := types -> List(types, String),
+        valueOf := NrCongruences)
 ];
 
 __SmallAntimagmaHelper.AllInvariants := "all";
@@ -94,11 +100,19 @@ InstallGlobalFunction(SmallAntimagmaClassification,
         closed := ForAll(shapes, shape -> shape.transposed in keys);
 
         tableOf := function(invariant)
-            local types, classes, columns, rows, rules, typeAt, size, i;
+            local types, typesOf, values, classes, columns, rows, rules, typeAt, size, i;
 
-            types := invariant.types(n);
+            if IsBound(invariant.types) then
+                types := invariant.types(n);
+                typesOf := List(magmas, M -> invariant.typeOf(types, M));
+            else
+                values := List(magmas, invariant.valueOf);
+                types := Set(values);
+                typesOf := List(values, value -> Position(types, value));
+            fi;
+
             classes := List([1 .. Size(magmas)],
-                i -> rec(type := invariant.typeOf(types, magmas[i]),
+                i -> rec(type := typesOf[i],
                          size := shapes[i].size,
                          opposite := Minimum(shapes[i].iso, shapes[i].transposed)));
 

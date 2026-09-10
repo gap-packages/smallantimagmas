@@ -240,6 +240,35 @@ InstallMethod(IsCancellative, "for a magma", [IsMagma],
         return IsLeftCancellative(M) and IsRightCancellative(M);
 end);
 
+InstallMethod(CongruencesOfMagma, "for a magma", [IsMagma],
+    function(M)
+        local elements, isCongruence;
+
+        elements := AsSSortedList(M);
+
+        # a partition is a congruence when multiplying any two members of a
+        # block by a third element, on either side, lands in a common block
+        isCongruence := function(blocks)
+            local blockOf;
+            blockOf := m -> PositionProperty(blocks, block -> m in block);
+            return ForAll(blocks, block -> ForAll(Combinations(block, 2), pair -> ForAll(elements,
+                z -> blockOf(pair[1] * z) = blockOf(pair[2] * z)
+                     and blockOf(z * pair[1]) = blockOf(z * pair[2]))));
+        end;
+
+        return Set(Filtered(PartitionsSet(elements), isCongruence));
+end);
+
+InstallMethod(NrCongruences, "for a magma", [IsMagma],
+    function(M)
+        return Size(CongruencesOfMagma(M));
+end);
+
+InstallMethod(IsCongruenceFree, "for a magma", [IsMagma],
+    function(M)
+        return NrCongruences(M) = 2;
+end);
+
 InstallMethod(IsLeftFPFInducted, "for a magma", [IsMagma],
     function(M)
         return ForAll(M, m -> Size(Unique(m * Elements(M))) = 1 and First(Unique(m * Elements(M))) <> m);

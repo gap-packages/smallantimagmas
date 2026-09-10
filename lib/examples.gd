@@ -225,3 +225,35 @@
 #! ----------------------------------------------------------------------------
 #! @EndExampleSession
 #!
+#!
+#! @Subsection Congruences
+#!
+#! The number of congruences,
+#! <Ref Attr="NrCongruences" Label="for IsMagma"/>, is the same for a magma and
+#! its transpose, so this table counts the antiisomorphism classes too. The
+#! column <C>2</C> holds the congruence-free magmas, in the sense of
+#! <Ref Prop="IsCongruenceFree" Label="for IsMagma"/>; every deranged magma of
+#! order 4 has a proper non-trivial congruence.
+#!
+#! @BeginExampleSession
+#! gap> Display(SmallAntimagmaClassification(Ms, "congruences"));
+#! Classified by the number of congruences:
+#! ------------------------------------------------------------------
+#! Counted objects      Total        2      3     4    5   6  7  9 10
+#! ------------------------------------------------------------------
+#! Iso+antiiso classes   8891      499   7832   410  131  15  2  1  1
+#! ------------------------------------------------------------------
+#! Isomorphism classes  17780      997  15664   819  262  30  4  2  2
+#! ..................................................................
+#! 3-iso classes            2        0      0     0    0   0  2  0  0
+#! 6-iso classes           29        0     26     3    0   0  0  0  0
+#! 12-iso classes         383       21    328    16   12   2  0  2  2
+#! 24-iso classes       17366      976  15310   800  250  28  2  0  0
+#! ------------------------------------------------------------------
+#! Labelled magmas     421560    23676 371532 19410 6144 696 54 24 24
+#! ------------------------------------------------------------------
+#! gap> Number(Ms, IsCongruenceFree);
+#! 997
+#! gap> ForAny(Ms, M -> IsCongruenceFree(M) and IsLeftDerangementInducted(M));
+#! false
+#! @EndExampleSession

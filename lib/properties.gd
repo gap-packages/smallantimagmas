@@ -350,6 +350,64 @@ DeclareProperty("IsCancellative", IsMagma);
 
 #! @Arguments M
 #! @Description
+#! lists the congruences of <A>M</A>, each given as the partition of the
+#! elements of <A>M</A> into its classes, singleton classes included. A
+#! partition is a congruence when, for all <M>x, y</M> in one class and all
+#! <M>z \in M</M>, the products <M>x * z</M> and <M>y * z</M> fall into one
+#! class, and so do <M>z * x</M> and <M>z * y</M>. The partition into
+#! singletons and the partition with a single class are always congruences.
+#! The list is sorted, and a partition <C>P</C> in it becomes a relation of
+#! &GAP; as <C>EquivalenceRelationByPartition(M, P)</C>.
+#!
+#! Transposing <A>M</A> swaps the two conditions above, so
+#! <Ref Func="TransposedMagma"/> has the same congruences, up to the renaming
+#! of the elements that comes with building a new magma.
+#!
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(3, 1);;
+#! gap> CongruencesOfMagma(M);
+#! [ [ [ m1 ], [ m2 ], [ m3 ] ], [ [ m1 ], [ m2, m3 ] ], [ [ m1, m2 ], [ m3 ] ],
+#!   [ [ m1, m2, m3 ] ] ]
+#! gap> NrCongruences(TransposedMagma(M)) = NrCongruences(M);
+#! true
+#! @EndExampleSession
+#!
+DeclareAttribute("CongruencesOfMagma", IsMagma);
+
+#! @Arguments M
+#! @Description
+#! counts the congruences of <A>M</A>, that is the size of
+#! <Ref Attr="CongruencesOfMagma" Label="for IsMagma"/>. For a group it is the
+#! number of normal subgroups. It is invariant under isomorphism and under
+#! antiisomorphism.
+#!
+#! @BeginExampleSession
+#! gap> List(AllSmallAntimagmas(3), NrCongruences);
+#! [ 4, 3, 3, 3, 2 ]
+#! gap> NrCongruences(SymmetricGroup(3));
+#! 3
+#! @EndExampleSession
+#!
+DeclareAttribute("NrCongruences", IsMagma);
+
+#! @Arguments M
+#! @Description
+#! identifies whether <A>M</A> is congruence-free, that is whether its only
+#! congruences are the partition into singletons and the partition with a single
+#! class, which are distinct as soon as <A>M</A> has more than one element. Such
+#! a magma is also called simple.
+#!
+#! @BeginExampleSession
+#! gap> List(AllSmallAntimagmas(3), IsCongruenceFree);
+#! [ false, false, false, false, true ]
+#! gap> Number(AllSmallAntimagmas(4, "up-to-isomorphism"), IsCongruenceFree);
+#! 997
+#! @EndExampleSession
+#!
+DeclareProperty("IsCongruenceFree", IsMagma);
+
+#! @Arguments M
+#! @Description
 #! is a left-hand sided fixed-point free inducted <A>m</A>.
 #!
 #! @BeginExampleSession
