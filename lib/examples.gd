@@ -225,3 +225,87 @@
 #! ----------------------------------------------------------------------------
 #! @EndExampleSession
 #!
+#!
+#! @Section Classification by translation profile
+#!
+#! The translation profile of a magma <M>M</M>, given by
+#! <Ref Attr="TranslationProfile" Label="for IsMagma"/>, counts its distinct
+#! left translations <M>x \mapsto z * x</M> and its distinct right translations
+#! <M>x \mapsto x * z</M>. Transposing swaps the two counts, so the unordered
+#! pair is invariant under isomorphism and antiisomorphism alike, and the
+#! columns below are the types listed by
+#! <Ref Oper="TranslationProfileTypes" Label="for IsPosInt"/>.
+#!
+#! At order 2 the product depends on one factor only, so the single type is
+#! <M>\{1, 2\}</M>.
+#!
+#! @BeginExampleSession
+#! gap> TranslationProfileTypes(2);
+#! [ [ 1, 2 ] ]
+#! gap> Display(SmallAntimagmaClassification(
+#! >        AllSmallAntimagmas(2, "up-to-isomorphism"), "translation"));
+#! Classified by the translation profile:
+#! --------------------------------
+#! Counted objects     Total    T_1
+#! --------------------------------
+#! Iso+antiiso classes     1      1
+#! --------------------------------
+#! Isomorphism classes     2      2
+#! ................................
+#! 1-iso classes           2      2
+#! --------------------------------
+#! Labelled magmas         2      2
+#! --------------------------------
+#! @EndExampleSession
+#!
+#! At order 3 the profile separates the two cancellative classes, of type
+#! <M>\{1, 3\}</M>, from the two classes of type <M>\{1, 2\}</M> whose product
+#! depends on one factor only, and both from the six remaining classes.
+#!
+#! @BeginExampleSession
+#! gap> TranslationProfileTypes(3);
+#! [ [ 2, 2 ], [ 1, 2 ], [ 1, 3 ] ]
+#! gap> Display(SmallAntimagmaClassification(
+#! >        AllSmallAntimagmas(3, "up-to-isomorphism"), "translation"));
+#! Classified by the translation profile:
+#! ----------------------------------------
+#! Counted objects     Total    T_1 T_2 T_3
+#! ----------------------------------------
+#! Iso+antiiso classes     5      3   1   1
+#! ----------------------------------------
+#! Isomorphism classes    10      6   2   2
+#! ........................................
+#! 2-iso classes           2      0   0   2
+#! 6-iso classes           8      6   2   0
+#! ----------------------------------------
+#! Labelled magmas        52     36  12   4
+#! ----------------------------------------
+#! @EndExampleSession
+#!
+#! At order 4 every sorted pair but <M>\{1, 1\}</M> occurs. The last three
+#! types, with a single translation on one side, hold four isomorphism classes
+#! each, and the profile <M>\{4, 4\}</M> alone covers more than half of the
+#! classes.
+#!
+#! @BeginExampleSession
+#! gap> TranslationProfileTypes(4);
+#! [ [ 4, 4 ], [ 3, 3 ], [ 3, 4 ], [ 2, 2 ], [ 2, 3 ], [ 2, 4 ], [ 1, 2 ],
+#!   [ 1, 3 ], [ 1, 4 ] ]
+#! gap> Display(SmallAntimagmaClassification(
+#! >        AllSmallAntimagmas(4, "up-to-isomorphism"), "translation"));
+#! Classified by the translation profile:
+#! ---------------------------------------------------------------------------
+#! Counted objects      Total       T_1   T_2    T_3 T_4  T_5  T_6 T_7 T_8 T_9
+#! ---------------------------------------------------------------------------
+#! Iso+antiiso classes   8891      5326   552   2693  20  142  152   2   2   2
+#! ---------------------------------------------------------------------------
+#! Isomorphism classes  17780     10651  1104   5386  39  284  304   4   4   4
+#! ...........................................................................
+#! 3-iso classes            2         0     0      0   0    0    0   0   0   2
+#! 6-iso classes           29        16     0      0   3    0    8   0   0   2
+#! 12-iso classes         383       135     0    184   4   20   36   4   0   0
+#! 24-iso classes       17366     10500  1104   5202  32  264  260   0   4   0
+#! ---------------------------------------------------------------------------
+#! Labelled magmas     421560    253716 26496 127056 834 6576 6720  48  96  18
+#! ---------------------------------------------------------------------------
+#! @EndExampleSession
