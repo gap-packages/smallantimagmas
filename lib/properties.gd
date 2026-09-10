@@ -350,6 +350,63 @@ DeclareProperty("IsCancellative", IsMagma);
 
 #! @Arguments M
 #! @Description
+#! returns the number of constant left translations of the magma <A>M</A>,
+#! that is of elements <M>z \in M</M> with <M>z * x = z * y</M> for all
+#! <M>x, y \in M</M>. These are the constant rows of the multiplication
+#! table. In an antiassociative magma a constant row with value <M>a</M>
+#! forces <M>a * z \neq a</M> for every <M>z</M>, so the row of <M>a</M>
+#! avoids <M>a</M> and in particular <M>a \neq z</M>; when every row is
+#! constant this is exactly
+#! <Ref Prop="IsLeftFPFInducted" Label="for IsMagma"/>.
+#!
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(2, 1);
+#! <magma with 2 generators>
+#! gap> Display(MultiplicationTable(M));
+#! [ [  2,  1 ],
+#!   [  2,  1 ] ]
+#! gap> NrConstantLeftTranslations(M);
+#! 0
+#! gap> NrConstantLeftTranslations(TransposedMagma(M));
+#! 2
+#! gap> List(AllSmallAntimagmas(3), NrConstantLeftTranslations);
+#! [ 0, 0, 0, 0, 3 ]
+#! @EndExampleSession
+#!
+DeclareAttribute("NrConstantLeftTranslations", IsMagma);
+
+#! @Arguments M
+#! @Description
+#! returns the number of constant right translations of the magma <A>M</A>,
+#! that is of elements <M>z \in M</M> with <M>x * z = y * z</M> for all
+#! <M>x, y \in M</M>. These are the constant columns of the multiplication
+#! table, so this is
+#! <Ref Attr="NrConstantLeftTranslations" Label="for IsMagma"/> of the
+#! transposed magma.
+#!
+#! An antiassociative magma never has both a constant row and a constant
+#! column: a constant row <M>z</M> with value <M>a</M> and a constant column
+#! <M>w</M> with value <M>b</M> give <M>a = z * w = b</M>, while
+#! antiassociativity applied to the column forces <M>x * b \neq b</M> for
+#! every <M>x</M>, against <M>z * b = a = b</M>. Hence for antimagmas one of
+#! the two numbers is always <M>0</M>.
+#!
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(2, 1);
+#! <magma with 2 generators>
+#! gap> NrConstantRightTranslations(M);
+#! 2
+#! gap> List(AllSmallAntimagmas(3), NrConstantRightTranslations);
+#! [ 3, 2, 2, 2, 0 ]
+#! gap> ForAll(AllSmallAntimagmas(4), M -> NrConstantLeftTranslations(M) = 0
+#! >                                     or NrConstantRightTranslations(M) = 0);
+#! true
+#! @EndExampleSession
+#!
+DeclareAttribute("NrConstantRightTranslations", IsMagma);
+
+#! @Arguments M
+#! @Description
 #! is a left-hand sided fixed-point free inducted <A>m</A>.
 #!
 #! @BeginExampleSession

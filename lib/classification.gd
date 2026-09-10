@@ -16,7 +16,16 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! digraph, that is of the map <M>x \mapsto x * x</M>, and
 #! <C>"cancellativity"</C>, the pair of truth values
 #! <Ref Prop="IsLeftCancellative" Label="for IsMagma"/> and
-#! <Ref Prop="IsRightCancellative" Label="for IsMagma"/>.
+#! <Ref Prop="IsRightCancellative" Label="for IsMagma"/>, and
+#! <C>"constant"</C>, the pair
+#! <Ref Attr="NrConstantLeftTranslations" Label="for IsMagma"/> and
+#! <Ref Attr="NrConstantRightTranslations" Label="for IsMagma"/> counting
+#! the constant rows and the constant columns of the multiplication table.
+#! In an antimagma one of the two is <M>0</M>, so at order <M>n</M> the
+#! types are <M>(0, 0)</M>, <M>(r, 0)</M> and <M>(0, c)</M> for
+#! <M>1 \leq r, c \leq n</M>. The value <M>n</M> is the
+#! <Ref Prop="IsLeftFPFInducted" Label="for IsMagma"/>, respectively
+#! <Ref Prop="IsRightFPFInducted" Label="for IsMagma"/>, case.
 #!
 #! Each table has a column per type the invariant distinguishes, for
 #! <C>"diagonal"</C> the types of
@@ -57,6 +66,18 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! ----------------------------------------------------
 #! Labelled magmas        52         48    2     2    0
 #! ----------------------------------------------------
+#!
+#! Classified by the numbers of constant left and right translations:
+#! ----------------------------------------------------------------------
+#! Counted objects     Total    (0,0) (1,0) (2,0) (3,0) (0,1) (0,2) (0,3)
+#! ----------------------------------------------------------------------
+#! Isomorphism classes    10        0     0     3     2     0     3     2
+#! ......................................................................
+#! 2-iso classes           2        0     0     0     1     0     0     1
+#! 6-iso classes           8        0     0     3     1     0     3     1
+#! ----------------------------------------------------------------------
+#! Labelled magmas        52        0     0    18     8     0    18     8
+#! ----------------------------------------------------------------------
 #! gap> Display(SmallAntimagmaClassification(Ms, "cancellativity"));
 #! Classified by left and right cancellativity:
 #! ----------------------------------------------------
@@ -116,6 +137,18 @@ DeclareGlobalFunction("SmallAntimagmaClassification");
 #! ----------------------------------------------------
 #! Labelled magmas        52         48    2     2    0
 #! ----------------------------------------------------
+#!
+#! Classified by the numbers of constant left and right translations:
+#! ----------------------------------------------------------------------
+#! Counted objects     Total    (0,0) (1,0) (2,0) (3,0) (0,1) (0,2) (0,3)
+#! ----------------------------------------------------------------------
+#! Isomorphism classes    10        0     0     3     2     0     3     2
+#! ......................................................................
+#! 2-iso classes           2        0     0     0     1     0     0     1
+#! 6-iso classes           8        0     0     3     1     0     3     1
+#! ----------------------------------------------------------------------
+#! Labelled magmas        52        0     0    18     8     0    18     8
+#! ----------------------------------------------------------------------
 #! @EndExampleSession
 #!
 DeclareGlobalFunction("SmallAntimagmasInformation");
