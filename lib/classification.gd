@@ -33,7 +33,7 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! <Ref Attr="IndexPeriodProfile" Label="for IsMagma"/>, that is the multisets
 #! of left and of right index-periods of the elements, as an unordered pair,
 #! <C>"mediality"</C>, the value of
-#! <Ref Attr="MedialityIndex" Label="for IsMagma"/>, and
+#! <Ref Attr="MedialityIndex" Label="for IsMagma"/>,
 #! <C>"constant"</C>, the pair
 #! <Ref Attr="NrConstantLeftTranslations" Label="for IsMagma"/> and
 #! <Ref Attr="NrConstantRightTranslations" Label="for IsMagma"/> counting
@@ -42,7 +42,9 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! types are <M>(0, 0)</M>, <M>(r, 0)</M> and <M>(0, c)</M> for
 #! <M>1 \leq r, c \leq n</M>. The value <M>n</M> is the
 #! <Ref Prop="IsLeftFPFInducted" Label="for IsMagma"/>, respectively
-#! <Ref Prop="IsRightFPFInducted" Label="for IsMagma"/>, case.
+#! <Ref Prop="IsRightFPFInducted" Label="for IsMagma"/>, case, and
+#! <C>"squares"</C>, the number of squares
+#! <Ref Attr="SquaresIndex" Label="for IsMagma"/>.
 #!
 #! Each table has a column per type the invariant distinguishes, for
 #! <C>"diagonal"</C> the types of
@@ -54,8 +56,10 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! <Ref Oper="TranslationProfileTypes" Label="for IsPosInt"/>, for
 #! <C>"index-period"</C> the profiles
 #! <Ref Oper="IndexPeriodProfileTypes" Label="for IsList"/> finds among
-#! <A>magmas</A>, named <M>P_1, P_2, \ldots</M> in that order, and for
-#! <C>"constant"</C> all pairs listed above. The rows count
+#! <A>magmas</A>, named <M>P_1, P_2, \ldots</M> in that order, for
+#! <C>"constant"</C> all pairs listed above, and for
+#! <C>"squares"</C> the values <M>2, \ldots, n</M>, since a magma with a single
+#! square <M>c</M> has <M>c^2 = c</M> and so is not antiassociative. The rows count
 #! increasing collections: the antiisomorphism classes, the isomorphism classes
 #! and those of each size that occurs, and finally the labelled magmas. The
 #! <C>Total</C> column comes first, set off from the per-type columns.
@@ -200,6 +204,20 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! ----------------------------------------------------------------------
 #! Labelled magmas        52        0     0    18     8     0    18     8
 #! ----------------------------------------------------------------------
+#!
+#! Classified by the number of squares:
+#! ---------------------------------
+#! Counted objects     Total     2 3
+#! ---------------------------------
+#! Iso+antiiso classes     5     4 1
+#! ---------------------------------
+#! Isomorphism classes    10     8 2
+#! .................................
+#! 2-iso classes           2     0 2
+#! 6-iso classes           8     8 0
+#! ---------------------------------
+#! Labelled magmas        52    48 4
+#! ---------------------------------
 #! gap> Display(SmallAntimagmaClassification(Ms, "cancellativity"));
 #! Classified by left and right cancellativity:
 #! ----------------------------------------------------
@@ -367,6 +385,20 @@ DeclareGlobalFunction("SmallAntimagmaClassification");
 #! ----------------------------------------------------------------------
 #! Labelled magmas        52        0     0    18     8     0    18     8
 #! ----------------------------------------------------------------------
+#!
+#! Classified by the number of squares:
+#! ---------------------------------
+#! Counted objects     Total     2 3
+#! ---------------------------------
+#! Iso+antiiso classes     5     4 1
+#! ---------------------------------
+#! Isomorphism classes    10     8 2
+#! .................................
+#! 2-iso classes           2     0 2
+#! 6-iso classes           8     8 0
+#! ---------------------------------
+#! Labelled magmas        52    48 4
+#! ---------------------------------
 #! @EndExampleSession
 #!
 DeclareGlobalFunction("SmallAntimagmasInformation");
