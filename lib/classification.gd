@@ -22,7 +22,8 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! left and right translations, of which <C>"cancellativity"</C> is the
 #! coarsening that only asks whether each count is full, and
 #! <C>"commutativity"</C>, the value of
-#! <Ref Attr="CommutativityIndex" Label="for IsMagma"/>.
+#! <Ref Attr="CommutativityIndex" Label="for IsMagma"/>, and <C>"rank"</C>,
+#! the size of a <Ref Attr="MinimalGeneratingSet" Label="for IsMagma"/>.
 #!
 #! Each table has a column per type the invariant distinguishes, for
 #! <C>"diagonal"</C> the types of
@@ -92,6 +93,19 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! ---------------------------------
 #! Labelled magmas        52    4 48
 #! ---------------------------------
+#! Classified by rank, the size of a minimal generating set:
+#! -------------------------------------------------
+#! Counted objects     Total    rank 1 rank 2 rank 3
+#! -------------------------------------------------
+#! Iso+antiiso classes     5         5      0      0
+#! -------------------------------------------------
+#! Isomorphism classes    10        10      0      0
+#! .................................................
+#! 2-iso classes           2         2      0      0
+#! 6-iso classes           8         8      0      0
+#! -------------------------------------------------
+#! Labelled magmas        52        52      0      0
+#! -------------------------------------------------
 #! gap> Display(SmallAntimagmaClassification(Ms, "cancellativity"));
 #! Classified by left and right cancellativity:
 #! ----------------------------------------------------
@@ -177,6 +191,19 @@ DeclareGlobalFunction("SmallAntimagmaClassification");
 #! ---------------------------------
 #! Labelled magmas        52    4 48
 #! ---------------------------------
+#! Classified by rank, the size of a minimal generating set:
+#! -------------------------------------------------
+#! Counted objects     Total    rank 1 rank 2 rank 3
+#! -------------------------------------------------
+#! Iso+antiiso classes     5         5      0      0
+#! -------------------------------------------------
+#! Isomorphism classes    10        10      0      0
+#! .................................................
+#! 2-iso classes           2         2      0      0
+#! 6-iso classes           8         8      0      0
+#! -------------------------------------------------
+#! Labelled magmas        52        52      0      0
+#! -------------------------------------------------
 #! @EndExampleSession
 #!
 DeclareGlobalFunction("SmallAntimagmasInformation");

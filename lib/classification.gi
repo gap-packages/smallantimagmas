@@ -27,7 +27,13 @@ __SmallAntimagmaHelper.Invariants := [
         description := "the commutativity index",
         types := {order, magmas} -> Set(magmas, CommutativityIndex),
         headers := types -> List(types, String),
-        typeOf := {types, M} -> Position(types, CommutativityIndex(M)))
+        typeOf := {types, M} -> Position(types, CommutativityIndex(M))),
+
+    rec(name := "rank",
+        description := "rank, the size of a minimal generating set",
+        types := {order, magmas} -> [1 .. order],
+        headers := types -> List(types, k -> Concatenation("rank ", String(k))),
+        typeOf := {types, M} -> Position(types, Rank(M)))
 ];
 
 __SmallAntimagmaHelper.AllInvariants := "all";
