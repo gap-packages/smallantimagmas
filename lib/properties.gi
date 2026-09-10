@@ -66,6 +66,7 @@ InstallGlobalFunction(MagmaIsomorphismInvariantsMatch,
             Size,
             IsLeftCancellative,
             IsRightCancellative,
+            CancellativityDegree,
             IsLeftDistributive,
             IsRightDistributive,
             IsLeftFPFInducted,
@@ -238,6 +239,15 @@ end);
 InstallMethod(IsCancellative, "for a magma", [IsMagma],
     function(M)
         return IsLeftCancellative(M) and IsRightCancellative(M);
+end);
+
+InstallMethod(CancellativityDegree, "for a magma", [IsMagma],
+    function(M)
+        local elements, injective;
+        elements := Elements(M);
+        injective := translation -> IsDuplicateFreeList(List(elements, translation));
+        return [Number(elements, z -> injective(x -> z * x)),
+                Number(elements, z -> injective(x -> x * z))];
 end);
 
 InstallMethod(IsLeftFPFInducted, "for a magma", [IsMagma],

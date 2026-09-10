@@ -350,6 +350,41 @@ DeclareProperty("IsCancellative", IsMagma);
 
 #! @Arguments M
 #! @Description
+#! returns the cancellativity degree of magma <A>M</A>, the pair
+#! <M>[ l, r ]</M> where <M>l</M> is the number of elements <M>z \in M</M>
+#! whose left translation <M>x \mapsto z * x</M> is injective and <M>r</M>
+#! is the number whose right translation <M>x \mapsto x * z</M> is injective.
+#! Equivalently, <M>l</M> counts the rows and <M>r</M> the columns of the
+#! multiplication table that are permutations of <A>M</A>.
+#!
+#! Both entries lie between <M>0</M> and <M>|M|</M>. The magma is left
+#! cancellative exactly when <M>l = |M|</M>, right cancellative exactly when
+#! <M>r = |M|</M>, so the pair refines
+#! <Ref Prop="IsLeftCancellative" Label="for IsMagma"/> and
+#! <Ref Prop="IsRightCancellative" Label="for IsMagma"/>. It is an isomorphism
+#! invariant, and transposing the magma swaps its two entries.
+#!
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(3, 5);
+#! <magma with 3 generators>
+#! gap> Display(MultiplicationTable(M));
+#! [ [  2,  2,  2 ],
+#!   [  3,  3,  3 ],
+#!   [  1,  1,  1 ] ]
+#! gap> CancellativityDegree(M);
+#! [ 0, 3 ]
+#! gap> CancellativityDegree(TransposedMagma(M));
+#! [ 3, 0 ]
+#! gap> List(AllSmallAntimagmas(3), M -> CancellativityDegree(M));
+#! [ [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 3 ] ]
+#! gap> CancellativityDegree(CyclicGroup(4));
+#! [ 4, 4 ]
+#! @EndExampleSession
+#!
+DeclareAttribute("CancellativityDegree", IsMagma);
+
+#! @Arguments M
+#! @Description
 #! is a left-hand sided fixed-point free inducted <A>m</A>.
 #!
 #! @BeginExampleSession
