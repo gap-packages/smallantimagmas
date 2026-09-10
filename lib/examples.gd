@@ -225,3 +225,92 @@
 #! ----------------------------------------------------------------------------
 #! @EndExampleSession
 #!
+#!
+#! @Section Classification by index-period profile
+#!
+#! The <Ref Attr="IndexPeriodProfile" Label="for IsMagma"/> of a magma collects
+#! the left index-periods of its elements, and the right ones, and keeps the two
+#! multisets as an unordered pair. It is unchanged by isomorphism and by
+#! transposition, so a magma and its opposite always fall into the same profile
+#! and the classification by <C>"index-period"</C> counts antiisomorphism
+#! classes as well. Unlike the diagonal digraphs, the profiles are not
+#! enumerated for an order: the columns <M>P_1, P_2, \ldots</M> are the profiles
+#! <Ref Oper="IndexPeriodProfileTypes" Label="for IsList"/> finds among the
+#! magmas classified, in the order of GAP lists.
+#!
+#! At order 2 the two isomorphism classes, each a magma and its transpose, share
+#! the one profile.
+#!
+#! @BeginExampleSession
+#! gap> Display(SmallAntimagmaClassification(
+#! >        AllSmallAntimagmas(2, "up-to-isomorphism"), "index-period"));
+#! Classified by the index-period profile:
+#! --------------------------------
+#! Counted objects     Total    P_1
+#! --------------------------------
+#! Iso+antiiso classes     1      1
+#! --------------------------------
+#! Isomorphism classes     2      2
+#! ................................
+#! 1-iso classes           2      2
+#! --------------------------------
+#! Labelled magmas         2      2
+#! --------------------------------
+#! @EndExampleSession
+#!
+#! At order 3 the profile separates the five antiisomorphism classes completely:
+#! each column holds one class, that is one magma and its transpose. The last
+#! profile, <M>P_5</M>, is that of the two cyclic magmas, the only classes of
+#! size 2.
+#!
+#! @BeginExampleSession
+#! gap> Ms := AllSmallAntimagmas(3, "up-to-isomorphism");;
+#! gap> Display(SmallAntimagmaClassification(Ms, "index-period"));
+#! Classified by the index-period profile:
+#! ------------------------------------------------
+#! Counted objects     Total    P_1 P_2 P_3 P_4 P_5
+#! ------------------------------------------------
+#! Iso+antiiso classes     5      1   1   1   1   1
+#! ------------------------------------------------
+#! Isomorphism classes    10      2   2   2   2   2
+#! ................................................
+#! 2-iso classes           2      0   0   0   0   2
+#! 6-iso classes           8      2   2   2   2   0
+#! ------------------------------------------------
+#! Labelled magmas        52     12  12  12  12   4
+#! ------------------------------------------------
+#! gap> Ps := IndexPeriodProfileTypes(Ms);;
+#! gap> Last(Ps);
+#! [ [ [ [ 1, 3 ], 3 ] ], [ [ [ 2, 1 ], 3 ] ] ]
+#! gap> List(Filtered(Ms, M -> IndexPeriodProfile(M) = Last(Ps)),
+#! >         M -> [IsLeftCyclic(M), IsRightCyclic(M)]);
+#! [ [ false, true ], [ true, false ] ]
+#! @EndExampleSession
+#!
+#! At order 4 the profile is much finer than the diagonal digraph, with 535
+#! profiles against six digraph types, and the table is too wide to print. Most
+#! profiles are small: 159 of them again hold a single antiisomorphism class,
+#! while the largest holds 530 isomorphism classes. The profile neither refines
+#! nor is refined by the classification by diagonal digraph, so the two
+#! invariants are independent.
+#!
+#! @BeginExampleSession
+#! gap> Ms := AllSmallAntimagmas(4, "up-to-isomorphism");;
+#! gap> Ps := IndexPeriodProfileTypes(Ms);;
+#! gap> Size(Ps);
+#! 535
+#! gap> counts := List(Ps, P -> Number(Ms, M -> IndexPeriodProfile(M) = P));;
+#! gap> Sum(counts);
+#! 17780
+#! gap> [Number(counts, c -> c = 2), Maximum(counts)];
+#! [ 159, 530 ]
+#! gap> types := DiagonalDigraphTypes(4);;
+#! gap> diagonal := M -> PositionProperty(types,
+#! >        D -> IsIsomorphicDigraph(D, DigraphOfDiagonal(M)));;
+#! gap> ForAll(Ps, P -> Size(Set(Filtered(Ms,
+#! >        M -> IndexPeriodProfile(M) = P), diagonal)) = 1);
+#! false
+#! gap> List([1 .. 6], t -> Size(Set(Filtered(Ms, M -> diagonal(M) = t),
+#! >                                IndexPeriodProfile)));
+#! [ 32, 256, 367, 77, 164, 114 ]
+#! @EndExampleSession
