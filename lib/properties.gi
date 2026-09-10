@@ -441,3 +441,16 @@ InstallMethod(TranslationProfileTypes, "for a magma order", [IsPosInt],
         SortBy(types, type -> [-type[1], type[2]]);
         return types;
 end);
+
+InstallMethod(IndexPeriodProfile, "for a magma", [IsMagma],
+    function(M)
+        return Set([Collected(List(M, LeftIndexPeriod)), Collected(List(M, RightIndexPeriod))]);
+end);
+
+InstallMethod(IndexPeriodProfileTypes, "for a list of magmas", [IsList],
+    function(magmas)
+        if not ForAll(magmas, IsMagma) then
+            ErrorNoReturn("smallantimagmas: ", "<magmas> must be a list of magmas");
+        fi;
+        return Set(magmas, IndexPeriodProfile);
+end);
