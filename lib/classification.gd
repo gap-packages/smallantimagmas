@@ -16,11 +16,17 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! digraph, that is of the map <M>x \mapsto x * x</M>, and
 #! <C>"cancellativity"</C>, the pair of truth values
 #! <Ref Prop="IsLeftCancellative" Label="for IsMagma"/> and
-#! <Ref Prop="IsRightCancellative" Label="for IsMagma"/>.
+#! <Ref Prop="IsRightCancellative" Label="for IsMagma"/>, and
+#! <C>"index-period"</C>, the
+#! <Ref Attr="IndexPeriodProfile" Label="for IsMagma"/>, that is the multisets
+#! of left and of right index-periods of the elements, as an unordered pair.
 #!
 #! Each table has a column per type the invariant distinguishes, for
 #! <C>"diagonal"</C> the types of
-#! <Ref Oper="DiagonalDigraphTypes" Label="for IsPosInt"/>. The rows count
+#! <Ref Oper="DiagonalDigraphTypes" Label="for IsPosInt"/> and for
+#! <C>"index-period"</C> the profiles
+#! <Ref Oper="IndexPeriodProfileTypes" Label="for IsList"/> finds among
+#! <A>magmas</A>, named <M>P_1, P_2, \ldots</M> in that order. The rows count
 #! increasing collections: the antiisomorphism classes, the isomorphism classes
 #! and those of each size that occurs, and finally the labelled magmas. The
 #! <C>Total</C> column comes first, set off from the per-type columns.
@@ -57,6 +63,20 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! ----------------------------------------------------
 #! Labelled magmas        52         48    2     2    0
 #! ----------------------------------------------------
+#!
+#! Classified by the index-period profile:
+#! ------------------------------------------------
+#! Counted objects     Total    P_1 P_2 P_3 P_4 P_5
+#! ------------------------------------------------
+#! Iso+antiiso classes     5      1   1   1   1   1
+#! ------------------------------------------------
+#! Isomorphism classes    10      2   2   2   2   2
+#! ................................................
+#! 2-iso classes           2      0   0   0   0   2
+#! 6-iso classes           8      2   2   2   2   0
+#! ------------------------------------------------
+#! Labelled magmas        52     12  12  12  12   4
+#! ------------------------------------------------
 #! gap> Display(SmallAntimagmaClassification(Ms, "cancellativity"));
 #! Classified by left and right cancellativity:
 #! ----------------------------------------------------
@@ -116,6 +136,20 @@ DeclareGlobalFunction("SmallAntimagmaClassification");
 #! ----------------------------------------------------
 #! Labelled magmas        52         48    2     2    0
 #! ----------------------------------------------------
+#!
+#! Classified by the index-period profile:
+#! ------------------------------------------------
+#! Counted objects     Total    P_1 P_2 P_3 P_4 P_5
+#! ------------------------------------------------
+#! Iso+antiiso classes     5      1   1   1   1   1
+#! ------------------------------------------------
+#! Isomorphism classes    10      2   2   2   2   2
+#! ................................................
+#! 2-iso classes           2      0   0   0   0   2
+#! 6-iso classes           8      2   2   2   2   0
+#! ------------------------------------------------
+#! Labelled magmas        52     12  12  12  12   4
+#! ------------------------------------------------
 #! @EndExampleSession
 #!
 DeclareGlobalFunction("SmallAntimagmasInformation");

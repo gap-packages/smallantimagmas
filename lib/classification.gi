@@ -2,17 +2,25 @@ __SmallAntimagmaHelper.Invariants := [
 
     rec(name := "diagonal",
         description := "the isomorphism type of the diagonal digraph",
-        types := DiagonalDigraphTypes,
+        types := {order, magmas} -> DiagonalDigraphTypes(order),
         headers := types -> List([1 .. Size(types)], i -> Concatenation("Gamma_", String(i))),
         typeOf := {types, M} -> PositionProperty(types,
             type -> IsIsomorphicDigraph(type, DigraphOfDiagonal(M)))),
 
     rec(name := "cancellativity",
         description := "left and right cancellativity",
-        types := order -> [[false, false], [true, false], [false, true], [true, true]],
+        types := {order, magmas} -> [[false, false], [true, false], [false, true], [true, true]],
         headers := types -> ["neither", "left", "right", "both"],
         typeOf := {types, M} -> Position(types,
-            [IsLeftCancellative(M), IsRightCancellative(M)]))
+            [IsLeftCancellative(M), IsRightCancellative(M)])),
+
+    # the profiles cannot be listed ahead of an order, so the columns are the
+    # profiles of the magmas classified, in the order IndexPeriodProfileTypes gives
+    rec(name := "index-period",
+        description := "the index-period profile",
+        types := {order, magmas} -> IndexPeriodProfileTypes(magmas),
+        headers := types -> List([1 .. Size(types)], i -> Concatenation("P_", String(i))),
+        typeOf := {types, M} -> Position(types, IndexPeriodProfile(M)))
 ];
 
 __SmallAntimagmaHelper.AllInvariants := "all";
@@ -96,7 +104,7 @@ InstallGlobalFunction(SmallAntimagmaClassification,
         tableOf := function(invariant)
             local types, classes, columns, rows, rules, typeAt, size, i;
 
-            types := invariant.types(n);
+            types := invariant.types(n, magmas);
             classes := List([1 .. Size(magmas)],
                 i -> rec(type := invariant.typeOf(types, magmas[i]),
                          size := shapes[i].size,

@@ -462,3 +462,47 @@ DeclareAttribute("DigraphOfDiagonal", IsMagma);
 #! @EndExampleSession
 #!
 DeclareOperation("DiagonalDigraphTypes", [IsPosInt]);
+
+#! @Arguments M
+#! @Description
+#! returns the index-period profile of <A>M</A>: the multiset of
+#! <Ref Attr="LeftIndexPeriod" Label="for IsExtLElement"/> and the multiset of
+#! <Ref Attr="RightIndexPeriod" Label="for IsExtRElement"/> over the elements of
+#! <A>M</A>, each as returned by <C>Collected</C>, as an unordered pair. Taking
+#! the pair unordered forgets which side is which, so a magma and its transpose
+#! share a profile, and the profile is an invariant of isomorphism <E>and</E>
+#! antiisomorphism.
+#!
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(3, 5);;
+#! gap> Collected(List(M, LeftIndexPeriod));
+#! [ [ [ 2, 1 ], 3 ] ]
+#! gap> Collected(List(M, RightIndexPeriod));
+#! [ [ [ 1, 3 ], 3 ] ]
+#! gap> IndexPeriodProfile(M);
+#! [ [ [ [ 1, 3 ], 3 ] ], [ [ [ 2, 1 ], 3 ] ] ]
+#! gap> IndexPeriodProfile(M) = IndexPeriodProfile(TransposedMagma(M));
+#! true
+#! @EndExampleSession
+#!
+DeclareAttribute("IndexPeriodProfile", IsMagma);
+
+#! @Arguments magmas
+#! @Description
+#! returns the index-period profiles that occur among <A>magmas</A>, each once,
+#! in the order of GAP lists; this is the order <M>P_1, P_2, \ldots</M> of the
+#! columns of <Ref Func="SmallAntimagmaClassification"/> by
+#! <C>"index-period"</C>. Unlike the diagonal digraphs of
+#! <Ref Oper="DiagonalDigraphTypes" Label="for IsPosInt"/>, the profiles are
+#! read off the magmas given rather than enumerated for an order.
+#!
+#! @BeginExampleSession
+#! gap> IndexPeriodProfileTypes(AllSmallAntimagmas(3));
+#! [ [ [ [ [ 1, 2 ], 1 ], [ [ 2, 2 ], 2 ] ], [ [ [ 2, 1 ], 2 ], [ [ 2, 2 ], 1 ] ] ],
+#!   [ [ [ [ 1, 2 ], 2 ], [ [ 2, 2 ], 1 ] ], [ [ [ 2, 1 ], 2 ], [ [ 3, 1 ], 1 ] ] ],
+#!   [ [ [ [ 1, 2 ], 2 ], [ [ 2, 2 ], 1 ] ], [ [ [ 2, 1 ], 3 ] ] ],
+#!   [ [ [ [ 1, 2 ], 3 ] ], [ [ [ 2, 1 ], 3 ] ] ],
+#!   [ [ [ [ 1, 3 ], 3 ] ], [ [ [ 2, 1 ], 3 ] ] ] ]
+#! @EndExampleSession
+#!
+DeclareOperation("IndexPeriodProfileTypes", [IsList]);
