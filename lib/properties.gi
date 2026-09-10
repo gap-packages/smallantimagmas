@@ -36,6 +36,11 @@ InstallMethod(SquaresIndex, "for a magma", [IsMagma],
         return Size(Set(M, m -> m ^ 2));
 end);
 
+InstallMethod(ProductSetSize, "for a magma", [IsMagma],
+    function(M)
+        return Size(Set(EnumeratorOfTuples(M, 2), t -> t[1] * t[2]));
+end);
+
 InstallMethod(IsAntiassociative, "for a magma", [IsMagma],
     function(M)
         local x;
@@ -73,6 +78,7 @@ InstallGlobalFunction(MagmaIsomorphismInvariantsMatch,
             CommutativityIndex,
             AnticommutativityIndex,
             SquaresIndex,
+            ProductSetSize,
             leftIndexPeriods,
             rightIndexPeriods,
             IsLeftCyclic,

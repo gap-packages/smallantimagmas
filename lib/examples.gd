@@ -225,3 +225,99 @@
 #! ----------------------------------------------------------------------------
 #! @EndExampleSession
 #!
+#!
+#! @Section Classification by product set size
+#!
+#! The product set of a magma <M>M</M> is <M>M * M = \{ x * y \mid x, y \in M \}</M>,
+#! and its size <Ref Attr="ProductSetSize" Label="for IsMagma"/> is an
+#! isomorphism invariant. It never equals <M>1</M> for an antiassociative
+#! magma, since a magma with a single product is associative. At order 3 the
+#! product set is nearly always the whole magma, and at order 4 the size
+#! <M>4</M> dominates outright: the sizes <M>2</M> and <M>3</M> together
+#! account for only a small fraction of the classes.
+#!
+#! @BeginExampleSession
+#! gap> List(AllSmallAntimagmas(2), M -> ProductSetSize(M));
+#! [ 2 ]
+#! gap> Ms := AllSmallAntimagmas(3, "up-to-isomorphism");;
+#! gap> Display(SmallAntimagmaClassification(Ms, "product-set"));
+#! Classified by the size of the product set M * M:
+#! ------------------------------------------
+#! Counted objects     Total    |MM|=2 |MM|=3
+#! ------------------------------------------
+#! Iso+antiiso classes     5         1      4
+#! ------------------------------------------
+#! Isomorphism classes    10         2      8
+#! ..........................................
+#! 2-iso classes           2         0      2
+#! 6-iso classes           8         2      6
+#! ------------------------------------------
+#! Labelled magmas        52        12     40
+#! ------------------------------------------
+#! @EndExampleSession
+#!
+#! @BeginExampleSession
+#! gap> Ms := AllSmallAntimagmas(4, "up-to-isomorphism");;
+#! gap> Display(SmallAntimagmaClassification(Ms, "product-set"));
+#! Classified by the size of the product set M * M:
+#! --------------------------------------------------
+#! Counted objects      Total    |MM|=2 |MM|=3 |MM|=4
+#! --------------------------------------------------
+#! Iso+antiiso classes   8891         2    146   8743
+#! --------------------------------------------------
+#! Isomorphism classes  17780         4    292  17484
+#! ..................................................
+#! 3-iso classes            2         0      0      2
+#! 6-iso classes           29         0      0     29
+#! 12-iso classes         383         4      0    379
+#! 24-iso classes       17366         0    292  17074
+#! --------------------------------------------------
+#! Labelled magmas     421560        48   7008 414504
+#! --------------------------------------------------
+#! @EndExampleSession
+#!
+#! In both order-4 classes with a product set of size <M>2</M> the rows of the
+#! multiplication table coincide, so the product <M>x * y</M> depends on
+#! <M>y</M> alone. Every magma of order 4 whose product set has size <M>2</M>
+#! is deranged or op-deranged.
+#!
+#! @BeginExampleSession
+#! gap> Display(SmallAntimagmaClassification(
+#! >        Filtered(Ms, IsLeftDerangementInducted), "product-set"));
+#! Classified by the size of the product set M * M:
+#! --------------------------------------------------
+#! Counted objects      Total    |MM|=2 |MM|=3 |MM|=4
+#! --------------------------------------------------
+#! Isomorphism classes   8315         2    135   8178
+#! ..................................................
+#! 3-iso classes            1         0      0      1
+#! 6-iso classes           15         0      0     15
+#! 12-iso classes         179         2      0    177
+#! 24-iso classes        8120         0    135   7985
+#! --------------------------------------------------
+#! Labelled magmas     197121        24   3240 193857
+#! --------------------------------------------------
+#! @EndExampleSession
+#!
+#! Among the magmas that are neither deranged nor op-deranged, the product set
+#! has size at least <M>3</M>.
+#!
+#! @BeginExampleSession
+#! gap> Display(SmallAntimagmaClassification(Filtered(Ms,
+#! >        M -> not IsLeftDerangementInducted(M)
+#! >             and not IsRightDerangementInducted(M)), "product-set"));
+#! Classified by the size of the product set M * M:
+#! -------------------------------------------------
+#! Counted objects     Total    |MM|=2 |MM|=3 |MM|=4
+#! -------------------------------------------------
+#! Iso+antiiso classes   576         0     11    565
+#! -------------------------------------------------
+#! Isomorphism classes  1151         0     22   1129
+#! .................................................
+#! 12-iso classes         25         0      0     25
+#! 24-iso classes       1126         0     22   1104
+#! -------------------------------------------------
+#! Labelled magmas     27324         0    528  26796
+#! -------------------------------------------------
+#! @EndExampleSession
+#!
