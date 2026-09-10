@@ -225,3 +225,104 @@
 #! ----------------------------------------------------------------------------
 #! @EndExampleSession
 #!
+#!
+#! @Section Classification by number of squares
+#!
+#! The squares of a magma are the images of the map <M>x \mapsto x * x</M>,
+#! so their number, <Ref Attr="SquaresIndex" Label="for IsMagma"/>, is the
+#! number of vertices of the diagonal digraph with an incoming edge. It is
+#! therefore a coarser invariant than the type of the diagonal digraph, and its
+#! tables merge columns of the tables above. An antiassociative magma has at
+#! least two squares, as a single square <M>c</M> would satisfy
+#! <M>c^2 = c</M>, so the columns run from 2 to the order.
+#!
+#! At order 3 the invariant takes both values. The magma <M>M</M> below squares
+#! every element into <M>m_1</M> or <M>m_2</M>, whereas in <M>N</M> the squares
+#! exhaust the magma, and the two diagonal digraphs are the types
+#! <M>\Gamma_1</M> and <M>\Gamma_2</M> of the previous section.
+#!
+#! @BeginExampleSession
+#! gap> Ms3 := AllSmallAntimagmas(3, "up-to-isomorphism");;
+#! gap> List(Ms3, SquaresIndex);
+#! [ 2, 2, 2, 2, 2, 2, 2, 2, 3, 3 ]
+#! gap> M := First(Ms3, M -> SquaresIndex(M) = 2);;
+#! gap> Display(MultiplicationTable(M));
+#! [ [  2,  1,  1 ],
+#!   [  2,  1,  1 ],
+#!   [  2,  1,  1 ] ]
+#! gap> Set(M, m -> m ^ 2);
+#! [ m1, m2 ]
+#! gap> SquaresIndex(M);
+#! 2
+#! gap> N := First(Ms3, M -> SquaresIndex(M) = 3);;
+#! gap> Display(MultiplicationTable(N));
+#! [ [  2,  2,  2 ],
+#!   [  3,  3,  3 ],
+#!   [  1,  1,  1 ] ]
+#! gap> Set(N, m -> m ^ 2);
+#! [ m1, m2, m3 ]
+#! gap> SquaresIndex(N);
+#! 3
+#! gap> List([M, N], M -> OutNeighbours(DigraphOfDiagonal(M)));
+#! [ [ [ 2 ], [ 1 ], [ 1 ] ], [ [ 2 ], [ 3 ], [ 1 ] ] ]
+#! @EndExampleSession
+#!
+#! The tables count the classes of every order the library stores.
+#!
+#! @BeginExampleSession
+#! gap> Display(SmallAntimagmaClassification(
+#! >        AllSmallAntimagmas(2, "up-to-isomorphism"), "squares"));
+#! Classified by the number of squares:
+#! ------------------------------
+#! Counted objects     Total    2
+#! ------------------------------
+#! Iso+antiiso classes     1    1
+#! ------------------------------
+#! Isomorphism classes     2    2
+#! ..............................
+#! 1-iso classes           2    2
+#! ------------------------------
+#! Labelled magmas         2    2
+#! ------------------------------
+#! gap> Display(SmallAntimagmaClassification(Ms3, "squares"));
+#! Classified by the number of squares:
+#! ---------------------------------
+#! Counted objects     Total     2 3
+#! ---------------------------------
+#! Iso+antiiso classes     5     4 1
+#! ---------------------------------
+#! Isomorphism classes    10     8 2
+#! .................................
+#! 2-iso classes           2     0 2
+#! 6-iso classes           8     8 0
+#! ---------------------------------
+#! Labelled magmas        52    48 4
+#! ---------------------------------
+#! @EndExampleSession
+#!
+#! At order 3 the two squares are exactly the type <M>\Gamma_1</M> and the
+#! three squares the type <M>\Gamma_2</M>. At order 4 each column collects two
+#! types: two squares are <M>\Gamma_1</M> and <M>\Gamma_2</M>, three squares
+#! <M>\Gamma_3</M> and <M>\Gamma_4</M>, and four squares <M>\Gamma_5</M> and
+#! <M>\Gamma_6</M>.
+#!
+#! @BeginExampleSession
+#! gap> Display(SmallAntimagmaClassification(Ms, "squares"));
+#! Classified by the number of squares:
+#! --------------------------------------------------
+#! Counted objects      Total         2      3      4
+#! --------------------------------------------------
+#! Iso+antiiso classes   8891      2224   4446   2221
+#! --------------------------------------------------
+#! Isomorphism classes  17780      4448   8892   4440
+#! ..................................................
+#! 3-iso classes            2         0      0      2
+#! 6-iso classes           29         0      0     29
+#! 12-iso classes         383       150      0    233
+#! 24-iso classes       17366      4298   8892   4176
+#! --------------------------------------------------
+#! Labelled magmas     421560    104952 213408 103200
+#! --------------------------------------------------
+#! gap> List(DiagonalDigraphTypes(4), D -> Number(InDegrees(D), d -> d > 0));
+#! [ 2, 2, 3, 3, 4, 4 ]
+#! @EndExampleSession

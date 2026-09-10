@@ -12,7 +12,13 @@ __SmallAntimagmaHelper.Invariants := [
         types := order -> [[false, false], [true, false], [false, true], [true, true]],
         headers := types -> ["neither", "left", "right", "both"],
         typeOf := {types, M} -> Position(types,
-            [IsLeftCancellative(M), IsRightCancellative(M)]))
+            [IsLeftCancellative(M), IsRightCancellative(M)])),
+
+    rec(name := "squares",
+        description := "the number of squares",
+        types := order -> [2 .. order],
+        headers := types -> List(types, String),
+        typeOf := {types, M} -> Position(types, SquaresIndex(M)))
 ];
 
 __SmallAntimagmaHelper.AllInvariants := "all";
