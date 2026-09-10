@@ -40,7 +40,13 @@ __SmallAntimagmaHelper.Invariants := [
         description := "the size of the product set M * M",
         types := {order, magmas} -> [2 .. order],
         headers := types -> List(types, size -> Concatenation("|MM|=", String(size))),
-        typeOf := {types, M} -> Position(types, ProductSetSize(M)))
+        typeOf := {types, M} -> Position(types, ProductSetSize(M))),
+
+    rec(name := "rank",
+        description := "rank, the size of a minimal generating set",
+        types := {order, magmas} -> [1 .. order],
+        headers := types -> List(types, k -> Concatenation("rank ", String(k))),
+        typeOf := {types, M} -> Position(types, Rank(M)))
 ];
 
 __SmallAntimagmaHelper.AllInvariants := "all";
