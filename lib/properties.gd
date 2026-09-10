@@ -390,8 +390,8 @@ DeclareProperty("IsRightFPFInducted", IsMagma);
 #! true
 #! gap> IsRightFPFInducted(M);
 #! false
-#! gap> IsRightDerangementInducted(M);
-#! false
+#! gap> IsLeftDerangementInducted(M);
+#! true
 #! @EndExampleSession
 #!
 DeclareProperty("IsLeftDerangementInducted", IsMagma);
