@@ -14,6 +14,15 @@ __SmallAntimagmaHelper.Invariants := [
         typeOf := {types, M} -> Position(types,
             [IsLeftCancellative(M), IsRightCancellative(M)])),
 
+    # the pairs that can occur are not known in advance, so the columns are
+    # the degrees that the classified magmas actually attain
+    rec(name := "cancellativity-degree",
+        description := "the cancellativity degree",
+        types := {order, magmas} -> Set(magmas, CancellativityDegree),
+        headers := types -> List(types,
+            type -> Concatenation("(", String(type[1]), ",", String(type[2]), ")")),
+        typeOf := {types, M} -> Position(types, CancellativityDegree(M))),
+
     rec(name := "commutativity",
         description := "the commutativity index",
         types := {order, magmas} -> Set(magmas, CommutativityIndex),
