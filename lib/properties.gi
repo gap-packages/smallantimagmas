@@ -21,6 +21,11 @@ InstallMethod(AssociativityIndex, "for a magma", [IsMagma],
         return Size(Filtered(EnumeratorOfTuples(M, 3), t -> (t[1] * t[2]) * t[3] = t[1] * (t[2] * t[3])));
 end);
 
+InstallMethod(MedialityIndex, "for a magma", [IsMagma],
+    function(M)
+        return Number(EnumeratorOfTuples(M, 4), t -> (t[1] * t[2]) * (t[3] * t[4]) = (t[1] * t[3]) * (t[2] * t[4]));
+end);
+
 InstallMethod(CommutativityIndex, "for a magma", [IsMagma],
     function(M)
         return Size(Filtered(Combinations(Elements(M), 2), m -> m[1] * m[2] = m[2] * m[1]));
