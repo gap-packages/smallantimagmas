@@ -36,6 +36,21 @@ InstallMethod(SquaresIndex, "for a magma", [IsMagma],
         return Size(Set(M, m -> m ^ 2));
 end);
 
+InstallMethod(LeftZeroIndex, "for a magma", [IsMagma],
+    function(M)
+        return Number(EnumeratorOfTuples(M, 2), t -> t[1] * t[2] = t[1]);
+end);
+
+InstallMethod(RightZeroIndex, "for a magma", [IsMagma],
+    function(M)
+        return Number(EnumeratorOfTuples(M, 2), t -> t[1] * t[2] = t[2]);
+end);
+
+InstallMethod(AbsorptionIndex, "for a magma", [IsMagma],
+    function(M)
+        return [LeftZeroIndex(M), RightZeroIndex(M)];
+end);
+
 InstallMethod(IsAntiassociative, "for a magma", [IsMagma],
     function(M)
         local x;
@@ -73,6 +88,7 @@ InstallGlobalFunction(MagmaIsomorphismInvariantsMatch,
             CommutativityIndex,
             AnticommutativityIndex,
             SquaresIndex,
+            AbsorptionIndex,
             leftIndexPeriods,
             rightIndexPeriods,
             IsLeftCyclic,
