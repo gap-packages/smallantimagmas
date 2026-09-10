@@ -31,8 +31,12 @@ gap> ForAll([2 .. 4], n -> ForAll(AntimagmaGeneratorPossibleDiagonals(n),
 true
 
 ## every antimagma has exactly one type of translation profile
-gap> ForAll([2 .. 4], n -> ForAll(AllSmallAntimagmas(n, "up-to-isomorphism"),
->     M -> Number(TranslationProfileTypes(n), T -> T = SortedList(TranslationProfile(M))) = 1));
+gap> ForAll([2 .. 4], function(n)
+>     local types;
+>     types := TranslationProfileTypes(n);
+>     return ForAll(AllSmallAntimagmas(n, "up-to-isomorphism"),
+>         M -> Number(types, T -> T = SortedList(TranslationProfile(M))) = 1);
+> end);
 true
 
 ## the row is left out when the transposes are not all present
