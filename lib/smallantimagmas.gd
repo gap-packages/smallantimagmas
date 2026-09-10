@@ -33,7 +33,7 @@
 #! gap> List(AllSmallAntimagmas(2, "labelled"), MultiplicationTable);
 #! [ [ [ 2, 1 ], [ 2, 1 ] ], [ [ 2, 2 ], [ 1, 1 ] ] ]
 #! gap> AllSmallAntimagmas(3);
-#! [ 
+#! [
 #!   <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>,
 #!   <magma with 3 generators>, <magma with 3 generators>
 #! ]

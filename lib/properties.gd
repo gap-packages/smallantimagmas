@@ -379,7 +379,7 @@ DeclareProperty("IsRightFPFInducted", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! is a left-hand sided derangment inducted <A>m</A>.
+#! is a left-hand sided derangement inducted <A>m</A>.
 #! The verification follows the endofunction algorithm
 #! of <Cite Key="MazurekZabielski2026"/>.
 #!
@@ -398,7 +398,7 @@ DeclareProperty("IsLeftDerangementInducted", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! is a right-hand sided derangment inducted <A>m</A>.
+#! is a right-hand sided derangement inducted <A>m</A>.
 #! The verification follows the endofunction algorithm
 #! of <Cite Key="MazurekZabielski2026"/>.
 #!
