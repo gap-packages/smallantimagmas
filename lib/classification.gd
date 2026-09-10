@@ -16,11 +16,15 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! digraph, that is of the map <M>x \mapsto x * x</M>, and
 #! <C>"cancellativity"</C>, the pair of truth values
 #! <Ref Prop="IsLeftCancellative" Label="for IsMagma"/> and
-#! <Ref Prop="IsRightCancellative" Label="for IsMagma"/>.
+#! <Ref Prop="IsRightCancellative" Label="for IsMagma"/>, and
+#! <C>"commutativity"</C>, the value of
+#! <Ref Attr="CommutativityIndex" Label="for IsMagma"/>.
 #!
 #! Each table has a column per type the invariant distinguishes, for
 #! <C>"diagonal"</C> the types of
-#! <Ref Oper="DiagonalDigraphTypes" Label="for IsPosInt"/>. The rows count
+#! <Ref Oper="DiagonalDigraphTypes" Label="for IsPosInt"/>, and for
+#! <C>"commutativity"</C> the values the index takes on <A>magmas</A>, so
+#! that no column is empty. The rows count
 #! increasing collections: the antiisomorphism classes, the isomorphism classes
 #! and those of each size that occurs, and finally the labelled magmas. The
 #! <C>Total</C> column comes first, set off from the per-type columns.
@@ -57,6 +61,20 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! ----------------------------------------------------
 #! Labelled magmas        52         48    2     2    0
 #! ----------------------------------------------------
+#!
+#! Classified by the commutativity index:
+#! ---------------------------------
+#! Counted objects     Total    0  1
+#! ---------------------------------
+#! Iso+antiiso classes     5    1  4
+#! ---------------------------------
+#! Isomorphism classes    10    2  8
+#! .................................
+#! 2-iso classes           2    2  0
+#! 6-iso classes           8    0  8
+#! ---------------------------------
+#! Labelled magmas        52    4 48
+#! ---------------------------------
 #! gap> Display(SmallAntimagmaClassification(Ms, "cancellativity"));
 #! Classified by left and right cancellativity:
 #! ----------------------------------------------------
@@ -116,6 +134,20 @@ DeclareGlobalFunction("SmallAntimagmaClassification");
 #! ----------------------------------------------------
 #! Labelled magmas        52         48    2     2    0
 #! ----------------------------------------------------
+#!
+#! Classified by the commutativity index:
+#! ---------------------------------
+#! Counted objects     Total    0  1
+#! ---------------------------------
+#! Iso+antiiso classes     5    1  4
+#! ---------------------------------
+#! Isomorphism classes    10    2  8
+#! .................................
+#! 2-iso classes           2    2  0
+#! 6-iso classes           8    0  8
+#! ---------------------------------
+#! Labelled magmas        52    4 48
+#! ---------------------------------
 #! @EndExampleSession
 #!
 DeclareGlobalFunction("SmallAntimagmasInformation");

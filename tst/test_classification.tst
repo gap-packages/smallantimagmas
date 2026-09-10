@@ -6,7 +6,7 @@ Error, smallantimagmas: <magmas> must be a non-empty list
 
 ## SmallAntimagmaClassification(magmas, by) rejects an unknown invariant
 gap> SmallAntimagmaClassification(AllSmallAntimagmas(2), "nope");
-Error, smallantimagmas: <by> must be one of all, diagonal, cancellativity
+Error, smallantimagmas: <by> must be one of all, diagonal, cancellativity, commutativity
 
 ## SmallAntimagmaClassification(magmas, by) rejects a non-string invariant
 gap> SmallAntimagmaClassification(AllSmallAntimagmas(2), 7);
@@ -18,7 +18,7 @@ Error, smallantimagmas: <order> must be an integer
 
 ## SmallAntimagmasInformation(n, by) rejects an unknown invariant
 gap> SmallAntimagmasInformation(2, "nope");
-Error, smallantimagmas: <by> must be one of all, diagonal, cancellativity
+Error, smallantimagmas: <by> must be one of all, diagonal, cancellativity, commutativity
 
 ## a classification views as the number of classes it holds
 gap> SmallAntimagmaClassification(AllSmallAntimagmas(3, "up-to-isomorphism"));
@@ -56,6 +56,25 @@ Isomorphism classes     2          0    1     1    0
 ----------------------------------------------------
 Labelled magmas         2          0    1     1    0
 ----------------------------------------------------
+
+## the commutativity columns are exactly the values that occur
+gap> C := SmallAntimagmaClassification(AllSmallAntimagmas(2, "up-to-isomorphism"), "commutativity");;
+gap> C!.tables[1].headers;
+[ "0" ]
+gap> Display(SmallAntimagmaClassification(AllSmallAntimagmas(3, "up-to-isomorphism"), "commutativity"));
+Classified by the commutativity index:
+---------------------------------
+Counted objects     Total    0  1
+---------------------------------
+Iso+antiiso classes     5    1  4
+---------------------------------
+Isomorphism classes    10    2  8
+.................................
+2-iso classes           2    2  0
+6-iso classes           8    0  8
+---------------------------------
+Labelled magmas        52    4 48
+---------------------------------
 
 ## SmallAntimagmaClassification(magmas) rejects a non-list
 gap> SmallAntimagmaClassification(4);

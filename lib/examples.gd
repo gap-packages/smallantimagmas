@@ -225,3 +225,68 @@
 #! ----------------------------------------------------------------------------
 #! @EndExampleSession
 #!
+#! @Section Classification by commutativity index
+#!
+#! The commutativity index of a magma, <Ref Attr="CommutativityIndex" Label="for IsMagma"/>,
+#! counts the unordered pairs of distinct elements that commute. It is an
+#! isomorphism invariant, and is preserved by transposition as well, so the
+#! antiisomorphism classes can always be counted. The columns of each table are
+#! the values that occur among the magmas classified.
+#!
+#! No antiassociative magma of order 2 has a commuting pair, and at order 3 at
+#! most one pair commutes.
+#!
+#! @BeginExampleSession
+#! gap> Display(SmallAntimagmaClassification(
+#! >        AllSmallAntimagmas(2, "up-to-isomorphism"), "commutativity"));
+#! Classified by the commutativity index:
+#! ------------------------------
+#! Counted objects     Total    0
+#! ------------------------------
+#! Iso+antiiso classes     1    1
+#! ------------------------------
+#! Isomorphism classes     2    2
+#! ..............................
+#! 1-iso classes           2    2
+#! ------------------------------
+#! Labelled magmas         2    2
+#! ------------------------------
+#! gap> Display(SmallAntimagmaClassification(
+#! >        AllSmallAntimagmas(3, "up-to-isomorphism"), "commutativity"));
+#! Classified by the commutativity index:
+#! ---------------------------------
+#! Counted objects     Total    0  1
+#! ---------------------------------
+#! Iso+antiiso classes     5    1  4
+#! ---------------------------------
+#! Isomorphism classes    10    2  8
+#! .................................
+#! 2-iso classes           2    2  0
+#! 6-iso classes           8    0  8
+#! ---------------------------------
+#! Labelled magmas        52    4 48
+#! ---------------------------------
+#! @EndExampleSession
+#!
+#! At order 4 the index ranges from 0 to 3, and no class of size 3 or 6 has a
+#! commuting pair.
+#!
+#! @BeginExampleSession
+#! gap> Display(SmallAntimagmaClassification(
+#! >        AllSmallAntimagmas(4, "up-to-isomorphism"), "commutativity"));
+#! Classified by the commutativity index:
+#! ------------------------------------------------------
+#! Counted objects      Total         0      1      2   3
+#! ------------------------------------------------------
+#! Iso+antiiso classes   8891      2322   4389   2165  15
+#! ------------------------------------------------------
+#! Isomorphism classes  17780      4642   8778   4330  30
+#! ......................................................
+#! 3-iso classes            2         2      0      0   0
+#! 6-iso classes           29        29      0      0   0
+#! 12-iso classes         383       237      2    138   6
+#! 24-iso classes       17366      4374   8776   4192  24
+#! ------------------------------------------------------
+#! Labelled magmas     421560    108000 210648 102264 648
+#! ------------------------------------------------------
+#! @EndExampleSession
