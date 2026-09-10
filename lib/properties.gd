@@ -101,6 +101,100 @@ DeclareAttribute("SquaresIndex", IsMagma);
 
 #! @Arguments M
 #! @Description
+#! computes left zero index of <A>M</A>, i.e. the number of ordered pairs
+#! <M>(x, y) \in M \times M</M> such that <M>x * y = x</M>.
+#! It ranges from <M>0</M> up to <M>|M|^2</M>, when <A>M</A> is a left zero
+#! magma, i.e. <M>x * y = x</M> holds for all <M>x, y \in M</M>.
+#! Antimagmas have no idempotents, so for them it is at most <M>|M| (|M| - 1)</M>.
+#!
+#! @BeginExampleSession
+#! gap> M := OneSmallAntimagma(2);;
+#! gap> MultiplicationTable(M);
+#! [ [ 2, 1 ], [ 2, 1 ] ]
+#! gap> LeftZeroIndex(M);
+#! 2
+#! gap> M := SmallAntimagma(3, 2);;
+#! gap> MultiplicationTable(M);
+#! [ [ 2, 1, 1 ], [ 2, 1, 1 ], [ 3, 1, 1 ] ]
+#! gap> Filtered(EnumeratorOfTuples(M, 2), t -> t[1] * t[2] = t[1]);
+#! [ [ m1, m2 ], [ m1, m3 ], [ m2, m1 ], [ m3, m1 ] ]
+#! gap> LeftZeroIndex(M);
+#! 4
+#! gap> List(AllSmallAntimagmas(3), M -> LeftZeroIndex(M));
+#! [ 3, 4, 2, 3, 0 ]
+#! gap> L := MagmaByMultiplicationTable([[1, 1, 1], [2, 2, 2], [3, 3, 3]]);;
+#! gap> LeftZeroIndex(L) = Size(L) ^ 2;
+#! true
+#! gap> LeftZeroIndex(CyclicGroup(4));
+#! 4
+#! @EndExampleSession
+#!
+DeclareAttribute("LeftZeroIndex", IsMagma);
+
+#! @Arguments M
+#! @Description
+#! computes right zero index of <A>M</A>, i.e. the number of ordered pairs
+#! <M>(x, y) \in M \times M</M> such that <M>x * y = y</M>.
+#! It equals the left zero index of the transposed magma.
+#!
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(3, 5);;
+#! gap> MultiplicationTable(M);
+#! [ [ 2, 2, 2 ], [ 3, 3, 3 ], [ 1, 1, 1 ] ]
+#! gap> RightZeroIndex(M);
+#! 3
+#! gap> List(AllSmallAntimagmas(3), M -> RightZeroIndex(M));
+#! [ 0, 0, 0, 0, 3 ]
+#! gap> ForAll(AllSmallAntimagmas(3), M -> RightZeroIndex(M) = LeftZeroIndex(TransposedMagma(M)));
+#! true
+#! gap> L := MagmaByMultiplicationTable([[1, 1, 1], [2, 2, 2], [3, 3, 3]]);;
+#! gap> RightZeroIndex(L);
+#! 3
+#! gap> RightZeroIndex(TransposedMagma(L)) = Size(L) ^ 2;
+#! true
+#! gap> RightZeroIndex(CyclicGroup(4));
+#! 4
+#! @EndExampleSession
+#!
+DeclareAttribute("RightZeroIndex", IsMagma);
+
+#! @Arguments M
+#! @Description
+#! computes absorption index of <A>M</A>, i.e. the pair
+#! <M>[ \mathrm{LeftZeroIndex}(M), \mathrm{RightZeroIndex}(M) ]</M>.
+#! It measures how close the operation of <A>M</A> is to the left projection
+#! <M>x * y = x</M> and to the right projection <M>x * y = y</M>.
+#! The absorption index is an isomorphism invariant, and antiisomorphic magmas
+#! have reversed absorption indices.
+#!
+#! @BeginExampleSession
+#! gap> M := SmallAntimagma(3, 2);;
+#! gap> AbsorptionIndex(M);
+#! [ 4, 0 ]
+#! gap> AbsorptionIndex(TransposedMagma(M));
+#! [ 0, 4 ]
+#! gap> List(AllSmallAntimagmas(3), M -> AbsorptionIndex(M));
+#! [ [ 3, 0 ], [ 4, 0 ], [ 2, 0 ], [ 3, 0 ], [ 0, 3 ] ]
+#! gap> L := MagmaByMultiplicationTable([[1, 1, 1], [2, 2, 2], [3, 3, 3]]);;
+#! gap> AbsorptionIndex(L);
+#! [ 9, 3 ]
+#! gap> AbsorptionIndex(CyclicGroup(4));
+#! [ 4, 4 ]
+#! gap> AbsorptionIndex(SymmetricGroup(3));
+#! [ 6, 6 ]
+#! gap> Collected(List(AllSmallAntimagmas(4), M -> AbsorptionIndex(M)));
+#! [ [ [ 0, 0 ], 40 ], [ [ 0, 1 ], 99 ], [ [ 0, 2 ], 180 ], [ [ 0, 3 ], 137 ],
+#!   [ [ 0, 4 ], 53 ], [ [ 0, 5 ], 6 ], [ [ 1, 0 ], 173 ], [ [ 1, 1 ], 29 ],
+#!   [ [ 1, 2 ], 17 ], [ [ 1, 3 ], 10 ], [ [ 2, 0 ], 785 ], [ [ 2, 1 ], 84 ],
+#!   [ [ 2, 2 ], 33 ], [ [ 3, 0 ], 1749 ], [ [ 3, 1 ], 66 ], [ [ 4, 0 ], 2341 ],
+#!   [ [ 4, 1 ], 42 ], [ [ 5, 0 ], 1831 ], [ [ 6, 0 ], 921 ], [ [ 7, 0 ], 256 ],
+#!   [ [ 8, 0 ], 39 ] ]
+#! @EndExampleSession
+#!
+DeclareAttribute("AbsorptionIndex", IsMagma);
+
+#! @Arguments M
+#! @Description
 #! builds a collection of non-isomorphic submagmas of <A>M</A>.
 #!
 #! @BeginExampleSession

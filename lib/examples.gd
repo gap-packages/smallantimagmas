@@ -225,3 +225,76 @@
 #! ----------------------------------------------------------------------------
 #! @EndExampleSession
 #!
+#!
+#! @Section Absorption index
+#!
+#! The absorption index <Ref Attr="AbsorptionIndex" Label="for IsMagma"/> of a
+#! magma <M>M</M> is the pair of the numbers of ordered pairs
+#! <M>(x, y) \in M \times M</M> with <M>x * y = x</M> and with
+#! <M>x * y = y</M>, the left and right zero indices. It measures how far the
+#! operation is from the left projection <M>x * y = x</M> and from the right
+#! projection <M>x * y = y</M>. An antimagma has no idempotents, so its diagonal never
+#! contributes, and a pair <M>(x, y)</M> with <M>x \neq y</M> absorbs at most
+#! one way, so the two indices sum to at most <M>|M| (|M| - 1)</M>.
+#!
+#! At order 3, four of the five antiisomorphism classes are left absorbing
+#! only, and the fifth is the transpose of one of them.
+#!
+#! @BeginExampleSession
+#! gap> List(AllSmallAntimagmas(3), M -> [MultiplicationTable(M), AbsorptionIndex(M)]);
+#! [ [ [ [ 2, 1, 1 ], [ 2, 1, 1 ], [ 2, 1, 1 ] ], [ 3, 0 ] ],
+#!   [ [ [ 2, 1, 1 ], [ 2, 1, 1 ], [ 3, 1, 1 ] ], [ 4, 0 ] ],
+#!   [ [ [ 2, 1, 1 ], [ 3, 1, 1 ], [ 2, 1, 1 ] ], [ 2, 0 ] ],
+#!   [ [ [ 2, 1, 1 ], [ 3, 1, 1 ], [ 3, 1, 1 ] ], [ 3, 0 ] ],
+#!   [ [ [ 2, 2, 2 ], [ 3, 3, 3 ], [ 1, 1, 1 ] ], [ 0, 3 ] ] ]
+#! gap> ForAll(AllSmallAntimagmas(3),
+#! >        M -> AbsorptionIndex(TransposedMagma(M)) = Reversed(AbsorptionIndex(M)));
+#! true
+#! @EndExampleSession
+#!
+#! Transposition reverses the pair, so over the isomorphism classes of order 4
+#! the distribution is symmetric. It takes 25 values, and no index exceeds 8,
+#! well below the bound <M>4 \cdot 3 = 12</M>.
+#!
+#! @BeginExampleSession
+#! gap> ai := List(Ms, AbsorptionIndex);;
+#! gap> Collected(ai);
+#! [ [ [ 0, 0 ], 79 ], [ [ 0, 1 ], 272 ], [ [ 0, 2 ], 965 ], [ [ 0, 3 ], 1886 ],
+#!   [ [ 0, 4 ], 2394 ], [ [ 0, 5 ], 1837 ], [ [ 0, 6 ], 921 ], [ [ 0, 7 ], 256 ],
+#!   [ [ 0, 8 ], 39 ], [ [ 1, 0 ], 272 ], [ [ 1, 1 ], 58 ], [ [ 1, 2 ], 101 ],
+#!   [ [ 1, 3 ], 76 ], [ [ 1, 4 ], 42 ], [ [ 2, 0 ], 965 ], [ [ 2, 1 ], 101 ],
+#!   [ [ 2, 2 ], 65 ], [ [ 3, 0 ], 1886 ], [ [ 3, 1 ], 76 ], [ [ 4, 0 ], 2394 ],
+#!   [ [ 4, 1 ], 42 ], [ [ 5, 0 ], 1837 ], [ [ 6, 0 ], 921 ], [ [ 7, 0 ], 256 ],
+#!   [ [ 8, 0 ], 39 ] ]
+#! gap> Size(Set(ai));
+#! 25
+#! gap> Collected(ai) = Collected(List(ai, Reversed));
+#! true
+#! gap> Maximum(List(ai, Maximum));
+#! 8
+#! @EndExampleSession
+#!
+#! Most classes absorb on one side only. Absorption on both sides is rare, and
+#! 79 classes have no absorbing pair at all.
+#!
+#! @BeginExampleSession
+#! gap> Number(ai, a -> a = [0, 0]);
+#! 79
+#! gap> Number(ai, a -> 0 in a and a <> [0, 0]);
+#! 17140
+#! gap> Number(ai, a -> not 0 in a);
+#! 561
+#! gap> MultiplicationTable(Ms[Position(ai, [0, 0])]);
+#! [ [ 2, 3, 2, 2 ], [ 4, 1, 1, 1 ], [ 4, 1, 1, 1 ], [ 2, 3, 2, 2 ] ]
+#! gap> MultiplicationTable(Ms[Position(ai, [8, 0])]);
+#! [ [ 2, 1, 1, 2 ], [ 2, 1, 1, 2 ], [ 3, 1, 1, 3 ], [ 2, 4, 4, 2 ] ]
+#! @EndExampleSession
+#!
+#! In a left cancellative magma each <M>x</M> has exactly one <M>y</M> with
+#! <M>x * y = x</M>, so the left zero index is <M>|M|</M>. The 40 left
+#! cancellative classes of order 4 all have absorption index <M>[ 4, 0 ]</M>.
+#!
+#! @BeginExampleSession
+#! gap> Collected(List(Filtered(Ms, IsLeftCancellative), AbsorptionIndex));
+#! [ [ [ 4, 0 ], 40 ] ]
+#! @EndExampleSession
