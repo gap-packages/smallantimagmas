@@ -225,3 +225,170 @@
 #! ----------------------------------------------------------------------------
 #! @EndExampleSession
 #!
+#!
+#! @Section Classification by cancellativity degree
+#!
+#! The cancellativity degree <Ref Attr="CancellativityDegree" Label="for IsMagma"/>
+#! of a magma <M>M</M> is the pair <M>[ l, r ]</M> counting the elements whose
+#! left translation <M>x \mapsto z * x</M>, respectively right translation
+#! <M>x \mapsto x * z</M>, is injective. Left cancellativity is <M>l = |M|</M>
+#! and right cancellativity is <M>r = |M|</M>, so the table by
+#! <C>"cancellativity"</C> is a coarsening of the one by
+#! <C>"cancellativity-degree"</C>, which keeps the intermediate counts apart.
+#!
+#! At order 2 the degrees are extreme: one class is left cancellative, the other
+#! is its transpose.
+#!
+#! @BeginExampleSession
+#! gap> Display(SmallAntimagmaClassification(
+#! >        AllSmallAntimagmas(2, "up-to-isomorphism"), "cancellativity-degree"));
+#! Classified by the cancellativity degree:
+#! ----------------------------------------
+#! Counted objects     Total    (0,2) (2,0)
+#! ----------------------------------------
+#! Isomorphism classes     2        1     1
+#! ........................................
+#! 1-iso classes           2        1     1
+#! ----------------------------------------
+#! Labelled magmas         2        1     1
+#! ----------------------------------------
+#! @EndExampleSession
+#!
+#! At order 3 no magma has a partially injective side: eight classes have no
+#! injective translation at all, and the remaining two are again a left
+#! cancellative magma and its transpose. The left cancellative one is
+#! <M>x * y = \sigma(y)</M> for the 3-cycle <M>\sigma</M>.
+#!
+#! @BeginExampleSession
+#! gap> Ms := AllSmallAntimagmas(3, "up-to-isomorphism");;
+#! gap> Display(SmallAntimagmaClassification(Ms, "cancellativity-degree"));
+#! Classified by the cancellativity degree:
+#! ----------------------------------------------
+#! Counted objects     Total    (0,0) (0,3) (3,0)
+#! ----------------------------------------------
+#! Isomorphism classes    10        8     1     1
+#! ..............................................
+#! 2-iso classes           2        0     1     1
+#! 6-iso classes           8        8     0     0
+#! ----------------------------------------------
+#! Labelled magmas        52       48     2     2
+#! ----------------------------------------------
+#! gap> M := First(Ms, M -> CancellativityDegree(M) = [3, 0]);;
+#! gap> Display(MultiplicationTable(M));
+#! [ [  2,  3,  1 ],
+#!   [  2,  3,  1 ],
+#!   [  2,  3,  1 ] ]
+#! @EndExampleSession
+#!
+#! At order 4 the coarse table records that no antiassociative magma is
+#! cancellative, and that 40 classes are cancellative on each side.
+#!
+#! @BeginExampleSession
+#! gap> Ms := AllSmallAntimagmas(4, "up-to-isomorphism");;
+#! gap> Display(SmallAntimagmaClassification(Ms, "cancellativity"));
+#! Classified by left and right cancellativity:
+#! -----------------------------------------------------
+#! Counted objects      Total    neither left right both
+#! -----------------------------------------------------
+#! Isomorphism classes  17780      17700   40    40    0
+#! .....................................................
+#! 3-iso classes            2          0    1     1    0
+#! 6-iso classes           29         23    3     3    0
+#! 12-iso classes         383        365    9     9    0
+#! 24-iso classes       17366      17312   27    27    0
+#! -----------------------------------------------------
+#! Labelled magmas     421560     420006  777   777    0
+#! -----------------------------------------------------
+#! @EndExampleSession
+#!
+#! The degree splits the <C>neither</C> column further. Ten degrees occur, and
+#! the table is easier to read in three parts: the classes with at least one
+#! injective left translation, those with at least one injective right
+#! translation, and those with none. Transposition swaps the first two parts,
+#! so they fill in mirror-image tables.
+#!
+#! @BeginExampleSession
+#! gap> Display(SmallAntimagmaClassification(
+#! >        Filtered(Ms, M -> CancellativityDegree(M)[1] > 0), "cancellativity-degree"));
+#! Classified by the cancellativity degree:
+#! -----------------------------------------------------------
+#! Counted objects      Total    (1,0) (1,1) (2,0) (3,0) (4,0)
+#! -----------------------------------------------------------
+#! Isomorphism classes   5938     3665     2  1839   392    40
+#! ...........................................................
+#! 3-iso classes            1        0     0     0     0     1
+#! 6-iso classes            3        0     0     0     0     3
+#! 12-iso classes          86        0     0    77     0     9
+#! 24-iso classes        5848     3665     2  1762   392    27
+#! -----------------------------------------------------------
+#! Labelled magmas     141405    87960    48 43212  9408   777
+#! -----------------------------------------------------------
+#! gap> Display(SmallAntimagmaClassification(
+#! >        Filtered(Ms, M -> CancellativityDegree(M)[2] > 0), "cancellativity-degree"));
+#! Classified by the cancellativity degree:
+#! -----------------------------------------------------------
+#! Counted objects      Total    (0,1) (0,2) (0,3) (0,4) (1,1)
+#! -----------------------------------------------------------
+#! Isomorphism classes   5938     3665  1839   392    40     2
+#! ...........................................................
+#! 3-iso classes            1        0     0     0     1     0
+#! 6-iso classes            3        0     0     0     3     0
+#! 12-iso classes          86        0    77     0     9     0
+#! 24-iso classes        5848     3665  1762   392    27     2
+#! -----------------------------------------------------------
+#! Labelled magmas     141405    87960 43212  9408   777    48
+#! -----------------------------------------------------------
+#! gap> Display(SmallAntimagmaClassification(
+#! >        Filtered(Ms, M -> CancellativityDegree(M) = [0, 0]), "cancellativity-degree"));
+#! Classified by the cancellativity degree:
+#! ------------------------------------
+#! Counted objects      Total     (0,0)
+#! ------------------------------------
+#! Iso+antiiso classes   2954      2954
+#! ------------------------------------
+#! Isomorphism classes   5906      5906
+#! ....................................
+#! 6-iso classes           23        23
+#! 12-iso classes         211       211
+#! 24-iso classes        5672      5672
+#! ------------------------------------
+#! Labelled magmas     138798    138798
+#! ------------------------------------
+#! @EndExampleSession
+#!
+#! The degree <M>(1, 1)</M> is the only one with both entries non-zero, and it is
+#! attained by a single pair of transposed classes, so a single class up to
+#! isomorphism and antiisomorphism.
+#!
+#! @BeginExampleSession
+#! gap> mixed := Filtered(Ms, M -> CancellativityDegree(M) = [1, 1]);;
+#! gap> List(mixed, IdSmallAntimagma);
+#! [ [ 4, 7426 ], [ 4, 7426 ] ]
+#! gap> IsMagmaIsomorphic(mixed[1], TransposedMagma(mixed[2]));
+#! true
+#! gap> Display(MultiplicationTable(mixed[1]));
+#! [ [  2,  1,  3,  3 ],
+#!   [  4,  1,  2,  1 ],
+#!   [  4,  1,  1,  1 ],
+#!   [  2,  1,  4,  3 ] ]
+#! @EndExampleSession
+#!
+#! Among the deranged magmas of order 4, in the sense of
+#! <Ref Prop="IsLeftDerangementInducted" Label="for IsMagma"/>, no left
+#! translation is injective, while all but one of the 40 right cancellative
+#! classes are deranged.
+#!
+#! @BeginExampleSession
+#! gap> deranged := Filtered(Ms, IsLeftDerangementInducted);;
+#! gap> for d in Collected(List(deranged, CancellativityDegree)) do
+#! >        Print(d[1], String(d[2], 6), "\n");
+#! >    od;
+#! [ 0, 0 ]  2672
+#! [ 0, 1 ]  3456
+#! [ 0, 2 ]  1764
+#! [ 0, 3 ]   384
+#! [ 0, 4 ]    39
+#! gap> Number(Ms, IsRightCancellative);
+#! 40
+#! @EndExampleSession
+#!
