@@ -77,6 +77,15 @@ DeclareAttribute("CommutativityIndex", IsMagma);
 #! calculates anticommutativity index of <A>M</A>.
 #!
 #! @BeginExampleSession
+#! gap> M := OneSmallAntimagma(2);;
+#! gap> AnticommutativityIndex(M);
+#! 1
+#! gap> List(AllSmallAntimagmas(3), M -> AnticommutativityIndex(M));
+#! [ 2, 2, 2, 2, 3 ]
+#! gap> ForAll(AllSmallAntimagmas(3), M -> CommutativityIndex(M) + AnticommutativityIndex(M) = Binomial(3, 2));
+#! true
+#! gap> AnticommutativityIndex(CyclicGroup(3));
+#! 0
 #! @EndExampleSession
 #!
 DeclareAttribute("AnticommutativityIndex", IsMagma);
@@ -421,6 +430,13 @@ DeclareProperty("IsRightDerangementInducted", IsMagma);
 #! is a left-alternatve magma <A>M</A>.
 #!
 #! @BeginExampleSession
+#! gap> M := OneSmallAntimagma(2);;
+#! gap> IsLeftAlternative(M);
+#! false
+#! gap> List(AllSmallAntimagmas(3), M -> IsLeftAlternative(M));
+#! [ false, false, false, false, false ]
+#! gap> IsLeftAlternative(CyclicGroup(3));
+#! true
 #! @EndExampleSession
 #!
 DeclareProperty("IsLeftAlternative", IsMagma);
@@ -430,6 +446,13 @@ DeclareProperty("IsLeftAlternative", IsMagma);
 #! is a right-alternatve magma <A>M</A>.
 #!
 #! @BeginExampleSession
+#! gap> M := OneSmallAntimagma(2);;
+#! gap> IsRightAlternative(M);
+#! false
+#! gap> List(AllSmallAntimagmas(3), M -> IsRightAlternative(M));
+#! [ false, false, false, false, false ]
+#! gap> IsRightAlternative(CyclicGroup(3));
+#! true
 #! @EndExampleSession
 #!
 DeclareProperty("IsRightAlternative", IsMagma);
@@ -439,6 +462,18 @@ DeclareProperty("IsRightAlternative", IsMagma);
 #! builds a digraph from the diagonal of <A>M</A>.
 #!
 #! @BeginExampleSession
+#! gap> M := OneSmallAntimagma(2);;
+#! gap> DiagonalOfMultiplicationTable(M);
+#! [ 2, 1 ]
+#! gap> DigraphEdges(DigraphOfDiagonal(M));
+#! [ [ 1, 2 ], [ 2, 1 ] ]
+#! gap> N := SmallAntimagma(3, 5);;
+#! gap> DiagonalOfMultiplicationTable(N);
+#! [ 2, 3, 1 ]
+#! gap> DigraphEdges(DigraphOfDiagonal(N));
+#! [ [ 1, 2 ], [ 2, 3 ], [ 3, 1 ] ]
+#! gap> IsIsomorphicDigraph(DigraphOfDiagonal(M), DigraphOfDiagonal(N));
+#! false
 #! @EndExampleSession
 #!
 DeclareAttribute("DigraphOfDiagonal", IsMagma);
