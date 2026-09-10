@@ -11,6 +11,22 @@ InstallGlobalFunction(AllSubmagmas,
         return result;
 end);
 
+InstallMethod(MinimalGeneratingSet, "for a finite magma", [IsMagma and IsFinite],
+    function(M)
+        local k, c;
+        for k in [1 .. Size(M)] do
+            c := First(Combinations(Elements(M), k), c -> Size(Submagma(M, c)) = Size(M));
+            if c <> fail then
+                return c;
+            fi;
+        od;
+end);
+
+InstallMethod(Rank, "for a finite magma", [IsMagma and IsFinite],
+    function(M)
+        return Size(MinimalGeneratingSet(M));
+end);
+
 InstallMethod(DiagonalOfMultiplicationTable, "for a magma", [IsMagma],
     function(M)
         return DiagonalOfMatrix(MultiplicationTable(M));
@@ -76,7 +92,8 @@ InstallGlobalFunction(MagmaIsomorphismInvariantsMatch,
             leftIndexPeriods,
             rightIndexPeriods,
             IsLeftCyclic,
-            IsRightCyclic];
+            IsRightCyclic,
+            Rank];
         return ForAll(invariants, f -> f(M) = f(N));
 end);
 

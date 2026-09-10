@@ -16,7 +16,8 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! digraph, that is of the map <M>x \mapsto x * x</M>, and
 #! <C>"cancellativity"</C>, the pair of truth values
 #! <Ref Prop="IsLeftCancellative" Label="for IsMagma"/> and
-#! <Ref Prop="IsRightCancellative" Label="for IsMagma"/>.
+#! <Ref Prop="IsRightCancellative" Label="for IsMagma"/>, and <C>"rank"</C>,
+#! the size of a <Ref Attr="MinimalGeneratingSet" Label="for IsMagma"/>.
 #!
 #! Each table has a column per type the invariant distinguishes, for
 #! <C>"diagonal"</C> the types of
@@ -57,6 +58,20 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! ----------------------------------------------------
 #! Labelled magmas        52         48    2     2    0
 #! ----------------------------------------------------
+#!
+#! Classified by rank, the size of a minimal generating set:
+#! -------------------------------------------------
+#! Counted objects     Total    rank 1 rank 2 rank 3
+#! -------------------------------------------------
+#! Iso+antiiso classes     5         5      0      0
+#! -------------------------------------------------
+#! Isomorphism classes    10        10      0      0
+#! .................................................
+#! 2-iso classes           2         2      0      0
+#! 6-iso classes           8         8      0      0
+#! -------------------------------------------------
+#! Labelled magmas        52        52      0      0
+#! -------------------------------------------------
 #! gap> Display(SmallAntimagmaClassification(Ms, "cancellativity"));
 #! Classified by left and right cancellativity:
 #! ----------------------------------------------------
@@ -116,6 +131,20 @@ DeclareGlobalFunction("SmallAntimagmaClassification");
 #! ----------------------------------------------------
 #! Labelled magmas        52         48    2     2    0
 #! ----------------------------------------------------
+#!
+#! Classified by rank, the size of a minimal generating set:
+#! -------------------------------------------------
+#! Counted objects     Total    rank 1 rank 2 rank 3
+#! -------------------------------------------------
+#! Iso+antiiso classes     5         5      0      0
+#! -------------------------------------------------
+#! Isomorphism classes    10        10      0      0
+#! .................................................
+#! 2-iso classes           2         2      0      0
+#! 6-iso classes           8         8      0      0
+#! -------------------------------------------------
+#! Labelled magmas        52        52      0      0
+#! -------------------------------------------------
 #! @EndExampleSession
 #!
 DeclareGlobalFunction("SmallAntimagmasInformation");
