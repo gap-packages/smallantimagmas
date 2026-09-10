@@ -225,3 +225,114 @@
 #! ----------------------------------------------------------------------------
 #! @EndExampleSession
 #!
+#!
+#! @Section Classification by mediality index
+#!
+#! A magma is medial when <M>(x * y) * (z * w) = (x * z) * (y * w)</M> for all
+#! <M>x, y, z, w</M>, and <Ref Attr="MedialityIndex" Label="for IsMagma"/>
+#! counts the quadruples for which the law holds. It is an isomorphism
+#! invariant, and it is preserved by transposition, so the classification by
+#! it also counts the antiisomorphism classes. Unlike the diagonal digraph,
+#! the index does not have a fixed list of types per order: the columns of a
+#! table are the values taken by the magmas being classified.
+#!
+#! Both magmas of order 2 are medial, so the index takes the single value
+#! <M>2^4 = 16</M>.
+#!
+#! @BeginExampleSession
+#! gap> Display(SmallAntimagmaClassification(
+#! >        AllSmallAntimagmas(2, "up-to-isomorphism"), "mediality"));
+#! Classified by the mediality index:
+#! -------------------------------
+#! Counted objects     Total    16
+#! -------------------------------
+#! Iso+antiiso classes     1     1
+#! -------------------------------
+#! Isomorphism classes     2     2
+#! ...............................
+#! 1-iso classes           2     2
+#! -------------------------------
+#! Labelled magmas         2     2
+#! -------------------------------
+#! @EndExampleSession
+#!
+#! At order 3 the index takes four values, and the two classes of size 2, the
+#! magmas with a 3-cycle for diagonal, are exactly the medial ones with a
+#! non-trivial automorphism.
+#!
+#! @BeginExampleSession
+#! gap> Ms := AllSmallAntimagmas(3, "up-to-isomorphism");;
+#! gap> Display(SmallAntimagmaClassification(Ms, "mediality"));
+#! Classified by the mediality index:
+#! ----------------------------------------
+#! Counted objects     Total    57 65 73 81
+#! ----------------------------------------
+#! Iso+antiiso classes     5     1  1  1  2
+#! ----------------------------------------
+#! Isomorphism classes    10     2  2  2  4
+#! ........................................
+#! 2-iso classes           2     0  0  0  2
+#! 6-iso classes           8     2  2  2  2
+#! ----------------------------------------
+#! Labelled magmas        52    12 12 12 16
+#! ----------------------------------------
+#! gap> Filtered(Ms, M -> MedialityIndex(M) = 3 ^ 4 and SquaresIndex(M) = 3);
+#! [ <magma with 3 generators>, <magma with 3 generators> ]
+#! @EndExampleSession
+#!
+#! At order 4 the index takes 75 distinct values, all even, from 100 up to
+#! <M>4^4 = 256</M>, so the full table is too wide to reproduce here. It is
+#! obtained as above from <C>AllSmallAntimagmas(4, "up-to-isomorphism")</C>;
+#! the examples below show its distribution and its two tails.
+#!
+#! @BeginExampleSession
+#! gap> Ms := AllSmallAntimagmas(4, "up-to-isomorphism");;
+#! gap> values := Collected(List(Ms, MedialityIndex));;
+#! gap> Size(values);
+#! 75
+#! gap> ForAll(values, v -> IsEvenInt(v[1]));
+#! true
+#! gap> List(values{[1 .. 4]}, v -> v[1]);
+#! [ 100, 106, 108, 112 ]
+#! gap> Display(SmallAntimagmaClassification(
+#! >        Filtered(Ms, M -> MedialityIndex(M) <= 112), "mediality"));
+#! Classified by the mediality index:
+#! --------------------------------------------
+#! Counted objects     Total    100 106 108 112
+#! --------------------------------------------
+#! Iso+antiiso classes     8      1   1   3   3
+#! --------------------------------------------
+#! Isomorphism classes    16      2   2   6   6
+#! ............................................
+#! 12-iso classes          8      2   0   2   4
+#! 24-iso classes          8      0   2   4   2
+#! --------------------------------------------
+#! Labelled magmas       288     24  48 120  96
+#! --------------------------------------------
+#! @EndExampleSession
+#!
+#! The medial antiassociative magmas of order 4 form 93 isomorphism classes,
+#! 47 of them up to antiisomorphism, and they include both classes of size 3.
+#!
+#! @BeginExampleSession
+#! gap> Display(SmallAntimagmaClassification(
+#! >        Filtered(Ms, M -> MedialityIndex(M) >= 240), "mediality"));
+#! Classified by the mediality index:
+#! -------------------------------------------------------------
+#! Counted objects     Total    240 242 244 246 248 250 252  256
+#! -------------------------------------------------------------
+#! Iso+antiiso classes    81      9   4   9   6   3   1   2   47
+#! -------------------------------------------------------------
+#! Isomorphism classes   161     18   8  18  12   6   2   4   93
+#! .............................................................
+#! 3-iso classes           2      0   0   0   0   0   0   0    2
+#! 6-iso classes           9      0   0   0   0   0   0   0    9
+#! 12-iso classes         28      0   0   8   0   4   0   0   16
+#! 24-iso classes        122     18   8  10  12   2   2   4   66
+#! -------------------------------------------------------------
+#! Labelled magmas      3324    432 192 336 288  96  48  96 1836
+#! -------------------------------------------------------------
+#! gap> Number(Filtered(Ms, IsLeftDerangementInducted), M -> MedialityIndex(M) = 256);
+#! 47
+#! @EndExampleSession
+#!
