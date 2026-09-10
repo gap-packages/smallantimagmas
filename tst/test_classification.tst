@@ -6,7 +6,7 @@ Error, smallantimagmas: <magmas> must be a non-empty list
 
 ## SmallAntimagmaClassification(magmas, by) rejects an unknown invariant
 gap> SmallAntimagmaClassification(AllSmallAntimagmas(2), "nope");
-Error, smallantimagmas: <by> must be one of all, diagonal, cancellativity
+Error, smallantimagmas: <by> must be one of all, diagonal, cancellativity, product-set
 
 ## SmallAntimagmaClassification(magmas, by) rejects a non-string invariant
 gap> SmallAntimagmaClassification(AllSmallAntimagmas(2), 7);
@@ -18,7 +18,7 @@ Error, smallantimagmas: <order> must be an integer
 
 ## SmallAntimagmasInformation(n, by) rejects an unknown invariant
 gap> SmallAntimagmasInformation(2, "nope");
-Error, smallantimagmas: <by> must be one of all, diagonal, cancellativity
+Error, smallantimagmas: <by> must be one of all, diagonal, cancellativity, product-set
 
 ## a classification views as the number of classes it holds
 gap> SmallAntimagmaClassification(AllSmallAntimagmas(3, "up-to-isomorphism"));
@@ -56,6 +56,22 @@ Isomorphism classes     2          0    1     1    0
 ----------------------------------------------------
 Labelled magmas         2          0    1     1    0
 ----------------------------------------------------
+
+## SmallAntimagmaClassification(magmas, by) classifies by the product set size
+gap> Display(SmallAntimagmaClassification(AllSmallAntimagmas(3, "up-to-isomorphism"), "product-set"));
+Classified by the size of the product set M * M:
+------------------------------------------
+Counted objects     Total    |MM|=2 |MM|=3
+------------------------------------------
+Iso+antiiso classes     5         1      4
+------------------------------------------
+Isomorphism classes    10         2      8
+..........................................
+2-iso classes           2         0      2
+6-iso classes           8         2      6
+------------------------------------------
+Labelled magmas        52        12     40
+------------------------------------------
 
 ## SmallAntimagmaClassification(magmas) rejects a non-list
 gap> SmallAntimagmaClassification(4);

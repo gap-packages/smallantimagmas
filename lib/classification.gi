@@ -12,7 +12,14 @@ __SmallAntimagmaHelper.Invariants := [
         types := order -> [[false, false], [true, false], [false, true], [true, true]],
         headers := types -> ["neither", "left", "right", "both"],
         typeOf := {types, M} -> Position(types,
-            [IsLeftCancellative(M), IsRightCancellative(M)]))
+            [IsLeftCancellative(M), IsRightCancellative(M)])),
+
+    # a magma with a single product is associative, so the size starts at 2
+    rec(name := "product-set",
+        description := "the size of the product set M * M",
+        types := order -> [2 .. order],
+        headers := types -> List(types, size -> Concatenation("|MM|=", String(size))),
+        typeOf := {types, M} -> Position(types, ProductSetSize(M)))
 ];
 
 __SmallAntimagmaHelper.AllInvariants := "all";

@@ -101,6 +101,24 @@ DeclareAttribute("SquaresIndex", IsMagma);
 
 #! @Arguments M
 #! @Description
+#! computes product set size of <A>M</A>, i.e. the size of the set of products
+#! <M>M * M = \{ x * y \mid x, y \in M \}</M>.
+#! It ranges from <M>1</M> up to <M>|M|</M>, the latter meaning
+#! that every element of <A>M</A> is a product.
+#!
+#! @BeginExampleSession
+#! gap> List(AllSmallAntimagmas(2), M -> ProductSetSize(M));
+#! [ 2 ]
+#! gap> List(AllSmallAntimagmas(3), M -> ProductSetSize(M));
+#! [ 2, 3, 3, 3, 3 ]
+#! gap> Collected(List(AllSmallAntimagmas(4), M -> ProductSetSize(M)));
+#! [ [ 2, 2 ], [ 3, 146 ], [ 4, 8743 ] ]
+#! @EndExampleSession
+#!
+DeclareAttribute("ProductSetSize", IsMagma);
+
+#! @Arguments M
+#! @Description
 #! builds a collection of non-isomorphic submagmas of <A>M</A>.
 #!
 #! @BeginExampleSession
