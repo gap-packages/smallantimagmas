@@ -225,3 +225,70 @@
 #! ----------------------------------------------------------------------------
 #! @EndExampleSession
 #!
+#!
+#! @Section Classification by constant translations
+#!
+#! A constant row of the multiplication table is a constant left translation
+#! and a constant column a constant right translation; their numbers are
+#! <Ref Attr="NrConstantLeftTranslations" Label="for IsMagma"/> and
+#! <Ref Attr="NrConstantRightTranslations" Label="for IsMagma"/>. An
+#! antimagma never has both, so the pair is <M>(0, 0)</M>, <M>(r, 0)</M> or
+#! <M>(0, c)</M>, and transposition swaps <M>(r, 0)</M> with <M>(0, r)</M>.
+#! The value <M>n</M> on either side is the fixed-point free inducted case.
+#!
+#! Orders 2 and 3 have no magma without constant translations, and every
+#! magma of order 2 is fixed-point free inducted on one side.
+#!
+#! @BeginExampleSession
+#! gap> Display(SmallAntimagmaClassification(
+#! >        AllSmallAntimagmas(2, "up-to-isomorphism"), "constant"));
+#! Classified by the numbers of constant left and right translations:
+#! ----------------------------------------------------------
+#! Counted objects     Total    (0,0) (1,0) (2,0) (0,1) (0,2)
+#! ----------------------------------------------------------
+#! Isomorphism classes     2        0     0     1     0     1
+#! ..........................................................
+#! 1-iso classes           2        0     0     1     0     1
+#! ----------------------------------------------------------
+#! Labelled magmas         2        0     0     1     0     1
+#! ----------------------------------------------------------
+#! @EndExampleSession
+#!
+#! @BeginExampleSession
+#! gap> Display(SmallAntimagmaClassification(
+#! >        AllSmallAntimagmas(3, "up-to-isomorphism"), "constant"));
+#! Classified by the numbers of constant left and right translations:
+#! ----------------------------------------------------------------------
+#! Counted objects     Total    (0,0) (1,0) (2,0) (3,0) (0,1) (0,2) (0,3)
+#! ----------------------------------------------------------------------
+#! Isomorphism classes    10        0     0     3     2     0     3     2
+#! ......................................................................
+#! 2-iso classes           2        0     0     0     1     0     0     1
+#! 6-iso classes           8        0     0     3     1     0     3     1
+#! ----------------------------------------------------------------------
+#! Labelled magmas        52        0     0    18     8     0    18     8
+#! ----------------------------------------------------------------------
+#! @EndExampleSession
+#!
+#! At order 4 all nine types occur. The table is wider than the screen, so
+#! the screen is widened for it.
+#!
+#! @BeginExampleSession
+#! gap> SizeScreen([100]);;
+#! gap> Display(SmallAntimagmaClassification(Ms, "constant"));
+#! Classified by the numbers of constant left and right translations:
+#! ------------------------------------------------------------------------------------
+#! Counted objects      Total     (0,0) (1,0) (2,0) (3,0) (4,0) (0,1) (0,2) (0,3) (0,4)
+#! ------------------------------------------------------------------------------------
+#! Isomorphism classes  17780     10154  2925   767   115     6  2925   767   115     6
+#! ....................................................................................
+#! 3-iso classes            2         0     0     0     0     1     0     0     0     1
+#! 6-iso classes           29        27     0     0     0     1     0     0     0     1
+#! 12-iso classes         383       281     0    47     2     2     0    47     2     2
+#! 24-iso classes       17366      9846  2925   720   113     2  2925   720   113     2
+#! ------------------------------------------------------------------------------------
+#! Labelled magmas     421560    239838 70200 17844  2736    81 70200 17844  2736    81
+#! ------------------------------------------------------------------------------------
+#! gap> SizeScreen([80]);;
+#! @EndExampleSession
+#!

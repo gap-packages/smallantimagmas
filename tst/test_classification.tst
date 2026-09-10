@@ -6,7 +6,7 @@ Error, smallantimagmas: <magmas> must be a non-empty list
 
 ## SmallAntimagmaClassification(magmas, by) rejects an unknown invariant
 gap> SmallAntimagmaClassification(AllSmallAntimagmas(2), "nope");
-Error, smallantimagmas: <by> must be one of all, diagonal, cancellativity
+Error, smallantimagmas: <by> must be one of all, diagonal, cancellativity, constant
 
 ## SmallAntimagmaClassification(magmas, by) rejects a non-string invariant
 gap> SmallAntimagmaClassification(AllSmallAntimagmas(2), 7);
@@ -18,7 +18,7 @@ Error, smallantimagmas: <order> must be an integer
 
 ## SmallAntimagmasInformation(n, by) rejects an unknown invariant
 gap> SmallAntimagmasInformation(2, "nope");
-Error, smallantimagmas: <by> must be one of all, diagonal, cancellativity
+Error, smallantimagmas: <by> must be one of all, diagonal, cancellativity, constant
 
 ## a classification views as the number of classes it holds
 gap> SmallAntimagmaClassification(AllSmallAntimagmas(3, "up-to-isomorphism"));

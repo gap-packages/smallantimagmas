@@ -70,6 +70,8 @@ InstallGlobalFunction(MagmaIsomorphismInvariantsMatch,
             IsRightDistributive,
             IsLeftFPFInducted,
             IsRightFPFInducted,
+            NrConstantLeftTranslations,
+            NrConstantRightTranslations,
             CommutativityIndex,
             AnticommutativityIndex,
             SquaresIndex,
@@ -238,6 +240,16 @@ end);
 InstallMethod(IsCancellative, "for a magma", [IsMagma],
     function(M)
         return IsLeftCancellative(M) and IsRightCancellative(M);
+end);
+
+InstallMethod(NrConstantLeftTranslations, "for a magma", [IsMagma],
+    function(M)
+        return Number(M, z -> Size(Set(M, x -> z * x)) = 1);
+end);
+
+InstallMethod(NrConstantRightTranslations, "for a magma", [IsMagma],
+    function(M)
+        return Number(M, z -> Size(Set(M, x -> x * z)) = 1);
 end);
 
 InstallMethod(IsLeftFPFInducted, "for a magma", [IsMagma],

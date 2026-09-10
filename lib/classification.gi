@@ -12,7 +12,18 @@ __SmallAntimagmaHelper.Invariants := [
         types := order -> [[false, false], [true, false], [false, true], [true, true]],
         headers := types -> ["neither", "left", "right", "both"],
         typeOf := {types, M} -> Position(types,
-            [IsLeftCancellative(M), IsRightCancellative(M)]))
+            [IsLeftCancellative(M), IsRightCancellative(M)])),
+
+    # a constant row and a constant column never share an antimagma, see
+    # NrConstantRightTranslations, so the pairs are (0, 0), (r, 0) and (0, c)
+    rec(name := "constant",
+        description := "the numbers of constant left and right translations",
+        types := order -> Concatenation([[0, 0]],
+            List([1 .. order], r -> [r, 0]), List([1 .. order], c -> [0, c])),
+        headers := types -> List(types,
+            type -> Concatenation("(", String(type[1]), ",", String(type[2]), ")")),
+        typeOf := {types, M} -> Position(types,
+            [NrConstantLeftTranslations(M), NrConstantRightTranslations(M)]))
 ];
 
 __SmallAntimagmaHelper.AllInvariants := "all";
