@@ -20,16 +20,20 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! <C>"cancellativity-degree"</C>, the pair
 #! <Ref Attr="CancellativityDegree" Label="for IsMagma"/> counting the injective
 #! left and right translations, of which <C>"cancellativity"</C> is the
-#! coarsening that only asks whether each count is full, and
+#! coarsening that only asks whether each count is full,
 #! <C>"commutativity"</C>, the value of
-#! <Ref Attr="CommutativityIndex" Label="for IsMagma"/>.
+#! <Ref Attr="CommutativityIndex" Label="for IsMagma"/>, and
+#! <C>"translation"</C>, the
+#! <Ref Attr="TranslationProfile" Label="for IsMagma"/> taken up to the swap
+#! of its two entries.
 #!
 #! Each table has a column per type the invariant distinguishes, for
 #! <C>"diagonal"</C> the types of
-#! <Ref Oper="DiagonalDigraphTypes" Label="for IsPosInt"/>, and for
+#! <Ref Oper="DiagonalDigraphTypes" Label="for IsPosInt"/>, for
 #! <C>"cancellativity-degree"</C> and <C>"commutativity"</C> the degrees
-#! and values that occur among <A>magmas</A>, so that no column is empty.
-#! The rows count
+#! and values that occur among <A>magmas</A>, so that no column is empty,
+#! and for <C>"translation"</C> those of
+#! <Ref Oper="TranslationProfileTypes" Label="for IsPosInt"/>. The rows count
 #! increasing collections: the antiisomorphism classes, the isomorphism classes
 #! and those of each size that occurs, and finally the labelled magmas. The
 #! <C>Total</C> column comes first, set off from the per-type columns.
@@ -92,6 +96,20 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! ---------------------------------
 #! Labelled magmas        52    4 48
 #! ---------------------------------
+#!
+#! Classified by the translation profile:
+#! ----------------------------------------
+#! Counted objects     Total    T_1 T_2 T_3
+#! ----------------------------------------
+#! Iso+antiiso classes     5      3   1   1
+#! ----------------------------------------
+#! Isomorphism classes    10      6   2   2
+#! ........................................
+#! 2-iso classes           2      0   0   2
+#! 6-iso classes           8      6   2   0
+#! ----------------------------------------
+#! Labelled magmas        52     36  12   4
+#! ----------------------------------------
 #! gap> Display(SmallAntimagmaClassification(Ms, "cancellativity"));
 #! Classified by left and right cancellativity:
 #! ----------------------------------------------------
@@ -177,6 +195,20 @@ DeclareGlobalFunction("SmallAntimagmaClassification");
 #! ---------------------------------
 #! Labelled magmas        52    4 48
 #! ---------------------------------
+#!
+#! Classified by the translation profile:
+#! ----------------------------------------
+#! Counted objects     Total    T_1 T_2 T_3
+#! ----------------------------------------
+#! Iso+antiiso classes     5      3   1   1
+#! ----------------------------------------
+#! Isomorphism classes    10      6   2   2
+#! ........................................
+#! 2-iso classes           2      0   0   2
+#! 6-iso classes           8      6   2   0
+#! ----------------------------------------
+#! Labelled magmas        52     36  12   4
+#! ----------------------------------------
 #! @EndExampleSession
 #!
 DeclareGlobalFunction("SmallAntimagmasInformation");
