@@ -18,6 +18,7 @@ InstallGlobalFunction(SmallAntimagma,
         else
             Error("SmallAntimagma: expected (n, i) or [n, i]");
         fi;
+        __SmallAntimagmaHelper.checkOrderId(order, id);
         return MagmaByMultiplicationTable(
             __SmallAntimagmaHelper.MultiplicationTableReverse(__SmallAntimagmaHelper.TableAt(order, id)));
 end);
