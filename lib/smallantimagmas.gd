@@ -89,6 +89,6 @@ DeclareGlobalFunction("SmallAntimagma");
 #!
 #! gap> OneSmallAntimagma(3);
 #! <magma with 3 generators>
-#! @EndExampleSessions
+#! @EndExampleSession
 #!
 DeclareGlobalFunction("OneSmallAntimagma");
