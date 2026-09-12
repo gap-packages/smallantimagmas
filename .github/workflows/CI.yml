@@ -100,3 +100,18 @@ jobs:
           find . -name '*.gd' | xargs -n1 gaplint
           echo "::group:: gaplint -- *.tst"
           find . -name '*.tst' | xargs -n1 gaplint
+
+  required:
+    name: required
+    runs-on: ubuntu-slim
+    needs:
+      - gaptest
+      - gaplint
+    if: ${{ always() }}
+    permissions: {}
+    steps:
+      - name: Verify all required jobs succeeded
+        run: |
+          jq -e 'all(.[]; .result == "success")' <<'JSON'
+          ${{ toJSON(needs) }}
+          JSON
