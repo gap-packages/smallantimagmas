@@ -10,7 +10,7 @@ true
 gap> ForAll(Filtered(AllSmallGroups([2 .. 12]), G -> not IsCyclic(G)), G -> not IsRightCyclic(G));
 true
 
-gap> ForAll(Filtered(AllSmallGroups([2 .. 12]), G -> IsCyclic(G)), G -> IsRightCyclic(G));        
+gap> ForAll(Filtered(AllSmallGroups([2 .. 12]), G -> IsCyclic(G)), G -> IsRightCyclic(G));
 true
 #@fi
 
