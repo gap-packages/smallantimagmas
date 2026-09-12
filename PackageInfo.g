@@ -158,6 +158,22 @@ Persons := [
                        "Poland"]),
     Place         := "Białystok, Poland",
     Institution   := "Białystok University of Technology"
+),
+  rec(
+    LastName      := "Konovalov",
+    FirstNames    := "Olexandr",
+    IsAuthor      := true,
+    IsMaintainer  := true,
+    Email         := "obk1@st-andrews.ac.uk",
+    WWWHome       := "https://olexandr-konovalov.github.io/",
+    GitHubUsername := "olexandr-konovalov",
+    PostalAddress := Concatenation([
+                       "School of Computer Science\n",
+                       "University of St Andrews\n",
+                       "Jack Cole Building, North Haugh,\n",
+                       "St Andrews, Fife, KY16 9SX, Scotland"]),
+    Place         := "St Andrews",
+    Institution   := "University of St Andrews"
 )
 ],
 
