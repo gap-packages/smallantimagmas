@@ -1,7 +1,7 @@
 [![CI](https://github.com/gap-packages/smallantimagmas/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/gap-packages/smallantimagmas/actions/workflows/CI.yml)
 [![release](https://github.com/gap-packages/smallantimagmas/actions/workflows/release-bump.yml/badge.svg)](https://github.com/gap-packages/smallantimagmas/actions/workflows/release-bump.yml)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17165677.svg)](https://doi.org/10.5281/zenodo.17165677)
 [![codecov](https://codecov.io/gh/gap-packages/smallantimagmas/branch/main/graph/badge.svg)](https://codecov.io/gh/gap-packages/smallantimagmas)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17165677.svg)](https://doi.org/10.5281/zenodo.17165677)
 
 ## smallantimagmas
 
