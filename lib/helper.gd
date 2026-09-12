@@ -136,7 +136,7 @@ end;
 
 __SmallAntimagmaHelper.checkOrderId := function(order, id)
     __SmallAntimagmaHelper.checkOrder(order);
-    __SmallAntimagmaHelper.checkOrder(id);
+    __SmallAntimagmaHelper.checkId(id);
 end;
 
 __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory := function(order)
@@ -145,9 +145,6 @@ __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory := function(order)
     result := DirectoriesPackageLibrary("smallantimagmas", Concatenation(["data", "/", String(order)]));
     if Size(result) = 0 then
         ErrorNoReturn("smallantimagmas:", "<order> is not yet implemented");
-    fi;
-    if Size(result) > 1 then
-        ErrorNoReturn("smallantimagmas:", "metadata directory must not be ambiguous");
     fi;
     return First(result);
 end;

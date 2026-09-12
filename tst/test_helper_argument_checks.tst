@@ -51,4 +51,22 @@ Error, SmallAntimagma: expected (n, i) or [n, i]
 gap> SmallAntimagma(2, "1");
 Error, SmallAntimagma: expected (n, i) or [n, i]
 
+## SmallAntimagma(order, id) rejects id < 1
+gap> SmallAntimagma(2, 0);
+Error, smallantimagmas: <id> must be greater than or equal to 1
+
+gap> SmallAntimagma([3, -1]);
+Error, smallantimagmas: <id> must be greater than or equal to 1
+
+## checkId rejects a non-integer id
+gap> __SmallAntimagmaHelper.checkId("1");
+Error, smallantimagmas: <id> must be an integer
+
+## checkOrderId checks the order first, then the id
+gap> __SmallAntimagmaHelper.checkOrderId(1, 0);
+Error, smallantimagmas: <order> must be greater than or equal to 2
+
+gap> __SmallAntimagmaHelper.checkOrderId(2, 0);
+Error, smallantimagmas: <id> must be greater than or equal to 1
+
 gap> STOP_TEST("test_helper_argument_checks.tst");

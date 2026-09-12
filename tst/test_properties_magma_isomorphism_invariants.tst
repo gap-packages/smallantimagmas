@@ -5,6 +5,14 @@ gap> List([2 .. 3], n -> List(AllSmallAntimagmas(n), M -> MagmaIsomorphismInvari
   [ false, false, false, false, false ] 
 ]
 
+## matching invariants do not imply an isomorphism: MagmaIsomorphism must
+## still search for one, and report fail when none exists
+gap> MagmaIsomorphismInvariantsMatch(SmallAntimagma(4, 2), SmallAntimagma(4, 6));
+true
+
+gap> MagmaIsomorphism(SmallAntimagma(4, 2), SmallAntimagma(4, 6));
+fail
+
 ## MagmaAntiisomorphism(M, TransposedMagma(M)) <> fail
 gap> List(AllSmallAntimagmas([2 .. 3]), M -> MagmaAntiisomorphism(M, TransposedMagma(M)) <> fail);
 [ true, true, true, true, true, true ]
