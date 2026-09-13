@@ -35,6 +35,9 @@ InstallMethod(IdSmallAntimagma, "for a magma", [IsMagma],
     function(M)
         local n;
         n := Size(M);
+        if n < 2 or not IsAntiassociative(M) then
+            return fail;
+        fi;
         return [n, First(Filtered([1 .. NrSmallAntimagmas(n)],
             index -> IsMagmaIsomorphic(M, SmallAntimagma(n, index)) or IsMagmaAntiisomorphic(M, SmallAntimagma(n, index))))];
 end);

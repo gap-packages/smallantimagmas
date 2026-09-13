@@ -12,6 +12,20 @@ gap> IdSmallAntimagma(MagmaByMultiplicationTable([[2, 1], [2, 1]]));
 gap> ForAll(AllSmallAntimagmas(3), M -> IdSmallAntimagma(TransposedMagma(M)) = IdSmallAntimagma(M));
 true
 
+## Non-antiassociative magmas are not identified
+gap> IdSmallAntimagma(MagmaByMultiplicationTable([[1, 1], [1, 1]]));
+fail
+gap> IdSmallAntimagma(MagmaByMultiplicationTable([[1, 2, 3], [2, 3, 1], [3, 1, 2]]));
+fail
+gap> IdSmallAntimagma(CyclicGroup(3));
+fail
+
+## Magmas of order less than 2 are not identified
+gap> IdSmallAntimagma(MagmaByMultiplicationTable([[1]]));
+fail
+gap> IdSmallAntimagma(TrivialGroup());
+fail
+
 gap> tables := List(Tuples(Tuples([1 .. 3], 3), 3), t -> List(t, ShallowCopy));;
 gap> antimagmas := Filtered(tables, T -> IsAntiassociative(MagmaByMultiplicationTable(T)));;
 gap> Size(antimagmas);
