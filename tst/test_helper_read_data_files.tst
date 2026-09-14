@@ -94,9 +94,55 @@ gap> ForAll([2 .. 4], n -> ForAll(__SmallAntimagmaHelper.getSmallAntimagmaMetada
 > T -> __SmallAntimagmaHelper.TableOfKey(n, __SmallAntimagmaHelper.TablesEncode(n, [T])[1]) = T));
 true
 
+# The table file of an order is data/n/small_n.g.gz.
+gap> ForAll([2 .. 5], n -> EndsWith(__SmallAntimagmaHelper.getSmallAntimagmaMetadataFile(n),
+> Concatenation("/data/", String(n), "/small_", String(n), ".g.gz")));
+true
+
+gap> ForAll([2 .. 5], n -> IsExistingFile(__SmallAntimagmaHelper.getSmallAntimagmaMetadataFile(n)));
+true
+
+# The count of an order is read from data/n/count.
+gap> List([2 .. 5], n -> __SmallAntimagmaHelper.readCountFile(n));
+[ 1, 5, 8891, 233701268 ]
+
+gap> ForAll([2 .. 5], n -> __SmallAntimagmaHelper.readCountFile(n)
+> = Int(NormalizedWhitespace(StringFile(Filename(__SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory(n), "count")))));
+true
+
+# readCountFile with the data directory pointed elsewhere: whitespace around
+# the number is ignored, a missing or malformed file is an error.
+gap> lookup := __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory;;
+
+gap> __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory := order -> dir;;
+
+gap> PrintTo(Filename(dir, "count"), "  42 \n\n");
+
+gap> __SmallAntimagmaHelper.readCountFile(7);
+42
+
+gap> PrintTo(Filename(dir, "count"), "many");
+
+gap> __SmallAntimagmaHelper.readCountFile(7);
+Error, smallantimagmas: the count file of <order> holds no number
+
+gap> PrintTo(Filename(dir, "count"), "-1");
+
+gap> __SmallAntimagmaHelper.readCountFile(7);
+Error, smallantimagmas: the count file of <order> holds no number
+
+gap> RemoveFile(Filename(dir, "count"));
+true
+
+gap> __SmallAntimagmaHelper.readCountFile(7);
+Error, smallantimagmas: <order> has no count file
+
+gap> __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory := lookup;;
+
+gap> __SmallAntimagmaHelper.readCountFile(2);
+1
+
 # The shipped data, read entry by entry, agrees with reading it whole.
-gap> List([2 .. 4], n -> __SmallAntimagmaHelper.readCountFile(n));
-[ 1, 5, 8891 ]
 
 gap> ForAll([2 .. 4], n -> __SmallAntimagmaHelper.readCountFile(n)
 > = Length(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(n)()));
