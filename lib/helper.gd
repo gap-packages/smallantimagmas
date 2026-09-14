@@ -209,10 +209,22 @@ end;
 
 # the file holding the tables of one order.
 __SmallAntimagmaHelper.getSmallAntimagmaMetadataFile := function(order)
-    local dir, files;
+    local dir;
     dir := __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory(order);
-    files := SortedList(List(Filtered(DirectoryContents(dir), f -> f <> ".." and f <> "."), f -> Filename(dir, f)));
-    return First(files);
+    return Filename(dir, Concatenation("small_", String(order), ".g.gz"));
+end;
+
+__SmallAntimagmaHelper.readCountFile := function(order)
+    local text, count;
+    text := StringFile(Filename(__SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory(order), "count"));
+    if text = fail then
+        ErrorNoReturn("smallantimagmas: ", "<order> has no count file");
+    fi;
+    count := Int(NormalizedWhitespace(text));
+    if count = fail or count < 0 then
+        ErrorNoReturn("smallantimagmas: ", "the count file of <order> holds no number");
+    fi;
+    return count;
 end;
 
 __SmallAntimagmaHelper.getSmallAntimagmaMetadata := function(order)
@@ -226,12 +238,6 @@ end;
 __SmallAntimagmaHelper.TableAt := function(order, id)
     return __SmallAntimagmaHelper.TableOfKey(order, __SmallAntimagmaHelper.ScanDeltas(
         __SmallAntimagmaHelper.getSmallAntimagmaMetadataFile(order), id));
-end;
-
-# how many tables the file of one order holds, without building any of them.
-__SmallAntimagmaHelper.CountTables := function(order)
-    return __SmallAntimagmaHelper.ScanDeltas(
-        __SmallAntimagmaHelper.getSmallAntimagmaMetadataFile(order), fail);
 end;
 
 # encodes an n x n table into its row form: every row [ r_1, ..., r_n ] becomes
@@ -307,7 +313,7 @@ __SmallAntimagmaHelper.Views := (function()
 
         rec(name := "up-to-isomorphism-antiisomorphism",
             all := order -> magmasOf(order),
-            nr := order -> __SmallAntimagmaHelper.CountTables(order))];
+            nr := order -> __SmallAntimagmaHelper.readCountFile(order))];
 end)();
 
 # taken when no view is named
