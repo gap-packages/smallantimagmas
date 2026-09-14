@@ -125,11 +125,16 @@ DeclareGlobalFunction("AllSubmagmas");
 #! @Description
 #! identifies class of antiassociative magma <A>M</A>, i.e. returns the pair
 #! <C>[ n, k ]</C> such that <A>M</A> is isomorphic or antiisomorphic to
-#! <C>SmallAntimagma(n, k)</C>.
+#! <C>SmallAntimagma(n, k)</C>. Returns <K>fail</K> if <A>M</A> is not
+#! antiassociative or has fewer than two elements.
 #!
 #! @BeginExampleSession
 #! gap> IdSmallAntimagma(MagmaByMultiplicationTable([[2, 1], [2, 1]]));
 #! [ 2, 1 ]
+#! gap> IdSmallAntimagma(MagmaByMultiplicationTable([[1, 1], [1, 1]]));
+#! fail
+#! gap> IdSmallAntimagma(MagmaByMultiplicationTable([[1]]));
+#! fail
 #! gap> List(AllSmallAntimagmas(3), IdSmallAntimagma);
 #! [ [ 3, 1 ], [ 3, 2 ], [ 3, 3 ], [ 3, 4 ], [ 3, 5 ] ]
 #! gap> ForAll(AllSmallAntimagmas(3), M -> IdSmallAntimagma(TransposedMagma(M)) = IdSmallAntimagma(M));
