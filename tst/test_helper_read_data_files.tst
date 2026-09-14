@@ -95,14 +95,14 @@ gap> ForAll([2 .. 4], n -> ForAll(__SmallAntimagmaHelper.getSmallAntimagmaMetada
 true
 
 # The shipped data, read entry by entry, agrees with reading it whole.
-gap> List([2 .. 4], n -> __SmallAntimagmaHelper.CountTables(n));
+gap> List([2 .. 4], n -> __SmallAntimagmaHelper.readCountFile(n));
 [ 1, 5, 8891 ]
 
-gap> ForAll([2 .. 4], n -> __SmallAntimagmaHelper.CountTables(n)
+gap> ForAll([2 .. 4], n -> __SmallAntimagmaHelper.readCountFile(n)
 > = Length(__SmallAntimagmaHelper.getSmallAntimagmaMetadata(n)()));
 true
 
-gap> ForAll([2 .. 3], n -> ForAll([1 .. __SmallAntimagmaHelper.CountTables(n)],
+gap> ForAll([2 .. 3], n -> ForAll([1 .. __SmallAntimagmaHelper.readCountFile(n)],
 > id -> __SmallAntimagmaHelper.TableAt(n, id)
 > = __SmallAntimagmaHelper.getSmallAntimagmaMetadata(n)()[id]));
 true

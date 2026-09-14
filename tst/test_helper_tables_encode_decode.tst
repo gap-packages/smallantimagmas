@@ -119,12 +119,7 @@ gap> __SmallAntimagmaHelper.TablesDecode(3, [6813, 9, 234, 9, 3114]) = __SmallAn
 true
 
 # the full encoded table, i.e. the deltas exactly as stored in data/n
-gap> storedDeltas := function(n)
->     local dir, files;
->     dir := __SmallAntimagmaHelper.getSmallAntimagmaMetadataDirectory(n);
->     files := SortedList(List(Filtered(DirectoryContents(dir), f -> f <> "." and f <> ".."), f -> Filename(dir, f)));
->     return ReadAsFunction(First(files))();
-> end;;
+gap> storedDeltas := n -> ReadAsFunction(__SmallAntimagmaHelper.getSmallAntimagmaMetadataFile(n))();;
 
 gap> storedDeltas(2) = [10];
 true
