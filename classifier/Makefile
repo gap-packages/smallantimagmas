@@ -48,11 +48,13 @@ combine: $(PROGRAMS)
 test: $(TEST_PROGRAMS)
 	@for program in $(TEST_PROGRAMS); do ./$$program || exit 1; done
 
-# rebuilds and runs the tests with gcov instrumentation added to CFLAGS, then
-# writes one .gcov file per source into this directory for the coverage upload
+# rebuilds and runs the tests with gcov instrumentation added to CFLAGS, writes
+# one .gcov file per source into this directory for the coverage upload, and drops
+# the instrumented objects so that later builds start clean
 coverage: override CFLAGS += $(COVFLAGS)
 coverage: clean test
 	@for source in $(LIB_SOURCES); do gcov -o $$(dirname $$source) $$source || exit 1; done
+	rm -f $(TEST_PROGRAMS) src/*.o src/*/*.o tests/*.o
 
 clean:
 	rm -f $(PROGRAMS) $(TEST_PROGRAMS)
