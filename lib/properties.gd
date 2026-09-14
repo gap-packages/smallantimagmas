@@ -145,7 +145,7 @@ DeclareGlobalFunction("MagmaIsomorphismInvariantsMatch");
 
 #! @Arguments M, N
 #! @Description
-#! computes an isomoprhism between magmas <A>M</A>, <A>N</A>.
+#! computes an isomorphism between magmas <A>M</A>, <A>N</A>.
 #!
 #! @BeginExampleSession
 #! gap> M := SmallAntimagma(2, 1);
@@ -160,7 +160,7 @@ DeclareOperation("MagmaIsomorphism", [IsMagma, IsMagma]);
 
 #! @Arguments M, N
 #! @Description
-#!  creates an antiisomoprhism between magmas <A>M</A>, <A>N</A>.
+#! creates an antiisomorphism between magmas <A>M</A>, <A>N</A>.
 #!
 #! @BeginExampleSession
 #! gap> M := SmallAntimagma(2, 1);
@@ -240,41 +240,55 @@ DeclareGlobalFunction("TransposedMagma");
 
 #! @Arguments m, k
 #! @Description
-#! returns a left $k$-power of element <A>m</A>.
+#! returns the left <A>k</A>-th power of element <A>m</A>, that is the product
+#! <M>m * (m * ( \cdots * m))</M> of <A>k</A> copies of <A>m</A> bracketed from the right.
 DeclareGlobalFunction("LeftPower");
 
 #! @Arguments m, k
 #! @Description
-#!  returns a right $k$-power of element <A>m</A>.
+#! returns the right <A>k</A>-th power of element <A>m</A>, that is the product
+#! <M>((m * m) * \cdots) * m</M> of <A>k</A> copies of <A>m</A> bracketed from the left.
 DeclareGlobalFunction("RightPower");
 
 #! @Arguments m
 #! @Description
-#! returns the pair $[ i, p ]$ of minimal index and period of element <A>m</A>,
-#! that is the least $i, p \geq 1$ with
-#! $\texttt{LeftPower}(m, i + p) = \texttt{LeftPower}(m, i)$.
+#! returns the pair <C>[ i, p ]</C> of minimal index and period of element
+#! <A>m</A>, that is the least <M>i, p \geq 1</M> such that the left powers
+#! of <Ref Func="LeftPower"/> satisfy <C>LeftPower(m, i + p) = LeftPower(m, i)</C>.
 DeclareAttribute("LeftIndexPeriod", IsExtLElement);
 
 #! @Arguments m
 #! @Description
-#!  returns the pair $[ i, p ]$ of minimal index and period of element <A>m</A>,
-#!  that is the least $i, p \geq 1$ with
-#!  $\texttt{RightPower}(m, i + p) = \texttt{RightPower}(m, i)$.
+#! returns the pair <C>[ i, p ]</C> of minimal index and period of element
+#! <A>m</A>, that is the least <M>i, p \geq 1</M> such that the right powers
+#! of <Ref Func="RightPower"/> satisfy <C>RightPower(m, i + p) = RightPower(m, i)</C>.
 DeclareAttribute("RightIndexPeriod", IsExtRElement);
 
 #! @Arguments M
 #! @Description
-#!  if magma is left cyclic <A>m</A>.
+#! identifies whether magma <A>M</A> is left cyclic.
+#! A magma <A>M</A> is left cyclic if some element <M>m \in M</M> generates
+#! it by left powers, i.e. <M>m, m * m, m * (m * m), \ldots</M> runs through
+#! all of <A>M</A> before returning to <M>m</M>; equivalently
+#! <Ref Attr="LeftIndexPeriod" Label="for IsExtLElement"/> of <M>m</M> is
+#! <C>[ 1, Size(M) ]</C>.
 DeclareProperty("IsLeftCyclic", IsMagma);
 
 #! @Arguments M
 #! @Description
-#!  if magma is right cyclic <A>m</A>.
+#! identifies whether magma <A>M</A> is right cyclic.
+#! A magma <A>M</A> is right cyclic if some element <M>m \in M</M> generates
+#! it by right powers, i.e. <M>m, m * m, (m * m) * m, \ldots</M> runs through
+#! all of <A>M</A> before returning to <M>m</M>; equivalently
+#! <Ref Attr="RightIndexPeriod" Label="for IsExtRElement"/> of <M>m</M> is
+#! <C>[ 1, Size(M) ]</C>.
 DeclareProperty("IsRightCyclic", IsMagma);
 
 #! @Arguments M
 #! @Description
-#!  if magma is left distributive <A>m</A>.
+#! identifies whether magma <A>M</A> is left distributive.
+#! A magma <A>M</A> is left distributive if
+#! <M>x * (y * z) = (x * y) * (x * z)</M> holds for all <M>x, y, z \in M</M>.
 #!
 #! @BeginExampleSession
 #! gap> List(AllSmallAntimagmas(3), M -> IsLeftDistributive(M));
@@ -285,7 +299,9 @@ DeclareProperty("IsLeftDistributive", IsMagma);
 
 #! @Arguments M
 #! @Description
-#!  if magma is right distributive <A>m</A>.
+#! identifies whether magma <A>M</A> is right distributive.
+#! A magma <A>M</A> is right distributive if
+#! <M>(x * y) * z = (x * z) * (y * z)</M> holds for all <M>x, y, z \in M</M>.
 #!
 #! @BeginExampleSession
 #! gap> List(AllSmallAntimagmas(3), M -> IsRightDistributive(M));
@@ -361,7 +377,11 @@ DeclareProperty("IsCancellative", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! is a left-hand sided fixed-point free inducted <A>m</A>.
+#! identifies whether magma <A>M</A> is left fixed-point-free inducted.
+#! A magma <A>M</A> is left fixed-point-free inducted if its multiplication
+#! is <M>x * y = f(x)</M> for a map
+#! <M>f \colon M \to M</M> without fixed points, i.e. every left translation
+#! <M>y \mapsto x * y</M> is constant with value different from <M>x</M>.
 #!
 #! @BeginExampleSession
 #! gap> Display(MultiplicationTable(TransposedMagma(SmallAntimagma(2, 1))));
@@ -375,7 +395,11 @@ DeclareProperty("IsLeftFPFInducted", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! is a right-hand sided fixed-point free inducted <A>m</A>.
+#! identifies whether magma <A>M</A> is right fixed-point-free inducted.
+#! A magma <A>M</A> is right fixed-point-free inducted if its multiplication
+#! is <M>x * y = f(y)</M> for a map
+#! <M>f \colon M \to M</M> without fixed points, i.e. every right translation
+#! <M>x \mapsto x * y</M> is constant with value different from <M>y</M>.
 #!
 #! @BeginExampleSession
 #! gap> Display(MultiplicationTable(SmallAntimagma(2, 1)));
@@ -390,7 +414,11 @@ DeclareProperty("IsRightFPFInducted", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! is a left-hand sided derangement inducted <A>m</A>.
+#! identifies whether magma <A>M</A> is left derangement inducted, i.e. deranged
+#! in the sense of <Cite Key="MazurekZabielski2025"/>. A magma <A>M</A> is left
+#! derangement inducted if there are a partition of <A>M</A> into blocks and a
+#! derangement <M>\sigma</M> of the blocks such that <M>x * M \subseteq \sigma(B)</M>
+#! for every block <M>B</M> and every <M>x \in B</M>.
 #! The verification follows the endofunction algorithm
 #! of <Cite Key="MazurekZabielski2026"/>.
 #!
@@ -409,8 +437,13 @@ DeclareProperty("IsLeftDerangementInducted", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! is a right-hand sided derangement inducted <A>m</A>.
-#! The verification follows the endofunction algorithm
+#! identifies whether magma <A>M</A> is right derangement inducted, i.e.
+#! op-deranged in the sense of <Cite Key="MazurekZabielski2025"/>. A magma
+#! <A>M</A> is right derangement inducted if there are a partition of <A>M</A>
+#! into blocks and a derangement <M>\sigma</M> of the blocks such that
+#! <M>M * y \subseteq \sigma(B)</M> for every block <M>B</M> and every
+#! <M>y \in B</M>; equivalently, the transpose of <A>M</A> is left derangement
+#! inducted. The verification follows the endofunction algorithm
 #! of <Cite Key="MazurekZabielski2026"/>.
 #!
 #! @BeginExampleSession
@@ -429,7 +462,9 @@ DeclareProperty("IsRightDerangementInducted", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! is a left-alternatve magma <A>M</A>.
+#! identifies whether magma <A>M</A> is left alternative.
+#! A magma <A>M</A> is left alternative if
+#! <M>x * (x * y) = (x * x) * y</M> holds for all <M>x, y \in M</M>.
 #!
 #! @BeginExampleSession
 #! gap> M := OneSmallAntimagma(2);;
@@ -445,7 +480,9 @@ DeclareProperty("IsLeftAlternative", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! is a right-alternatve magma <A>M</A>.
+#! identifies whether magma <A>M</A> is right alternative.
+#! A magma <A>M</A> is right alternative if
+#! <M>(y * x) * x = y * (x * x)</M> holds for all <M>x, y \in M</M>.
 #!
 #! @BeginExampleSession
 #! gap> M := OneSmallAntimagma(2);;
