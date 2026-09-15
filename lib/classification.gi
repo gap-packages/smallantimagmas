@@ -27,7 +27,13 @@ __SmallAntimagmaHelper.Invariants := [
         description := "the commutativity index",
         types := {order, magmas} -> Set(magmas, CommutativityIndex),
         headers := types -> List(types, String),
-        typeOf := {types, M} -> Position(types, CommutativityIndex(M)))
+        typeOf := {types, M} -> Position(types, CommutativityIndex(M))),
+
+    rec(name := "translation",
+        description := "the translation profile",
+        types := {order, magmas} -> TranslationProfileTypes(order),
+        headers := types -> List([1 .. Size(types)], i -> Concatenation("T_", String(i))),
+        typeOf := {types, M} -> Position(types, SortedList(TranslationProfile(M))))
 ];
 
 __SmallAntimagmaHelper.AllInvariants := "all";
