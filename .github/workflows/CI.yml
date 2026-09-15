@@ -104,12 +104,54 @@ jobs:
           echo "::group:: gaplint -- *.tst"
           find . -name '*.tst' | xargs -n1 gaplint
 
+  classifier:
+    name: classifier
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: classifier
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Install CUnit
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends libcunit1-dev
+
+      - name: Build antimagma and deltas
+        run: make
+
+      - name: Run unit tests
+        run: make test
+
+      - name: Smoke-test the binary (rejected order)
+        run: '! ./antimagma -order 9 all'
+
+      - name: Collect code-coverage
+        run: make coverage
+
+      - uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: classifier
+          directory: classifier
+
+      - name: Reproduce the packaged data files
+        run: |
+          for order in 2 3 4; do
+            make classify ORDER=$order
+          done
+          git diff --exit-code -- ../data
+
   required:
     name: required
     runs-on: ubuntu-slim
     needs:
       - gaptest
       - gaplint
+      - classifier
     if: ${{ always() }}
     permissions: {}
     steps:
