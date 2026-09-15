@@ -263,10 +263,10 @@ __SmallAntimagmaHelper.MultiplicationTableReverse := function(T)
         return List(T, col -> EnumeratorOfTuples([1 .. ncols], ncols)[col]);
 end;
 
-# the three views AllSmallAntimagmas and NrSmallAntimagmas offer, with the steps
+# the four views AllSmallAntimagmas and NrSmallAntimagmas offer, with the steps
 # they are built from.
 __SmallAntimagmaHelper.Views := (function()
-    local magmasOf, labelledTables, splitByTranspose;
+    local magmasOf, labelledTables, isSelfDual, splitByTranspose;
 
     # what the data file holds: one magma per iso-or-antiisomorphism class.
     magmasOf := function(order)
@@ -285,16 +285,19 @@ __SmallAntimagmaHelper.Views := (function()
         return Set(SymmetricGroup(n), relabel);
     end;
 
+    isSelfDual := function(M)
+        return TransposedMat(MultiplicationTable(M)) in labelledTables(M);
+    end;
+
     # an iso-or-antiisomorphism class is [M] together with [M^op], so the
     # transpose splits it into its two isomorphism classes.
     splitByTranspose := function(magmas)
-        local classes, M, transpose;
+        local classes, M;
         classes := [];
         for M in magmas do
             Add(classes, M);
-            transpose := TransposedMat(MultiplicationTable(M));
-            if not transpose in labelledTables(M) then
-                Add(classes, MagmaByMultiplicationTable(transpose));
+            if not isSelfDual(M) then
+                Add(classes, MagmaByMultiplicationTable(TransposedMat(MultiplicationTable(M))));
             fi;
         od;
         return classes;
@@ -313,7 +316,11 @@ __SmallAntimagmaHelper.Views := (function()
 
         rec(name := "up-to-isomorphism-antiisomorphism",
             all := order -> magmasOf(order),
-            nr := order -> __SmallAntimagmaHelper.readCountFile(order))];
+            nr := order -> __SmallAntimagmaHelper.readCountFile(order)),
+
+        rec(name := "self-dual",
+            all := order -> Filtered(magmasOf(order), isSelfDual),
+            nr := order -> Number(magmasOf(order), isSelfDual))];
 end)();
 
 # taken when no view is named
