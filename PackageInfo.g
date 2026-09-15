@@ -136,6 +136,7 @@ Persons := [
     FirstNames    := "Kamil",
     IsAuthor      := true,
     IsMaintainer  := true,
+    GithubUsername := "limakzi",
     WWWHome       := "https://limakzi.me/",
     PostalAddress := Concatenation([
                        "Department of Theoretical Computer Science\n",
