@@ -36,7 +36,7 @@ Error, smallantimagmas: expected (<order>) or (<order>, <view>)
 gap> width := SizeScreen();;
 gap> SizeScreen([256, 24]);;
 gap> NrSmallAntimagmas(2, "nope");
-Error, smallantimagmas: <view> must be one of labelled, up-to-isomorphism, up-to-isomorphism-antiisomorphism
+Error, smallantimagmas: <view> must be one of labelled, up-to-isomorphism, up-to-isomorphism-antiisomorphism, self-dual
 gap> SizeScreen(width);;
 
 ## SmallAntimagma(arg...) rejects a single non-list argument

@@ -1,7 +1,7 @@
 #! @Arguments n[, view]
 #! @Description
 #! returns all antiassociative magmas of specified size <A>n</A> (a number, or a
-#! list of numbers), in one of three views:
+#! list of numbers), in one of four views:
 #!
 #! <List>
 #! <Item><C>"up-to-isomorphism-antiisomorphism"</C>, the default: a single
@@ -18,12 +18,17 @@
 #! elements of a magma by a permutation gives an isomorphic magma on the same
 #! set, so an isomorphism class contributes <M>n! / |\mathrm{Aut}(M)|</M> of
 #! them.</Item>
+#! <Item><C>"self-dual"</C>: the representatives of the default view that are
+#! isomorphic to their own transpose. The class of such a magma is a single
+#! isomorphism class, so it is exactly what keeps the second view from
+#! holding twice as many magmas as the first. There is no self-dual
+#! antiassociative magma of order 2 or 3, and there are two of order 4.</Item>
 #! </List>
 #!
 #! Only the default view is stored, and so only it is numbered: the index
 #! <A>i</A> of <Ref Func="SmallAntimagma"/> and the identifier returned by
 #! <Ref Attr="IdSmallAntimagma" Label="for IsMagma"/> are positions in it. The
-#! other two views are derived from it when asked for and carry no identifiers.
+#! other three views are derived from it when asked for and carry no identifiers.
 #!
 #! @BeginExampleSession
 #! gap> AllSmallAntimagmas(2);
@@ -37,6 +42,8 @@
 #!   <magma with 3 generators>, <magma with 3 generators>, <magma with 3 generators>,
 #!   <magma with 3 generators>, <magma with 3 generators>
 #! ]
+#! gap> List(AllSmallAntimagmas(4, "self-dual"), IdSmallAntimagma);
+#! [ [ 4, 5984 ], [ 4, 8885 ] ]
 #! @EndExampleSession
 #!
 DeclareGlobalFunction("AllSmallAntimagmas");
@@ -44,7 +51,7 @@ DeclareGlobalFunction("AllSmallAntimagmas");
 #! @Arguments n[, view]
 #! @Description
 #! counts the antiassociative magmas of specified size <A>n</A> (a number, or a
-#! list of numbers) in the same three views as
+#! list of numbers) in the same four views as
 #! <Ref Func="AllSmallAntimagmas"/>, without building any of them in the default
 #! view. Counting and listing agree, that is
 #! <C>NrSmallAntimagmas(n, view) = Size(AllSmallAntimagmas(n, view))</C>.
@@ -56,6 +63,8 @@ DeclareGlobalFunction("AllSmallAntimagmas");
 #! 10
 #! gap> NrSmallAntimagmas(3, "labelled");
 #! 52
+#! gap> List([2 .. 4], n -> NrSmallAntimagmas(n, "self-dual"));
+#! [ 0, 0, 2 ]
 #! gap> List([2 .. 4], NrSmallAntimagmas);
 #! [ 1, 5, 8891 ]
 #! gap> NrSmallAntimagmas([2, 3]);
