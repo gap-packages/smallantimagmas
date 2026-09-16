@@ -27,6 +27,7 @@ gap>
 
 This work was supported by: 
 * The grant WZ/WI-IIT/2/2025 from the Bialystok University of Technology and funded from the resources for research by the Ministry of Science and Higher Education of Poland.
+* The grant WI/WI-IIT/8/2026 from the Bialystok University of Technology and funded from the resources for research by the Ministry of Science and Higher Education of Poland.
 * The grant from the London Mathematical Society: Scheme 4 Research in Pairs.
 
 
