@@ -21,7 +21,7 @@ true
 gap> 
 ```
 
-* _Alternative_; just put `smallantimagmas` package in your `pkgs` directory.
+* _Alternative_. Put `smallantimagmas` package in your `pkgs` directory.
 
 ## Acknowledgements
 
