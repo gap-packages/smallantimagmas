@@ -27,16 +27,22 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! <Ref Attr="TranslationProfile" Label="for IsMagma"/> taken up to the swap
 #! of its two entries, and
 #! <C>"product-set"</C>, the size of the product set <M>M * M</M>, that is
-#! <Ref Attr="ProductSetSize" Label="for IsMagma"/>, and <C>"rank"</C>,
-#! the size of a <Ref Attr="MinimalGeneratingSet" Label="for IsMagma"/>.
+#! <Ref Attr="ProductSetSize" Label="for IsMagma"/>, <C>"rank"</C>,
+#! the size of a <Ref Attr="MinimalGeneratingSet" Label="for IsMagma"/>, and
+#! <C>"index-period"</C>, the
+#! <Ref Attr="IndexPeriodProfile" Label="for IsMagma"/>, that is the multisets
+#! of left and of right index-periods of the elements, as an unordered pair.
 #!
 #! Each table has a column per type the invariant distinguishes, for
 #! <C>"diagonal"</C> the types of
 #! <Ref Oper="DiagonalDigraphTypes" Label="for IsPosInt"/>, for
 #! <C>"cancellativity-degree"</C> and <C>"commutativity"</C> the degrees
 #! and values that occur among <A>magmas</A>, so that no column is empty,
-#! and for <C>"translation"</C> those of
-#! <Ref Oper="TranslationProfileTypes" Label="for IsPosInt"/>. The rows count
+#! for <C>"translation"</C> those of
+#! <Ref Oper="TranslationProfileTypes" Label="for IsPosInt"/>, and for
+#! <C>"index-period"</C> the profiles
+#! <Ref Oper="IndexPeriodProfileTypes" Label="for IsList"/> finds among
+#! <A>magmas</A>, named <M>P_1, P_2, \ldots</M> in that order. The rows count
 #! increasing collections: the antiisomorphism classes, the isomorphism classes
 #! and those of each size that occurs, and finally the labelled magmas. The
 #! <C>Total</C> column comes first, set off from the per-type columns.
@@ -141,6 +147,20 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! -------------------------------------------------
 #! Labelled magmas        52        52      0      0
 #! -------------------------------------------------
+#!
+#! Classified by the index-period profile:
+#! ------------------------------------------------
+#! Counted objects     Total    P_1 P_2 P_3 P_4 P_5
+#! ------------------------------------------------
+#! Iso+antiiso classes     5      1   1   1   1   1
+#! ------------------------------------------------
+#! Isomorphism classes    10      2   2   2   2   2
+#! ................................................
+#! 2-iso classes           2      0   0   0   0   2
+#! 6-iso classes           8      2   2   2   2   0
+#! ------------------------------------------------
+#! Labelled magmas        52     12  12  12  12   4
+#! ------------------------------------------------
 #! gap> Display(SmallAntimagmaClassification(Ms, "cancellativity"));
 #! Classified by left and right cancellativity:
 #! ----------------------------------------------------
@@ -268,6 +288,20 @@ DeclareGlobalFunction("SmallAntimagmaClassification");
 #! -------------------------------------------------
 #! Labelled magmas        52        52      0      0
 #! -------------------------------------------------
+#!
+#! Classified by the index-period profile:
+#! ------------------------------------------------
+#! Counted objects     Total    P_1 P_2 P_3 P_4 P_5
+#! ------------------------------------------------
+#! Iso+antiiso classes     5      1   1   1   1   1
+#! ------------------------------------------------
+#! Isomorphism classes    10      2   2   2   2   2
+#! ................................................
+#! 2-iso classes           2      0   0   0   0   2
+#! 6-iso classes           8      2   2   2   2   0
+#! ------------------------------------------------
+#! Labelled magmas        52     12  12  12  12   4
+#! ------------------------------------------------
 #! @EndExampleSession
 #!
 DeclareGlobalFunction("SmallAntimagmasInformation");

@@ -46,7 +46,15 @@ __SmallAntimagmaHelper.Invariants := [
         description := "rank, the size of a minimal generating set",
         types := {order, magmas} -> [1 .. order],
         headers := types -> List(types, k -> Concatenation("rank ", String(k))),
-        typeOf := {types, M} -> Position(types, Rank(M)))
+        typeOf := {types, M} -> Position(types, Rank(M))),
+
+    # the profiles cannot be listed ahead of an order, so the columns are the
+    # profiles of the magmas classified, in the order IndexPeriodProfileTypes gives
+    rec(name := "index-period",
+        description := "the index-period profile",
+        types := {order, magmas} -> IndexPeriodProfileTypes(magmas),
+        headers := types -> List([1 .. Size(types)], i -> Concatenation("P_", String(i))),
+        typeOf := {types, M} -> Position(types, IndexPeriodProfile(M)))
 ];
 
 __SmallAntimagmaHelper.AllInvariants := "all";
