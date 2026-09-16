@@ -10,7 +10,7 @@ A library of antiassociative magmas of small order.
 
 ## Installation
 
-* Simply use [`packagemanager`][gap-pkg-packagemanager-homepage].
+* Use [`packagemanager`][gap-pkg-packagemanager-homepage].
 
 ```
 gap> LoadPackage("packagemanager");
