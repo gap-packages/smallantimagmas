@@ -33,7 +33,14 @@ __SmallAntimagmaHelper.Invariants := [
         description := "the translation profile",
         types := {order, magmas} -> TranslationProfileTypes(order),
         headers := types -> List([1 .. Size(types)], i -> Concatenation("T_", String(i))),
-        typeOf := {types, M} -> Position(types, SortedList(TranslationProfile(M))))
+        typeOf := {types, M} -> Position(types, SortedList(TranslationProfile(M)))),
+
+    # a magma with a single product is associative, so the size starts at 2
+    rec(name := "product-set",
+        description := "the size of the product set M * M",
+        types := {order, magmas} -> [2 .. order],
+        headers := types -> List(types, size -> Concatenation("|MM|=", String(size))),
+        typeOf := {types, M} -> Position(types, ProductSetSize(M)))
 ];
 
 __SmallAntimagmaHelper.AllInvariants := "all";
