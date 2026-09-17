@@ -112,6 +112,8 @@ InstallGlobalFunction(MagmaIsomorphismInvariantsMatch,
             IsRightDistributive,
             IsLeftFPFInducted,
             IsRightFPFInducted,
+            NrConstantLeftTranslations,
+            NrConstantRightTranslations,
             CommutativityIndex,
             AnticommutativityIndex,
             SquaresIndex,
@@ -292,6 +294,16 @@ InstallMethod(CancellativityDegree, "for a magma", [IsMagma],
         injective := translation -> IsDuplicateFreeList(List(elements, translation));
         return [Number(elements, z -> injective(x -> z * x)),
                 Number(elements, z -> injective(x -> x * z))];
+end);
+
+InstallMethod(NrConstantLeftTranslations, "for a magma", [IsMagma],
+    function(M)
+        return Number(M, z -> Size(Set(M, x -> z * x)) = 1);
+end);
+
+InstallMethod(NrConstantRightTranslations, "for a magma", [IsMagma],
+    function(M)
+        return Number(M, z -> Size(Set(M, x -> x * z)) = 1);
 end);
 
 InstallMethod(IsLeftFPFInducted, "for a magma", [IsMagma],

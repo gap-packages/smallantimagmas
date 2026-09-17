@@ -22,7 +22,7 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! left and right translations, of which <C>"cancellativity"</C> is the
 #! coarsening that only asks whether each count is full,
 #! <C>"commutativity"</C>, the value of
-#! <Ref Attr="CommutativityIndex" Label="for IsMagma"/>, and
+#! <Ref Attr="CommutativityIndex" Label="for IsMagma"/>,
 #! <C>"translation"</C>, the
 #! <Ref Attr="TranslationProfile" Label="for IsMagma"/> taken up to the swap
 #! of its two entries, and
@@ -32,8 +32,17 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! <C>"index-period"</C>, the
 #! <Ref Attr="IndexPeriodProfile" Label="for IsMagma"/>, that is the multisets
 #! of left and of right index-periods of the elements, as an unordered pair,
-#! and <C>"mediality"</C>, the value of
-#! <Ref Attr="MedialityIndex" Label="for IsMagma"/>.
+#! <C>"mediality"</C>, the value of
+#! <Ref Attr="MedialityIndex" Label="for IsMagma"/>, and
+#! <C>"constant"</C>, the pair
+#! <Ref Attr="NrConstantLeftTranslations" Label="for IsMagma"/> and
+#! <Ref Attr="NrConstantRightTranslations" Label="for IsMagma"/> counting
+#! the constant rows and the constant columns of the multiplication table.
+#! In an antimagma one of the two is <M>0</M>, so at order <M>n</M> the
+#! types are <M>(0, 0)</M>, <M>(r, 0)</M> and <M>(0, c)</M> for
+#! <M>1 \leq r, c \leq n</M>. The value <M>n</M> is the
+#! <Ref Prop="IsLeftFPFInducted" Label="for IsMagma"/>, respectively
+#! <Ref Prop="IsRightFPFInducted" Label="for IsMagma"/>, case.
 #!
 #! Each table has a column per type the invariant distinguishes, for
 #! <C>"diagonal"</C> the types of
@@ -42,10 +51,11 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! <C>"mediality"</C> the degrees and values that occur among <A>magmas</A>,
 #! so that no column is empty,
 #! for <C>"translation"</C> those of
-#! <Ref Oper="TranslationProfileTypes" Label="for IsPosInt"/>, and for
+#! <Ref Oper="TranslationProfileTypes" Label="for IsPosInt"/>, for
 #! <C>"index-period"</C> the profiles
 #! <Ref Oper="IndexPeriodProfileTypes" Label="for IsList"/> finds among
-#! <A>magmas</A>, named <M>P_1, P_2, \ldots</M> in that order. The rows count
+#! <A>magmas</A>, named <M>P_1, P_2, \ldots</M> in that order, and for
+#! <C>"constant"</C> all pairs listed above. The rows count
 #! increasing collections: the antiisomorphism classes, the isomorphism classes
 #! and those of each size that occurs, and finally the labelled magmas. The
 #! <C>Total</C> column comes first, set off from the per-type columns.
@@ -178,6 +188,18 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! ----------------------------------------
 #! Labelled magmas        52    12 12 12 16
 #! ----------------------------------------
+#!
+#! Classified by the numbers of constant left and right translations:
+#! ----------------------------------------------------------------------
+#! Counted objects     Total    (0,0) (1,0) (2,0) (3,0) (0,1) (0,2) (0,3)
+#! ----------------------------------------------------------------------
+#! Isomorphism classes    10        0     0     3     2     0     3     2
+#! ......................................................................
+#! 2-iso classes           2        0     0     0     1     0     0     1
+#! 6-iso classes           8        0     0     3     1     0     3     1
+#! ----------------------------------------------------------------------
+#! Labelled magmas        52        0     0    18     8     0    18     8
+#! ----------------------------------------------------------------------
 #! gap> Display(SmallAntimagmaClassification(Ms, "cancellativity"));
 #! Classified by left and right cancellativity:
 #! ----------------------------------------------------
@@ -333,6 +355,18 @@ DeclareGlobalFunction("SmallAntimagmaClassification");
 #! ----------------------------------------
 #! Labelled magmas        52    12 12 12 16
 #! ----------------------------------------
+#!
+#! Classified by the numbers of constant left and right translations:
+#! ----------------------------------------------------------------------
+#! Counted objects     Total    (0,0) (1,0) (2,0) (3,0) (0,1) (0,2) (0,3)
+#! ----------------------------------------------------------------------
+#! Isomorphism classes    10        0     0     3     2     0     3     2
+#! ......................................................................
+#! 2-iso classes           2        0     0     0     1     0     0     1
+#! 6-iso classes           8        0     0     3     1     0     3     1
+#! ----------------------------------------------------------------------
+#! Labelled magmas        52        0     0    18     8     0    18     8
+#! ----------------------------------------------------------------------
 #! @EndExampleSession
 #!
 DeclareGlobalFunction("SmallAntimagmasInformation");
