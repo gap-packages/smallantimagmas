@@ -71,7 +71,14 @@ __SmallAntimagmaHelper.Invariants := [
         headers := types -> List(types,
             type -> Concatenation("(", String(type[1]), ",", String(type[2]), ")")),
         typeOf := {types, M} -> Position(types,
-            [NrConstantLeftTranslations(M), NrConstantRightTranslations(M)]))
+            [NrConstantLeftTranslations(M), NrConstantRightTranslations(M)])),
+
+    # a magma with a single square c has c^2 = c, so the number starts at 2
+    rec(name := "squares",
+        description := "the number of squares",
+        types := {order, magmas} -> [2 .. order],
+        headers := types -> List(types, String),
+        typeOf := {types, M} -> Position(types, SquaresIndex(M)))
 ];
 
 __SmallAntimagmaHelper.AllInvariants := "all";
