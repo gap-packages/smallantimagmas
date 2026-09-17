@@ -13,7 +13,7 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! invariant named in <A>by</A>, as in <Cite Key="MazurekZabielski2025"/>. The
 #! default <C>"all"</C> classifies by every invariant in turn, one table each.
 #! The invariants are <C>"diagonal"</C>, the isomorphism type of the diagonal
-#! digraph, that is of the map <M>x \mapsto x * x</M>, and
+#! digraph, that is of the map <M>x \mapsto x * x</M>,
 #! <C>"cancellativity"</C>, the pair of truth values
 #! <Ref Prop="IsLeftCancellative" Label="for IsMagma"/> and
 #! <Ref Prop="IsRightCancellative" Label="for IsMagma"/>, and
@@ -28,16 +28,19 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! of its two entries, and
 #! <C>"product-set"</C>, the size of the product set <M>M * M</M>, that is
 #! <Ref Attr="ProductSetSize" Label="for IsMagma"/>, <C>"rank"</C>,
-#! the size of a <Ref Attr="MinimalGeneratingSet" Label="for IsMagma"/>, and
+#! the size of a <Ref Attr="MinimalGeneratingSet" Label="for IsMagma"/>,
 #! <C>"index-period"</C>, the
 #! <Ref Attr="IndexPeriodProfile" Label="for IsMagma"/>, that is the multisets
-#! of left and of right index-periods of the elements, as an unordered pair.
+#! of left and of right index-periods of the elements, as an unordered pair,
+#! and <C>"mediality"</C>, the value of
+#! <Ref Attr="MedialityIndex" Label="for IsMagma"/>.
 #!
 #! Each table has a column per type the invariant distinguishes, for
 #! <C>"diagonal"</C> the types of
 #! <Ref Oper="DiagonalDigraphTypes" Label="for IsPosInt"/>, for
-#! <C>"cancellativity-degree"</C> and <C>"commutativity"</C> the degrees
-#! and values that occur among <A>magmas</A>, so that no column is empty,
+#! <C>"cancellativity-degree"</C>, <C>"commutativity"</C> and
+#! <C>"mediality"</C> the degrees and values that occur among <A>magmas</A>,
+#! so that no column is empty,
 #! for <C>"translation"</C> those of
 #! <Ref Oper="TranslationProfileTypes" Label="for IsPosInt"/>, and for
 #! <C>"index-period"</C> the profiles
@@ -161,6 +164,20 @@ BindGlobal("__SmallAntimagmaClassificationType",
 #! ------------------------------------------------
 #! Labelled magmas        52     12  12  12  12   4
 #! ------------------------------------------------
+#!
+#! Classified by the mediality index:
+#! ----------------------------------------
+#! Counted objects     Total    57 65 73 81
+#! ----------------------------------------
+#! Iso+antiiso classes     5     1  1  1  2
+#! ----------------------------------------
+#! Isomorphism classes    10     2  2  2  4
+#! ........................................
+#! 2-iso classes           2     0  0  0  2
+#! 6-iso classes           8     2  2  2  2
+#! ----------------------------------------
+#! Labelled magmas        52    12 12 12 16
+#! ----------------------------------------
 #! gap> Display(SmallAntimagmaClassification(Ms, "cancellativity"));
 #! Classified by left and right cancellativity:
 #! ----------------------------------------------------
@@ -302,6 +319,20 @@ DeclareGlobalFunction("SmallAntimagmaClassification");
 #! ------------------------------------------------
 #! Labelled magmas        52     12  12  12  12   4
 #! ------------------------------------------------
+#!
+#! Classified by the mediality index:
+#! ----------------------------------------
+#! Counted objects     Total    57 65 73 81
+#! ----------------------------------------
+#! Iso+antiiso classes     5     1  1  1  2
+#! ----------------------------------------
+#! Isomorphism classes    10     2  2  2  4
+#! ........................................
+#! 2-iso classes           2     0  0  0  2
+#! 6-iso classes           8     2  2  2  2
+#! ----------------------------------------
+#! Labelled magmas        52    12 12 12 16
+#! ----------------------------------------
 #! @EndExampleSession
 #!
 DeclareGlobalFunction("SmallAntimagmasInformation");

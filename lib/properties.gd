@@ -37,6 +37,27 @@ DeclareAttribute("AssociativityIndex", IsMagma);
 
 #! @Arguments M
 #! @Description
+#! computes mediality index of <A>M</A>, i.e. the number of quadruples
+#! <M>(x, y, z, w) \in M^4</M> such that <M>(x * y) * (z * w) = (x * z) * (y * w)</M>.
+#! It ranges from <M>0</M> up to <M>|M|^4</M>, the latter exactly when <A>M</A>
+#! is medial. Transposing a magma permutes the quadruples, so the index is the
+#! same for <A>M</A> and its transpose.
+#!
+#! @BeginExampleSession
+#! gap> MedialityIndex(OneSmallAntimagma(2)) = 2 ^ 4;
+#! true
+#! gap> List(AllSmallAntimagmas(3), M -> MedialityIndex(M));
+#! [ 81, 73, 65, 57, 81 ]
+#! gap> MedialityIndex(CyclicGroup(3)) = 3 ^ 4;
+#! true
+#! gap> MedialityIndex(SymmetricGroup(3)) < 6 ^ 4;
+#! true
+#! @EndExampleSession
+#!
+DeclareAttribute("MedialityIndex", IsMagma);
+
+#! @Arguments M
+#! @Description
 #! computes diagonal of multiplication table of <A>M</A>.
 #!
 #! @BeginExampleSession
