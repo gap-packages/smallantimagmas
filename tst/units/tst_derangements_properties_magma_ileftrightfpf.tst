@@ -1,4 +1,4 @@
-gap> START_TEST("tst_properties_magma_ileftrightfpf.tst");
+gap> START_TEST("tst_derangements_properties_magma_ileftrightfpf.tst");
 
 ## fixed-point-free failes for operations with fixed points
 gap> IsLeftFPFInducted(MagmaByMultiplicationTable([[1, 1], [2, 2]]));
@@ -16,4 +16,4 @@ false
 gap> Filtered(Filtered(AllSmallAntimagmas([2 .. 3]), M -> IsLeftFPFInducted(M)), M -> IsRightFPFInducted(M));
 [  ]
 
-gap> STOP_TEST("tst_properties_magma_ileftrightfpf.tst");
+gap> STOP_TEST("tst_derangements_properties_magma_ileftrightfpf.tst");

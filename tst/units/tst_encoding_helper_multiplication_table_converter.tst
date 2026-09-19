@@ -1,4 +1,4 @@
-gap> START_TEST("tst_helper_multiplication_table_converter.tst");
+gap> START_TEST("tst_encoding_helper_multiplication_table_converter.tst");
 
 gap> List([1 .. 2], n -> List(EnumeratorOfTuples([1 .. n], n)));
 [
@@ -54,4 +54,4 @@ true
 gap> List([[10, 10, 10], [10, 10, 19], [10, 19, 10], [10, 19, 19], [14, 27, 1]], T -> __SmallAntimagmaHelper.MultiplicationTableReverse(T)) = List(AllSmallAntimagmas(3), MultiplicationTable);
 true
 
-gap> STOP_TEST("tst_helper_multiplication_table_converter.tst");
+gap> STOP_TEST("tst_encoding_helper_multiplication_table_converter.tst");

@@ -1,4 +1,4 @@
-gap> START_TEST("tst_helper_argument_checks.tst");
+gap> START_TEST("tst_catalogue_helper_argument_checks.tst");
 
 ## NrSmallAntimagmas(order) rejects non-integer order
 gap> NrSmallAntimagmas("2");
@@ -69,4 +69,4 @@ Error, smallantimagmas: <order> must be greater than or equal to 2
 gap> __SmallAntimagmaHelper.checkOrderId(2, 0);
 Error, smallantimagmas: <id> must be greater than or equal to 1
 
-gap> STOP_TEST("tst_helper_argument_checks.tst");
+gap> STOP_TEST("tst_catalogue_helper_argument_checks.tst");

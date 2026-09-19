@@ -1,4 +1,4 @@
-gap> START_TEST("tst_properties_magma_absorption_index.tst");
+gap> START_TEST("tst_indices_properties_magma_absorption_index.tst");
 
 ## LeftZeroIndex(M) counts ordered pairs (x, y) with x * y = x
 gap> LeftZeroIndex(SmallAntimagma(2, 1));
@@ -46,4 +46,4 @@ gap> Collected(List(AllSmallAntimagmas(4), M -> AbsorptionIndex(M)));
 gap> Size(Set(AllSmallAntimagmas(4), M -> AbsorptionIndex(M)));
 21
 
-gap> STOP_TEST("tst_properties_magma_absorption_index.tst");
+gap> STOP_TEST("tst_indices_properties_magma_absorption_index.tst");
