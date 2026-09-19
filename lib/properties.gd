@@ -405,15 +405,12 @@ DeclareGlobalFunction("IsMagmaAntiisomorphic");
 
 #! @Arguments M
 #! @Description
-#! generates transposed magma <A>M</A>.
+#! returns the transposed magma <M>M^{op}</M> of <A>M</A>, the magma on the
+#! elements of <A>M</A> whose product <M>x *^{op} y = y * x</M> reverses the
+#! order of the factors, so that its multiplication table is the transpose of
+#! the multiplication table of <A>M</A>.
 #!
 #! @BeginExampleSession
-#! gap> M := SmallAntimagma(2, 1);
-#! <magma with 2 generators>
-#! gap> IsMagmaAntiisomorphic(M, TransposedMagma(M));
-#! true
-#! gap> IsMagmaIsomorphic(M, TransposedMagma(TransposedMagma(M)));
-#! true
 #! gap> M := SmallAntimagma(2, 1);
 #! <magma with 2 generators>
 #! gap> Display(MultiplicationTable(M));
