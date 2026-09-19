@@ -1,5 +1,5 @@
 ---
-name: Release - draft release-notes
+name: release-draft
 run-name: release-draft-${{ github.event.number }}
 
 on:
@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   update_release_draft:
-    name: Release draft - update release notes
+    name: release-notes
     permissions:
       contents: write
       pull-requests: write
