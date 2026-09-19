@@ -1,24 +1,13 @@
 gap> START_TEST("tst_properties_transposed_magma.tst");
 
-## x *^op y = y * x, i.e. the multiplication table is transposed
-gap> M := SmallAntimagma(3, 2);;
-gap> Display(MultiplicationTable(M));
-[ [  2,  1,  1 ],
-  [  2,  1,  1 ],
-  [  3,  1,  1 ] ]
-gap> Display(MultiplicationTable(TransposedMagma(M)));
-[ [  2,  2,  3 ],
-  [  1,  1,  1 ],
-  [  1,  1,  1 ] ]
+## the transpose of a catalogued antimagma is the transposed table
 gap> ForAll(AllSmallAntimagmas([2 .. 4]),
 >        M -> MultiplicationTable(TransposedMagma(M)) = TransposedMat(MultiplicationTable(M)));
 true
-
-## transposing twice gives back the magma
 gap> ForAll(AllSmallAntimagmas([2 .. 4]),
 >        M -> MultiplicationTable(TransposedMagma(TransposedMagma(M))) = MultiplicationTable(M));
 true
-gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> IsMagmaIsomorphic(M, TransposedMagma(TransposedMagma(M))));
+gap> ForAll(AllSmallAntimagmas([2 .. 4]), M -> Size(TransposedMagma(M)) = Size(M));
 true
 
 ## a magma and its transpose are antiisomorphic, and not isomorphic below order 4
@@ -29,10 +18,12 @@ false
 gap> ForAll(AllSmallAntimagmas(4, "self-dual"), M -> IsMagmaIsomorphic(M, TransposedMagma(M)));
 true
 
-## the transpose of an antimagma is an antimagma of the same order
-gap> ForAll(AllSmallAntimagmas([2 .. 4]), M -> IsAntiassociative(TransposedMagma(M)));
+## transposing twice gives back the magma
+gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> IsMagmaIsomorphic(M, TransposedMagma(TransposedMagma(M))));
 true
-gap> ForAll(AllSmallAntimagmas([2 .. 4]), M -> Size(TransposedMagma(M)) = Size(M));
+
+## the transpose of an antimagma is an antimagma
+gap> ForAll(AllSmallAntimagmas([2 .. 4]), M -> IsAntiassociative(TransposedMagma(M)));
 true
 
 ## left-handed properties become right-handed ones
@@ -68,10 +59,8 @@ gap> ForAll(AllSmallAntimagmas([2 .. 4]), function(M)
 true
 
 ## magmas outside the catalogue are transposed as well
-gap> Display(MultiplicationTable(TransposedMagma(MagmaByMultiplicationTable([[1, 1, 1], [2, 2, 2], [3, 3, 3]]))));
-[ [  1,  2,  3 ],
-  [  1,  2,  3 ],
-  [  1,  2,  3 ] ]
+gap> MultiplicationTable(TransposedMagma(CyclicGroup(4))) = MultiplicationTable(CyclicGroup(4));
+true
 gap> IsMagmaIsomorphic(CyclicGroup(4), TransposedMagma(CyclicGroup(4)));
 true
 
