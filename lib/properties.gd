@@ -1,3 +1,7 @@
+#! @Chapter Reference
+
+#! @Section Properties
+
 #! @Arguments M
 #! @Description
 #! identifies whether magma <A>M</A> is antiassociative <Cite Key="Rogers1963"/>.
@@ -15,6 +19,8 @@
 #! @EndExampleSession
 #!
 DeclareProperty("IsAntiassociative", IsMagma);
+
+#! @Section Attributes
 
 #! @Arguments M
 #! @Description
@@ -241,6 +247,8 @@ DeclareAttribute("AbsorptionIndex", IsMagma);
 #!
 DeclareAttribute("ProductSetSize", IsMagma);
 
+#! @Section Global functions
+
 #! @Arguments M
 #! @Description
 #! builds a collection of non-isomorphic submagmas of <A>M</A>.
@@ -253,6 +261,8 @@ DeclareAttribute("ProductSetSize", IsMagma);
 #! @EndExampleSession
 #!
 DeclareGlobalFunction("AllSubmagmas");
+
+#! @Section Attributes
 
 #! @Arguments M
 #! @Description
@@ -281,6 +291,8 @@ DeclareGlobalFunction("AllSubmagmas");
 #!
 DeclareAttribute("MinimalGeneratingSet", IsMagma);
 
+#! @Section Operations
+
 # Rank is declared by GAP for IsObject, and declaring it again would make its
 # method match two declarations, so the declaration below is only a comment,
 # read by AutoDoc to attach the documentation
@@ -304,6 +316,8 @@ DeclareAttribute("MinimalGeneratingSet", IsMagma);
 #!
 # DeclareOperation("Rank", [IsMagma]);
 
+#! @Section Attributes
+
 #! @Arguments M
 #! @Description
 #! identifies class of antiassociative magma <A>M</A>, i.e. returns the pair
@@ -326,10 +340,14 @@ DeclareAttribute("MinimalGeneratingSet", IsMagma);
 #!
 DeclareAttribute("IdSmallAntimagma", IsMagma);
 
+#! @Section Global functions
+
 #! @Arguments M
 #! @Description
 #! computes isomorphism invariants of <A>M</A>.
 DeclareGlobalFunction("MagmaIsomorphismInvariantsMatch");
+
+#! @Section Operations
 
 #! @Arguments M, N
 #! @Description
@@ -360,6 +378,8 @@ DeclareOperation("MagmaIsomorphism", [IsMagma, IsMagma]);
 #! @EndExampleSession
 #!
 DeclareOperation("MagmaAntiisomorphism", [IsMagma, IsMagma]);
+
+#! @Section Global functions
 
 #! @Arguments M, N
 #! @Description
@@ -438,6 +458,8 @@ DeclareGlobalFunction("LeftPower");
 #! <M>((m * m) * \cdots) * m</M> of <A>k</A> copies of <A>m</A> bracketed from the left.
 DeclareGlobalFunction("RightPower");
 
+#! @Section Attributes
+
 #! @Arguments m
 #! @Description
 #! returns the pair <C>[ i, p ]</C> of minimal index and period of element
@@ -451,6 +473,8 @@ DeclareAttribute("LeftIndexPeriod", IsExtLElement);
 #! <A>m</A>, that is the least <M>i, p \geq 1</M> such that the right powers
 #! of <Ref Func="RightPower"/> satisfy <C>RightPower(m, i + p) = RightPower(m, i)</C>.
 DeclareAttribute("RightIndexPeriod", IsExtRElement);
+
+#! @Section Properties
 
 #! @Arguments M
 #! @Description
@@ -563,6 +587,8 @@ DeclareProperty("IsRightCancellative", IsMagma);
 #!
 DeclareProperty("IsCancellative", IsMagma);
 
+#! @Section Attributes
+
 #! @Arguments M
 #! @Description
 #! returns the cancellativity degree of magma <A>M</A>, the pair
@@ -654,6 +680,8 @@ DeclareAttribute("NrConstantLeftTranslations", IsMagma);
 #! @EndExampleSession
 #!
 DeclareAttribute("NrConstantRightTranslations", IsMagma);
+
+#! @Section Properties
 
 #! @Arguments M
 #! @Description
@@ -776,6 +804,8 @@ DeclareProperty("IsLeftAlternative", IsMagma);
 #!
 DeclareProperty("IsRightAlternative", IsMagma);
 
+#! @Section Attributes
+
 #! @Arguments M
 #! @Description
 #! builds a digraph from the diagonal of <A>M</A>.
@@ -797,6 +827,8 @@ DeclareProperty("IsRightAlternative", IsMagma);
 #!
 DeclareAttribute("DigraphOfDiagonal", IsMagma);
 
+#! @Section Operations
+
 #!
 #! @Arguments n
 #! @Description
@@ -816,6 +848,8 @@ DeclareAttribute("DigraphOfDiagonal", IsMagma);
 #! @EndExampleSession
 #!
 DeclareOperation("DiagonalDigraphTypes", [IsPosInt]);
+
+#! @Section Attributes
 
 #! @Arguments M
 #! @Description
@@ -846,6 +880,8 @@ DeclareOperation("DiagonalDigraphTypes", [IsPosInt]);
 #!
 DeclareAttribute("TranslationProfile", IsMagma);
 
+#! @Section Operations
+
 #! @Arguments n
 #! @Description
 #! returns the types of translation profile of the <A>n</A>-element
@@ -868,6 +904,8 @@ DeclareAttribute("TranslationProfile", IsMagma);
 #! @EndExampleSession
 #!
 DeclareOperation("TranslationProfileTypes", [IsPosInt]);
+
+#! @Section Attributes
 
 #! @Arguments M
 #! @Description
@@ -892,6 +930,8 @@ DeclareOperation("TranslationProfileTypes", [IsPosInt]);
 #! @EndExampleSession
 #!
 DeclareAttribute("IndexPeriodProfile", IsMagma);
+
+#! @Section Operations
 
 #! @Arguments magmas
 #! @Description

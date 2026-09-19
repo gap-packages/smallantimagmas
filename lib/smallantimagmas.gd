@@ -1,3 +1,7 @@
+#! @Chapter Reference
+
+#! @Section Global functions
+
 #! @Arguments n[, view]
 #! @Description
 #! returns all antiassociative magmas of specified size <A>n</A> (a number, or a

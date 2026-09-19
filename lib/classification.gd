@@ -1,3 +1,6 @@
+#! @Chapter Reference
+
+#! @Section Categories
 DeclareCategory("__IsSmallAntimagmaClassification", IsObject);
 
 BindGlobal("__SmallAntimagmaClassificationFamily",
@@ -6,6 +9,8 @@ BindGlobal("__SmallAntimagmaClassificationFamily",
 BindGlobal("__SmallAntimagmaClassificationType",
     NewType(__SmallAntimagmaClassificationFamily,
         __IsSmallAntimagmaClassification and IsComponentObjectRep));
+
+#! @Section Global functions
 
 #! @Arguments magmas[, by]
 #! @Description
