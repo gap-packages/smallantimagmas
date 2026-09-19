@@ -24,7 +24,7 @@ concurrency:
 
 jobs:
   gaptest:
-    name: unit-tests (${{ matrix.gap-version }})
+    name: unit-tests (${{ matrix.gap-version }}, ${{ matrix.mode }})
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -35,6 +35,13 @@ jobs:
           - 'devel'   # current GAP development version from git
           - 'latest'  # latest GAP release
           - 'minimal' # oldest GAP release supported by this package
+        # only release branches pay for the extra package-loading modes
+        mode: >-
+          ${{
+          (startsWith(github.head_ref || github.ref_name, 'release/')
+          && fromJSON('["default", "onlyneeded", "loadall"]'))
+          || fromJSON('["default"]')
+          }}
 
     steps:
       - name: Checkout repository
@@ -60,16 +67,15 @@ jobs:
 
       - name: Run gap-tests
         uses: gap-actions/run-pkg-tests@b1f75421e9d57ebf51a41dfcfa19b9fe2f3030da # v4
-
-      - name: Run gap-tests (only-needed)
-        uses: gap-actions/run-pkg-tests@b1f75421e9d57ebf51a41dfcfa19b9fe2f3030da # v4
         with:
-          mode: onlyneeded
+          mode: ${{ matrix.mode }}
 
       - name: Show code-coverage
+        if: ${{ matrix.mode == 'default' }}
         uses: gap-actions/process-coverage@500e7ca58e508de2b0dce5d1738f5fd0980bed0a # v3
 
       - uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
+        if: ${{ matrix.mode == 'default' }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
