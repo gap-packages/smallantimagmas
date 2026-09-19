@@ -1,4 +1,4 @@
-gap> START_TEST("tst_properties_magma_rank.tst");
+gap> START_TEST("tst_structure_properties_magma_rank.tst");
 
 ## MinimalGeneratingSet(M) generates M
 gap> ForAll(AllSmallAntimagmas([2 .. 4]), M -> Submagma(M, MinimalGeneratingSet(M)) = M);
@@ -52,4 +52,4 @@ gap> Rank(CyclicGroup(4));
 1
 #@fi
 
-gap> STOP_TEST("tst_properties_magma_rank.tst");
+gap> STOP_TEST("tst_structure_properties_magma_rank.tst");

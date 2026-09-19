@@ -1,4 +1,4 @@
-gap> START_TEST("tst_properties_element_right_power.tst");
+gap> START_TEST("tst_powers_properties_element_right_power.tst");
 
 ## RightPower(m, 1) = m
 gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> ForAll(M, m -> RightPower(m, 1) = m));
@@ -36,4 +36,4 @@ Error, SmallAntimagmas: <id> must be an integer
 gap> RightPower(Representative(SmallAntimagma(2, 1)), "2");
 Error, SmallAntimagmas: <id> must be an integer
 
-gap> STOP_TEST("tst_properties_element_right_power.tst");
+gap> STOP_TEST("tst_powers_properties_element_right_power.tst");

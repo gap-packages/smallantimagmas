@@ -1,4 +1,4 @@
-gap> START_TEST("tst_properties_magma_mediality_index.tst");
+gap> START_TEST("tst_indices_properties_magma_mediality_index.tst");
 
 ## a medial magma satisfies the law on all |M|^4 quadruples
 #@if IsPackageMarkedForLoading( "smallgrp", "" )
@@ -21,4 +21,4 @@ true
 gap> Collected(List(AllSmallAntimagmas([2 .. 3], "up-to-isomorphism"), MedialityIndex));
 [ [ 16, 2 ], [ 57, 2 ], [ 65, 2 ], [ 73, 2 ], [ 81, 4 ] ]
 
-gap> STOP_TEST("tst_properties_magma_mediality_index.tst");
+gap> STOP_TEST("tst_indices_properties_magma_mediality_index.tst");

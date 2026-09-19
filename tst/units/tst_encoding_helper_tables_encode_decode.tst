@@ -1,4 +1,4 @@
-gap> START_TEST("tst_helper_tables_encode_decode.tst");
+gap> START_TEST("tst_encoding_helper_tables_encode_decode.tst");
 
 # ------------------------------------------------------------------
 # The data files store, for each order n, a list of "tables in row
@@ -134,4 +134,4 @@ true
 gap> ForAll([2 .. 3], n -> __SmallAntimagmaHelper.TablesDecode(n, storedDeltas(n)) = __SmallAntimagmaHelper.getSmallAntimagmaMetadata(n)());
 true
 
-gap> STOP_TEST("tst_helper_tables_encode_decode.tst");
+gap> STOP_TEST("tst_encoding_helper_tables_encode_decode.tst");

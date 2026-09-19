@@ -1,4 +1,4 @@
-gap> START_TEST("tst_properties_magma_left_right_cancellative.tst");
+gap> START_TEST("tst_cancellativity_properties_magma_left_right_cancellative.tst");
 
 #@if IsPackageMarkedForLoading( "smallgrp", "" )
 gap> ForAll(AllSmallGroups([2 .. 4]), G -> IsLeftCancellative(G));
@@ -23,4 +23,4 @@ true
 gap> IsLeftCancellative(SmallAntimagma(3, 5));
 false
 
-gap> STOP_TEST("tst_properties_magma_left_right_cancellative.tst");
+gap> STOP_TEST("tst_cancellativity_properties_magma_left_right_cancellative.tst");

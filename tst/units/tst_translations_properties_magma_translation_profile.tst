@@ -1,4 +1,4 @@
-gap> START_TEST("tst_properties_magma_translation_profile.tst");
+gap> START_TEST("tst_translations_properties_magma_translation_profile.tst");
 
 ## the profile counts the distinct rows and the distinct columns
 gap> M := MagmaByMultiplicationTable([[2, 1, 1], [2, 1, 1], [3, 1, 1]]);;
@@ -36,4 +36,4 @@ gap> TranslationProfileTypes(true);
 Error, no method found! For debugging hints type ?Recovery from NoMethodFound
 Error, no 1st choice method found for `TranslationProfileTypes' on 1 arguments
 
-gap> STOP_TEST("tst_properties_magma_translation_profile.tst");
+gap> STOP_TEST("tst_translations_properties_magma_translation_profile.tst");

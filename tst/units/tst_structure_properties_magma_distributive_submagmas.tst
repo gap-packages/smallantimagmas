@@ -1,4 +1,4 @@
-gap> START_TEST("tst_properties_magma_distributive_submagmas.tst");
+gap> START_TEST("tst_structure_properties_magma_distributive_submagmas.tst");
 
 ## IsLeftDistributive(M) over orders 2 and 3
 gap> Collected(List(AllSmallAntimagmas([2 .. 3]), M -> IsLeftDistributive(M)));
@@ -25,4 +25,4 @@ gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> ForAll(Combinations([1 .. Size(Al
 >        c -> not IsMagmaIsomorphic(AllSubmagmas(M)[c[1]], AllSubmagmas(M)[c[2]])));
 true
 
-gap> STOP_TEST("tst_properties_magma_distributive_submagmas.tst");
+gap> STOP_TEST("tst_structure_properties_magma_distributive_submagmas.tst");
