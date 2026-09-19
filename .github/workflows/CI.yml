@@ -62,9 +62,16 @@ jobs:
         uses: gap-actions/run-pkg-tests@b1f75421e9d57ebf51a41dfcfa19b9fe2f3030da # v4
 
       - name: Run gap-tests (only-needed)
+        if: ${{ startsWith(github.head_ref || github.ref_name, 'release/') }}
         uses: gap-actions/run-pkg-tests@b1f75421e9d57ebf51a41dfcfa19b9fe2f3030da # v4
         with:
           mode: onlyneeded
+
+      - name: Run gap-tests (load-all)
+        if: ${{ startsWith(github.head_ref || github.ref_name, 'release/') }}
+        uses: gap-actions/run-pkg-tests@b1f75421e9d57ebf51a41dfcfa19b9fe2f3030da # v4
+        with:
+          mode: loadall
 
       - name: Show code-coverage
         uses: gap-actions/process-coverage@500e7ca58e508de2b0dce5d1738f5fd0980bed0a # v3
