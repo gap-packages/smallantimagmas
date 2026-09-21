@@ -1,4 +1,4 @@
-gap> START_TEST("indices_properties_magma_indices.tst");
+gap> START_TEST("property_indices.tst");
 
 ## DiagonalOfMultiplicationTable(M) lists Position(Elements(M), m * m) for m in M
 gap> DiagonalOfMultiplicationTable(SmallAntimagma(2, 1));
@@ -28,4 +28,4 @@ gap> Collected(List(AllSmallAntimagmas([2 .. 3]), M -> AnticommutativityIndex(M)
 gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> CommutativityIndex(M) + AnticommutativityIndex(M) = Binomial(Size(M), 2));
 true
 
-gap> STOP_TEST("indices_properties_magma_indices.tst");
+gap> STOP_TEST("property_indices.tst");

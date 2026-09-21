@@ -1,4 +1,4 @@
-gap> START_TEST("powers_properties_element_left_right_index_period.tst");
+gap> START_TEST("property_left_right_index_period.tst");
 
 ## LeftIndexPeriod(g) = [ 1, Order(g) ] and RightIndexPeriod(g) = [ 1, Order(g) ]
 #@if IsPackageMarkedForLoading( "smallgrp", "" )
@@ -45,4 +45,4 @@ gap> ForAll(AllSmallAntimagmas([2 .. 3]), M ->
 >        Collected(List(M, RightIndexPeriod)) = Collected(List(TransposedMagma(M), LeftIndexPeriod)));
 true
 
-gap> STOP_TEST("powers_properties_element_left_right_index_period.tst");
+gap> STOP_TEST("property_left_right_index_period.tst");
