@@ -12,13 +12,12 @@
 #! ]
 #! @EndExampleSession
 #!
-
 DeclareOperation("AntimagmaGeneratorPossibleDiagonals", [IsInt]);
 
 #! @Arguments Ms
 #! @Description
 #! filters non-isomorphic magmas <A>Ms</A>.
-
+#!
 DeclareOperation("UpToIsomorphism", [IsList]);
 
 #! @Arguments Ms
@@ -31,5 +30,5 @@ DeclareOperation("UpToIsomorphism", [IsList]);
 #! gap> UpToIsomorphismAndAntiisomorphism(AllSmallAntimagmas(2));
 #! [ <magma with 2 generators> ]
 #! @EndExampleSession
-
+#!
 DeclareOperation("UpToIsomorphismAndAntiisomorphism", [IsList]);
