@@ -1,4 +1,4 @@
-gap> START_TEST("derangements_properties_magma_isderangement.tst");
+gap> START_TEST("property_derangement_inducted.tst");
 
 ## all-3-antimagmas-are-either-left-or-right-derangement-inducted
 gap> List(AllSmallAntimagmas(3), M -> IsLeftDerangementInducted(M));
@@ -14,4 +14,4 @@ gap> List(Filtered(AllSmallAntimagmas(3), M -> IsLeftDerangementInducted(M)), M 
 gap> Filtered(AllSmallAntimagmas(4), M -> IsLeftDerangementInducted(M) and IsRightDerangementInducted(M));
 [ <magma with 4 generators> ]
 
-gap> STOP_TEST("derangements_properties_magma_isderangement.tst");
+gap> STOP_TEST("property_derangement_inducted.tst");

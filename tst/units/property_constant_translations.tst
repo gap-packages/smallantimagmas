@@ -1,4 +1,4 @@
-gap> START_TEST("translations_properties_magma_constant_translations.tst");
+gap> START_TEST("property_constant_translations.tst");
 
 ## constant rows are constant left translations, constant columns right ones
 gap> M := MagmaByMultiplicationTable([[2, 2, 2], [3, 1, 2], [3, 1, 1]]);;
@@ -47,4 +47,4 @@ gap> C := SmallAntimagmaClassification(AllSmallAntimagmas(3, "up-to-isomorphism"
 gap> C!.tables[1].headers;
 [ "(0,0)", "(1,0)", "(2,0)", "(3,0)", "(0,1)", "(0,2)", "(0,3)" ]
 
-gap> STOP_TEST("translations_properties_magma_constant_translations.tst");
+gap> STOP_TEST("property_constant_translations.tst");

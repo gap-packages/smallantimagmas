@@ -1,4 +1,4 @@
-gap> START_TEST("structure_properties_magma_left_right_cyclic.tst");
+gap> START_TEST("property_left_right_cyclic.tst");
 
 #@if IsPackageMarkedForLoading( "smallgrp", "" )
 gap> ForAll(Filtered(AllSmallGroups([2 .. 12]), G -> not IsCyclic(G)), G -> not IsLeftCyclic(G));
@@ -14,4 +14,4 @@ gap> ForAll(Filtered(AllSmallGroups([2 .. 12]), G -> IsCyclic(G)), G -> IsRightC
 true
 #@fi
 
-gap> STOP_TEST("structure_properties_magma_left_right_cyclic.tst");
+gap> STOP_TEST("property_left_right_cyclic.tst");

@@ -1,4 +1,4 @@
-gap> START_TEST("tst_structure_properties_magma_transposed_magma.tst");
+gap> START_TEST("property_transposed_magma.tst");
 
 ## the magma on a 1-element set is its own transpose
 gap> MultiplicationTable(TransposedMagma(MagmaByMultiplicationTable([[1]])));
@@ -26,4 +26,4 @@ gap> MultiplicationTable(TransposedMagma(TransposedMagma(MagmaByMultiplicationTa
 gap> Size(TransposedMagma(MagmaByMultiplicationTable([[2, 1, 1], [2, 1, 1], [3, 1, 1]])));
 3
 
-gap> STOP_TEST("tst_structure_properties_magma_transposed_magma.tst");
+gap> STOP_TEST("property_transposed_magma.tst");

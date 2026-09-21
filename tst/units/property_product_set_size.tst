@@ -1,4 +1,4 @@
-gap> START_TEST("indices_properties_magma_product_set_size.tst");
+gap> START_TEST("property_product_set_size.tst");
 
 gap> List(AllSmallAntimagmas(2), M -> ProductSetSize(M));
 [ 2 ]
@@ -15,4 +15,4 @@ true
 gap> ProductSetSize(CyclicGroup(4));
 4
 
-gap> STOP_TEST("indices_properties_magma_product_set_size.tst");
+gap> STOP_TEST("property_product_set_size.tst");

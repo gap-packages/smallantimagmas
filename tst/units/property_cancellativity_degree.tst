@@ -1,4 +1,4 @@
-gap> START_TEST("cancellativity_properties_magma_cancellativity_degree.tst");
+gap> START_TEST("property_cancellativity_degree.tst");
 
 ## a group has every translation injective
 #@if IsPackageMarkedForLoading( "smallgrp", "" )
@@ -38,4 +38,4 @@ gap> Collected(List(AllSmallAntimagmas(4, "up-to-isomorphism"), CancellativityDe
   [ [ 0, 3 ], 392 ], [ [ 0, 4 ], 40 ], [ [ 1, 0 ], 3665 ], [ [ 1, 1 ], 2 ],
   [ [ 2, 0 ], 1839 ], [ [ 3, 0 ], 392 ], [ [ 4, 0 ], 40 ] ]
 
-gap> STOP_TEST("cancellativity_properties_magma_cancellativity_degree.tst");
+gap> STOP_TEST("property_cancellativity_degree.tst");

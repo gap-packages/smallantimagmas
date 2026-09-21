@@ -1,4 +1,4 @@
-gap> START_TEST("powers_properties_magma_index_period_profile.tst");
+gap> START_TEST("property_index_period_profile.tst");
 
 ## IndexPeriodProfile(M) is the unordered pair of the collected left and right index-periods
 gap> ForAll(AllSmallAntimagmas([2 .. 3]), M -> IndexPeriodProfile(M)
@@ -32,4 +32,4 @@ true
 gap> IndexPeriodProfileTypes([1, 2]);
 Error, smallantimagmas: <magmas> must be a list of magmas
 
-gap> STOP_TEST("powers_properties_magma_index_period_profile.tst");
+gap> STOP_TEST("property_index_period_profile.tst");
