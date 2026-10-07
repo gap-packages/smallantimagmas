@@ -1,0 +1,21 @@
+name: Check for pending release
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'   # every Monday at 06:00 UTC
+  release:
+    types: [published]    # close the issue once a release is made
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+      - uses: gap-actions/check-pending-release@e6b56746e3b1bd128f152474ced04aa44d674a1a # v1

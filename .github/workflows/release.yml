@@ -38,3 +38,15 @@ jobs:
           force: ${{ inputs.force }}
       - uses: gap-actions/update-gh-pages@d503b1c7a412223a9a3564561ed62a5623110d7a # v1
         if: ${{ !inputs.dry-run }}
+
+  close-pending-release-issue:
+    needs: release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+      - uses: gap-actions/check-pending-release@e6b56746e3b1bd128f152474ced04aa44d674a1a # v1
