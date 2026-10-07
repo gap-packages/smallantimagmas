@@ -209,8 +209,4 @@ This file describes changes in the smallantimagmas package.
 
 ## 0.0.1 (2024-04-01)
 
-- First release: `AllSmallAntimagmas`, `NrSmallAntimagmas`,
-  `SmallAntimagma`, `IsAntiassociative`, `MagmaIsomorphism`,
-  `MagmaAntiisomorphism`, `IsMagmaIsomorphic`, `IsMagmaAntiisomorphic` and
-  `HasPropertyA3` (#4)
-- Require GAP >= 4.10
+- Initial release
