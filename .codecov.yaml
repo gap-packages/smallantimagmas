@@ -18,3 +18,4 @@ ignore:
   - "init.g"
   - "read.g"
   - "tst/**"
+  - "classifier/tests/**"

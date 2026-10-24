@@ -1,0 +1,10 @@
+classifier/antimagma
+classifier/deltas
+classifier/parts/
+classifier/tests/*
+!classifier/tests/*.c
+!classifier/tests/*.h
+classifier/**/*.o
+classifier/**/*.gcno
+classifier/**/*.gcda
+classifier/*.gcov
