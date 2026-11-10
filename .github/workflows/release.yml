@@ -26,15 +26,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-      - uses: gap-actions/setup-gap@f12222f1b86ce1f8a246c4000abfd6e69893411c # v3
+      - uses: gap-actions/setup-gap@e2ba23b226e1f979b81600c153f6760f23db3bcf # v3
         with:
           gap-version: 'devel'
       - uses: gap-actions/build-pkg-docs@f1927364d4a2df557251a26afca0377edf1163ce # v2
         with:
           use-latex: true
-      - uses: gap-actions/release-pkg@2f8d281794aa318157238eba8b50ba3711e95872 # v1
+      - uses: gap-actions/release-pkg@b1e40f56343129990436e5c86950dfe3f57421e6 # v1
         with:
           dry-run: ${{ inputs.dry-run }}
           force: ${{ inputs.force }}
-      - uses: gap-actions/update-gh-pages@d503b1c7a412223a9a3564561ed62a5623110d7a # v1
+      - uses: gap-actions/update-gh-pages@336470904efe0e9fb7413b399e887e9f0474c900 # v1
         if: ${{ !inputs.dry-run }}
