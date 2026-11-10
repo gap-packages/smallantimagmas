@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Setup gap-system
-        uses: gap-actions/setup-gap@f12222f1b86ce1f8a246c4000abfd6e69893411c # v3
+        uses: gap-actions/setup-gap@e2ba23b226e1f979b81600c153f6760f23db3bcf # v3
         with:
           gap-version: ${{ matrix.gap-version }}
 
@@ -72,7 +72,7 @@ jobs:
 
       - name: Show code-coverage
         if: ${{ matrix.mode == 'default' }}
-        uses: gap-actions/process-coverage@500e7ca58e508de2b0dce5d1738f5fd0980bed0a # v3
+        uses: gap-actions/process-coverage@ff7076229c6ae07962c1897d6acf02d659d8a1be # v3
 
       - uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         if: ${{ matrix.mode == 'default' }}

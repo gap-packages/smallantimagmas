@@ -24,7 +24,7 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
 
-      - uses: gap-actions/setup-gap@f12222f1b86ce1f8a246c4000abfd6e69893411c # v3
+      - uses: gap-actions/setup-gap@e2ba23b226e1f979b81600c153f6760f23db3bcf # v3
         with:
           gap-version: ${{ env.gap-branch }}
 
@@ -57,7 +57,7 @@ jobs:
           tar -czf ${{ env.archive-file }} --exclude=${{ env.archive-file }} --transform 's,^\.,${{ env.revision }},' .
 
       - name: github -- upload artifacts
-        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
+        uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3 # v3.0.4
         with:
           files: |
             ${{ env.archive-file }}
@@ -70,7 +70,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: gap-actions/setup-gap@f12222f1b86ce1f8a246c4000abfd6e69893411c # v3
+      - uses: gap-actions/setup-gap@e2ba23b226e1f979b81600c153f6760f23db3bcf # v3
         with:
           gap-version: ${{ env.gap-branch }}
 
