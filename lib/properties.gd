@@ -24,7 +24,11 @@ DeclareProperty("IsAntiassociative", IsMagma);
 
 #! @Arguments M
 #! @Description
-#! identifies associativity index of <A>M</A>.
+#! identifies associativity index of <A>M</A>, i.e. the number of triples
+#! <M>(x, y, z) \in M^3</M> such that <M>(x * y) * z = x * (y * z)</M>.
+#! It ranges from <M>0</M> up to <M>|M|^3</M>. The lower bound is attained
+#! exactly when <A>M</A> is antiassociative, see <Ref Prop="IsAntiassociative" Label="for IsMagma"/>,
+#! and the upper bound exactly when <A>M</A> is associative, i.e. a semigroup.
 #!
 #! @BeginExampleSession
 #! gap> OneSmallAntimagma(2);
